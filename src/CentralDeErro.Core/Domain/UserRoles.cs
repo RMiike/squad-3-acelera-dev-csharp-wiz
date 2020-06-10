@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CentralDeErro.Core.Domain
 {
-    class UserRoles : IdentityUserRole<string>
+    public class UserRoles : IdentityUserRole<string>
     {
+        public User User { get; set; }
+        public Role Role { get; set; }
     }
 }
