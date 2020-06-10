@@ -1,18 +1,25 @@
 # squad-3-acelera-dev-csharp-wiz
-Projeto final - Acelera Dev
+
+<h1 align="center">Projeto final - Acelera Dev</h1>
 
 
-Central de Erros
-Objetivo
-Em projetos modernos é cada vez mais comum o uso de arquiteturas baseadas em serviços ou microsserviços. Nestes ambientes complexos, erros podem surgir em diferentes camadas da aplicação (backend, frontend, mobile, desktop) e mesmo em serviços distintos. Desta forma, é muito importante que os desenvolvedores possam centralizar todos os registros de erros em um local, de onde podem monitorar e tomar decisões mais acertadas. Neste projeto vamos implementar um sistema para centralizar registros de erros de aplicações.
+<h2 align="center">Central de Erros</h2>
+
+:question: Objetivo
+
+<p>Em projetos modernos é cada vez mais comum o uso de arquiteturas baseadas em serviços ou microsserviços. </br>
+Nestes ambientes complexos, erros podem surgir em diferentes camadas da aplicação (backend, frontend, mobile, desktop) e mesmo em serviços distintos. </br> Desta forma, é muito importante que os desenvolvedores possam centralizar todos os registros de erros em um local, de onde podem monitorar e tomar decisões mais acertadas. </br> Neste projeto vamos implementar um sistema para centralizar registros de erros de aplicações.
+</p>
 
 A arquitetura do projeto é formada por:
 
-Backend - API
-criar endpoints para serem usados pelo frontend da aplicação
+
+### :computer: Backend - API
+ criar endpoints para serem usados pelo frontend da aplicação
 criar um endpoint que será usado para gravar os logs de erro em um banco de dados relacional
 a API deve ser segura, permitindo acesso apenas com um token de autenticação válido
-Frontend
+
+###  :computer:  Frontend
 deve implementar as funcionalidades apresentadas nos wireframes
 deve ser acessada adequadamente tanto por navegadores desktop quanto mobile
 deve consumir a API do produto
