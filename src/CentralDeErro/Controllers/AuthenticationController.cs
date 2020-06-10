@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CentralDeErro.Core.Domain;
+using CentralDeErro.Core.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CentralDeErro.Controllers
@@ -12,6 +15,17 @@ namespace CentralDeErro.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+
+        public AuthenticationController(
+            UserManager<User> userManager,
+            SignInManager<User> signInManager
+            )
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
         // GET: api/Authentication]
         //test route 
         //return new User
@@ -21,6 +35,35 @@ namespace CentralDeErro.Controllers
             return Ok(new User());
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> SignUp(SignUpDto signUpDto)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(signUpDto.Email);
+
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        Id = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10),
+                        UserName = signUpDto.UserName,
+                        Email = signUpDto.Email
+                    };
+                    var result = await _userManager.CreateAsync(user, signUpDto.Password);
+
+                    if (result.Succeeded)
+                        return Ok(user);
+                }
+                return BadRequest("User already existis!");
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"ERROR {ex.Message}");
+            }
+        }
         // GET: api/Authentication/5
         //[HttpGet("{id}", Name = "Get")]
         //public string Get(int id)
