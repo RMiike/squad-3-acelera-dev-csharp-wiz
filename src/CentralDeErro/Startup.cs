@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using CentralDeErro.Infrastructure.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +28,14 @@ namespace CentralDeErro
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            var migrationAssembly = typeof(Startup)
+                .GetTypeInfo().Assembly
+                .GetName().Name;
+
+            services.AddDbContext<CentralDeErrorContext>(opt =>
+              opt.UseSqlServer(Configuration.GetConnectionString("AuthString"), sql =>
+              sql.MigrationsAssembly(migrationAssembly)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
