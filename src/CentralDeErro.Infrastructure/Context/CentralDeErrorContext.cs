@@ -1,4 +1,5 @@
 ﻿using CentralDeErro.Core.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +8,9 @@ using System.Text;
 
 namespace CentralDeErro.Infrastructure.Context
 {
-    public class CentralDeErrorContext : IdentityDbContext
+    public class CentralDeErrorContext : IdentityDbContext<User, Role, string,
+                                                IdentityUserClaim<string>, UserRoles, IdentityUserLogin<string>,
+                                                IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public CentralDeErrorContext(DbContextOptions<CentralDeErrorContext> opt) : base(opt) { }
 
