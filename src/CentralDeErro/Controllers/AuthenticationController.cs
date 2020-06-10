@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using CentralDeErro.Core.Domain;
 using CentralDeErro.Core.Dto;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CentralDeErro.Controllers
 {
@@ -17,14 +23,20 @@ namespace CentralDeErro.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
         public AuthenticationController(
             UserManager<User> userManager,
-            SignInManager<User> signInManager
+            SignInManager<User> signInManager,
+            IConfiguration config,
+            IMapper mapper
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _config = config;
+            _mapper = mapper;
         }
         // GET: api/Authentication]
         //test route 
@@ -32,7 +44,7 @@ namespace CentralDeErro.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(new User());
+            return Ok(new SignUpDto());
         }
 
         [HttpPost("signup")]
@@ -55,8 +67,12 @@ namespace CentralDeErro.Controllers
 
                     if (result.Succeeded)
                     {
-                        //TODO token
-                        return Ok(user);
+                        var appUser = await _userManager.Users
+                         .FirstOrDefaultAsync(u => u.NormalizedUserName == user.UserName.ToUpper());
+
+                        var token = GenerateJwtToken(appUser).Result;
+
+                        return Ok(token);
                     }
                 }
                 return BadRequest("User already existis!");
@@ -84,7 +100,18 @@ namespace CentralDeErro.Controllers
                     if(result.Succeeded)
                     {
                         //TODO token
-                        return Ok(user);
+
+                      var appUser = await _userManager.Users
+                             .FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
+
+                        var userToReturn = _mapper.Map<SignInDto>(appUser);
+
+
+                        return Ok(new
+                        {
+                            token = GenerateJwtToken(appUser).Result,
+                            user = userToReturn
+                        });
                     }
 
                 }
@@ -95,6 +122,40 @@ namespace CentralDeErro.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
                     $"ERROR {ex.Message}");
             }
+        }
+
+        private async Task<string> GenerateJwtToken(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName)
+            };
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
+                _config.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescription = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var token = tokenHandler.CreateToken(tokenDescription);
+
+            return tokenHandler.WriteToken(token);
         }
         // GET: api/Authentication/5
         //[HttpGet("{id}", Name = "Get")]
