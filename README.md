@@ -33,12 +33,12 @@ Os wireframes a seguir servem para ilustrar as funcionalidades básicas que a ap
 
 
 <p align="center">
-    <img alt="img" src="https://raw.githubusercontent.com/RMiike/squad-3-acelera-dev-csharp-wiz/master/assets/1-cadastro.png?token=ANPO6N26KVOQA6LQCGVVWQ264EP6S" />
-  <img alt="img" src="https://raw.githubusercontent.com/RMiike/squad-3-acelera-dev-csharp-wiz/master/assets/2-login.png?token=ANPO6N4ZM3Q4CBAFVKXUJVS64EQBM" />
-    <img alt="img" src="https://raw.githubusercontent.com/RMiike/squad-3-acelera-dev-csharp-wiz/master/assets/3-dashboard.png?token=ANPO6N6ULM2JG4SBP243RES64EQBQ" />
-    <img alt="img" src="https://raw.githubusercontent.com/RMiike/squad-3-acelera-dev-csharp-wiz/master/assets/4-ambientes.png?token=ANPO6N7FEDWHO2QSK6CUI3264EQBW" />
-    <img alt="img" src="https://raw.githubusercontent.com/RMiike/squad-3-acelera-dev-csharp-wiz/master/assets/5-order.png?token=ANPO6NZYVP6CXSEQIT7PLB264EQB2" />
-    <img alt="img" src="https://raw.githubusercontent.com/RMiike/squad-3-acelera-dev-csharp-wiz/master/assets/6-filtro.png?token=ANPO6N7RTKAHX6W2E3YBFIC64EQCE" />
-    <img alt="img" src="https://raw.githubusercontent.com/RMiike/squad-3-acelera-dev-csharp-wiz/master/assets/7-detalhes.png?token=ANPO6N57LPGEEPDBPEOWDSK64EQCM" />
+    <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/1-cadastro.png" />
+  <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/2-login.png" />
+   <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/3-dashboard.png" />
+ <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/4-ambientes.png" />
+ <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/5-order.png" />
+ <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/6-filtro.png" />
+ <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/7-detalhes.png" />
 </p>
 
