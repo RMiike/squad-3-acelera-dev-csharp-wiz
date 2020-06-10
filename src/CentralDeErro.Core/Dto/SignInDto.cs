@@ -2,11 +2,8 @@
 
 namespace CentralDeErro.Core.Dto
 {
-    public class SignUpDto
+    public class SignInDto
     {
-        [Required]
-        public string UserName { get; set; }
-
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -14,10 +11,5 @@ namespace CentralDeErro.Core.Dto
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        [Required]
-        [Compare("Password")]
-        [DataType(DataType.Password)]
-        public string ConfirmPassword { get; set; }
     }
 }

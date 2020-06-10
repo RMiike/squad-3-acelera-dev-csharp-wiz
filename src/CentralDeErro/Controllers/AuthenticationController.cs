@@ -35,7 +35,7 @@ namespace CentralDeErro.Controllers
             return Ok(new User());
         }
 
-        [HttpPost]
+        [HttpPost("signup")]
         [AllowAnonymous]
         public async Task<IActionResult> SignUp(SignUpDto signUpDto)
         {
@@ -54,9 +54,41 @@ namespace CentralDeErro.Controllers
                     var result = await _userManager.CreateAsync(user, signUpDto.Password);
 
                     if (result.Succeeded)
+                    {
+                        //TODO token
                         return Ok(user);
+                    }
                 }
                 return BadRequest("User already existis!");
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"ERROR {ex.Message}");
+            }
+        }
+
+        [HttpPost("signin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> SignIn(SignInDto signInDto)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(signInDto.Email);
+
+                if (user != null)
+                {
+                    var result = await _signInManager
+                        .CheckPasswordSignInAsync(user, signInDto.Password, false);
+
+                    if(result.Succeeded)
+                    {
+                        //TODO token
+                        return Ok(user);
+                    }
+
+                }
+                return BadRequest("Wrong user or password!");
             }
             catch (Exception ex)
             {
