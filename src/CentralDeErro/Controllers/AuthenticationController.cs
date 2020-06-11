@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using CentralDeErro.Core.Domain;
+using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Dto;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

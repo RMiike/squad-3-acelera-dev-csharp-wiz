@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CentralDeErro.Core.Domain
+namespace CentralDeErro.Core.Entities
 {
     public class User : IdentityUser<string>
     {

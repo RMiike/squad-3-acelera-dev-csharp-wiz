@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 
-namespace CentralDeErro.Core.Domain
+namespace CentralDeErro.Core.Entities
 {
     public class UserRoles : IdentityUserRole<string>
     {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CentralDeErro.Core.Domain;
+using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +20,7 @@ namespace Services.Application
 
         //TODO 2 atuenticação
         //recuperar senha
-        //
+        //esqueci senha
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _config;

@@ -19,7 +19,7 @@ namespace CentralDeErro.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CentralDeErro.Core.Domain.Role", b =>
+            modelBuilder.Entity("CentralDeErro.Core.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -46,7 +46,7 @@ namespace CentralDeErro.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("CentralDeErro.Core.Domain.User", b =>
+            modelBuilder.Entity("CentralDeErro.Core.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -111,7 +111,7 @@ namespace CentralDeErro.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("CentralDeErro.Core.Domain.UserRoles", b =>
+            modelBuilder.Entity("CentralDeErro.Core.Entities.UserRoles", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -215,15 +215,15 @@ namespace CentralDeErro.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CentralDeErro.Core.Domain.UserRoles", b =>
+            modelBuilder.Entity("CentralDeErro.Core.Entities.UserRoles", b =>
                 {
-                    b.HasOne("CentralDeErro.Core.Domain.Role", "Role")
+                    b.HasOne("CentralDeErro.Core.Entities.Role", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CentralDeErro.Core.Domain.User", "User")
+                    b.HasOne("CentralDeErro.Core.Entities.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -232,7 +232,7 @@ namespace CentralDeErro.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("CentralDeErro.Core.Domain.Role", null)
+                    b.HasOne("CentralDeErro.Core.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -241,7 +241,7 @@ namespace CentralDeErro.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("CentralDeErro.Core.Domain.User", null)
+                    b.HasOne("CentralDeErro.Core.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -250,7 +250,7 @@ namespace CentralDeErro.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("CentralDeErro.Core.Domain.User", null)
+                    b.HasOne("CentralDeErro.Core.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -259,7 +259,7 @@ namespace CentralDeErro.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("CentralDeErro.Core.Domain.User", null)
+                    b.HasOne("CentralDeErro.Core.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

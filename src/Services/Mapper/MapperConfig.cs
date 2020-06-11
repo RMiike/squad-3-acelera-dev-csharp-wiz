@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CentralDeErro.Core.Domain;
+using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Dto;
 
 namespace Services.Mapper

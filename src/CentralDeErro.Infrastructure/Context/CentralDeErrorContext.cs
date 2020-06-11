@@ -1,4 +1,4 @@
-﻿using CentralDeErro.Core.Domain;
+﻿using CentralDeErro.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

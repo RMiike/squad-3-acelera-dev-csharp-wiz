@@ -1,6 +1,6 @@
 using System.Text;
 using System.Reflection;
-using CentralDeErro.Core.Domain;
+using CentralDeErro.Core.Entities;
 using CentralDeErro.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
