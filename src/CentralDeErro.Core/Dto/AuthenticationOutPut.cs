@@ -6,6 +6,7 @@ using System.Text;
 namespace CentralDeErro.Core.Dto
 {
     public class AuthenticationOutPut
+       
     {
         [Required]
         public string UserName { get; set; }

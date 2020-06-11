@@ -17,6 +17,10 @@ namespace Services.Application
 {
     public class AuthenticationService : IAuthentication
     {
+
+        //TODO 2 atuenticação
+        //recuperar senha
+        //
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _config;
@@ -40,12 +44,7 @@ namespace Services.Application
 
            if (user == null)
             {
-                user = new User
-                {
-                    Id = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10),
-                    UserName = signUpDto.UserName,
-                    Email = signUpDto.Email
-                };
+                user = new User(signUpDto.UserName, signUpDto.Email);
                 var result = await _userManager.CreateAsync(user, signUpDto.Password);
 
                 if (result.Succeeded)
@@ -56,15 +55,11 @@ namespace Services.Application
                     var token = GenerateJwtToken(appUser).Result;
 
                     var userToReturn = _mapper.Map<AuthenticationOutPut>(appUser);
-
-                    return new AuthenticationOutPut { 
-                        UserName = userToReturn.UserName,
-                        Email = userToReturn.Email,
-                        Token = token
-                    };
+                    userToReturn.Token = token;
+                    return userToReturn;
                 }
             }
-
+           //TODO
             return null;
         }
 
@@ -86,18 +81,13 @@ namespace Services.Application
                     var token = GenerateJwtToken(appUser).Result;
 
                     var userToReturn = _mapper.Map<AuthenticationOutPut>(appUser);
+                    userToReturn.Token = token;
 
-
-                    return new AuthenticationOutPut
-                    {
-                        UserName = userToReturn.UserName,
-                        Email = userToReturn.Email,
-                        Token = token
-                    };
+                    return userToReturn;
                 }
 
             }
-
+            //TODO
             return null;
         }
 

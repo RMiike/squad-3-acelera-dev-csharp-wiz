@@ -45,7 +45,7 @@ namespace CentralDeErro.Controllers
             {
                 var userSignUpOutDto = await _services.SignUp(signUpDto);
                 if (userSignUpOutDto == null)
-                    return NotFound("Wrong user or password.");
+                    return NotFound("User already exits.");
 
                 return Ok(userSignUpOutDto);
             }
