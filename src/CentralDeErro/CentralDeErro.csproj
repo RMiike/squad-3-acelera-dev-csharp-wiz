@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CentralDeErro.Core\CentralDeErro.Core.csproj" />
     <ProjectReference Include="..\CentralDeErro.Infrastructure\CentralDeErro.Infrastructure.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>

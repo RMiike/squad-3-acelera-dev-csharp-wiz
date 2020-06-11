@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Services.Application;
 
 namespace CentralDeErro.Controllers
 {
@@ -21,22 +22,11 @@ namespace CentralDeErro.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly IConfiguration _config;
-        private readonly IMapper _mapper;
+        private readonly AuthenticationService _services;
 
-        public AuthenticationController(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            IConfiguration config,
-            IMapper mapper
-            )
+        public AuthenticationController(AuthenticationService services)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _config = config;
-            _mapper = mapper;
+            _services = services;
         }
         // GET: api/Authentication]
         //test route 
@@ -53,29 +43,11 @@ namespace CentralDeErro.Controllers
         {
             try
             {
-                var user = await _userManager.FindByEmailAsync(signUpDto.Email);
+                var userSignUpOutDto = await _services.SignUp(signUpDto);
+                if (userSignUpOutDto == null)
+                    return NotFound("Wrong user or password.");
 
-                if (user == null)
-                {
-                    user = new User
-                    {
-                        Id = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10),
-                        UserName = signUpDto.UserName,
-                        Email = signUpDto.Email
-                    };
-                    var result = await _userManager.CreateAsync(user, signUpDto.Password);
-
-                    if (result.Succeeded)
-                    {
-                        var appUser = await _userManager.Users
-                         .FirstOrDefaultAsync(u => u.NormalizedUserName == user.UserName.ToUpper());
-
-                        var token = GenerateJwtToken(appUser).Result;
-
-                        return Ok(token);
-                    }
-                }
-                return BadRequest("User already existis!");
+                return Ok(userSignUpOutDto);
             }
             catch (Exception ex)
             {
@@ -90,32 +62,11 @@ namespace CentralDeErro.Controllers
         {
             try
             {
-                var user = await _userManager.FindByEmailAsync(signInDto.Email);
+                var userSignIOutDto = await _services.SignIn(signInDto);
+                if(userSignIOutDto == null)
+                    return NotFound("Wrong user or password.");
 
-                if (user != null)
-                {
-                    var result = await _signInManager
-                        .CheckPasswordSignInAsync(user, signInDto.Password, false);
-
-                    if(result.Succeeded)
-                    {
-                        //TODO token
-
-                      var appUser = await _userManager.Users
-                             .FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
-
-                        var userToReturn = _mapper.Map<SignInDto>(appUser);
-
-
-                        return Ok(new
-                        {
-                            token = GenerateJwtToken(appUser).Result,
-                            user = userToReturn
-                        });
-                    }
-
-                }
-                return BadRequest("Wrong user or password!");
+                return Ok(userSignIOutDto);
             }
             catch (Exception ex)
             {
@@ -124,39 +75,39 @@ namespace CentralDeErro.Controllers
             }
         }
 
-        private async Task<string> GenerateJwtToken(User user)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName)
-            };
+        //private async Task<string> GenerateJwtToken(User user)
+        //{
+        //    var claims = new List<Claim>
+        //    {
+        //        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        //        new Claim(ClaimTypes.Name, user.UserName)
+        //    };
 
-            var roles = await _userManager.GetRolesAsync(user);
+        //    var roles = await _userManager.GetRolesAsync(user);
 
-            foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
+        //    foreach (var role in roles)
+        //    {
+        //        claims.Add(new Claim(ClaimTypes.Role, role));
+        //    }
 
-            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
-                _config.GetSection("AppSettings:Token").Value));
+        //    var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
+        //        _config.GetSection("AppSettings:Token").Value));
 
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+        //    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-            var tokenDescription = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(1),
-                SigningCredentials = creds
-            };
+        //    var tokenDescription = new SecurityTokenDescriptor
+        //    {
+        //        Subject = new ClaimsIdentity(claims),
+        //        Expires = DateTime.Now.AddDays(1),
+        //        SigningCredentials = creds
+        //    };
 
-            var tokenHandler = new JwtSecurityTokenHandler();
+        //    var tokenHandler = new JwtSecurityTokenHandler();
 
-            var token = tokenHandler.CreateToken(tokenDescription);
+        //    var token = tokenHandler.CreateToken(tokenDescription);
 
-            return tokenHandler.WriteToken(token);
-        }
+        //    return tokenHandler.WriteToken(token);
+        //}
         // GET: api/Authentication/5
         //[HttpGet("{id}", Name = "Get")]
         //public string Get(int id)

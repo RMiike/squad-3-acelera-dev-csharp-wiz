@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
 using Services.Mapper;
+using Services.Application;
+using Services.Interface;
 
 namespace CentralDeErro
 {
@@ -80,6 +82,10 @@ namespace CentralDeErro
             IMapper mapper = mappingConfig.CreateMapper();
 
             services.AddSingleton(mapper);
+            services.AddScoped<UserManager<User>>();
+            services.AddScoped<SignInManager<User>>();
+            services.AddScoped<AuthenticationService>();
+
             services.AddCors();
         }
 

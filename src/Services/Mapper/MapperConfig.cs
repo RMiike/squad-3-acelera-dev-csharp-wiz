@@ -8,8 +8,10 @@ namespace Services.Mapper
     {
         public MapperConfig()
         {
+
             CreateMap<User, SignInDto>().ReverseMap();
-            CreateMap<User, SignUpDto>().ReverseMap();
+            CreateMap<SignUpDto, User>();
+            CreateMap<User, AuthenticationOutPut>();
         }
     }
 }
