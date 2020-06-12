@@ -85,7 +85,7 @@ namespace CentralDeErro
             services.AddScoped<UserManager<User>>();
             services.AddScoped<SignInManager<User>>();
             services.AddScoped<AuthenticationService>();
-
+            services.AddScoped<ILogErroService, LogErroService>();
             services.AddCors();
         }
 

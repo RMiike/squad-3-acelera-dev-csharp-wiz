@@ -87,7 +87,7 @@ namespace CentralDeErro.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CentralDeErro.Core.Entities.LogError", b =>
+            modelBuilder.Entity("CentralDeErro.Core.Entities.LogErro", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -374,7 +374,7 @@ namespace CentralDeErro.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CentralDeErro.Core.Entities.LogError", b =>
+            modelBuilder.Entity("CentralDeErro.Core.Entities.LogErro", b =>
                 {
                     b.HasOne("CentralDeErro.Core.Entities.Environment", "Environment")
                         .WithMany("LogsError")

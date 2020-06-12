@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Services.Application
 {
-    public class AuthenticationService : IAuthentication
+    public class AuthenticationService : IAuthenticationService
     {
 
         //TODO 2 atuenticação

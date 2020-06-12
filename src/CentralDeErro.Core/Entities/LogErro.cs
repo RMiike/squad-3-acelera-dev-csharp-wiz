@@ -4,11 +4,24 @@ using System.Text;
 
 namespace CentralDeErro.Core.Entities
 {
-    public class LogError
+    public class LogErro
     {
-        public LogError()
+        public LogErro()
         {
             Moment = DateTime.Now;
+        }
+
+        public LogErro(int id, string userToken, string title, string details, int @event, int environmentId, int levelId, int sourceId)
+        {
+            Id = id;
+            UserToken = userToken;
+            Title = title;
+            Details = details;
+            Moment = DateTime.Now;
+            Event = @event;
+            EnvironmentId = environmentId;
+            LevelId = levelId;
+            SourceId = sourceId;
         }
 
         public int Id { get; set; }

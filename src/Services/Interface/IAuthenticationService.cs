@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Interface
 {
-    public interface IAuthentication
+    public interface IAuthenticationService
     {
         Task<AuthenticationOutPut> SignUp(SignUpDto signUpDto);
         Task<AuthenticationOutPut> SignIn(SignInDto signInDto);

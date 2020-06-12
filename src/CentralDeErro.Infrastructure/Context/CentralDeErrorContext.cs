@@ -15,7 +15,7 @@ namespace CentralDeErro.Infrastructure.Context
     {
         public CentralDeErrorContext(DbContextOptions<CentralDeErrorContext> opt) : base(opt) { }
 
-        public DbSet<LogError> LogError { get; set; }
+        public DbSet<LogErro> LogError { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -35,7 +35,7 @@ namespace CentralDeErro.Infrastructure.Context
                     .IsRequired();
             });
 
-            builder.Entity<LogError>(logError =>
+            builder.Entity<LogErro>(logError =>
             {
                 logError.ToTable("LogErros");
                 logError.HasKey(le => le.Id);
@@ -68,7 +68,7 @@ namespace CentralDeErro.Infrastructure.Context
                      .HasForeignKey(le => le.SourceId);
 
                 logError.HasData(
-                    new LogError()
+                    new LogErro()
                     {
                         Id = 1,
                         UserToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ",

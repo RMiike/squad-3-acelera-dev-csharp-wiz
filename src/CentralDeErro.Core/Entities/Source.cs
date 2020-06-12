@@ -19,6 +19,6 @@ namespace CentralDeErro.Core.Entities
 
         public int Id { get; set; }
         public string Description { get; set; }
-        public IList<LogError> LogsError { get; set; }
+        public IList<LogErro> LogsError { get; set; }
     }
 }
