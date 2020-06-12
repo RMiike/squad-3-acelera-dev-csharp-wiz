@@ -14,7 +14,7 @@ namespace CentralDeErro.Infrastructure.Context
     {
         public CentralDeErrorContext(DbContextOptions<CentralDeErrorContext> opt) : base(opt) { }
 
-
+        public DbSet<LogError> LogError { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -33,6 +33,38 @@ namespace CentralDeErro.Infrastructure.Context
                     .IsRequired();
             });
 
-        }
+            builder.Entity<LogError>(logError =>
+            {
+                logError.ToTable("LogErros");
+                logError.HasKey(le => le.Id);
+
+                logError.Property(le => le.UserToken)
+                        .HasColumnName("usertoken")
+                        .HasColumnType("varchar(max)")
+                        .IsRequired();
+
+                logError.Property(le => le.Title)
+                      .HasColumnName("title")
+                      .HasColumnType("varchar(450)")
+                      .IsRequired();
+
+                logError.Property(le => le.Details)
+                     .HasColumnName("details")
+                     .HasColumnType("varchar(450)")
+                     .IsRequired();
+
+               
+                      
+
+            });
+
+        //public Source Source { get; set; }    
+        //public DateTime Moment { get; set; }
+        //public Level Level { get; set; }
+        //public int Event { get; set; }
+
+        //public Environment Environment { get; set; }
+
+    }
     }
 }
