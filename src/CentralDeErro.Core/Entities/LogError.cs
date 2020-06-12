@@ -25,6 +25,6 @@ namespace CentralDeErro.Core.Entities
         public int SourceId { get; set; }
 
         public Source Source { get; set; }
-
+        //arquivado / deletado?
     }
 }

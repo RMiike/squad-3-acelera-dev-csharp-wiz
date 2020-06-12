@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CentralDeErro.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    [Migration("20200610174631_init")]
-    partial class init
+    [Migration("20200612103236_entitylogerror")]
+    partial class entitylogerror
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,136 @@ namespace CentralDeErro.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CentralDeErro.Core.Entities.Environment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnName("description")
+                        .HasColumnType("varchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("environment");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Production"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Test"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Dev"
+                        });
+                });
+
+            modelBuilder.Entity("CentralDeErro.Core.Entities.Level", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnName("description")
+                        .HasColumnType("varchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("level");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Error"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Warning"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Debug"
+                        });
+                });
+
+            modelBuilder.Entity("CentralDeErro.Core.Entities.LogError", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnName("details")
+                        .HasColumnType("varchar(450)");
+
+                    b.Property<int>("EnvironmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Event")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LevelId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Moment")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SourceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnName("title")
+                        .HasColumnType("varchar(450)");
+
+                    b.Property<string>("UserToken")
+                        .IsRequired()
+                        .HasColumnName("usertoken")
+                        .HasColumnType("varchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnvironmentId");
+
+                    b.HasIndex("LevelId");
+
+                    b.HasIndex("SourceId");
+
+                    b.ToTable("LogErros");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Details = "File '/go/pkg/mod/github.com/sirupsen/logurs@v1.1.0'",
+                            EnvironmentId = 1,
+                            Event = 1000,
+                            LevelId = 1,
+                            Moment = new DateTime(2020, 6, 12, 7, 32, 33, 980, DateTimeKind.Local).AddTicks(7813),
+                            SourceId = 1,
+                            Title = "acceleration.Detail: <not_found>",
+                            UserToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ"
+                        });
+                });
 
             modelBuilder.Entity("CentralDeErro.Core.Entities.Role", b =>
                 {
@@ -46,6 +176,35 @@ namespace CentralDeErro.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+                });
+
+            modelBuilder.Entity("CentralDeErro.Core.Entities.Source", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnName("description")
+                        .HasColumnType("varchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("source");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Front-End"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Back-End"
+                        });
                 });
 
             modelBuilder.Entity("CentralDeErro.Core.Entities.User", b =>
@@ -215,6 +374,27 @@ namespace CentralDeErro.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CentralDeErro.Core.Entities.LogError", b =>
+                {
+                    b.HasOne("CentralDeErro.Core.Entities.Environment", "Environment")
+                        .WithMany("LogsError")
+                        .HasForeignKey("EnvironmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CentralDeErro.Core.Entities.Level", "Level")
+                        .WithMany("LogsError")
+                        .HasForeignKey("LevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CentralDeErro.Core.Entities.Source", "Source")
+                        .WithMany("LogsError")
+                        .HasForeignKey("SourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CentralDeErro.Core.Entities.UserRoles", b =>
