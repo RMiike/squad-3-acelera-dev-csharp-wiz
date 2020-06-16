@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using CentralDeErro.Core.Dto;
 using CentralDeErro.Core.Entities;
-using Microsoft.AspNetCore.Http;
+using CentralDeErro.Infrastructure.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Services.Interface;
 
 namespace CentralDeErro.Controllers
 {
@@ -13,45 +11,95 @@ namespace CentralDeErro.Controllers
     [ApiController]
     public class LogErroController : ControllerBase
     {
-        private readonly ILogErroService _logErroService;
+        private readonly IMapper _mapper;
+        private readonly ILogErroRepository _logErroRepository;
 
-        public LogErroController(ILogErroService logErroService)
+
+        //TODO Passar token via authorization
+        public LogErroController(
+            ILogErroRepository logErroRepository,
+            IMapper mapper
+            )
         {
-            _logErroService = logErroService;
+            _mapper = mapper;
+            _logErroRepository = logErroRepository;
         }
-        // GET: api/LogErro
+
         [HttpGet]
-        public ActionResult<IEnumerable<LogErro>>  GetAllLog()
+        public IActionResult Get()
         {
-
-            var logs = _logErroService.GetAllLogs();
-            return Ok(logs);
+            return Ok(new LogErro());
         }
 
-        // GET: api/LogErro/5
+        //get: api/logerro
+
+       [HttpGet("all-logs")]
+        public ActionResult<IEnumerable<LogErroDto>> GetAllLog()
+        {
+            var allLogs = _logErroRepository.GetAllLogs();
+            return Ok(_mapper.Map<IEnumerable<LogErroDto>>(allLogs));
+        }
+
+       // GET: api/LogErro/5
         [HttpGet("{id}", Name = "GetLogById")]
-        public ActionResult<LogErro> GetLogById(int id)
+        public ActionResult<LogErroDto> GetLogById(int id)
         {
-            var log = _logErroService.GetLogById(id);
-            return Ok(log);
+            var log = _logErroRepository.GetLogById(id);
+            if (log != null)
+            {
+                return Ok(_mapper.Map<LogErroDto>(log));
+            }
+            return NotFound();
         }
 
-        //// POST: api/LogErro
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        [HttpPost]
+        public ActionResult<LogErroDto> CreateLog(LogErroDto logErro)
+        {
+            var logModel = _mapper.Map<LogErro>(logErro);
 
-        //// PUT: api/LogErro/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+            _logErroRepository.CreateLog(logModel);
+            _logErroRepository.SaveChanges();
 
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+            var outLogModel = _mapper.Map<LogErroDto>(logModel);
+
+            return CreatedAtRoute(nameof(GetLogById), new { Id = outLogModel.Title }, outLogModel);
+        }
+
+        // TODO
+        [HttpPut("{id}")]
+        public ActionResult UpdateCommand(int id, LogErroDto logErro)
+        {
+            var logErroById = _logErroRepository.GetLogById(id);
+
+            if (logErroById == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(logErro, logErroById);
+
+            _logErroRepository.UpdateLog(logErroById);
+            _logErroRepository.SaveChanges();
+
+            return NoContent();
+        }
+
+        //patch?
+
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var logErroById = _logErroRepository.GetLogById(id);
+            if (logErroById == null)
+            {
+                return NotFound();
+            }
+
+            _logErroRepository.DeleteLog(logErroById);
+            _logErroRepository.SaveChanges();
+
+            return Ok("Deletado com sucesso.");
+        }
     }
 }

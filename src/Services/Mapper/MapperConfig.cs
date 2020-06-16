@@ -12,6 +12,7 @@ namespace Services.Mapper
             CreateMap<User, SignInDto>().ReverseMap();
             CreateMap<SignUpDto, User>();
             CreateMap<User, AuthenticationOutPut>();
+            CreateMap<LogErro, LogErroDto>().ReverseMap();
         }
     }
 }

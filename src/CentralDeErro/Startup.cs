@@ -15,6 +15,8 @@ using AutoMapper;
 using Services.Mapper;
 using Services.Application;
 using Services.Interface;
+using CentralDeErro.Infrastructure.Interface;
+using CentralDeErro.Infrastructure.Repository;
 
 namespace CentralDeErro
 {
@@ -85,7 +87,7 @@ namespace CentralDeErro
             services.AddScoped<UserManager<User>>();
             services.AddScoped<SignInManager<User>>();
             services.AddScoped<AuthenticationService>();
-            services.AddScoped<ILogErroService, LogErroService>();
+            services.AddScoped<ILogErroRepository, LogErroRepository>();
             services.AddCors();
         }
 

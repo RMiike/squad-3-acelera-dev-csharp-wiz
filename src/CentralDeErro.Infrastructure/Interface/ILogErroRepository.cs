@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Services.Interface
+namespace CentralDeErro.Infrastructure.Interface
 {
-    public interface ILogErroService
+    public interface ILogErroRepository
     {
         bool SaveChanges();
         IEnumerable<LogErro> GetAllLogs();
