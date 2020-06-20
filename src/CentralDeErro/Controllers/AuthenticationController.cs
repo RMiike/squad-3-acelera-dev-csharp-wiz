@@ -1,49 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
-using CentralDeErro.Core.Entities;
-using CentralDeErro.Core.Dto;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using Services.Application;
+using CentralDeErro.Core.Entities.Dto;
+using CentralDeErro.Core.Contracts.Services;
 
 namespace CentralDeErro.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly AuthenticationService _services;
 
-        public AuthenticationController(AuthenticationService services)
-        {
-            _services = services;
-        }
         // GET: api/Authentication]
         //test route 
         //return new User
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Get()
         {
-            return Ok(new SignUpDto());
+            return Ok(new RegisterDTO());
         }
 
-        [HttpPost("signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> SignUp(SignUpDto signUpDto)
+        [HttpPost("register")]
+        public async Task<IActionResult> Post([FromServices] IAuthenticationService _services, [FromBody] RegisterDTO registerDTO)
         {
             try
             {
-                var userSignUpOutDto = await _services.SignUp(signUpDto);
+                var userSignUpOutDto = await _services.Register(registerDTO);
                 if (userSignUpOutDto == null)
                     return NotFound("User already exits.");
 
@@ -56,14 +42,14 @@ namespace CentralDeErro.Controllers
             }
         }
 
-        [HttpPost("signin")]
         [AllowAnonymous]
-        public async Task<IActionResult> SignIn(SignInDto signInDto)
+        [HttpPost("signin")]
+        public async Task<IActionResult> Post([FromServices] IAuthenticationService _services, [FromBody]LoginDTO loginDTO)
         {
             try
             {
-                var userSignIOutDto = await _services.SignIn(signInDto);
-                if(userSignIOutDto == null)
+                var userSignIOutDto = await _services.Login(loginDTO);
+                if (userSignIOutDto == null)
                     return NotFound("Wrong user or password.");
 
                 return Ok(userSignIOutDto);

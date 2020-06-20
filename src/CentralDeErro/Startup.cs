@@ -1,7 +1,5 @@
 using System.Text;
-using System.Reflection;
 using CentralDeErro.Core.Entities;
-using CentralDeErro.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,10 +11,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
 using Services.Mapper;
-using Services.Application;
-using Services.Interface;
-using CentralDeErro.Infrastructure.Interface;
-using CentralDeErro.Infrastructure.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using CentralDeErro.Core.Contracts.Services;
+using CentralDeErro.Infrastructure.Services;
+using CentralDeErro.Infrastructure.Context;
+using System;
 
 namespace CentralDeErro
 {
@@ -34,33 +34,38 @@ namespace CentralDeErro
         {
             services.AddControllers();
 
-            var migrationAssembly = typeof(Startup)
-                .GetTypeInfo().Assembly
-                .GetName().Name;
+            services.AddDbContext<CentralDeErrorContext>(opt => opt
+                .UseSqlServer(Configuration.GetConnectionString("AuthString")));
 
-            services.AddDbContext<CentralDeErrorContext>(opt =>
-              opt.UseSqlServer(Configuration.GetConnectionString("AuthString"), sql =>
-              sql.MigrationsAssembly(migrationAssembly)));
 
-            services.AddIdentity<User, Role>(options =>
+            services.AddIdentityCore<User>(opt =>
             {
-                // options.SignIn.RequireConfirmedEmail = true;
 
-                options.Password.RequireDigit = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 4;
+                //TODO modify params pass
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequiredLength = 8;
 
-                options.Lockout.MaxFailedAccessAttempts = 3;
-                options.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                opt.Lockout.MaxFailedAccessAttempts = 5;
+
+                //TODO MODIFY 2fa
+                opt.SignIn.RequireConfirmedAccount = false;
+                opt.SignIn.RequireConfirmedEmail = false;
+                opt.SignIn.RequireConfirmedPhoneNumber = false;
+
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.@,-";
             })
-          .AddRoles<Role>()
-          .AddEntityFrameworkStores<CentralDeErrorContext>()
-          .AddRoleValidator<RoleValidator<Role>>()
-          .AddRoleManager<RoleManager<Role>>()
-          .AddSignInManager<SignInManager<User>>()
-          .AddDefaultTokenProviders();
+         .AddRoles<Role>()
+         .AddEntityFrameworkStores<CentralDeErrorContext>()
+         .AddRoleValidator<RoleValidator<Role>>()
+         .AddRoleManager<RoleManager<Role>>()
+         .AddSignInManager<SignInManager<User>>()
+         .AddDefaultTokenProviders();
+
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                    .AddJwtBearer(options =>
@@ -75,6 +80,13 @@ namespace CentralDeErro
                        };
                    });
 
+            services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            });
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -82,12 +94,10 @@ namespace CentralDeErro
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
-
             services.AddSingleton(mapper);
-            services.AddScoped<UserManager<User>>();
-            services.AddScoped<SignInManager<User>>();
-            services.AddScoped<AuthenticationService>();
-            services.AddScoped<ILogErroRepository, LogErroRepository>();
+
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddCors();
         }
 
@@ -100,9 +110,9 @@ namespace CentralDeErro
             }
 
             app.UseRouting();
-
             app.UseAuthorization();
-            app.UseCors(x => 
+            app.UseAuthentication();
+            app.UseCors(x =>
                 x.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());

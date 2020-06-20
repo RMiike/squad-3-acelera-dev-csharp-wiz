@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace CentralDeErro.Core.Dto
+namespace CentralDeErro.Core.Entities.Dto
 {
     public class AuthenticationOutPut
        

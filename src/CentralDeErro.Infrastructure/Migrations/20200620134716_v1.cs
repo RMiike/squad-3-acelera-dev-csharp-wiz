@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CentralDeErro.Migrations
+namespace CentralDeErro.Infrastructure.Migrations
 {
-    public partial class entitylogerror : Migration
+    public partial class v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,6 @@ namespace CentralDeErro.Migrations
                     Id = table.Column<string>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
@@ -39,7 +38,9 @@ namespace CentralDeErro.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(maxLength: 256, nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,42 +48,42 @@ namespace CentralDeErro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "environment",
+                name: "Environment",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    description = table.Column<string>(type: "varchar(450)", nullable: false)
+                    Description = table.Column<string>(maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_environment", x => x.Id);
+                    table.PrimaryKey("PK_Environment", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "level",
+                name: "Level",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    description = table.Column<string>(type: "varchar(450)", nullable: false)
+                    Description = table.Column<string>(maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_level", x => x.Id);
+                    table.PrimaryKey("PK_Level", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "source",
+                name: "Source",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    description = table.Column<string>(type: "varchar(450)", nullable: false)
+                    Description = table.Column<string>(maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_source", x => x.Id);
+                    table.PrimaryKey("PK_Source", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,46 +193,51 @@ namespace CentralDeErro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LogErros",
+                name: "Error",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    usertoken = table.Column<string>(type: "varchar(max)", nullable: false),
-                    title = table.Column<string>(type: "varchar(450)", nullable: false),
-                    details = table.Column<string>(type: "varchar(450)", nullable: false),
-                    Moment = table.Column<DateTime>(nullable: false),
+                    Token = table.Column<string>(maxLength: 450, nullable: false),
+                    Title = table.Column<string>(maxLength: 60, nullable: false),
+                    Details = table.Column<string>(maxLength: 1024, nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     Event = table.Column<int>(nullable: false),
                     EnvironmentId = table.Column<int>(nullable: false),
-                    LevelId = table.Column<int>(nullable: false),
-                    SourceId = table.Column<int>(nullable: false)
+                    SourceId = table.Column<int>(nullable: false),
+                    LevelId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LogErros", x => x.Id);
+                    table.PrimaryKey("PK_Error", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LogErros_environment_EnvironmentId",
+                        name: "FK_Error_Environment_EnvironmentId",
                         column: x => x.EnvironmentId,
-                        principalTable: "environment",
+                        principalTable: "Environment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LogErros_level_LevelId",
+                        name: "FK_Error_Level_LevelId",
                         column: x => x.LevelId,
-                        principalTable: "level",
+                        principalTable: "Level",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LogErros_source_SourceId",
+                        name: "FK_Error_Source_SourceId",
                         column: x => x.SourceId,
-                        principalTable: "source",
+                        principalTable: "Source",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "environment",
-                columns: new[] { "Id", "description" },
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "df299f50-c3a4-4ec9-a390-c7bad2c4bb67", 0, "4ab18b0e-2e2b-4c3f-93fb-608ee82d1497", new DateTime(2020, 6, 20, 10, 47, 15, 759, DateTimeKind.Local).AddTicks(5742), "rmiike@gmail.com", false, false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+
+            migrationBuilder.InsertData(
+                table: "Environment",
+                columns: new[] { "Id", "Description" },
                 values: new object[,]
                 {
                     { 1, "Production" },
@@ -240,8 +246,8 @@ namespace CentralDeErro.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "level",
-                columns: new[] { "Id", "description" },
+                table: "Level",
+                columns: new[] { "Id", "Description" },
                 values: new object[,]
                 {
                     { 1, "Error" },
@@ -250,8 +256,8 @@ namespace CentralDeErro.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "source",
-                columns: new[] { "Id", "description" },
+                table: "Source",
+                columns: new[] { "Id", "Description" },
                 values: new object[,]
                 {
                     { 1, "Front-End" },
@@ -259,9 +265,9 @@ namespace CentralDeErro.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "LogErros",
-                columns: new[] { "Id", "details", "EnvironmentId", "Event", "LevelId", "Moment", "SourceId", "title", "usertoken" },
-                values: new object[] { 1, "File '/go/pkg/mod/github.com/sirupsen/logurs@v1.1.0'", 1, 1000, 1, new DateTime(2020, 6, 12, 7, 32, 33, 980, DateTimeKind.Local).AddTicks(7813), 1, "acceleration.Detail: <not_found>", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ" });
+                table: "Error",
+                columns: new[] { "Id", "CreatedAt", "Details", "EnvironmentId", "Event", "LevelId", "SourceId", "Title", "Token" },
+                values: new object[] { 1, new DateTime(2020, 6, 20, 10, 47, 15, 754, DateTimeKind.Local).AddTicks(9558), "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15", 1, 1000, 1, 1, "Description Project File Suppression State Line", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -303,18 +309,18 @@ namespace CentralDeErro.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LogErros_EnvironmentId",
-                table: "LogErros",
+                name: "IX_Error_EnvironmentId",
+                table: "Error",
                 column: "EnvironmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LogErros_LevelId",
-                table: "LogErros",
+                name: "IX_Error_LevelId",
+                table: "Error",
                 column: "LevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LogErros_SourceId",
-                table: "LogErros",
+                name: "IX_Error_SourceId",
+                table: "Error",
                 column: "SourceId");
         }
 
@@ -336,7 +342,7 @@ namespace CentralDeErro.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "LogErros");
+                name: "Error");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -345,13 +351,13 @@ namespace CentralDeErro.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "environment");
+                name: "Environment");
 
             migrationBuilder.DropTable(
-                name: "level");
+                name: "Level");
 
             migrationBuilder.DropTable(
-                name: "source");
+                name: "Source");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CentralDeErro.Core.Entities;
-using CentralDeErro.Core.Dto;
+using CentralDeErro.Core.Entities.Dto;
 
 namespace Services.Mapper
 {
@@ -8,11 +8,7 @@ namespace Services.Mapper
     {
         public MapperConfig()
         {
-
-            CreateMap<User, SignInDto>().ReverseMap();
-            CreateMap<SignUpDto, User>();
             CreateMap<User, AuthenticationOutPut>();
-            CreateMap<LogErro, LogErroDto>().ReverseMap();
         }
     }
 }

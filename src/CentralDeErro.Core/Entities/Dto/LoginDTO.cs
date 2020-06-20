@@ -1,15 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CentralDeErro.Core.Dto
+namespace CentralDeErro.Core.Entities.Dto
 {
-    public class SignInDto
+    public class LoginDTO
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using CentralDeErro.Core.Entities;
 using System;
 
-namespace CentralDeErro.Core.Dto
+namespace CentralDeErro.Core.Entities.Dto
 {
     public class LogErroDto
     {
-        public string UserToken { get; set; }
+
         public string Title { get; set; }
         public string Details { get; set; }
         public DateTime Moment { get; set; }

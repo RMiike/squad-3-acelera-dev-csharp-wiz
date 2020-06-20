@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200610174631_init.cs" />
-    <Compile Remove="Migrations\20200610174631_init.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
@@ -24,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CentralDeErro.Core\CentralDeErro.Core.csproj" />
     <ProjectReference Include="..\CentralDeErro.Infrastructure\CentralDeErro.Infrastructure.csproj" />
-    <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
 

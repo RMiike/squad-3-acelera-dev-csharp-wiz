@@ -5,7 +5,6 @@ namespace CentralDeErro.Core.Entities
 {
     public class Role : IdentityRole<string>
     {
-        public List<UserRoles> UserRoles { get; set; }
-
+        public List<UserRole> UserRoles { get; set; }
     }
 }
