@@ -98,10 +98,13 @@ namespace CentralDeErro
             services.AddSingleton(mapper);
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IAccountManagerService, AccountManagerService>();
             services.AddScoped<ILogErroRepository, LogErroRepository>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IMailService, MailService>();
             services.AddCors();
+
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -120,6 +123,11 @@ namespace CentralDeErro
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EziLog - V1");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

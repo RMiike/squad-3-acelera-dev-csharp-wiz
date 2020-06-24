@@ -6,7 +6,7 @@ namespace CentralDeErro.Core.Entities.DTOs
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; private set; }
 
         public string Token { get; private set; }
 

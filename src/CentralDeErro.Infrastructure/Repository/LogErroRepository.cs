@@ -1,6 +1,7 @@
 ﻿using CentralDeErro.Core.Entities;
 using CentralDeErro.Infrastructure.Context;
 using CentralDeErro.Infrastructure.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,33 @@ namespace CentralDeErro.Infrastructure.Repository
         {
             _context = context;
         }
-        public void Create(Error log)
+
+        public IEnumerable<Error> Get()
+            => _context
+                .Errors
+                .AsNoTracking()
+                .Include(l => l.Environment)
+                .Include(s => s.Source)
+                .Include(e => e.Environment)
+                .OrderBy(err => err.CreatedAt);
+    
+        public Error Get(int id)
+            => _context
+                .Errors
+                .AsNoTracking()
+                .Include(l => l.Environment)
+                .Include(s => s.Source)
+                .Include(e => e.Environment)
+                .OrderBy(err => err.CreatedAt)
+                .FirstOrDefault(p => p.Id == id);
+        
+
+        public async void Create(Error log)
         {
             if (log == null)
                 throw new ArgumentNullException();
 
-            _context.Add(log);
+           await _context.AddAsync(log);
         }
 
 
@@ -35,18 +57,11 @@ namespace CentralDeErro.Infrastructure.Repository
 
             _context.Remove(log);
         }
-        public Error Get(int id)
-        {
-            return _context.Errors.FirstOrDefault(p => p.Id == id);
-        }
+
         public void Update(Error log)
         {
             //throw new NotImplementedException();
         }
-
-        public IEnumerable<Error> Get()
-            => _context.Errors;
-
         public bool SaveChanges()
             => (_context.SaveChanges() >= 0);
     }

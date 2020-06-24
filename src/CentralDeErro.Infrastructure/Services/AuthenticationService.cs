@@ -59,7 +59,7 @@ namespace CentralDeErro.Infrastructure.Services
 
             await CreateAndSendEmailConfirm(registerDTO, user);
 
-            return new ResultDTO(true, "User account created sucessfully, please confirm your email.", null); throw new NotImplementedException();
+            return new ResultDTO(true, "User account created sucessfully, please confirm your email.", null); 
         }
 
         #region CreateAndSendEmailConfirm
@@ -109,7 +109,7 @@ namespace CentralDeErro.Infrastructure.Services
                 return new ResultDTO(false, "Please, confirm your email, verify your password, verify your user name and try again.", user);
 
             var result = await _signInManager
-                .CheckPasswordSignInAsync(user, loginDTO.Password, false);
+                .CheckPasswordSignInAsync(user, loginDTO.Password , false);
 
             if (!result.Succeeded)
                 return new ResultDTO(false, "Please, confirm your email, verify your password, verify your user name and try again.", result);

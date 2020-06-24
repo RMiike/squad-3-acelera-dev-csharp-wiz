@@ -7,10 +7,11 @@ using System.Collections.Generic;
 
 namespace CentralDeErro.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [Route("v1")]
     [ApiController]
     public class LogErroController : ControllerBase
     {
+        #region Get
         //TODO Passar token via authorization
         //get: v1/testlog
         [HttpGet("testlog")]
@@ -19,37 +20,46 @@ namespace CentralDeErro.Controllers.v1
             return Ok(new Error(22,"token", "teste", "detalhes", DateTime.Now, 1, 1, 1, 1));
         }
 
-        //TODO adicionar query - apenas pelo token do usuário.
-        //add mapper
+        //add mapper ?
         //get: v1/alllogs
 
         [HttpGet("alllogs")]
-        [ResponseCache(Duration = 10)]
-        public ActionResult<IEnumerable<Error>> Get([FromServices] ILogErroRepository _errorRepository)
+        public ActionResult<IEnumerable<Error>> GetAll([FromServices] ILogErroRepository _errorRepository)
         {
-            var allLogs = _errorRepository.Get();
-            return Ok(allLogs);
+            return Ok(_errorRepository.Get());
         }
 
         // GET: v1/log/5
         [HttpGet("log/{id}", Name = "LogById")]
-        public ActionResult<Error> Get([FromServices] ILogErroRepository _errorRepository, int id)
+        public ActionResult<Error> GetById([FromServices] ILogErroRepository _errorRepository, int id)
         {
             var log = _errorRepository.Get(id);
             if (log != null)
             {
                 return Ok(log);
             }
-            return NotFound();
+            return NotFound(new { message = "Error Id not found."});
         }
 
+        #endregion
+
+        #region Post
+
+        #endregion
+
         [HttpPost("addlog")]
-        public ActionResult<Error> Post([FromServices] ILogErroRepository _errorRepository, [FromHeader] string Authorization, Error logErro)
+        public ActionResult<Error> Register(
+            [FromServices] ILogErroRepository _errorRepository, 
+            [FromHeader] string Authorization, 
+            Error logErro)
         {
             _errorRepository.Create(logErro);
             _errorRepository.SaveChanges();
-            return CreatedAtRoute(nameof(Get), new { Id = logErro.Title }, logErro);
+            return CreatedAtRoute(nameof(GetById), new { Id = logErro.Title }, logErro);
         }
+
+
+        #region Post Put Patch
 
         // // TODO - set arquivado / delet?
         // [HttpPut("{id}")]
@@ -72,6 +82,10 @@ namespace CentralDeErro.Controllers.v1
 
         // //patch?
 
+        #endregion
+
+        #region Delete
+
         // // DELETE: api/ApiWithActions/5
         // [HttpDelete("{id}")]
         // public ActionResult Delete(int id)
@@ -87,5 +101,6 @@ namespace CentralDeErro.Controllers.v1
 
         //     return Ok("Deletado com sucesso.");
         // }
+        #endregion
     }
 }

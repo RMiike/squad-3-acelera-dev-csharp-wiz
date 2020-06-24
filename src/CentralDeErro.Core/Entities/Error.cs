@@ -20,35 +20,37 @@ namespace CentralDeErro.Core.Entities
             LevelId = levelId;
         }
         [Key]
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         [Required(ErrorMessage = "Required field")]
         [MaxLength(450)]
-        public string Token { get; set; }
+        public string Token { get; private set; }
 
         [Required(ErrorMessage = "Required field")]
         [StringLength(60, ErrorMessage = "This field must be between 6 and 20 characters", MinimumLength = 6)]
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
         [Required(ErrorMessage = "Required field")]
         [MaxLength(1024, ErrorMessage = "This field must have 1024 characters")]
-        public string Details { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public int Event { get; set; }
+        public string Details { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public int Event { get; private  set; }
 
 
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Environment")]
-        public int EnvironmentId { get; set; }
-        public Environment Environment { get; set; }
+        public int EnvironmentId { get; private set; }
+        public Environment Environment { get; private set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
-        public int SourceId { get; set; }
-        public Source Source { get; set; }
+        public int SourceId { get; private set; }
+        public Source Source { get; private  set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Level")]
 
-        public int LevelId { get; set; }
-        public Level Level { get; set; }
+        public int LevelId { get; private set; }
+        public Level Level { get; private set; }
+        //public bool Archived { get; private set; }
+
     //arquivado / deletado?
     }
 

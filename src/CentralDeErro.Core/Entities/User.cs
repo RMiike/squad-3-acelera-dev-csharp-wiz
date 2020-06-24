@@ -20,8 +20,8 @@ namespace CentralDeErro.Core.Entities
         [StringLength(60, ErrorMessage = "This field must be between 6 and 20 characters", MinimumLength = 6)]
         [DataType(DataType.EmailAddress, ErrorMessage = "Invalid email.")]
         public override string Email { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public IEnumerable<UserRole> UserRoles { get; set; }
+        public DateTime CreatedAt { get; private set; }
+        public IEnumerable<UserRole> UserRoles { get; private set; }
 
         //TODO 39
     }

@@ -13,11 +13,11 @@ namespace CentralDeErro.Core.Entities
         }
 
         [Key]
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         [Required(ErrorMessage = "Required field")]
         [StringLength(60, ErrorMessage = "This field must be between 6 and 20 characters", MinimumLength = 6)]
-        public string Description { get; set; }
+        public string Description { get; private set; }
         //public IEnumerable<Error> Errors { get; set; }
     }
 }
