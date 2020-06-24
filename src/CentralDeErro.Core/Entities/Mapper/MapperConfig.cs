@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CentralDeErro.Core.Entities;
-using CentralDeErro.Core.Entities.Dto;
+using CentralDeErro.Core.Entities.DTOs;
 
 namespace Services.Mapper
 {
@@ -8,7 +8,7 @@ namespace Services.Mapper
     {
         public MapperConfig()
         {
-            CreateMap<User, AuthenticationOutPut>();
+            CreateMap<User, LoginReadDTO>();
         }
     }
 }

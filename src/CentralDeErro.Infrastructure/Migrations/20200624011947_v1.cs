@@ -233,7 +233,7 @@ namespace CentralDeErro.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "df299f50-c3a4-4ec9-a390-c7bad2c4bb67", 0, "4ab18b0e-2e2b-4c3f-93fb-608ee82d1497", new DateTime(2020, 6, 20, 10, 47, 15, 759, DateTimeKind.Local).AddTicks(5742), "rmiike@gmail.com", false, false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+                values: new object[] { "70d7ee27-c466-4201-9ec2-c609e4dc6b4f", 0, "45fea23e-401c-4a53-a61a-e61989624a82", new DateTime(2020, 6, 23, 22, 19, 46, 895, DateTimeKind.Local).AddTicks(6135), "rmiike@gmail.com", false, false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Environment",
@@ -267,7 +267,7 @@ namespace CentralDeErro.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Error",
                 columns: new[] { "Id", "CreatedAt", "Details", "EnvironmentId", "Event", "LevelId", "SourceId", "Title", "Token" },
-                values: new object[] { 1, new DateTime(2020, 6, 20, 10, 47, 15, 754, DateTimeKind.Local).AddTicks(9558), "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15", 1, 1000, 1, 1, "Description Project File Suppression State Line", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ" });
+                values: new object[] { 1, new DateTime(2020, 6, 23, 22, 19, 46, 890, DateTimeKind.Local).AddTicks(9122), "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15", 1, 1000, 1, 1, "Description Project File Suppression State Line", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

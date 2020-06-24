@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CentralDeErro.Core.Entities.Dto
+namespace CentralDeErro.Core.Entities.DTOs
 {
-    public class RegisterDTO
+    public class RegisterCreateDTO
     {
         [Required]
         [EmailAddress]

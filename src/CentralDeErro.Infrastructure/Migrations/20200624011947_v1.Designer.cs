@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CentralDeErro.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    [Migration("20200620134716_v1")]
+    [Migration("20200624011947_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,7 +106,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2020, 6, 20, 10, 47, 15, 754, DateTimeKind.Local).AddTicks(9558),
+                            CreatedAt = new DateTime(2020, 6, 23, 22, 19, 46, 890, DateTimeKind.Local).AddTicks(9122),
                             Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
                             EnvironmentId = 1,
                             Event = 1000,
@@ -278,10 +278,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "df299f50-c3a4-4ec9-a390-c7bad2c4bb67",
+                            Id = "70d7ee27-c466-4201-9ec2-c609e4dc6b4f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4ab18b0e-2e2b-4c3f-93fb-608ee82d1497",
-                            CreatedAt = new DateTime(2020, 6, 20, 10, 47, 15, 759, DateTimeKind.Local).AddTicks(5742),
+                            ConcurrencyStamp = "45fea23e-401c-4a53-a61a-e61989624a82",
+                            CreatedAt = new DateTime(2020, 6, 23, 22, 19, 46, 895, DateTimeKind.Local).AddTicks(6135),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,

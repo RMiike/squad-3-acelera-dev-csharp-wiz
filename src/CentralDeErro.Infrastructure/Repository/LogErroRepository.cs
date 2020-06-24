@@ -8,53 +8,46 @@ using System.Linq;
 namespace CentralDeErro.Infrastructure.Repository
 {
     public class LogErroRepository 
-        //: ILogErroRepository
+        : ILogErroRepository
     {
-        //private readonly CentralDeErrorContext _context;
+        private readonly CentralDeErrorContext _context;
 
-        //public LogErroRepository(CentralDeErrorContext context)
-        // {
-        //    _context = context;
-        //}
+        public LogErroRepository(CentralDeErrorContext context)
+        {
+            _context = context;
+        }
+        public void Create(Error log)
+        {
+            if (log == null)
+                throw new ArgumentNullException();
+
+            _context.Add(log);
+        }
 
 
-        //public void CreateLog(Error log)
-        //{
+        //TODO - verificar a forma mais viavel de remover...
+        //sera adicionada a outra trabela ou apenas setada como excluida?
+        //verificar arquivamento também.
+        public void Delete(Error log)
+        {
+            if (log == null)
+                throw new ArgumentNullException();
 
-        //    if(log == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(log));
-        //    }
-        //    _context.Add(log);
-        //}
+            _context.Remove(log);
+        }
+        public Error Get(int id)
+        {
+            return _context.Errors.FirstOrDefault(p => p.Id == id);
+        }
+        public void Update(Error log)
+        {
+            //throw new NotImplementedException();
+        }
 
-        //public void DeleteLog(Error log)
-        //{
-        //    if (log == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(log));
-        //    }
-        //    _context.Remove(log);
-        //}
+        public IEnumerable<Error> Get()
+            => _context.Errors;
 
-        //public IEnumerable<Error> GetAllLogs()
-        //{
-        //    return _context.Errors
-        //}
-
-        //public Error GetLogById(int id)
-        //{
-        //    return _context.Error.FirstOrDefault(p => p.Id == id);
-        //}
-
-        //public bool SaveChanges()
-        //{
-        //    return (_context.SaveChanges() >= 0);
-        //}
-
-        //public void UpdateLog(Error log)
-        //{
-        //    //
-        //}
+        public bool SaveChanges()
+            => (_context.SaveChanges() >= 0);
     }
 }

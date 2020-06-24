@@ -1,5 +1,4 @@
-﻿using CentralDeErro.Core.Entities;
-using System;
+﻿using System;
 
 namespace CentralDeErro.Core.Entities.Dto
 {

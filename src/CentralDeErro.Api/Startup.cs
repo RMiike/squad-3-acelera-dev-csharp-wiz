@@ -98,10 +98,11 @@ namespace CentralDeErro
             services.AddSingleton(mapper);
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddScoped<ILogErroRepository, LogErroRepository>();
+            services.AddScoped<IErrorRepository, ErrorRepository>();
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IMailService, MailService>();
+            services.AddTransient<IMailService, MailService>();
             services.AddCors();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

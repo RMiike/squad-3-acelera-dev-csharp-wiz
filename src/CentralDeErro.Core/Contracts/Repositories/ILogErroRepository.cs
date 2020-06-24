@@ -6,13 +6,13 @@ namespace CentralDeErro.Infrastructure.Interface
     public interface ILogErroRepository
     {
         bool SaveChanges();
-        IEnumerable<Error> GetAllLogs();
-        Error GetLogById(int id);
+        IEnumerable<Error> Get();
+        Error Get(int id);
 
-        void CreateLog(Error log);
+        void Create(Error log);
 
-        void UpdateLog(Error log);
+        void Update(Error log);
 
-        void DeleteLog(Error log);
+        void Delete(Error log);
     }
 }
