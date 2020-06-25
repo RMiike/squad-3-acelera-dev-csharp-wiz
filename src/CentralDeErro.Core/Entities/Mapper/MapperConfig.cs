@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Services.Mapper
 {
@@ -9,7 +11,7 @@ namespace Services.Mapper
         public MapperConfig()
         {
             CreateMap<User, LoginReadDTO>();
-            CreateMap<Error, LogErroDTO>().ReverseMap();
+            CreateMap<Error, LogErroCreateDTO>().ReverseMap();
         }
     }
 }

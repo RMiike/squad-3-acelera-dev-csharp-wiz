@@ -5,6 +5,7 @@ using CentralDeErro.Infrastructure.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CentralDeErro.Controllers.v1
 {
@@ -21,7 +22,7 @@ namespace CentralDeErro.Controllers.v1
             return Ok(new Error(1,"token", "teste", "detalhes", DateTime.Now, 1, 1, 1, 1));
         }
 
-        //add mapper ?
+        
         //get: v1/alllogs
 
         [HttpGet("alllogs")]
@@ -29,7 +30,20 @@ namespace CentralDeErro.Controllers.v1
         {
             return Ok(_errorRepository.Get());
         }
+        //get: v1/allarchivedlogs
 
+        [HttpGet("allarchivedlogs")]
+        public ActionResult<IEnumerable<Error>> GetAllArchived([FromServices] ILogErroRepository _errorRepository)
+        {
+            return Ok(_errorRepository.GetArchived());
+        }
+        //get: v1/allunarchivedlogs
+
+        [HttpGet("allunarchivedlogs")]
+        public ActionResult<IEnumerable<Error>> GetAllUnarchived([FromServices] ILogErroRepository _errorRepository)
+        {
+            return Ok(_errorRepository.GetUnarchived());
+        }
         // GET: v1/log/5
         [HttpGet("log/{id}", Name = "GetById")]
         public ActionResult<Error> GetById([FromServices] ILogErroRepository _errorRepository, int id)
@@ -46,42 +60,47 @@ namespace CentralDeErro.Controllers.v1
 
         #region Post
 
-        #endregion
-
         [HttpPost("addlog")]
         public ActionResult<Error> Register(
             [FromServices] ILogErroRepository _errorRepository,
-            LogErroDTO logErroDTO)
+                LogErroCreateDTO logErroDTO,
+                [FromHeader] string Authorization
+                )
         {
-            var result =  _errorRepository.Create(logErroDTO);
+            var result =   _errorRepository.Create(logErroDTO, Authorization);
 
             if (result.Success == true)
                 return CreatedAtRoute(nameof(GetById), new { Id = logErroDTO.Title }, result);
 
             return BadRequest(result);
         }
+        #endregion
 
 
-        #region Post Put Patch
+        #region  Put Patch
 
-        // // TODO - set arquivado / delet?
-        // [HttpPut("{id}")]
-        // public ActionResult UpdateCommand(int id, LogErroDTO logErro)
-        // {
-        //     var logErroById = _logErroRepository.GetLogById(id);
+        //patch: v1/archive
+        //patch: v1/unarchive
+        //patch: v1/delete
+        //TODO - set arquivado
+        // set desarquivado
+        //set delet?
+        [HttpPut("archive/{id}")]
+        public ActionResult Archive(
+            [FromServices] ILogErroRepository _errorRepository,
+            [FromRoute]int id,
+            [FromBody]LogErroCreateDTO logErroCreateDTO)
+        {
+            var logErroById = _errorRepository.Update(id, logErroCreateDTO);
 
-        //     if (logErroById == null)
-        //     {
-        //         return NotFound();
-        //     }
+            if (logErroById == null)
+            {
+                return NotFound();
+            }
 
-        //     _mapper.Map(logErro, logErroById);
-
-        //     _logErroRepository.UpdateLog(logErroById);
-        //     _logErroRepository.SaveChanges();
-
-        //     return NoContent();
-        // }
+            
+            return NoContent();
+        }
 
         // //patch?
 

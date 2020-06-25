@@ -11,7 +11,7 @@ namespace CentralDeErro.Core.Entities
         {
 
         }
-        public Error(int id, string token, string title, string details, DateTime createdAt, int @event, int environmentId, int sourceId, int levelId)
+        public Error(int id, string token, string title,  string details, DateTime createdAt, int @event, int environmentId, int sourceId, int levelId)
         {
             Id = id;
             Token = token;
@@ -22,8 +22,8 @@ namespace CentralDeErro.Core.Entities
             EnvironmentId = environmentId;
             SourceId = sourceId;
             LevelId = levelId;
-            //Archived = false;
-            //Deleted = false;
+            Archived = false;
+            Deleted = false;
         }
         [Key]
         public int Id { get; private set; }
@@ -40,6 +40,7 @@ namespace CentralDeErro.Core.Entities
         [MaxLength(1024, ErrorMessage = "This field must have 1024 characters")]
         public string Details { get; private set; }
         public DateTime CreatedAt { get; private set; }
+        //TODO
         public int Event { get; private set; }
 
 
@@ -56,25 +57,25 @@ namespace CentralDeErro.Core.Entities
         public int LevelId { get; private set; }
         public Level Level { get; private set; }
 
-        //public bool Archived { get; private set; }
-        //public bool Deleted { get; private  set; }
+        public bool Archived { get; private set; }
+        public bool Deleted { get; private set; }
 
         public void AddToken(string token)
         {
             Token = token;
         }
-        //public void MarkAsArchived()
-        //{
-        //    Archived = true;
-        //}
-        //public void MarkAsUnarchived()
-        //{
-        //    Archived = false;
-        //}
-        //public void MarkAsDeleted()
-        //{
-        //    Archived = true;
-    //}
+        public void MarkAsArchived()
+        {
+            Archived = true;
+        }
+        public void MarkAsUnarchived()
+        {
+            Archived = false;
+        }
+        public void MarkAsDeleted()
+        {
+            Archived = true;
+        }
 
     }
 

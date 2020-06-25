@@ -4,14 +4,16 @@ using CentralDeErro.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CentralDeErro.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    partial class CentralDeErrorContextModelSnapshot : ModelSnapshot
+    [Migration("20200625013220_v1")]
+    partial class v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                         {
                             Id = 1,
                             Archived = false,
-                            CreatedAt = new DateTime(2020, 6, 25, 1, 34, 29, 742, DateTimeKind.Utc).AddTicks(417),
+                            CreatedAt = new DateTime(2020, 6, 24, 22, 32, 18, 829, DateTimeKind.Local).AddTicks(6140),
                             Deleted = false,
                             Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
                             EnvironmentId = 1,
@@ -284,10 +286,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ba305e16-c41a-4504-bac1-cc84041f716e",
+                            Id = "42c6fd48-ea94-4a5c-b76d-93c51b21963a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6944943f-d99e-4aa4-8b31-82374c7155be",
-                            CreatedAt = new DateTime(2020, 6, 24, 22, 34, 29, 745, DateTimeKind.Local).AddTicks(2718),
+                            ConcurrencyStamp = "37f7c90e-2d58-45e5-8f12-7229606eba28",
+                            CreatedAt = new DateTime(2020, 6, 24, 22, 32, 18, 834, DateTimeKind.Local).AddTicks(4269),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,

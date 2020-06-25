@@ -23,6 +23,8 @@ namespace CentralDeErro.Core.Entities
         public DateTime CreatedAt { get; private set; }
         public IEnumerable<UserRole> UserRoles { get; private set; }
 
+        
+        //fullname
         //TODO 39
     }
 }
