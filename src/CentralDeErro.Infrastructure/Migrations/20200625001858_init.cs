@@ -3,26 +3,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CentralDeErro.Infrastructure.Migrations
 {
-    public partial class v2 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "70d7ee27-c466-4201-9ec2-c609e4dc6b4f");
+                keyValue: "c1833434-73ef-40c3-aa8f-dd9b535e240f");
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "21f97e26-de91-4938-8069-6b535fcc67ee", 0, "1c727c55-7411-41b6-a1da-92c1339aa953", new DateTime(2020, 6, 24, 7, 24, 28, 212, DateTimeKind.Local).AddTicks(2610), "rmiike@gmail.com", false, false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+                values: new object[] { "7f8a163a-1c1f-4991-99d8-52cb0d846979", 0, "f56f1dc3-ecf9-430b-9c98-748856c4e03c", new DateTime(2020, 6, 24, 21, 18, 57, 353, DateTimeKind.Local).AddTicks(1521), "rmiike@gmail.com", false, false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Error",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2020, 6, 24, 7, 24, 28, 207, DateTimeKind.Local).AddTicks(7948));
+                value: new DateTime(2020, 6, 24, 21, 18, 57, 348, DateTimeKind.Local).AddTicks(6836));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -30,19 +30,19 @@ namespace CentralDeErro.Infrastructure.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "21f97e26-de91-4938-8069-6b535fcc67ee");
+                keyValue: "7f8a163a-1c1f-4991-99d8-52cb0d846979");
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "70d7ee27-c466-4201-9ec2-c609e4dc6b4f", 0, "45fea23e-401c-4a53-a61a-e61989624a82", new DateTime(2020, 6, 23, 22, 19, 46, 895, DateTimeKind.Local).AddTicks(6135), "rmiike@gmail.com", false, false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+                values: new object[] { "c1833434-73ef-40c3-aa8f-dd9b535e240f", 0, "81d5a884-d73b-447c-9d86-bf117c9342d5", new DateTime(2020, 6, 24, 21, 17, 53, 872, DateTimeKind.Local).AddTicks(3252), "rmiike@gmail.com", false, false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Error",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2020, 6, 23, 22, 19, 46, 890, DateTimeKind.Local).AddTicks(9122));
+                value: new DateTime(2020, 6, 24, 21, 17, 53, 866, DateTimeKind.Local).AddTicks(8202));
         }
     }
 }

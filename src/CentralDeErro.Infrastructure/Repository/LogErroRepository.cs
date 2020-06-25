@@ -1,4 +1,6 @@
-﻿using CentralDeErro.Core.Entities;
+﻿using AutoMapper;
+using CentralDeErro.Core.Entities;
+using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
 using CentralDeErro.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +14,15 @@ namespace CentralDeErro.Infrastructure.Repository
         : ILogErroRepository
     {
         private readonly CentralDeErrorContext _context;
+        private readonly IMapper _mapper;
 
-        public LogErroRepository(CentralDeErrorContext context)
+        public LogErroRepository(
+            CentralDeErrorContext context,
+            IMapper mapper
+            )
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public IEnumerable<Error> Get()
@@ -38,12 +45,20 @@ namespace CentralDeErro.Infrastructure.Repository
                 .FirstOrDefault(p => p.Id == id);
         
 
-        public async void Create(Error log)
+        public ResultDTO Create(LogErroDTO logErroDTO)
         {
-            if (log == null)
+            if (logErroDTO == null)
                 throw new ArgumentNullException();
 
-           await _context.AddAsync(log);
+            var logErro = _mapper.Map<Error>(logErroDTO);
+            logErro.AddToken("aspdksaopdk");
+           
+            _context.Add(logErro);
+            if (SaveChanges() == true)
+                return new ResultDTO(true, "Succesfully registred the error.", logErro);
+
+            return new ResultDTO(false, "Fail", null);
+
         }
 
 
@@ -62,7 +77,7 @@ namespace CentralDeErro.Infrastructure.Repository
         {
             //throw new NotImplementedException();
         }
-        public bool SaveChanges()
+        private bool SaveChanges()
             => (_context.SaveChanges() >= 0);
     }
 }

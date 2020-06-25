@@ -7,6 +7,10 @@ namespace CentralDeErro.Core.Entities
     [Table("Error")]
     public class Error
     {
+        public Error()
+        {
+
+        }
         public Error(int id, string token, string title, string details, DateTime createdAt, int @event, int environmentId, int sourceId, int levelId)
         {
             Id = id;
@@ -18,6 +22,8 @@ namespace CentralDeErro.Core.Entities
             EnvironmentId = environmentId;
             SourceId = sourceId;
             LevelId = levelId;
+            //Archived = false;
+            //Deleted = false;
         }
         [Key]
         public int Id { get; private set; }
@@ -34,7 +40,7 @@ namespace CentralDeErro.Core.Entities
         [MaxLength(1024, ErrorMessage = "This field must have 1024 characters")]
         public string Details { get; private set; }
         public DateTime CreatedAt { get; private set; }
-        public int Event { get; private  set; }
+        public int Event { get; private set; }
 
 
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Environment")]
@@ -43,15 +49,33 @@ namespace CentralDeErro.Core.Entities
 
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
         public int SourceId { get; private set; }
-        public Source Source { get; private  set; }
+        public Source Source { get; private set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Level")]
 
         public int LevelId { get; private set; }
         public Level Level { get; private set; }
-        //public bool Archived { get; private set; }
 
-    //arquivado / deletado?
+        //public bool Archived { get; private set; }
+        //public bool Deleted { get; private  set; }
+
+        public void AddToken(string token)
+        {
+            Token = token;
+        }
+        //public void MarkAsArchived()
+        //{
+        //    Archived = true;
+        //}
+        //public void MarkAsUnarchived()
+        //{
+        //    Archived = false;
+        //}
+        //public void MarkAsDeleted()
+        //{
+        //    Archived = true;
+    //}
+
     }
 
 }

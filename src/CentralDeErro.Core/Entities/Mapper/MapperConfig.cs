@@ -9,6 +9,7 @@ namespace Services.Mapper
         public MapperConfig()
         {
             CreateMap<User, LoginReadDTO>();
+            CreateMap<Error, LogErroDTO>().ReverseMap();
         }
     }
 }

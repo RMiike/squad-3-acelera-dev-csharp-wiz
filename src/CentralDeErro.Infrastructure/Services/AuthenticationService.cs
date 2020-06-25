@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities;
-using CentralDeErro.Core.Entities.Dto;
 using CentralDeErro.Core.Entities.DTOs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;

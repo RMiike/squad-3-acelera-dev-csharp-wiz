@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CentralDeErro.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    [Migration("20200624011947_v1")]
-    partial class v1
+    [Migration("20200625001858_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -106,7 +106,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2020, 6, 23, 22, 19, 46, 890, DateTimeKind.Local).AddTicks(9122),
+                            CreatedAt = new DateTime(2020, 6, 24, 21, 18, 57, 348, DateTimeKind.Local).AddTicks(6836),
                             Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
                             EnvironmentId = 1,
                             Event = 1000,
@@ -278,10 +278,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "70d7ee27-c466-4201-9ec2-c609e4dc6b4f",
+                            Id = "7f8a163a-1c1f-4991-99d8-52cb0d846979",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "45fea23e-401c-4a53-a61a-e61989624a82",
-                            CreatedAt = new DateTime(2020, 6, 23, 22, 19, 46, 895, DateTimeKind.Local).AddTicks(6135),
+                            ConcurrencyStamp = "f56f1dc3-ecf9-430b-9c98-748856c4e03c",
+                            CreatedAt = new DateTime(2020, 6, 24, 21, 18, 57, 353, DateTimeKind.Local).AddTicks(1521),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,

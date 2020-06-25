@@ -1,5 +1,6 @@
-﻿
+﻿using AutoMapper;
 using CentralDeErro.Core.Entities;
+using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,7 +18,7 @@ namespace CentralDeErro.Controllers.v1
         [HttpGet("testlog")]
         public IActionResult Get()
         {
-            return Ok(new Error(22,"token", "teste", "detalhes", DateTime.Now, 1, 1, 1, 1));
+            return Ok(new Error(1,"token", "teste", "detalhes", DateTime.Now, 1, 1, 1, 1));
         }
 
         //add mapper ?
@@ -30,7 +31,7 @@ namespace CentralDeErro.Controllers.v1
         }
 
         // GET: v1/log/5
-        [HttpGet("log/{id}", Name = "LogById")]
+        [HttpGet("log/{id}", Name = "GetById")]
         public ActionResult<Error> GetById([FromServices] ILogErroRepository _errorRepository, int id)
         {
             var log = _errorRepository.Get(id);
@@ -49,13 +50,15 @@ namespace CentralDeErro.Controllers.v1
 
         [HttpPost("addlog")]
         public ActionResult<Error> Register(
-            [FromServices] ILogErroRepository _errorRepository, 
-            [FromHeader] string Authorization, 
-            Error logErro)
+            [FromServices] ILogErroRepository _errorRepository,
+            LogErroDTO logErroDTO)
         {
-            _errorRepository.Create(logErro);
-            _errorRepository.SaveChanges();
-            return CreatedAtRoute(nameof(GetById), new { Id = logErro.Title }, logErro);
+            var result =  _errorRepository.Create(logErroDTO);
+
+            if (result.Success == true)
+                return CreatedAtRoute(nameof(GetById), new { Id = logErroDTO.Title }, result);
+
+            return BadRequest(result);
         }
 
 
@@ -63,7 +66,7 @@ namespace CentralDeErro.Controllers.v1
 
         // // TODO - set arquivado / delet?
         // [HttpPut("{id}")]
-        // public ActionResult UpdateCommand(int id, LogErroDto logErro)
+        // public ActionResult UpdateCommand(int id, LogErroDTO logErro)
         // {
         //     var logErroById = _logErroRepository.GetLogById(id);
 
