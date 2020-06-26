@@ -3,14 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CentralDeErro.Core.Entities
 {
-    [Table("Source")]
+    public enum Environment {Production, Homologation, Development}
 
+    [Table("Source")]
     public class Source
     {
-        public Source(int id, string description)
+        
+        public Source(int id, string address, Environment environment)
         {
             Id = id;
             Address = address;
+            _Environment = environment;
         }
 
         [Key]
@@ -19,7 +22,9 @@ namespace CentralDeErro.Core.Entities
         [Required(ErrorMessage = "Required field")]
         [StringLength(60, ErrorMessage = "This field must be between 6 and 20 characters", MinimumLength = 6)]
         //TODO
-        public string Description { get; private set; }
+        public string Address { get; private set; }
+
+        public Environment _Environment {get; private set;}
 
         //public Level Level { get; set; }
         //public IEnumerable<Error> Errors { get; set; }
