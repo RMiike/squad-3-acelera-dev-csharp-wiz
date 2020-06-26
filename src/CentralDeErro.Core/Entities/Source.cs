@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CentralDeErro.Core.Entities
 {
+    public enum Environment {Production, Homologation, Development}
     public class Source
     {
         public Source()
@@ -11,14 +12,15 @@ namespace CentralDeErro.Core.Entities
 
         }
 
-        public Source(int id, string description)
+        public Source(int id, string address)
         {
             Id = id;
-            Description = description;
+            Address = address;
         }
 
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string Address { get; set; }
+        public Environment Environment{get;set;}
         public IList<LogError> LogsError { get; set; }
     }
 }
