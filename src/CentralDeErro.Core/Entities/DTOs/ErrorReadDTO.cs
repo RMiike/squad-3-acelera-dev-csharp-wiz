@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CentralDeErro.Core.Entities.DTOs
 {
-    public class LogErroReadDTO
+    public class ErrorReadDTO
     {
-        public LogErroReadDTO(int id, string token, string title, string details, DateTime createdAt, string level, string environment, string adress, bool archived)
+        public ErrorReadDTO(int id, string token, string title, string details, DateTime createdAt, string level, string environment, string adress, bool archived)
         {
             Id = id;
             Token = token;

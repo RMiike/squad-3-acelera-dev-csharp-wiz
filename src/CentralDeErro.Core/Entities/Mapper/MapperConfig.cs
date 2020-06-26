@@ -11,7 +11,7 @@ namespace Services.Mapper
         public MapperConfig()
         {
             CreateMap<User, LoginReadDTO>();
-            CreateMap<Error, LogErroCreateDTO>().ReverseMap();
+            CreateMap<Error, ErrorCreateDTO>().ReverseMap();
         }
     }
 }

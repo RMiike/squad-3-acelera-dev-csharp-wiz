@@ -99,7 +99,7 @@ namespace CentralDeErro
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountManagerService, AccountManagerService>();
-            services.AddScoped<ILogErroRepository, LogErroRepository>();
+            services.AddScoped<IErrorRepository, ErroRepository>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IMailService, MailService>();
             services.AddCors();

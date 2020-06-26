@@ -12,14 +12,14 @@ using System.Security.Claims;
 
 namespace CentralDeErro.Infrastructure.Repository
 {
-    public class LogErroRepository
-        : ILogErroRepository
+    public class ErroRepository
+        : IErrorRepository
     {
         private readonly CentralDeErrorContext _context;
         //private readonly IMapper _mapper;
         //private readonly UserManager<User> _userManager;
 
-        public LogErroRepository(
+        public ErroRepository(
             CentralDeErrorContext context
             //IMapper mapper,
             //UserManager<User> userManager
@@ -31,12 +31,11 @@ namespace CentralDeErro.Infrastructure.Repository
             //_mapper = mapper;
         }
 
-        public IEnumerable<LogErroReadDTO> Get()
-        {
-            return _context
+        public IEnumerable<ErrorReadDTO> Get()
+          => _context
                 .Errors
                 .Where( e=> e.Deleted == false)
-                .Select(e => new LogErroReadDTO(
+                .Select(e => new ErrorReadDTO(
                 e.Id,
                 e.Token,
                 e.Title,
@@ -49,9 +48,9 @@ namespace CentralDeErro.Infrastructure.Repository
                 ))
                 .AsNoTracking()
                 .ToList();
-        }
 
-        //public IEnumerable<LogErroReadDTO> GetArchived()
+
+        //public IEnumerable<ErrorReadDTO> GetArchived()
         //      => (from error in _context.Errors
         //          join env in _context.Environments
         //          on error.EnvironmentId equals env.Id
@@ -61,7 +60,7 @@ namespace CentralDeErro.Infrastructure.Repository
         //          on error.SourceId equals src.Id
         //          where error.Deleted == false && error.Archived == true
         //          orderby error.CreatedAt descending
-        //          select new LogErroReadDTO
+        //          select new ErrorReadDTO
         //         (error.Id,
         //          error.Token,
         //          error.Title,
@@ -76,7 +75,7 @@ namespace CentralDeErro.Infrastructure.Repository
         //            .AsNoTracking()
         //            .ToList();
 
-        //public IEnumerable<LogErroReadDTO> GetUnarchived()
+        //public IEnumerable<ErrorReadDTO> GetUnarchived()
         //  => (from error in _context.Errors
         //      join env in _context.Environments
         //      on error.EnvironmentId equals env.Id
@@ -86,7 +85,7 @@ namespace CentralDeErro.Infrastructure.Repository
         //      on error.SourceId equals src.Id
         //      where error.Deleted == false && error.Archived == false
         //      orderby error.CreatedAt descending
-        //      select new LogErroReadDTO
+        //      select new ErrorReadDTO
         //     (error.Id,
         //      error.Token,
         //      error.Title,
@@ -101,34 +100,26 @@ namespace CentralDeErro.Infrastructure.Repository
         //            .AsNoTracking()
         //            .ToList();
 
-        //public LogErroReadDTO Get(int id)
-        //    => (from error in _context.Errors
-        //        join env in _context.Environments
-        //        on error.EnvironmentId equals env.Id
-        //        join lvl in _context.Environments
-        //        on error.LevelId equals lvl.Id
-        //        join src in _context.Environments
-        //        on error.SourceId equals src.Id
-        //        where error.Deleted.Equals(false)
-        //        where error.Id.Equals(id)
-        //        orderby error.CreatedAt descending
-        //        select new LogErroReadDTO
-        //       (error.Id,
-        //        error.Token,
-        //        error.Title,
-        //        error.Details,
-        //        error.CreatedAt,
-        //        error.Event,
-        //        env.Description,
-        //        lvl.Description,
-        //        src.Description,
-        //        error.Archived
-        //        ))
-        //        .AsNoTracking()
-        //        .FirstOrDefault();
+        public ErrorReadDTO Get(int id)
+            => _context
+                .Errors
+                .Where(e => e.Deleted == false && e.Id == id)
+                .Select(e => new ErrorReadDTO(
+                e.Id,
+                e.Token,
+                e.Title,
+                e.Details,
+                e.CreatedAt,
+                e.Level.ToString(),
+                e.Source.Environment.ToString(),
+                e.Source.Address,
+                e.Archived
+                ))
+                .AsNoTracking()
+                .FirstOrDefault();
 
 
-        //public ResultDTO Create(LogErroCreateDTO logErroDTO, string token)
+        //public ResultDTO Create(ErrorCreateDTO logErroDTO, string token)
         //{
         //    if (logErroDTO == null)
         //        throw new ArgumentNullException();
@@ -150,7 +141,7 @@ namespace CentralDeErro.Infrastructure.Repository
         ////sera adicionada a outra trabela ou apenas setada como excluida?
         ////verificar arquivamento também.
 
-        //public ResultDTO Update(int id, LogErroCreateDTO logErroCreateDTO)
+        //public ResultDTO Update(int id, ErrorCreateDTO logErroCreateDTO)
         //{
         //    var error = _context.Errors.Select(error => error).Where(error => error.Id == id);
 
@@ -161,7 +152,7 @@ namespace CentralDeErro.Infrastructure.Repository
 
         //    return new ResultDTO(true, "true", null);
         //}
-        //public void Delete(LogErroCreateDTO logErroDTO)
+        //public void Delete(ErrorCreateDTO logErroDTO)
         //{
         //    if (logErroDTO == null)
         //        throw new ArgumentNullException();
@@ -170,34 +161,31 @@ namespace CentralDeErro.Infrastructure.Repository
         //}
         //private bool SaveChanges()
         //    => (_context.SaveChanges() >= 0);
-        public ResultDTO Create(LogErroCreateDTO logErroDTO, string user)
+        public ResultDTO Create(ErrorCreateDTO logErroDTO, string user)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(LogErroCreateDTO logErroDTO)
+        public void Delete(ErrorCreateDTO logErroDTO)
         {
             throw new NotImplementedException();
         }
 
 
 
-        public LogErroReadDTO Get(int id)
+        
+
+        public IEnumerable<ErrorReadDTO> GetArchived()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<LogErroReadDTO> GetArchived()
+        public IEnumerable<ErrorReadDTO> GetUnarchived()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<LogErroReadDTO> GetUnarchived()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ResultDTO Update(int id, LogErroCreateDTO logErroCreateDTO)
+        public ResultDTO Update(int id, ErrorCreateDTO logErroCreateDTO)
         {
             throw new NotImplementedException();
         }

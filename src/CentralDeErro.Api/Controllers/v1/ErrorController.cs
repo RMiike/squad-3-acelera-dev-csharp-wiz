@@ -11,7 +11,7 @@ namespace CentralDeErro.Controllers.v1
 {
     [Route("v1")]
     [ApiController]
-    public class LogErroController : ControllerBase
+    public class ErrorController : ControllerBase
     {
         #region Get
         //TODO Passar token via authorization
@@ -26,35 +26,35 @@ namespace CentralDeErro.Controllers.v1
         //get: v1/alllogs
 
         [HttpGet("alllogs")]
-        public ActionResult<IEnumerable<Error>> GetAll([FromServices] ILogErroRepository _errorRepository)
+        public ActionResult<IEnumerable<Error>> GetAll([FromServices] IErrorRepository _errorRepository)
         {
             return Ok(_errorRepository.Get());
         }
         ////get: v1/allarchivedlogs
 
         //[HttpGet("allarchivedlogs")]
-        //public ActionResult<IEnumerable<Error>> GetAllArchived([FromServices] ILogErroRepository _errorRepository)
+        //public ActionResult<IEnumerable<Error>> GetAllArchived([FromServices] IErrorRepository _errorRepository)
         //{
         //    return Ok(_errorRepository.GetArchived());
         //}
         ////get: v1/allunarchivedlogs
 
         //[HttpGet("allunarchivedlogs")]
-        //public ActionResult<IEnumerable<Error>> GetAllUnarchived([FromServices] ILogErroRepository _errorRepository)
+        //public ActionResult<IEnumerable<Error>> GetAllUnarchived([FromServices] IErrorRepository _errorRepository)
         //{
         //    return Ok(_errorRepository.GetUnarchived());
         //}
         //// GET: v1/log/5
-        //[HttpGet("log/{id}", Name = "GetById")]
-        //public ActionResult<Error> GetById([FromServices] ILogErroRepository _errorRepository, int id)
-        //{
-        //    var log = _errorRepository.Get(id);
-        //    if (log != null)
-        //    {
-        //        return Ok(log);
-        //    }
-        //    return NotFound(new { message = "Error Id not found."});
-        //}
+        [HttpGet("log/{id}", Name = "GetById")]
+        public ActionResult<Error> GetById([FromServices] IErrorRepository _errorRepository, int id)
+        {
+            var log = _errorRepository.Get(id);
+            if (log != null)
+            {
+                return Ok(log);
+            }
+            return NotFound(new { message = "Error Id not found." });
+        }
 
         //#endregion
 
@@ -62,8 +62,8 @@ namespace CentralDeErro.Controllers.v1
 
         //[HttpPost("addlog")]
         //public ActionResult<Error> Register(
-        //    [FromServices] ILogErroRepository _errorRepository,
-        //        LogErroCreateDTO logErroDTO,
+        //    [FromServices] IErrorRepository _errorRepository,
+        //        ErrorCreateDTO logErroDTO,
         //        [FromHeader] string Authorization
         //        )
         //{
@@ -87,9 +87,9 @@ namespace CentralDeErro.Controllers.v1
         ////set delet?
         //[HttpPut("archive/{id}")]
         //public ActionResult Archive(
-        //    [FromServices] ILogErroRepository _errorRepository,
+        //    [FromServices] IErrorRepository _errorRepository,
         //    [FromRoute]int id,
-        //    [FromBody]LogErroCreateDTO logErroCreateDTO)
+        //    [FromBody]ErrorCreateDTO logErroCreateDTO)
         //{
         //    var logErroById = _errorRepository.Update(id, logErroCreateDTO);
 

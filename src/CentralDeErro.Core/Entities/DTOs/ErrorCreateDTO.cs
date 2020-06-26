@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CentralDeErro.Core.Entities.DTOs
 {
-    public class LogErroCreateDTO
+    public class ErrorCreateDTO
     {
         [Required]
         [StringLength(60, ErrorMessage = "This field must be between 6 and 60 characters", MinimumLength = 6)]
