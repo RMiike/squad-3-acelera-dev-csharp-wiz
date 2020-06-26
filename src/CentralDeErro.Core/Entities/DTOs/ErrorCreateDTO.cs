@@ -7,25 +7,17 @@ namespace CentralDeErro.Core.Entities.DTOs
     {
         [Required]
         [StringLength(60, ErrorMessage = "This field must be between 6 and 60 characters", MinimumLength = 6)]
-        public string Title { get;  set; }
+        public string Title { get; set; }
         [Required]
         [StringLength(1024, ErrorMessage = "This field must be between 6 and 1024 characters", MinimumLength = 6)]
-        public string Details { get;  set; }
+        public string Details { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         [Required]
-     
-        public int Event { get;  set; }
-        [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
 
-        public int EnvironmentId { get;  set; }
+        public int SourceId { get; set; }
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
-        public int LevelId { get;  set; }
-        [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
-        public int SourceId { get;  set; }
+        public int Level { get; set; }
 
     }
 }

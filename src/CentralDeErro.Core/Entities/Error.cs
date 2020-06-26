@@ -41,7 +41,6 @@ namespace CentralDeErro.Core.Entities
         public string Details { get; private set; }
         public DateTime CreatedAt { get; private set; }
     
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
         public int SourceId { get; private set; }
         public Source Source { get; private set; }
 

@@ -10,7 +10,11 @@ namespace CentralDeErro.Infrastructure.Data.Maps
         {
             builder.HasData(
                  new Source(1, "Front-End", _Environment.Development),
-                  new Source(2, "Back-End", _Environment.Production)
+                 new Source(2, "Front-End", _Environment.Homologation),
+                 new Source(3, "Front-End", _Environment.Production),
+                 new Source(4, "Back-End", _Environment.Development),
+                 new Source(5, "Back-End", _Environment.Homologation),
+                  new Source(6, "Back-End", _Environment.Production)
                   );
         }
     }

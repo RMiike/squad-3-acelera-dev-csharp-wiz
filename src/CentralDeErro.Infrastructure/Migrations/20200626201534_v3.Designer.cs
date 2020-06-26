@@ -4,14 +4,16 @@ using CentralDeErro.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CentralDeErro.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    partial class CentralDeErrorContextModelSnapshot : ModelSnapshot
+    [Migration("20200626201534_v3")]
+    partial class v3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +69,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                         {
                             Id = 1,
                             Archived = false,
-                            CreatedAt = new DateTime(2020, 6, 26, 17, 20, 5, 587, DateTimeKind.Local).AddTicks(1438),
+                            CreatedAt = new DateTime(2020, 6, 26, 17, 15, 33, 439, DateTimeKind.Local).AddTicks(9761),
                             Deleted = false,
                             Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
                             Level = 2,
@@ -133,30 +135,6 @@ namespace CentralDeErro.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            Address = "Front-End",
-                            Environment = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "Front-End",
-                            Environment = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Address = "Back-End",
-                            Environment = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Address = "Back-End",
-                            Environment = 1
-                        },
-                        new
-                        {
-                            Id = 6,
                             Address = "Back-End",
                             Environment = 0
                         });
@@ -238,10 +216,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a1af5198-579a-4f37-9386-d25f5875f946",
+                            Id = "11807a60-1035-4819-92ab-2cf060b2cf98",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "838c80cd-6f33-463c-86b9-af5c53121fc8",
-                            CreatedAt = new DateTime(2020, 6, 26, 17, 20, 5, 592, DateTimeKind.Local).AddTicks(2042),
+                            ConcurrencyStamp = "e85ac8f3-2cc9-4b88-8efe-ca5ccb06df5f",
+                            CreatedAt = new DateTime(2020, 6, 26, 17, 15, 33, 444, DateTimeKind.Local).AddTicks(5301),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Renato Miike",
