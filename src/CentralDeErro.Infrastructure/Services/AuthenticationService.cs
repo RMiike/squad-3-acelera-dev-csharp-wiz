@@ -49,7 +49,7 @@ namespace CentralDeErro.Infrastructure.Services
             if (user != null)
                 return new ResultDTO(false, "User already exist!", null);
 
-            user = new User(registerDTO.Email, DateTime.Now, registerDTO.Email);
+            user = new User(registerDTO.FullName,registerDTO.Email, DateTime.Now, registerDTO.Email);
 
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
 

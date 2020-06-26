@@ -4,6 +4,10 @@ namespace CentralDeErro.Core.Entities.DTOs
 {
     public class RegisterCreateDTO
     {
+        [Required(ErrorMessage = "Required field")]
+        [StringLength(60, ErrorMessage = "This field must be between 6 and 60 characters", MinimumLength = 6)]
+        public string FullName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

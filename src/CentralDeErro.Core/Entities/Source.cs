@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CentralDeErro.Core.Entities
@@ -26,8 +27,7 @@ namespace CentralDeErro.Core.Entities
 
         public _Environment Environment {get; private set;}
 
-        //public Level Level { get; set; }
-        //public IEnumerable<Error> Errors { get; set; }
+        public IEnumerable<Error> Errors { get; set; }
 
     }
 }

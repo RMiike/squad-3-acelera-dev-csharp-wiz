@@ -9,8 +9,8 @@ namespace CentralDeErro.Infrastructure.Data.Maps
         public void Configure(EntityTypeBuilder<Source> builder)
         {
             builder.HasData(
-                 new Source(1, "Front-End"),
-                  new Source(2, "Back-End")
+                 new Source(1, "Front-End", _Environment.Development),
+                  new Source(2, "Back-End", _Environment.Production)
                   );
         }
     }

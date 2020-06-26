@@ -10,7 +10,7 @@ namespace CentralDeErro.Infrastructure.Data.Maps
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasData(
-                new User("rmiike@gmail.com", DateTime.Now, "rmiike@gmail.com")
+                new User("Renato Miike","rmiike@gmail.com", DateTime.Now, "rmiike@gmail.com")
                 );
         }
     }

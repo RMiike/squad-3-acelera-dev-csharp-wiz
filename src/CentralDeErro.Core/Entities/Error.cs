@@ -13,14 +13,13 @@ namespace CentralDeErro.Core.Entities
         {
 
         }
-        public Error(int id, string token, string title,  string details, Level level, DateTime createdAt, int @event, int sourceId)
+        public Error(int id, string token, string title,  string details, Level level, DateTime createdAt, int sourceId)
         {
             Id = id;
             Token = token;
             Title = title;
             Details = details;
             CreatedAt = createdAt;
-            Event = @event;
             Level = level;
             SourceId = sourceId;
             Archived = false;
@@ -41,14 +40,10 @@ namespace CentralDeErro.Core.Entities
         [MaxLength(1024, ErrorMessage = "This field must have 1024 characters")]
         public string Details { get; private set; }
         public DateTime CreatedAt { get; private set; }
-        //TODO
-        public int Event { get; private set; }
-
+    
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
         public int SourceId { get; private set; }
         public Source Source { get; private set; }
-
-        // [Range(1, int.MaxValue, ErrorMessage = "Invalid Level")]
 
         public Level Level { get; private set; }
 

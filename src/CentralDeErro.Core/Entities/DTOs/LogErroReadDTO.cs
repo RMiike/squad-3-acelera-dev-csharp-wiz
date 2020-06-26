@@ -5,17 +5,16 @@ namespace CentralDeErro.Core.Entities.DTOs
 {
     public class LogErroReadDTO
     {
-        public LogErroReadDTO(int id, string token, string title, string details, DateTime createdAt, int @event, string environment, string level, string source, bool archived)
+        public LogErroReadDTO(int id, string token, string title, string details, DateTime createdAt, string level, string environment, string adress, bool archived)
         {
             Id = id;
             Token = token;
             Title = title;
             Details = details;
             CreatedAt = createdAt;
-            Event = @event;
-            Environment = environment;
             Level = level;
-            Source = source;
+            Environment = environment;
+            Adress = adress;
             Archived = archived;
         }
 
@@ -34,10 +33,11 @@ namespace CentralDeErro.Core.Entities.DTOs
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         [Required]
      
-        public int Event { get;  set; }
-        public string Environment { get;  set; }
+        //public int Event { get;  set; }
+        //public string Environment { get;  set; }
         public string Level { get;  set; }
-        public string Source { get;  set; }
+        public string Environment { get; set; }
+        public string Adress { get;  set; }
         public bool Archived { get;  set; }
 
     }
