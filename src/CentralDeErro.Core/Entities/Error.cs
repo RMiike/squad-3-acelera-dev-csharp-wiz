@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CentralDeErro.Core.Entities
 {
+    // public enum _Environment {Production, Homologation, Development}
+    public enum Level {Error, Warning, Debug}
     [Table("Error")]
     public class Error
     {
@@ -11,7 +13,7 @@ namespace CentralDeErro.Core.Entities
         {
 
         }
-        public Error(int id, string token, string title,  string details, DateTime createdAt, int @event, int environmentId, int sourceId, int levelId)
+        public Error(int id, string token, string title,  string details, Level level, DateTime createdAt, int @event, int sourceId)
         {
             Id = id;
             Token = token;
@@ -19,9 +21,8 @@ namespace CentralDeErro.Core.Entities
             Details = details;
             CreatedAt = createdAt;
             Event = @event;
-            EnvironmentId = environmentId;
+            Level = level;
             SourceId = sourceId;
-            LevelId = levelId;
             Archived = false;
             Deleted = false;
         }
@@ -43,18 +44,12 @@ namespace CentralDeErro.Core.Entities
         //TODO
         public int Event { get; private set; }
 
-
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Environment")]
-        public int EnvironmentId { get; private set; }
-        public Environment Environment { get; private set; }
-
         [Range(1, int.MaxValue, ErrorMessage = "Invalid Source")]
         public int SourceId { get; private set; }
         public Source Source { get; private set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Level")]
+        // [Range(1, int.MaxValue, ErrorMessage = "Invalid Level")]
 
-        public int LevelId { get; private set; }
         public Level Level { get; private set; }
 
         public bool Archived { get; private set; }

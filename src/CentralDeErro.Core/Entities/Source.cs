@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CentralDeErro.Core.Entities
 {
-    public enum Environment {Production, Homologation, Development}
+    public enum _Environment {Production, Homologation, Development}
 
     [Table("Source")]
     public class Source
     {
         
-        public Source(int id, string address, Environment environment)
+        public Source(int id, string address, _Environment environment)
         {
             Id = id;
             Address = address;
-            _Environment = environment;
+            Environment = environment;
         }
 
         [Key]
@@ -24,7 +24,7 @@ namespace CentralDeErro.Core.Entities
         //TODO
         public string Address { get; private set; }
 
-        public Environment _Environment {get; private set;}
+        public _Environment Environment {get; private set;}
 
         //public Level Level { get; set; }
         //public IEnumerable<Error> Errors { get; set; }

@@ -3,7 +3,6 @@ using CentralDeErro.Infrastructure.Data.Maps;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Environment = CentralDeErro.Core.Entities.Environment;
 
 namespace CentralDeErro.Infrastructure.Context
 {
