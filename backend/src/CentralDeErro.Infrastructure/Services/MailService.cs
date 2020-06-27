@@ -21,9 +21,7 @@ namespace CentralDeErro.Infrastructure.Services
             {
                 var apiKey = _configuration["MailServiceKey"];
                 var client = new SendGridClient(apiKey);
-
-                //TODO criar email
-                var from = new EmailAddress("miike_miike@hotmail.com", "EziLog");
+                var from = new EmailAddress(_configuration["MailServiceFrom"], "EziLog");
                 var to = new EmailAddress(toEmail);
                 var msg = MailHelper.CreateSingleEmail(from, to, subject, content, content);
                 var response = await client.SendEmailAsync(msg);

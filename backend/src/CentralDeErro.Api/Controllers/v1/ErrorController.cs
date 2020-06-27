@@ -1,11 +1,10 @@
-﻿using AutoMapper;
-using CentralDeErro.Core.Entities;
+﻿using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Interface;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CentralDeErro.Controllers.v1
 {
@@ -14,7 +13,6 @@ namespace CentralDeErro.Controllers.v1
     public class ErrorController : ControllerBase
     {
         #region Get
-        //TODO Passar token via authorization
         //get: v1/testlog
         [HttpGet("testlog")]
         public IActionResult Get()
@@ -74,55 +72,52 @@ namespace CentralDeErro.Controllers.v1
 
             return BadRequest(result);
         }
-        //#endregion
+        #endregion
+
+        #region Put
+
+        [HttpPut("archive/{id}")]
+        public ActionResult MarkAsArchived(
+            [FromServicesAttribute] IErrorRepository _errorrepository,
+            [FromRoute]int id)
+        {
+            var logerrobyid = _errorrepository.Archive(id);
+
+            if (logerrobyid.Success == false)
+                NotFound(logerrobyid);
 
 
-        //#region  Put Patch
+            return Ok(logerrobyid);
+        }
+          [HttpPut("unarchive/{id}")]
+        public ActionResult MarkAsUnrchive(
+            [FromServicesAttribute] IErrorRepository _errorrepository,
+            [FromRoute]int id)
+        {
+            var logerrobyid = _errorrepository.Unarchive(id);
 
-        ////patch: v1/archive
-        ////patch: v1/unarchive
-        ////patch: v1/delete
-        ////TODO - set arquivado
-        //// set desarquivado
-        ////set delet?
-        //[HttpPut("archive/{id}")]
-        //public ActionResult Archive(
-        //    [FromServices] IErrorRepository _errorRepository,
-        //    [FromRoute]int id,
-        //    [FromBody]ErrorCreateDTO logErroCreateDTO)
-        //{
-        //    var logErroById = _errorRepository.Update(id, logErroCreateDTO);
-
-        //    if (logErroById == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (logerrobyid.Success == false)
+                NotFound(logerrobyid);
 
 
-        //    return NoContent();
-        //}
+            return Ok(logerrobyid);
+        }
 
-        //// //patch?
+        [HttpPut("delete/{id}")]
+        public ActionResult MarkAsDelete(
+          [FromServicesAttribute] IErrorRepository _errorrepository,
+          [FromRoute]int id)
+        {
+            var logerrobyid = _errorrepository.Delete(id);
 
-        //#endregion
+            if (logerrobyid.Success == false)
+                NotFound(logerrobyid);
 
-        //#region Delete
 
-        //// // DELETE: api/ApiWithActions/5
-        //// [HttpDelete("{id}")]
-        //// public ActionResult Delete(int id)
-        //// {
-        ////     var logErroById = _logErroRepository.GetLogById(id);
-        ////     if (logErroById == null)
-        ////     {
-        ////         return NotFound();
-        ////     }
+            return Ok(logerrobyid);
+        }
 
-        ////     _logErroRepository.DeleteLog(logErroById);
-        ////     _logErroRepository.SaveChanges();
 
-        ////     return Ok("Deletado com sucesso.");
-        //// }
-#endregion
+        #endregion
     }
 }

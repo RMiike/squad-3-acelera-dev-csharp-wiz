@@ -22,7 +22,6 @@ namespace CentralDeErro.Core.Entities
 
         [Required(ErrorMessage = "Required field")]
         [StringLength(60, ErrorMessage = "This field must be between 6 and 20 characters", MinimumLength = 6)]
-        //TODO
         public string Address { get; private set; }
 
         public _Environment Environment {get; private set;}

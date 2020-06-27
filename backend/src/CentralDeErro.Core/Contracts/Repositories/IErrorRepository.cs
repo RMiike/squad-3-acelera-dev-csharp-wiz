@@ -10,9 +10,8 @@ namespace CentralDeErro.Infrastructure.Interface
         IEnumerable<ErrorReadDTO> GetUnarchived();
         ErrorReadDTO Get(int id);
         ResultDTO Create(ErrorCreateDTO logErroDTO, string user);
-
-        ResultDTO Update(int id, ErrorCreateDTO logErroCreateDTO);
-
-        void Delete(ErrorCreateDTO logErroDTO);
+        ResultDTO Archive(int id);
+        ResultDTO Unarchive(int id);
+        ResultDTO Delete(int id);
     }
 }

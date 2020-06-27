@@ -3,6 +3,7 @@ using CentralDeErro.Core.Entities.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 
@@ -50,6 +51,7 @@ namespace CentralDeErro.Controllers.v1
         [HttpGet("confirmemail")]
         public async Task<IActionResult> ConfirmEmail(
               [FromServices] IAuthenticationService _service,
+              [FromServices] IConfiguration _configuration,
               string userEmail,
               string token
             )
@@ -61,9 +63,8 @@ namespace CentralDeErro.Controllers.v1
 
             var result = await _service.ConfirmEmail(userEmail, token);
 
-            //TODO
             if (result.Success == true)
-                return Redirect("http://localhost:49926/ConfirmEmail.html");
+                return Redirect($"{_configuration["AppUrl"]}/ConfirmEmail.html");
 
             return BadRequest(result);
         }
@@ -120,6 +121,8 @@ namespace CentralDeErro.Controllers.v1
         #region LoginWith2fa
         #endregion
 
+        #region deletar usuario
+        #endregion
 
         #region ExternalLogin
         #endregion

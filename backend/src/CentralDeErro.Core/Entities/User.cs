@@ -25,7 +25,5 @@ namespace CentralDeErro.Core.Entities
         public override string Email { get; set; }
         public DateTime CreatedAt { get; private set; }
         public IEnumerable<UserRole> UserRoles { get; private set; }
-
-        //TODO 39
     }
 }

@@ -3,12 +3,10 @@ using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
 using CentralDeErro.Infrastructure.Interface;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 
 namespace CentralDeErro.Infrastructure.Repository
 {
@@ -17,17 +15,13 @@ namespace CentralDeErro.Infrastructure.Repository
     {
         private readonly CentralDeErrorContext _context;
         private readonly IMapper _mapper;
-        private readonly UserManager<User> _userManager;
 
         public ErroRepository(
             CentralDeErrorContext context,
-            IMapper mapper,
-            UserManager<User> userManager
-
+            IMapper mapper
             )
         {
             _context = context;
-            _userManager = userManager;
             _mapper = mapper;
         }
 
@@ -48,7 +42,6 @@ namespace CentralDeErro.Infrastructure.Repository
                 ))
                 .AsNoTracking()
                 .ToList();
-
 
         public IEnumerable<ErrorReadDTO> GetArchived()
                => _context
@@ -123,40 +116,51 @@ namespace CentralDeErro.Infrastructure.Repository
         }
 
 
-        ////TODO - verificar a forma mais viavel de remover...
-        ////sera adicionada a outra trabela ou apenas setada como excluida?
-        ////verificar arquivamento também.
 
-        //public ResultDTO Update(int id, ErrorCreateDTO logErroCreateDTO)
-        //{
-        //    var error = _context.Errors.Select(error => error).Where(error => error.Id == id);
+        public ResultDTO Archive(int id)
+        {
+            var error = _context.Errors.Select(error => error).Where(error => error.Id == id && error.Deleted == false).FirstOrDefault();
 
-        //    if (error == null) 
-        //        return new ResultDTO(false, $"Error id: {id} not found.", null);
+            if (error == null)
+                return new ResultDTO(false, $"Error id: {id} not found.", null);
 
-        //    //error.
+            if (error.Archived == true)
+                return new ResultDTO(false, $"Error id: {id} already archived.", null);
 
-        //    return new ResultDTO(true, "true", null);
-        //}
-        //public void Delete(ErrorCreateDTO logErroDTO)
-        //{
-        //    if (logErroDTO == null)
-        //        throw new ArgumentNullException();
+            error.MarkAsArchived();
+            SaveChanges();
+            return new ResultDTO(true, "Successfuly archived", error);
+        }
 
-        //    _context.Remove(logErroDTO);
-        //}
+        public ResultDTO Unarchive(int id)
+        {
+            var error = _context.Errors.Select(error => error).Where(error => error.Id == id && error.Deleted == false).FirstOrDefault();
+
+            if (error == null)
+                return new ResultDTO(false, $"Error id: {id} not found.", null);
+
+            if (error.Archived == false)
+                return new ResultDTO(false, $"Error id: {id} already unarchived.", null);
+
+            error.MarkAsUnarchived();
+            SaveChanges();
+            return new ResultDTO(true, "Successfuly unarchived", error);
+        }
+
+        public ResultDTO Delete(int id)
+        {
+            var error = _context.Errors.Select(error => error).Where(error => error.Id == id && error.Deleted == false).FirstOrDefault();
+
+            if (error == null)
+                return new ResultDTO(false, $"Error id: {id} not found.", null);
+
+           
+            error.MarkAsDeleted();
+            SaveChanges();
+            return new ResultDTO(true, "Successfuly deleted", error);
+        }
+
         private bool SaveChanges()
             => (_context.SaveChanges() >= 0);
-    
-
-        public void Delete(ErrorCreateDTO logErroDTO)
-        {
-            throw new NotImplementedException();
-        }
-
-                              public ResultDTO Update(int id, ErrorCreateDTO logErroCreateDTO)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

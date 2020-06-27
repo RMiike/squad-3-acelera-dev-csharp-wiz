@@ -19,6 +19,7 @@ using CentralDeErro.Infrastructure.Context;
 using System;
 using CentralDeErro.Infrastructure.Interface;
 using CentralDeErro.Infrastructure.Repository;
+using Newtonsoft.Json.Serialization;
 
 namespace CentralDeErro
 {
@@ -33,7 +34,9 @@ namespace CentralDeErro
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(nsj => {
+                nsj.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             services.AddDbContext<CentralDeErrorContext>(opt => opt
                 .UseSqlServer(Configuration.GetConnectionString("AuthString")));

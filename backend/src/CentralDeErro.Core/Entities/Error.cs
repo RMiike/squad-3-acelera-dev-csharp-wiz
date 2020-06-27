@@ -63,7 +63,7 @@ namespace CentralDeErro.Core.Entities
         }
         public void MarkAsDeleted()
         {
-            Archived = true;
+            Deleted = true;
         }
 
     }
