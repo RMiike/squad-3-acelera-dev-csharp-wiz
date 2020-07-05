@@ -53,7 +53,6 @@ namespace CentralDeErro.Controllers.v1
                 [FromHeader] string Authorization)
         {
             logErroDTO.Validate();
-
             if (logErroDTO.Invalid)
                 return Ok(new ResultDTO(false, "Fail.", logErroDTO.Notifications));
 

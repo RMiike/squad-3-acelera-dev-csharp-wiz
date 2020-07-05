@@ -17,7 +17,7 @@ namespace CentralDeErro.Core.Entities.DTOs
                 .Requires()
                 .HasMaxLen(Address,1024,"Address", "This field should have no more than 1024 chars.")
                 .HasMinLen(Address, 6, "Address", "This field should have at least 6 chars.")
-                .IsBetween(Environment.GetHashCode(), 0, 2, "Environment", "The value must be between 0 and 2")
+                .IsBetween(Environment.GetHashCode(), 0, (_Environment.GetNames(typeof(_Environment)).Length - 1), "Environment", "The value must be between 0 and 2")
                 );
         }
     }

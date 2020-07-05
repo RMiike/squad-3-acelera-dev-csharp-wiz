@@ -39,6 +39,9 @@ namespace CentralDeErro.Infrastructure.Repository
             if (logErroDTO == null)
                 throw new ArgumentNullException();
 
+            if (!_context.Sources.Where(x => x.Deleted == false).Any(x => x.Id == logErroDTO.SourceId))
+                return new ResultDTO(false, "Invalid Source Id.", null);
+
             logErroDTO.AddToken(token);
 
             var logErro = _mapper.Map<Error>(logErroDTO);

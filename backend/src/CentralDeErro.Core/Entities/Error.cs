@@ -40,6 +40,7 @@ namespace CentralDeErro.Core.Entities
             var createdAt = DateTime.UtcNow;
             var archived = false;
             var deleted = false;
+
             return new Error(id, token, title, details, level, createdAt, sourceId, archived, deleted);
         }
 
@@ -67,7 +68,5 @@ namespace CentralDeErro.Core.Entities
 
             Deleted = true;
         }
-
     }
-
 }
