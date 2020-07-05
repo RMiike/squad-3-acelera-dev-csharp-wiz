@@ -10,7 +10,7 @@ namespace CentralDeErro.Infrastructure.Context
                                                 IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>,
                                                 IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
-       
+
         public CentralDeErrorContext(DbContextOptions<CentralDeErrorContext> opt) : base(opt) { }
 
         public DbSet<Error> Errors { get; set; }
@@ -18,10 +18,7 @@ namespace CentralDeErro.Infrastructure.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new UserRoleMap());
-            builder.ApplyConfiguration(new ErrorMap());
-            builder.ApplyConfiguration(new SourceMap());
-            builder.ApplyConfiguration(new UserMap());
+            builder.ApplyConfigurationsFromAssembly(typeof(UserRoleMap).Assembly);
         }
     }
 }

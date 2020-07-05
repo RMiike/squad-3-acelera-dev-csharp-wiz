@@ -21,10 +21,10 @@ namespace CentralDeErro.Infrastructure.Services
             {
                 var apiKey = _configuration["MailServiceKey"];
                 var client = new SendGridClient(apiKey);
-                var from = new EmailAddress(_configuration["MailServiceFrom"], "EziLog");
+                var from = new EmailAddress(_configuration["MailServiceFrom"], "JarvisLog");
                 var to = new EmailAddress(toEmail);
                 var msg = MailHelper.CreateSingleEmail(from, to, subject, content, content);
-                var response = await client.SendEmailAsync(msg);
+                await client.SendEmailAsync(msg);
             }
             catch (Exception e)
             {

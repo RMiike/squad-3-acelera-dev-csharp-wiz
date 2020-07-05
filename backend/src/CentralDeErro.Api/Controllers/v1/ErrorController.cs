@@ -1,7 +1,7 @@
-﻿using CentralDeErro.Core.Entities;
+﻿using CentralDeErro.Core.Contracts.Repositories;
+using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
-using CentralDeErro.Infrastructure.Interface;
-using Microsoft.AspNetCore.JsonPatch;
+using CentralDeErro.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,8 @@ namespace CentralDeErro.Controllers.v1
         [HttpGet("testlog")]
         public IActionResult Get()
         {
-            return Ok(new Error(1, "token", "titulo", "detalhe", Level.Debug, DateTime.Now, 1));
+            var mockError = Error.Create(1, "token", "titulo", "detalhe", Level.Debug, 1);
+            return Ok(mockError);
         }
 
 
@@ -28,23 +29,10 @@ namespace CentralDeErro.Controllers.v1
         {
             return Ok(_errorRepository.Get());
         }
-        ////get: v1/allarchivedlogs
 
-        [HttpGet("allarchivedlogs")]
-        public ActionResult<IEnumerable<Error>> GetAllArchived([FromServices] IErrorRepository _errorRepository)
-        {
-            return Ok(_errorRepository.GetArchived());
-        }
-        //get: v1/allunarchivedlogs
-
-        [HttpGet("allunarchivedlogs")]
-        public ActionResult<IEnumerable<Error>> GetAllUnarchived([FromServices] IErrorRepository _errorRepository)
-        {
-            return Ok(_errorRepository.GetUnarchived());
-        }
         // GET: v1/log/5
-        [HttpGet("log/{id}", Name = "GetById")]
-        public ActionResult<Error> GetById([FromServices] IErrorRepository _errorRepository, int id)
+        [HttpGet("log/{id}", Name = "GetErrorById")]
+        public ActionResult<Error> GetErrorById([FromServices] IErrorRepository _errorRepository, int id)
         {
             var log = _errorRepository.Get(id);
             if (log != null)
@@ -58,17 +46,21 @@ namespace CentralDeErro.Controllers.v1
 
         #region post
 
-        [HttpPost("addlog")]
+        [HttpPost("adderror")]
         public ActionResult<Error> Register(
             [FromServices] IErrorRepository _errorRepository,
                 ErrorCreateDTO logErroDTO,
-                [FromHeader] string Authorization
-                )
+                [FromHeader] string Authorization)
         {
+            logErroDTO.Validate();
+
+            if (logErroDTO.Invalid)
+                return Ok(new ResultDTO(false, "Fail.", logErroDTO.Notifications));
+
             var result = _errorRepository.Create(logErroDTO, Authorization);
 
             if (result.Success == true)
-                return CreatedAtRoute(nameof(GetById), new { Id = logErroDTO.Title }, result);
+                return CreatedAtRoute(nameof(GetErrorById), new { Id = logErroDTO.Title }, result);
 
             return BadRequest(result);
         }
@@ -79,7 +71,7 @@ namespace CentralDeErro.Controllers.v1
         [HttpPut("archive/{id}")]
         public ActionResult MarkAsArchived(
             [FromServicesAttribute] IErrorRepository _errorrepository,
-            [FromRoute]int id)
+            [FromRoute] int id)
         {
             var logerrobyid = _errorrepository.Archive(id);
 
@@ -89,10 +81,10 @@ namespace CentralDeErro.Controllers.v1
 
             return Ok(logerrobyid);
         }
-          [HttpPut("unarchive/{id}")]
+        [HttpPut("unarchive/{id}")]
         public ActionResult MarkAsUnrchive(
-            [FromServicesAttribute] IErrorRepository _errorrepository,
-            [FromRoute]int id)
+          [FromServicesAttribute] IErrorRepository _errorrepository,
+          [FromRoute] int id)
         {
             var logerrobyid = _errorrepository.Unarchive(id);
 
@@ -103,10 +95,10 @@ namespace CentralDeErro.Controllers.v1
             return Ok(logerrobyid);
         }
 
-        [HttpPut("delete/{id}")]
+        [HttpPut("deleteerror/{id}")]
         public ActionResult MarkAsDelete(
           [FromServicesAttribute] IErrorRepository _errorrepository,
-          [FromRoute]int id)
+          [FromRoute] int id)
         {
             var logerrobyid = _errorrepository.Delete(id);
 

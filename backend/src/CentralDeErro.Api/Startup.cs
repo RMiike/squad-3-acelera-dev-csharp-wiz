@@ -1,25 +1,25 @@
-using System.Text;
+using AutoMapper;
+using CentralDeErro.Core.Contracts.Repositories;
+using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities;
+using CentralDeErro.Infrastructure.Context;
+using CentralDeErro.Infrastructure.Repository;
+using CentralDeErro.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using AutoMapper;
-using Services.Mapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using CentralDeErro.Core.Contracts.Services;
-using CentralDeErro.Infrastructure.Services;
-using CentralDeErro.Infrastructure.Context;
-using System;
-using CentralDeErro.Infrastructure.Interface;
-using CentralDeErro.Infrastructure.Repository;
 using Newtonsoft.Json.Serialization;
+using Services.Mapper;
+using System;
+using System.Text;
 
 namespace CentralDeErro
 {
@@ -34,7 +34,8 @@ namespace CentralDeErro
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson(nsj => {
+            services.AddControllers().AddNewtonsoftJson(nsj =>
+            {
                 nsj.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
 
@@ -100,9 +101,11 @@ namespace CentralDeErro
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
+
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountManagerService, AccountManagerService>();
             services.AddScoped<IErrorRepository, ErroRepository>();
+            services.AddScoped<ISourceRepository, SourceRepository>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IMailService, MailService>();
             services.AddCors();

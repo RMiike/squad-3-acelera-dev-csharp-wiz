@@ -1,27 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
 
 namespace CentralDeErro.Core.Entities.DTOs
 {
-    public class RegisterCreateDTO
+    public class RegisterCreateDTO : Notifiable, IValidatable
     {
-        [Required(ErrorMessage = "Required field")]
-        [StringLength(60, ErrorMessage = "This field must be between 6 and 60 characters", MinimumLength = 6)]
         public string FullName { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
         public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
         public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public void Validate()
+        {
+            AddNotifications(
+                 new Contract()
+                     .Requires()
+                     .HasMaxLen(FullName, 100, "FullName", "FullName should have no more than 100 chars")
+                     .HasMinLen(FullName, 3, "FullName", "FullName should have at least 3 chars")
+                     .IsEmail(Email, "E-mail", "Invalid email.")
+                     .HasMaxLen(Password, 100, "Password", "Password should have no more than 100 chars")
+                     .HasMinLen(Password, 8, "Password", "Password should have at least 8 chars")
+                     .HasMaxLen(ConfirmPassword, 100, "ConfirmPassword", "Password should have no more than 100 chars")
+                     .HasMinLen(ConfirmPassword, 8, "ConfirmPassword", "Password should have at least 6 chars")
+                     .AreEquals(ConfirmPassword, Password, "ConfirmPassword", "The password and confirmation password do not match."));
+
+        }
     }
 }

@@ -1,15 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
 
 namespace CentralDeErro.Core.Entities.DTOs
 {
-    public class LoginCreateDTO
+    public class LoginCreateDTO : Notifiable, IValidatable
     {
-        [Required]
-        [EmailAddress]
         public string Email { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public void Validate()
+        {
+            AddNotifications(
+                new Contract()
+                .Requires()
+                .IsEmail(Email, "E-mail", "Invalid email.")
+                .HasMaxLen(Password, 60, "Password", "This field should have no more than 60 chars.")
+                .HasMinLen(Password, 6, "Password", "This field should have at least 6 chars."));
+        }
     }
 }

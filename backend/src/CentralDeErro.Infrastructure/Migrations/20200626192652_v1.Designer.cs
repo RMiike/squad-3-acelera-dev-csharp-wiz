@@ -34,7 +34,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Deleted")
+                    b.Property<bool>("Delete")
                         .HasColumnType("bit");
 
                     b.Property<string>("Details")

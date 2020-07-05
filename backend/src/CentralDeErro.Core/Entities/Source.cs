@@ -1,32 +1,40 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using CentralDeErro.Core.Enums;
+using System;
+using System.Collections.Generic;
 
 namespace CentralDeErro.Core.Entities
 {
-    public enum _Environment {Production, Homologation, Development}
-
-    [Table("Source")]
     public class Source
     {
-        
-        public Source(int id, string address, _Environment environment)
+        protected Source() { }
+        private Source(int id, string address, _Environment environment, bool deleted)
         {
             Id = id;
             Address = address;
             Environment = environment;
+            Deleted = deleted;
         }
 
-        [Key]
-        public int Id { get; private set; }
+        public int Id { get; }
+        public string Address { get; }
+        public _Environment Environment { get; }
+        public bool Deleted { get; private set; }
+        public IEnumerable<Error> Errors { get; }
 
-        [Required(ErrorMessage = "Required field")]
-        [StringLength(60, ErrorMessage = "This field must be between 6 and 20 characters", MinimumLength = 6)]
-        public string Address { get; private set; }
+        public static Source Create(int id, string address, _Environment environment)
+        {
+            if (String.IsNullOrEmpty(address))
+                throw new ArgumentNullException();
 
-        public _Environment Environment {get; private set;}
+            var deleted = false;
+            return new Source(id, address, environment, deleted);
+        }
+        public void Delete()
+        {
+            if (Deleted == true)
+                throw new InvalidOperationException();
 
-        public IEnumerable<Error> Errors { get; set; }
-
+            Deleted = true;
+        }
     }
 }

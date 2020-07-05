@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
+using CentralDeErro.Core.Contracts.Repositories;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
-using CentralDeErro.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace CentralDeErro.Infrastructure.Repository
 {
@@ -26,85 +27,21 @@ namespace CentralDeErro.Infrastructure.Repository
         }
 
         public IEnumerable<ErrorReadDTO> Get()
-          => _context
-                .Errors
-                .Where( e=> e.Deleted == false)
-                .Select(e => new ErrorReadDTO(
-                e.Id,
-                e.Token,
-                e.Title,
-                e.Details,
-                e.CreatedAt,
-                e.Level.ToString(),
-                e.Source.Environment.ToString(),
-                e.Source.Address,
-                e.Archived
-                ))
-                .AsNoTracking()
-                .ToList();
-
-        public IEnumerable<ErrorReadDTO> GetArchived()
-               => _context
-                .Errors
-                .Where(e => e.Deleted == false && e.Archived == true)
-                .Select(e => new ErrorReadDTO(
-                e.Id,
-                e.Token,
-                e.Title,
-                e.Details,
-                e.CreatedAt,
-                e.Level.ToString(),
-                e.Source.Environment.ToString(),
-                e.Source.Address,
-                e.Archived
-                ))
-                .AsNoTracking()
-                .ToList();
-
-        public IEnumerable<ErrorReadDTO> GetUnarchived()
-          => _context
-                .Errors
-                .Where(e => e.Deleted == false && e.Archived == false)
-                .Select(e => new ErrorReadDTO(
-                e.Id,
-                e.Token,
-                e.Title,
-                e.Details,
-                e.CreatedAt,
-                e.Level.ToString(),
-                e.Source.Environment.ToString(),
-                e.Source.Address,
-                e.Archived
-                ))
-                .AsNoTracking()
+          => HandleSearch(e => e.Deleted == false)
                 .ToList();
 
         public ErrorReadDTO Get(int id)
-            => _context
-                .Errors
-                .Where(e => e.Deleted == false && e.Id == id)
-                .Select(e => new ErrorReadDTO(
-                e.Id,
-                e.Token,
-                e.Title,
-                e.Details,
-                e.CreatedAt,
-                e.Level.ToString(),
-                e.Source.Environment.ToString(),
-                e.Source.Address,
-                e.Archived
-                ))
-                .AsNoTracking()
+            => HandleSearch(e => e.Deleted == false && e.Id == id)
                 .FirstOrDefault();
-
 
         public ResultDTO Create(ErrorCreateDTO logErroDTO, string token)
         {
             if (logErroDTO == null)
                 throw new ArgumentNullException();
 
+            logErroDTO.AddToken(token);
+
             var logErro = _mapper.Map<Error>(logErroDTO);
-            logErro.AddToken(token);
 
             _context.Add(logErro);
 
@@ -112,14 +49,11 @@ namespace CentralDeErro.Infrastructure.Repository
                 return new ResultDTO(true, "Succesfully registred the error.", logErro);
 
             return new ResultDTO(false, "Fail", null);
-
         }
-
-
 
         public ResultDTO Archive(int id)
         {
-            var error = _context.Errors.Select(error => error).Where(error => error.Id == id && error.Deleted == false).FirstOrDefault();
+            var error = FindById(id);
 
             if (error == null)
                 return new ResultDTO(false, $"Error id: {id} not found.", null);
@@ -127,14 +61,14 @@ namespace CentralDeErro.Infrastructure.Repository
             if (error.Archived == true)
                 return new ResultDTO(false, $"Error id: {id} already archived.", null);
 
-            error.MarkAsArchived();
+            error.Archive();
             SaveChanges();
             return new ResultDTO(true, "Successfuly archived", error);
         }
 
         public ResultDTO Unarchive(int id)
         {
-            var error = _context.Errors.Select(error => error).Where(error => error.Id == id && error.Deleted == false).FirstOrDefault();
+            var error = FindById(id);
 
             if (error == null)
                 return new ResultDTO(false, $"Error id: {id} not found.", null);
@@ -142,22 +76,47 @@ namespace CentralDeErro.Infrastructure.Repository
             if (error.Archived == false)
                 return new ResultDTO(false, $"Error id: {id} already unarchived.", null);
 
-            error.MarkAsUnarchived();
+            error.Unarchive();
             SaveChanges();
             return new ResultDTO(true, "Successfuly unarchived", error);
         }
 
+
         public ResultDTO Delete(int id)
         {
-            var error = _context.Errors.Select(error => error).Where(error => error.Id == id && error.Deleted == false).FirstOrDefault();
+            var error = FindById(id);
 
             if (error == null)
                 return new ResultDTO(false, $"Error id: {id} not found.", null);
 
-           
-            error.MarkAsDeleted();
+            error.Delete();
             SaveChanges();
             return new ResultDTO(true, "Successfuly deleted", error);
+        }
+
+        private Error FindById(int id)
+            => _context
+                .Errors
+                .Select(error => error)
+                .Where(error => error.Id == id && error.Deleted == false)
+                .FirstOrDefault();
+        private IQueryable<ErrorReadDTO> HandleSearch(Expression<Func<Error, bool>> condition)
+        {
+            return _context
+                            .Errors
+                            .Where(condition)
+                            .Select(e => new ErrorReadDTO(
+                            e.Id,
+                            e.Token,
+                            e.Title,
+                            e.Details,
+                            e.CreatedAt,
+                            e.Level.ToString(),
+                            e.Source.Environment.ToString(),
+                            e.Source.Address,
+                            e.Archived
+                            ))
+                            .AsNoTracking();
         }
 
         private bool SaveChanges()

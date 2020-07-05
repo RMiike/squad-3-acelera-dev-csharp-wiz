@@ -9,8 +9,23 @@ namespace CentralDeErro.Infrastructure.Data.Maps
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+
+            builder.Property(x => x.FullName)
+             .HasColumnName("FullName")
+             .HasMaxLength(60)
+             .IsRequired();
+
+            builder.Property(x => x.Email)
+             .HasColumnName("Email")
+             .HasMaxLength(60)
+             .IsRequired();
+
+            builder.Property(x => x.CreatedAt)
+             .HasColumnName("CreatedAt")
+             .IsRequired();
+
             builder.HasData(
-                new User("Renato Miike","rmiike@gmail.com", DateTime.Now, "rmiike@gmail.com")
+                User.Create("Renato Miike", "rmiike@gmail.com", DateTime.UtcNow, "rmiike@gmail.com")
                 );
         }
     }

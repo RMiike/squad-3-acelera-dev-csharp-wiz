@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CentralDeErro.Infrastructure.Services
 {
-    public class AuthenticationService 
+    public class AuthenticationService
         : IAuthenticationService
     {
         #region controler and private
@@ -49,16 +49,16 @@ namespace CentralDeErro.Infrastructure.Services
             if (user != null)
                 return new ResultDTO(false, "User already exist!", null);
 
-            user = new User(registerDTO.FullName,registerDTO.Email, DateTime.Now, registerDTO.Email);
+            user = User.Create(registerDTO.FullName, registerDTO.Email, DateTime.UtcNow, registerDTO.Email);
 
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
 
             if (!result.Succeeded)
                 return new ResultDTO(false, result.ToString(), null);
 
-            await CreateAndSendEmailConfirm(registerDTO, user);
+            await CreateAndSendEmailConfirm(registerDTO, user).ConfigureAwait(false);
 
-            return new ResultDTO(true, "User account created sucessfully, please confirm your email.", null); 
+            return new ResultDTO(true, "User account created sucessfully, please confirm your email.", null);
         }
 
         #region CreateAndSendEmailConfirm
@@ -73,7 +73,7 @@ namespace CentralDeErro.Infrastructure.Services
             await _mailService.SendEmailAsync(
                 registerDTO.Email,
                 "Confirm your email.",
-                "<h1>Welcome to EziLogApi. </h1>" +
+                "<h1>Welcome to JarvisLogApi. </h1>" +
                 $"<p>Please, confirm your email by <a href='{url}'> Clicking here.</a> </p>");
         }
         #endregion
@@ -108,7 +108,7 @@ namespace CentralDeErro.Infrastructure.Services
                 return new ResultDTO(false, "Please, confirm your email, verify your password, verify your user name and try again.", user);
 
             var result = await _signInManager
-                .CheckPasswordSignInAsync(user, loginDTO.Password , false);
+                .CheckPasswordSignInAsync(user, loginDTO.Password, false);
 
             if (!result.Succeeded)
                 return new ResultDTO(false, "Please, confirm your email, verify your password, verify your user name and try again.", result);
@@ -135,7 +135,7 @@ namespace CentralDeErro.Infrastructure.Services
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-            var result = await ResetPassword(user, token);
+            var result = await ResetPassword(user, token).ConfigureAwait(false);
 
             if (result.Success == false)
                 return result;

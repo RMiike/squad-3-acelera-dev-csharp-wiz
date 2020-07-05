@@ -3,30 +3,32 @@ using System;
 
 namespace CentralDeErro.Infrastructure.Migrations
 {
-    public partial class v3 : Migration
+    public partial class v7 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "55b3f0bd-221d-44bc-b02b-ddcc744f9d59");
+                keyValue: "32ca41ba-6a17-44f3-b6d3-04d1249d8b86");
 
-            migrationBuilder.DropColumn(
-                name: "Event",
-                table: "Error");
+            migrationBuilder.AddColumn<bool>(
+                name: "Deleted",
+                table: "Source",
+                nullable: false,
+                defaultValue: false);
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "11807a60-1035-4819-92ab-2cf060b2cf98", 0, "e85ac8f3-2cc9-4b88-8efe-ca5ccb06df5f", new DateTime(2020, 6, 26, 17, 15, 33, 444, DateTimeKind.Local).AddTicks(5301), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+                values: new object[] { "c8d91df2-5039-42f6-8e25-e54017eb3e4e", 0, "980379e7-86d0-4d14-b5f5-1f72498d22d2", new DateTime(2020, 7, 3, 16, 59, 56, 612, DateTimeKind.Utc).AddTicks(8592), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Error",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2020, 6, 26, 17, 15, 33, 439, DateTimeKind.Local).AddTicks(9761));
+                value: new DateTime(2020, 7, 3, 16, 59, 56, 608, DateTimeKind.Utc).AddTicks(7348));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -34,26 +36,23 @@ namespace CentralDeErro.Infrastructure.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "11807a60-1035-4819-92ab-2cf060b2cf98");
+                keyValue: "c8d91df2-5039-42f6-8e25-e54017eb3e4e");
 
-            migrationBuilder.AddColumn<int>(
-                name: "Event",
-                table: "Error",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.DropColumn(
+                name: "Deleted",
+                table: "Source");
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "55b3f0bd-221d-44bc-b02b-ddcc744f9d59", 0, "f78d15f8-94a1-4600-a968-d929146f81f6", new DateTime(2020, 6, 26, 16, 35, 2, 915, DateTimeKind.Local).AddTicks(2960), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+                values: new object[] { "32ca41ba-6a17-44f3-b6d3-04d1249d8b86", 0, "c97da9ca-1c03-45b6-ad41-a79bd8423a1f", new DateTime(2020, 7, 3, 11, 21, 16, 246, DateTimeKind.Utc).AddTicks(484), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Error",
                 keyColumn: "Id",
                 keyValue: 1,
-                columns: new[] { "CreatedAt", "Event" },
-                values: new object[] { new DateTime(2020, 6, 26, 16, 35, 2, 908, DateTimeKind.Local).AddTicks(3095), 1 });
+                column: "CreatedAt",
+                value: new DateTime(2020, 7, 3, 11, 21, 16, 241, DateTimeKind.Utc).AddTicks(2839));
         }
     }
 }

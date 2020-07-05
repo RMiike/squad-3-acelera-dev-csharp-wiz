@@ -29,6 +29,10 @@ namespace CentralDeErro.Controllers.v1
             [FromServices] IAuthenticationService _service,
             [FromBody] RegisterCreateDTO registerDTO)
         {
+            registerDTO.Validate();
+            if (registerDTO.Invalid)
+                return BadRequest(new ResultDTO(false, "Invalid field.", registerDTO.Notifications));
+
             try
             {
                 var result = await _service.Register(registerDTO);
@@ -64,7 +68,7 @@ namespace CentralDeErro.Controllers.v1
             var result = await _service.ConfirmEmail(userEmail, token);
 
             if (result.Success == true)
-                return Redirect($"{_configuration["AppUrl"]}/ConfirmEmail.html");
+                return Ok(result);
 
             return BadRequest(result);
         }
@@ -76,8 +80,12 @@ namespace CentralDeErro.Controllers.v1
         [HttpPost("signin")]
         public async Task<IActionResult> SignIn(
             [FromServices] IAuthenticationService _services,
-            [FromBody]LoginCreateDTO loginDTO)
+            [FromBody] LoginCreateDTO loginDTO)
         {
+            loginDTO.Validate();
+            if (loginDTO.Invalid)
+                return BadRequest(new ResultDTO(false, "Invalid field.", loginDTO.Notifications));
+
             try
             {
                 var userSignIOutDto = await _services.Login(loginDTO);
@@ -102,10 +110,9 @@ namespace CentralDeErro.Controllers.v1
          [FromServices] IAuthenticationService _services,
             [FromBody] ForgotPasswordDTO forgotPasswordDTO)
         {
-            if (string.IsNullOrWhiteSpace(forgotPasswordDTO.Email))
-            {
-                return NotFound(new { message = "Wrong email, please verify and try again." });
-            }
+            forgotPasswordDTO.Validate();
+            if (forgotPasswordDTO.Invalid)
+                return NotFound(new ResultDTO(false, "Wrong email, please verify and try again.", forgotPasswordDTO.Notifications));
 
             var result = await _services.ForgotPassword(forgotPasswordDTO);
 
@@ -115,8 +122,6 @@ namespace CentralDeErro.Controllers.v1
             return Ok(result);
         }
         #endregion
-
-
 
         #region LoginWith2fa
         #endregion

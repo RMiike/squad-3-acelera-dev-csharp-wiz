@@ -12,15 +12,9 @@ namespace CentralDeErro.Infrastructure.Services
     {
         #region controler and private
         private readonly UserManager<User> _userManager;
-        //private readonly SignInManager<User> _signInManager;
-
-        public AccountManagerService(
-            UserManager<User> userManager
-            //SignInManager<User> signInManager
-            )
+        public AccountManagerService(UserManager<User> userManager)
         {
             _userManager = userManager;
-            //_signInManager = signInManager;
         }
         #endregion
 

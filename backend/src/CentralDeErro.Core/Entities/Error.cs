@@ -1,19 +1,12 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using CentralDeErro.Core.Enums;
+using System;
 
 namespace CentralDeErro.Core.Entities
 {
-    // public enum _Environment {Production, Homologation, Development}
-    public enum Level {Error, Warning, Debug}
-    [Table("Error")]
     public class Error
     {
-        public Error()
-        {
-
-        }
-        public Error(int id, string token, string title,  string details, Level level, DateTime createdAt, int sourceId)
+        protected Error() { }
+        private Error(int id, string token, string title, string details, Level level, DateTime createdAt, int sourceId, bool archived, bool deleted)
         {
             Id = id;
             Token = token;
@@ -22,47 +15,56 @@ namespace CentralDeErro.Core.Entities
             CreatedAt = createdAt;
             Level = level;
             SourceId = sourceId;
-            Archived = false;
-            Deleted = false;
+            Archived = archived;
+            Deleted = deleted;
         }
-        [Key]
-        public int Id { get; private set; }
-
-        [Required(ErrorMessage = "Required field")]
-        [MaxLength(450)]
-        public string Token { get; private set; }
-
-        [Required(ErrorMessage = "Required field")]
-        [StringLength(60, ErrorMessage = "This field must be between 6 and 20 characters", MinimumLength = 6)]
-        public string Title { get; private set; }
-
-        [Required(ErrorMessage = "Required field")]
-        [MaxLength(1024, ErrorMessage = "This field must have 1024 characters")]
-        public string Details { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-    
-        public int SourceId { get; private set; }
-        public Source Source { get; private set; }
-
-        public Level Level { get; private set; }
-
+        public int Id { get; }
+        public string Token { get; }
+        public string Title { get; }
+        public string Details { get; }
+        public DateTime CreatedAt { get; }
+        public int SourceId { get; }
+        public Source Source { get; }
+        public Level Level { get; }
         public bool Archived { get; private set; }
         public bool Deleted { get; private set; }
 
-        public void AddToken(string token)
+        public static Error Create(int id, string token, string title, string details, Level level, int sourceId)
         {
-            Token = token;
+            if (String.IsNullOrEmpty(token)
+                || String.IsNullOrEmpty(title)
+                || String.IsNullOrEmpty(details))
+            {
+                throw new ArgumentNullException();
+            }
+            var createdAt = DateTime.UtcNow;
+            var archived = false;
+            var deleted = false;
+            return new Error(id, token, title, details, level, createdAt, sourceId, archived, deleted);
         }
-        public void MarkAsArchived()
+
+        public void Archive()
         {
+            if (Id == 0)
+                throw new ArgumentNullException("Invalid id.");
+            if (Archived == true)
+                throw new InvalidOperationException("Error is already archived.");
+
             Archived = true;
         }
-        public void MarkAsUnarchived()
+        public void Unarchive()
         {
+
+            if (Archived == false)
+                throw new InvalidOperationException("Error is already unarchived.");
+
             Archived = false;
         }
-        public void MarkAsDeleted()
+        public void Delete()
         {
+            if (Deleted == true)
+                throw new InvalidOperationException("Error is already deleted.");
+
             Deleted = true;
         }
 

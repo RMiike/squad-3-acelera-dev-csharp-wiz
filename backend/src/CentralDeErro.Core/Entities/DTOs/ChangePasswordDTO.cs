@@ -1,22 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
 
 namespace CentralDeErro.Core.Entities.DTOs
 {
-    public class ChangePasswordDTO
+    public class ChangePasswordDTO : Notifiable, IValidatable
     {
-        [Required]
-        [DataType(DataType.Password)]
         public string OldPassword { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
         public string NewPassword { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("NewPassword", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        public void Validate()
+        {
+            AddNotifications(
+                new Contract()
+                    .Requires()
+                    .HasMaxLen(OldPassword, 100, "OldPassword", "Password should have no more than 100 chars")
+                    .HasMinLen(OldPassword, 8, "OldPassword", "Password should have at least 6 chars")
+                    .HasMaxLen(NewPassword, 100, "NewPassword", "Password should have no more than 100 chars")
+                    .HasMinLen(NewPassword, 8, "NewPassword", "Password should have at least 6 chars")
+                    .HasMaxLen(ConfirmPassword, 100, "ConfirmPassword", "Password should have no more than 100 chars")
+                    .HasMinLen(ConfirmPassword, 8, "ConfirmPassword", "Password should have at least 6 chars")
+                    .AreEquals(ConfirmPassword, NewPassword, "ConfirmPassword", "The password and confirmation password do not match.")) ; 
+        }
     }
 }
