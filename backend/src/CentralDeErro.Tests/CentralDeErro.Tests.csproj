@@ -17,8 +17,4 @@
     <ProjectReference Include="..\CentralDeErro.Core\CentralDeErro.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\DTOs\" />
-  </ItemGroup>
-
 </Project>
