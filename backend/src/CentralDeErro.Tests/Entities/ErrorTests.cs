@@ -1,4 +1,6 @@
-﻿using CentralDeErro.Core.Entities;
+﻿using AutoMapper;
+using CentralDeErro.Core.Entities;
+using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Core.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -27,15 +29,17 @@ namespace CentralDeErro.Tests.Entities
         //       .RuleFor(e => e.SourceId, 1)
         //       .Generate(3);
         #region New Error
+       
+
         [TestMethod]
         [TestCategory("New Error")]
         public void O_Id_Do_Novo_Error_Deve_Ser_1()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
 
-            Assert.AreEqual(1,_newError.Id);
+            Assert.AreEqual(1, _newError.Id);
         }
-     
+
         [TestMethod]
         [TestCategory("New Error")]
         public void O_Token_Do_Novo_Error_Deve_Ser_Token()
@@ -49,7 +53,7 @@ namespace CentralDeErro.Tests.Entities
         [ExpectedException(typeof(ArgumentNullException))]
         public void O_Token_Vazio_Retornar_ArgumentNullException()
         {
-           Error.Create(_id, "", _title, _details, _level, _sourceId);
+            Error.Create(_id, "", _title, _details, _level, _sourceId);
         }
         [TestMethod]
         [TestCategory("New Error")]
@@ -64,7 +68,7 @@ namespace CentralDeErro.Tests.Entities
         [ExpectedException(typeof(ArgumentNullException))]
         public void O_Titulo_Vazio_Retornar_ArgumentNullException()
         {
-           Error.Create(_id, _token, "", _details, _level, _sourceId);
+            Error.Create(_id, _token, "", _details, _level, _sourceId);
         }
         [TestMethod]
         [TestCategory("New Error")]
@@ -89,20 +93,20 @@ namespace CentralDeErro.Tests.Entities
 
             Assert.AreEqual("Error", _newError.Level.ToString());
         }
-      
+
         [TestMethod]
         [TestCategory("New Error")]
         public void O_CreatedAt_Do_Novo_Error_Deve_Ser_O_Horario_DeAgora()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
-          
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
+
             Assert.AreEqual(_createdAt.Date, _newError.CreatedAt.Date);
         }
         [TestMethod]
         [TestCategory("New Error")]
         public void O_SourceId_Do_Novo_Error_Deve_Ser_1()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
 
             Assert.AreEqual(1, _newError.SourceId);
         }
@@ -110,7 +114,7 @@ namespace CentralDeErro.Tests.Entities
         [TestCategory("New Error")]
         public void Novo_Error_Tem_Que_Estar_Desarquivado()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
 
             Assert.IsFalse(_newError.Archived);
         }
@@ -119,7 +123,7 @@ namespace CentralDeErro.Tests.Entities
         [TestCategory("New Error")]
         public void Novo_Error_Nao_Pode_Que_Estar_Deletado()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
 
             Assert.IsFalse(_newError.Deleted);
         }
@@ -128,7 +132,7 @@ namespace CentralDeErro.Tests.Entities
         [TestCategory("New Error")]
         public void Possivel_Arquivar_Novo_Error()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
 
             _newError.Archive();
 
@@ -140,7 +144,7 @@ namespace CentralDeErro.Tests.Entities
         [TestCategory("New Error")]
         public void Possivel_Deletar_Um_Novo_Error()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
 
             _newError.Delete();
 
@@ -151,7 +155,7 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         public void Possivel_Desarquivar_Um_Error_Arquivado()
         {
-            var _newError = Error.Create(1, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(1, _token, _title, _details, _level, _sourceId);
 
             _newError.Archive();
             _newError.Unarchive();
@@ -164,7 +168,7 @@ namespace CentralDeErro.Tests.Entities
         [ExpectedException(typeof(ArgumentNullException))]
         public void Arquivar_ErrorId_Igual_Zero_Joga_Um_ArgumentNullException()
         {
-            var _newError = Error.Create(0, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(0, _token, _title, _details, _level, _sourceId);
             _newError.Archive();
         }
 
@@ -172,14 +176,14 @@ namespace CentralDeErro.Tests.Entities
         [ExpectedException(typeof(InvalidOperationException))]
         public void Desarquivar_Um_Error_Desarquivado_Joga_Um_InvalidOperationException()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
             _newError.Unarchive();
         }
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Arquivar_Um_Error_Arquivado_Joga_Um_InvalidOperationException()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
             _newError.Archive();
             _newError.Archive();
         }
@@ -187,7 +191,7 @@ namespace CentralDeErro.Tests.Entities
         [ExpectedException(typeof(InvalidOperationException))]
         public void Deletar_Um_Error_Deletado_Joga_Um_InvalidOperationException()
         {
-            var _newError = Error.Create(_id, _token, _title, _details, _level,  _sourceId);
+            var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
             _newError.Delete();
             _newError.Delete();
         }

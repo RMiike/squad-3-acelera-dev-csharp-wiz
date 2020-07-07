@@ -21,15 +21,14 @@ namespace CentralDeErro.Core.Entities
         public DateTime CreatedAt { get; private set; }
         public IEnumerable<UserRole> UserRoles { get; private set; }
 
-        public static User Create(string fullName, string email, DateTime createdAt, string userName)
+        public static User Create(string fullName, string email, string userName)
         {
-            if (String.IsNullOrEmpty(fullName) 
-                || String.IsNullOrEmpty(email) 
-                || String.IsNullOrEmpty(userName) 
-                || createdAt == null
-               )
+            if (String.IsNullOrEmpty(fullName)
+                || String.IsNullOrEmpty(email)
+                || String.IsNullOrEmpty(userName))
                 throw new ArgumentNullException();
 
+            var createdAt = DateTime.UtcNow;
             return new User(fullName, email, createdAt, userName);
         }
     }

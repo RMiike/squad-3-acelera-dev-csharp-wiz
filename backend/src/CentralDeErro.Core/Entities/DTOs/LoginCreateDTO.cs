@@ -15,7 +15,7 @@ namespace CentralDeErro.Core.Entities.DTOs
                 .Requires()
                 .IsEmail(Email, "E-mail", "Invalid email.")
                 .HasMaxLen(Password, 60, "Password", "This field should have no more than 60 chars.")
-                .HasMinLen(Password, 6, "Password", "This field should have at least 6 chars."));
+                .HasMinLen(Password, 8, "Password", "This field should have at least 8 chars."));
         }
     }
 }

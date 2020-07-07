@@ -103,6 +103,7 @@ namespace CentralDeErro.Infrastructure.Repository
                 .Select(error => error)
                 .Where(error => error.Id == id && error.Deleted == false)
                 .FirstOrDefault();
+
         private IQueryable<ErrorReadDTO> HandleSearch(Expression<Func<Error, bool>> condition)
         {
             return _context

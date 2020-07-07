@@ -6,7 +6,7 @@ namespace CentralDeErro.Core.Entities.DTOs
 {
     public class SourceCreateDTO : Notifiable, IValidatable
     {
-        public int Id { get; set; }
+        public int Id { get; }
         public string Address { get; set; }
         public _Environment Environment { get; set; }
 

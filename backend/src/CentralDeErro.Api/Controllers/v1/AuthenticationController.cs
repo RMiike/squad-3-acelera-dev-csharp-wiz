@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 
-namespace CentralDeErro.Controllers.v1
+namespace CentralDeErro.Api.Controllers.v1
 {
     [Route("v1")]
     [ApiController]
