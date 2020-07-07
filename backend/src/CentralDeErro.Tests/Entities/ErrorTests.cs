@@ -104,8 +104,11 @@ namespace CentralDeErro.Tests.Entities
         {
             var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 4a9d2406de5740a73e120ae1ad05ff19edf02fb0
           
 >>>>>>> 4a9d2406de5740a73e120ae1ad05ff19edf02fb0
             Assert.AreEqual(_createdAt.Date, _newError.CreatedAt.Date);
