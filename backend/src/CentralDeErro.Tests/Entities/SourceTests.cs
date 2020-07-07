@@ -16,18 +16,16 @@ namespace CentralDeErro.Tests.Entities
 
         [TestMethod]
         [TestCategory("New Source")]
-        public void O_Id_Do_Novo_Source_Deve_Ser_1()
+        public void NewSource_ShouldHaveIdEquals_1()
         {
             var _newSource = Source.Create(_id, _address, _environment);
 
             Assert.AreEqual(1, _newSource.Id);
         }
 
-       
-
         [TestMethod]
         [TestCategory("New Source")]
-        public void O_Endereco_Do_Novo_Source_Deve_Ser_Address()
+        public void NewSource_Address_ShouldBeAddress()
         {
             var _newSource = Source.Create(_id, _address, _environment);
 
@@ -37,14 +35,14 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         [TestCategory("New Source")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void O_Endereco_Vazio_Retorna_ArgumentNullException()
+        public void Empty_Address_ShouldReturn_ArgumentNullException()
         {
             Source.Create(_id, "", _environment);
         }
 
         [TestMethod]
         [TestCategory("New Source")]
-        public void O_Ambiente_Do_Novo_Source_Deve_Ser_Development()
+        public void NewSource_Environment_ShouldBeDefault()
         {
             var _newSource = Source.Create(_id, _address, _environment);
 
@@ -53,7 +51,7 @@ namespace CentralDeErro.Tests.Entities
 
         [TestMethod]
         [TestCategory("New Source")]
-        public void Novo_Source_Nao_Pode_Que_Estar_Deletado()
+        public void NewSource_Deleted_ShouldBeEquals_False()
         {
             var _newSource = Source.Create(_id, _address, _environment);
 
@@ -62,7 +60,7 @@ namespace CentralDeErro.Tests.Entities
 
         [TestMethod]
         [TestCategory("New Source")]
-        public void Novo_Source_Pode_Ser_Deletado()
+        public void NewSource_CanBe_Deleted()
         {
             var _newSource = Source.Create(_id, _address, _environment);
             _newSource.Delete();
@@ -73,7 +71,7 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         [TestCategory("New Source")]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void Source_Deletado_Nao_Pode_Ser_Deletado_InvalidOperationException()
+        public void DeletedSource_ShouldThrow_InvalidOperationException_When_Deleted()
         {
             var _newSource = Source.Create(_id, _address, _environment);
             _newSource.Delete();
