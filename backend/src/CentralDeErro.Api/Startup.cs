@@ -3,6 +3,7 @@ using CentralDeErro.Core.Contracts.Repositories;
 using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Infrastructure.Context;
+using CentralDeErro.Infrastructure.Data;
 using CentralDeErro.Infrastructure.Repository;
 using CentralDeErro.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

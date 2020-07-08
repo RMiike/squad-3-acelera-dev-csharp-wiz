@@ -1,6 +1,7 @@
 ﻿using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Enums;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CentralDeErro.Infrastructure.Data.Maps
 {
@@ -40,6 +41,7 @@ namespace CentralDeErro.Infrastructure.Data.Maps
             .IsRequired();
 
             builder.Property(x => x.Level)
+                .HasConversion(x => x.ToString(), x => Enum.Parse<Level>(x))
             .HasColumnName("Level")
             .IsRequired();
 

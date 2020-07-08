@@ -26,6 +26,8 @@ namespace CentralDeErro.Infrastructure.Repository
             _mapper = mapper;
         }
 
+     
+
         public IEnumerable<ErrorReadDTO> Get()
           => HandleSearch(e => e.Deleted == false)
                 .ToList();

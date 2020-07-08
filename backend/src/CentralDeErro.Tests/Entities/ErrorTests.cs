@@ -29,7 +29,7 @@ namespace CentralDeErro.Tests.Entities
         //       .RuleFor(e => e.SourceId, 1)
         //       .Generate(3);
         #region New Error
-       
+
 
         [TestMethod]
         [TestCategory("New Error")]
@@ -103,14 +103,7 @@ namespace CentralDeErro.Tests.Entities
         public void NewError_CreatedAt_ShouldBe_UTCNow()
         {
             var _newError = Error.Create(_id, _token, _title, _details, _level, _sourceId);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-=======
->>>>>>> 4a9d2406de5740a73e120ae1ad05ff19edf02fb0
-          
->>>>>>> 4a9d2406de5740a73e120ae1ad05ff19edf02fb0
             Assert.AreEqual(_createdAt.Date, _newError.CreatedAt.Date);
         }
         [TestMethod]
