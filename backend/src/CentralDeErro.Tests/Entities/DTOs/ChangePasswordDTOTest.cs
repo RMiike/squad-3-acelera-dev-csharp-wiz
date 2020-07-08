@@ -8,13 +8,13 @@ namespace CentralDeErro.Tests.Entities.DTOs
     {
 
         #region props
-        private readonly string _oldPassword = "OldPassword";
-        private readonly string _newPassword = "NewPassword";
-        private readonly string _confirmPassword = "NewPassword";
+        private readonly string _oldPassword = "Old Password";
+        private readonly string _newPassword = "New Password";
+        private readonly string _confirmPassword = "New Password";
         #endregion
 
         [TestMethod]
-        public void O_Antigo_Password_Deve_Ser_OldPassword()
+        public void OldPassword_Must_Be_Old_Password()
         {
             var user = new ChangePasswordDTO
             {
@@ -23,10 +23,10 @@ namespace CentralDeErro.Tests.Entities.DTOs
                 ConfirmPassword = _confirmPassword
             };
 
-            Assert.AreEqual("OldPassword", user.OldPassword);
+            Assert.AreEqual("Old Password", user.OldPassword);
         }
         [TestMethod]
-        public void O_Antigo_Password_Deve_Ter_Mais_De_8_Chars()
+        public void OldPassword_Must_Have_At_Least_8_Chars()
         {
             var user = new ChangePasswordDTO{ 
                 OldPassword = "1234567",
@@ -39,7 +39,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(user.Invalid, "Old password must have at least 8 chars");
         }
         [TestMethod]
-        public void O_Antigo_Password_Deve_Ter_Menos_De_100_Chars()
+        public void OldPassowrd_Must_Be_Shorter_Or_Equal_Than_100_Chars()
         {
             var user = new ChangePasswordDTO
             {
@@ -54,7 +54,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
         }
 
         [TestMethod]
-        public void O_Novo_Password_Deve_Ser_NewPassword()
+        public void NewPassowrd_Must_Be_NewPassword()
         {
             var user = new ChangePasswordDTO
             {
@@ -66,7 +66,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.AreEqual("NewPassword", user.NewPassword);
         }
         [TestMethod]
-        public void O_Novo_Password_Deve_Ter_Mais_De_8_Chars()
+        public void NewPassword_Must_Have_At_Least_8_Chars()
         {
             var user = new ChangePasswordDTO
             {
@@ -80,7 +80,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(user.Invalid, "New Password must have at least 8 chars");
         }
         [TestMethod]
-        public void O_Novo_Password_Deve_Ter_Menos_De_100_Chars()
+        public void NewPassword_Must_Be_Shorter_Or_Equal_Than_100_Chars()
         {
             var user = new ChangePasswordDTO
             {
@@ -94,7 +94,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(user.Invalid, "New Password must shorter or equal than 100 chars");
         }
         [TestMethod]
-        public void A_Confirmacao_Password_Deve_Ser_NewPassword()
+        public void ConfirmPassword_Must_Be_New_Password()
         {
             var user = new ChangePasswordDTO
             {
@@ -106,7 +106,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.AreEqual("NewPassword", user.ConfirmPassword);
         }
         [TestMethod]
-        public void A_Confirmacao_De_Password_Deve_Ter_Mais_De_8_Chars()
+        public void ConfirmPassword_Must_Have_At_Least_8_Chars()
         {
             var user = new ChangePasswordDTO
             {
@@ -120,7 +120,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(user.Invalid, "Confirm password must have at least 8 chars");
         }
         [TestMethod]
-        public void A_Confirmacao_De_Password_Deve_Ter_Menos_De_100_Chars()
+        public void ConfirmPassword_Must_Be_Shorter_Or_Equal_Than_100_Chars()
         {
             var user = new ChangePasswordDTO
             {
@@ -134,7 +134,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(user.Invalid, "Confirm password must shorter or equal than 100 chars");
         }
         [TestMethod]
-        public void A_Confirmacao_De_Password_Deve_Ser_Igual_A_Nova_Senha()
+        public void ConfirmPassword_Must_Be_Equals_NewPassword()
         {
             var user = new ChangePasswordDTO
             {
