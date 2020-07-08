@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
-namespace CentralDeErro.Controllers.v1
+namespace CentralDeErro.Api.Controllers.v1
 {
     [Route("v1")]
     [ApiController]

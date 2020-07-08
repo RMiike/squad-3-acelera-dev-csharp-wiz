@@ -17,9 +17,9 @@ namespace CentralDeErro.Tests.Entities
 
         [TestMethod]
         [TestCategory("New User")]
-        public void FullName_MustBe_Full_Name()
+        public void Nome_Completo_Deve_Ser_Full_Name()
         {
-            var user = User.Create(_fullName, _email, _createdAt, _userName);
+            var user = User.Create(_fullName, _email, _userName);
 
             Assert.AreEqual("Full Name", user.FullName);
         }
@@ -27,41 +27,41 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         [TestCategory("New User")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void FullName_CantBe_Null_Or_Empty()
+        public void Nome_Completo_Nao_Pode_Ser_Vazio_Ou_Null()
         {
-            User.Create("", _email, _createdAt, _userName);
-
+            User.Create("", _email,  _userName);
         }
         [TestMethod]
         [TestCategory("New User")]
-        public void Email_MustBe_Email()
+        public void Email_Deve_Ser_Email()
         {
-            var user = User.Create(_fullName, _email, _createdAt, _userName);
+            var user = User.Create(_fullName, _email, _userName);
 
             Assert.AreEqual("Email", user.Email);
         }
         [TestMethod]
         [TestCategory("New User")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Email_CantBe_Null_Or_Empty()
+        public void Email_Nao_Pode_Ser_Vazio_Ou_Null()
         {
-            User.Create(_fullName,"",_createdAt,_userName);
+            User.Create(_fullName,"",_userName);
         }
         [TestMethod]
         [TestCategory("New User")]
-        public void UserName_Deve_Ser_User_Name()
+        public void User_Name_Deve_Ser_User_Name()
         {
-            var user = User.Create(_fullName, _email, _createdAt, "User Name");
+            var user = User.Create(_fullName, _email,  _userName);
 
-            Assert.AreEqual("User Name", user.UserName);
+            Assert.AreEqual("Email", user.UserName);
         }
+
         [TestMethod]
         [TestCategory("New User")]
-        public void CreatedAt_MustBe_Equals_DateTime_UTCNow()
+        public void O_CreatedAt_Do_Novo_User_Deve_Ser_O_Horario_DeAgora()
         {
-            var user = User.Create(_fullName, _email, _createdAt, _userName);
+            var user = User.Create(_fullName, _email, _userName);
 
-            Assert.AreEqual(_createdAt, user.CreatedAt);
+            Assert.AreEqual(_createdAt.Date, user.CreatedAt.Date);
         }
     }
 }

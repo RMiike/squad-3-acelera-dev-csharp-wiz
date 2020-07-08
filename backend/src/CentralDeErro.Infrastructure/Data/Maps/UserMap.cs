@@ -25,7 +25,7 @@ namespace CentralDeErro.Infrastructure.Data.Maps
              .IsRequired();
 
             builder.HasData(
-                User.Create("Renato Miike", "rmiike@gmail.com", DateTime.UtcNow, "rmiike@gmail.com")
+                User.Create("Renato Miike", "rmiike@gmail.com", "rmiike@gmail.com")
                 );
         }
     }
