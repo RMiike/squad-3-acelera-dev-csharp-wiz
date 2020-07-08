@@ -17,7 +17,7 @@ namespace CentralDeErro.Tests.Entities
 
         [TestMethod]
         [TestCategory("New User")]
-        public void Nome_Completo_Deve_Ser_Full_Name()
+        public void FullName_MustBe_Full_Name()
         {
             var user = User.Create(_fullName, _email, _createdAt, _userName);
 
@@ -27,13 +27,14 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         [TestCategory("New User")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Nome_Completo_Nao_Pode_Ser_Vazio_Ou_Null()
+        public void FullName_CantBe_Null_Or_Empty()
         {
             User.Create("", _email, _createdAt, _userName);
+
         }
         [TestMethod]
         [TestCategory("New User")]
-        public void Email_Deve_Ser_Email()
+        public void Email_MustBe_Email()
         {
             var user = User.Create(_fullName, _email, _createdAt, _userName);
 
@@ -42,21 +43,21 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         [TestCategory("New User")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Email_Nao_Pode_Ser_Vazio_Ou_Null()
+        public void Email_CantBe_Null_Or_Empty()
         {
             User.Create(_fullName,"",_createdAt,_userName);
         }
         [TestMethod]
         [TestCategory("New User")]
-        public void User_Name_Deve_Ser_User_Name()
+        public void UserName_Deve_Ser_User_Name()
         {
-            var user = User.Create(_fullName, _email, _createdAt, _userName);
+            var user = User.Create(_fullName, _email, _createdAt, "User Name");
 
-            Assert.AreEqual("Email", user.UserName);
+            Assert.AreEqual("User Name", user.UserName);
         }
         [TestMethod]
         [TestCategory("New User")]
-        public void O_CreatedAt_Do_Novo_User_Deve_Ser_O_Horario_DeAgora()
+        public void CreatedAt_MustBe_Equals_DateTime_UTCNow()
         {
             var user = User.Create(_fullName, _email, _createdAt, _userName);
 

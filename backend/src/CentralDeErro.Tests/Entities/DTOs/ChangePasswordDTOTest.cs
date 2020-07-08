@@ -19,7 +19,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
         #endregion
 
         [TestMethod]
-        public void O_Antigo_Password_Deve_Ter_Mais_De_8_Chars()
+        public void OldPassword_MustHave_AtLeast_Eight_Chars()
         {
             var user = new ChangePasswordDTO{ 
                 OldPassword = "1234567",
@@ -32,11 +32,11 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(user.Invalid, "Old password must have at least 8 chars");
         }
         [TestMethod]
-        public void O_Antigo_Password_Deve_Ter_Menos_De_100_Chars()
+        public void OldPassword_MustBe_ShortherThan_100_Chars()
         {
             var user = new ChangePasswordDTO
             {
-                OldPassword = new string('x', 100),
+                OldPassword = new string('x', 101),
                 NewPassword = _newPassword,
                 ConfirmPassword = _confirmPassword
             };
