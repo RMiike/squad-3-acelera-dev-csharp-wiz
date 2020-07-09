@@ -2,6 +2,7 @@
 using CentralDeErro.Core.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace CentralDeErro.Infrastructure.Data.Maps
 {
@@ -22,8 +23,14 @@ namespace CentralDeErro.Infrastructure.Data.Maps
             .IsRequired();
 
             builder.Property(x => x.Environment)
+            .HasConversion(x => x.ToString(), x => Enum.Parse<_Environment>(x))
             .HasColumnName("Environment")
+            .HasMaxLength(50)
             .IsRequired();
+
+            builder.Property(x => x.Deleted)
+          .HasColumnName("Deleted")
+          .IsRequired();
 
             builder.HasData(
                  Source.Create(1, "Front-End", _Environment.Development),

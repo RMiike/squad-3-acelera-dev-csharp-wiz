@@ -1,11 +1,8 @@
 ﻿using CentralDeErro.Core.Enums;
 using CentralDeErro.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CentralDeErro.Tests.Data.Map
 {
@@ -52,9 +49,9 @@ namespace CentralDeErro.Tests.Data.Map
 
         [DataTestMethod]
         [DataRow("SourceId", "Source", false, "Id")]
-        public void Should_Has_Foreing_Key(string fieldName, string relatedTable, bool isNullable, string relatedKey)
+        public void Deve_Ter_Chave_Estrangeira(string fieldName, string relatedTable, bool isNullable, string relatedKey)
         {
-            AssertForeignKey(fieldName, relatedTable, !isNullable, relatedKey);
+            VerificaChaveEstrangeira(fieldName, relatedTable, !isNullable, relatedKey);
         }
     }
 }

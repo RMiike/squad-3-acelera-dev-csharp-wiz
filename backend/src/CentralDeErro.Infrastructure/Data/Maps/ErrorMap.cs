@@ -41,8 +41,9 @@ namespace CentralDeErro.Infrastructure.Data.Maps
             .IsRequired();
 
             builder.Property(x => x.Level)
-                .HasConversion(x => x.ToString(), x => Enum.Parse<Level>(x))
+            .HasConversion(x => x.ToString(), x => Enum.Parse<Level>(x))
             .HasColumnName("Level")
+            .HasMaxLength(50)
             .IsRequired();
 
 

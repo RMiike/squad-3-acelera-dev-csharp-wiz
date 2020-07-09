@@ -18,7 +18,7 @@ namespace CentralDeErro.Core.Entities
         public int Id { get; }
         public string Address { get; }
         public _Environment Environment { get; }
-        public bool Deleted { get; private set; }
+        public bool Deleted { get;  set; }
         public IEnumerable<Error> Errors { get; }
 
         public static Source Create(int id, string address, _Environment environment)

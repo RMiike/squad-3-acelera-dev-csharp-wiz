@@ -4,14 +4,16 @@ using CentralDeErro.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CentralDeErro.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    partial class CentralDeErrorContextModelSnapshot : ModelSnapshot
+    [Migration("20200708235500_v8")]
+    partial class v8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,8 +50,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("Level")
                         .IsRequired()
                         .HasColumnName("Level")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SourceId")
                         .HasColumnName("SourceId")
@@ -78,7 +79,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                         {
                             Id = 1,
                             Archived = false,
-                            CreatedAt = new DateTime(2020, 7, 9, 0, 15, 38, 442, DateTimeKind.Utc).AddTicks(2172),
+                            CreatedAt = new DateTime(2020, 7, 8, 23, 54, 59, 795, DateTimeKind.Utc).AddTicks(2555),
                             Deleted = false,
                             Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
                             Level = "Debug",
@@ -136,8 +137,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("Environment")
                         .IsRequired()
                         .HasColumnName("Environment")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -267,10 +267,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e9843b9e-ac02-48cc-aaf3-a77e8459c6d4",
+                            Id = "4eea9ccd-e24b-454f-9f54-9aac788bd31a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a264f427-b9c6-477b-ae7e-c74fea5186c6",
-                            CreatedAt = new DateTime(2020, 7, 9, 0, 15, 38, 449, DateTimeKind.Utc).AddTicks(1749),
+                            ConcurrencyStamp = "97afee1f-0ed7-46be-a2c4-72e46dc5c981",
+                            CreatedAt = new DateTime(2020, 7, 8, 23, 54, 59, 801, DateTimeKind.Utc).AddTicks(4100),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Renato Miike",

@@ -1,14 +1,11 @@
 ﻿using CentralDeErro.Infrastructure.Context;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CentralDeErro.Tests.Data
 {
@@ -103,7 +100,7 @@ namespace CentralDeErro.Tests.Data
             return property.GetMaxLength().Value;
         }
 
-        public void AssertForeignKey(string fieldName, string expectedRelatedTable, bool required, params string[] expectedKeys)
+        public void VerificaChaveEstrangeira(string fieldName, string expectedRelatedTable, bool required, params string[] expectedKeys)
         {
             var entity = VerificarEntidade();
             Assert.IsNotNull(entity);
@@ -128,6 +125,20 @@ namespace CentralDeErro.Tests.Data
         {
             return _context.Model.GetEntityTypes().
                 FirstOrDefault(x => ObterNomeDaTabela(x) == tableName);
+        }
+        public void VerificaAcessoFilha(string navigationTable)
+        {
+            var entity = VerificarEntidade();
+            Assert.IsNotNull(entity);
+
+            var relatedEntity = VerificarEntidade(navigationTable);
+            Assert.IsNotNull(relatedEntity);
+
+            var navigation = entity.GetNavigations().
+                FirstOrDefault(x => x.ForeignKey.DeclaringEntityType == relatedEntity);
+
+            Assert.IsNotNull(navigation);
+            Assert.IsTrue(typeof(IEnumerable).IsAssignableFrom(navigation.ClrType));
         }
 
     }

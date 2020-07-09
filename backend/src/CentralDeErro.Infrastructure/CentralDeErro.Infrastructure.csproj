@@ -5,6 +5,17 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20200708232840_v8.cs" />
+    <Compile Remove="Migrations\20200708232840_v8.Designer.cs" />
+    <Compile Remove="Migrations\20200708233516_v9.cs" />
+    <Compile Remove="Migrations\20200708233516_v9.Designer.cs" />
+    <Compile Remove="Migrations\20200708234646_v11.cs" />
+    <Compile Remove="Migrations\20200708234646_v11.Designer.cs" />
+    <Compile Remove="Migrations\20200708235353_v.cs" />
+    <Compile Remove="Migrations\20200708235353_v.Designer.cs" />
+  </ItemGroup>
+
   
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
