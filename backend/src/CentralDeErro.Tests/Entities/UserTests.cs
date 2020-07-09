@@ -17,7 +17,7 @@ namespace CentralDeErro.Tests.Entities
 
         [TestMethod]
         [TestCategory("New User")]
-        public void Nome_Completo_Deve_Ser_Full_Name()
+        public void FullName_Must_Be_Full_Name()
         {
             var user = User.Create(_fullName, _email, _userName);
 
@@ -27,13 +27,13 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         [TestCategory("New User")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Nome_Completo_Nao_Pode_Ser_Vazio_Ou_Null()
+        public void FullName_Cant_Be_Empty_Or_Null()
         {
             User.Create("", _email,  _userName);
         }
         [TestMethod]
         [TestCategory("New User")]
-        public void Email_Deve_Ser_Email()
+        public void Email_Must_Be_Email()
         {
             var user = User.Create(_fullName, _email, _userName);
 
@@ -42,13 +42,13 @@ namespace CentralDeErro.Tests.Entities
         [TestMethod]
         [TestCategory("New User")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Email_Nao_Pode_Ser_Vazio_Ou_Null()
+        public void Email_Cant_Be_Empty_Or_Null()
         {
             User.Create(_fullName,"",_userName);
         }
         [TestMethod]
         [TestCategory("New User")]
-        public void User_Name_Deve_Ser_User_Name()
+        public void UserName_Must_Be_User_Name()
         {
             var user = User.Create(_fullName, _email,  _userName);
 
@@ -57,7 +57,7 @@ namespace CentralDeErro.Tests.Entities
 
         [TestMethod]
         [TestCategory("New User")]
-        public void O_CreatedAt_Do_Novo_User_Deve_Ser_O_Horario_DeAgora()
+        public void CreatedAt_Must_Be_UTC_Now()
         {
             var user = User.Create(_fullName, _email, _userName);
 
