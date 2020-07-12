@@ -1,3 +1,10 @@
+
+ <p align="center">
+
+ [![Build Status](https://travis-ci.com/RMiike/newrepo.svg?branch=master)](https://travis-ci.com/RMiike/newrepo)
+ 
+ [![codecov](https://codecov.io/gh/RMiike/newrepo/branch/master/graph/badge.svg)](https://codecov.io/gh/RMiike/newrepo)
+ </p>
 # squad-3-acelera-dev-csharp-wiz
 
 <h1 align="center">Projeto final - Acelera Dev</h1>
