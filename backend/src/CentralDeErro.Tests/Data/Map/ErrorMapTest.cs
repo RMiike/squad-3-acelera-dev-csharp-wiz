@@ -21,15 +21,15 @@ namespace CentralDeErro.Tests.Data.Map
             
 
         [TestMethod]
-        public void Deve_ter_tabela()
+        public void Should_Have_Table()
         {
-            VerificarTabela();
+            Check_Table();
         }
 
         [TestMethod]
-        public void Deve_ter_Chave_Primaria()
+        public void Should_Have_Primary_Key()
         {
-            VerificarChavePrimaria("Id");
+            Check_Primary_Key("Id");
         }
 
         [DataTestMethod]
@@ -42,16 +42,16 @@ namespace CentralDeErro.Tests.Data.Map
         [DataRow("Level", false, typeof(Level), null)]
         [DataRow("Archived", false, typeof(bool), null)]
         [DataRow("Deleted", false, typeof(bool), null)]
-        public void Deve_ter_Campo(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
+        public void Should_Have_Field(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
         {
-            VerificarCampo(fieldName, isNullable, fieldType, fieldSize);
+            Check_Column(fieldName, isNullable, fieldType, fieldSize);
         }
 
         [DataTestMethod]
         [DataRow("SourceId", "Source", false, "Id")]
-        public void Deve_Ter_Chave_Estrangeira(string fieldName, string relatedTable, bool isNullable, string relatedKey)
+        public void Should_Have_Foreign_Key(string fieldName, string relatedTable, bool isNullable, string relatedKey)
         {
-            VerificaChaveEstrangeira(fieldName, relatedTable, !isNullable, relatedKey);
+            Check_Foreign_Key(fieldName, relatedTable, !isNullable, relatedKey);
         }
     }
 }

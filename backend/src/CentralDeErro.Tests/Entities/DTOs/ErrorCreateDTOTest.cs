@@ -17,32 +17,31 @@ namespace CentralDeErro.Tests.Entities.DTOs
         };
 
         [TestMethod]
-        public void O_Titulo_Deve_Ser_Title()
+        public void Check_Title_Equals_Title()
         {
-
             Assert.AreEqual("Title", errorCreateDTO.Title);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void O_Token_Null_Retorna_ArgumentNullException()
+        public void Null_Token_Throws_ArgumentNullException()
         {
             errorCreateDTO.AddToken(null);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void O_Token_Vazio_Retorna_ArgumentNullException()
+        public void Empty_Token_Throws_ArgumentNullException()
         {
             errorCreateDTO.AddToken("");
         }
         [TestMethod]
-        public void O_Token_Deve_Ser_Token()
+        public void Check_Token_Equals_Token()
         {
             errorCreateDTO.AddToken("Token");
 
             Assert.AreEqual("Token", errorCreateDTO.Token);
         }
         [TestMethod]
-        public void O_Titulo_Deve_Ter_Pelo_Menos_3_Chars()
+        public void Check_Title_Bigger_Than_3_Chars()
         {
             var newErrorCreateDTO = new ErrorCreateDTO
             {
@@ -57,7 +56,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(newErrorCreateDTO.Invalid);
         }
         [TestMethod]
-        public void O_Titulo_Deve_Ser_Menor_Ou_Igual_A_100()
+        public void Check_Title_Smaller_Or_Equals_100_Chars()
         {
             var newErrorCreateDTO = new ErrorCreateDTO
             {
@@ -72,14 +71,13 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(newErrorCreateDTO.Invalid);
         }
         [TestMethod]
-        public void O_Detalhe_Deve_Ser_Details()
+        public void Check_Detail_Equals_Details()
         {
-
             Assert.AreEqual("Details", errorCreateDTO.Details);
         }
 
         [TestMethod]
-        public void O_Detalhe_Deve_Ter_Pelo_Menos_6_Chars()
+        public void Check_Detail_Bigger_Than_6_Chars()
         {
             var newErrorCreateDTO = new ErrorCreateDTO
             {
@@ -94,7 +92,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(newErrorCreateDTO.Invalid);
         }
         [TestMethod]
-        public void O_Detalhe_Deve_Ser_Menor_Ou_Igual_A_1024()
+        public void Check_Detail_Smaller_or_Equals_1024()
         {
             var newErrorCreateDTO = new ErrorCreateDTO
             {
@@ -110,13 +108,13 @@ namespace CentralDeErro.Tests.Entities.DTOs
         }
 
         [TestMethod]
-        public void O_SourceId_Deve_Ser_1()
+        public void Check_SourceId_Equals_1()
         {
             Assert.AreEqual(1, errorCreateDTO.SourceId);
         }
       
         [TestMethod]
-        public void O_SourceId_Deve_Ser_Entre_1_e_100()
+        public void Check_SourceId_Between_1_and_100()
         {
             var newErrorCreateDTO = new ErrorCreateDTO
             {
@@ -131,12 +129,12 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(newErrorCreateDTO.Invalid);
         }
         [TestMethod]
-        public void O_Level_Deve_Ser_Error()
+        public void Check_Level_Equals_Error()
         {
             Assert.AreEqual("Error", errorCreateDTO.Level.ToString());
         }
         [TestMethod]
-        public void O_Level_Deve_Ser_Valido_Entre_0_E_Max()
+        public void Check_Valid_Level_Between_0_and_Max()
         {
             var max = (Level.GetNames(typeof(Level)).Length);
 

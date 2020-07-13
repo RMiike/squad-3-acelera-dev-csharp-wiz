@@ -8,7 +8,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
     public class ForgotPasswordDTOTest
     {
         [TestMethod]
-        public void Email_Invalido_Nao_Passa()
+        public void Check_Invalid_Email()
         {
             var forgotPasswordDto = new ForgotPasswordDTO { Email = "email" };
 
@@ -16,7 +16,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(forgotPasswordDto.Invalid);
         }
         [TestMethod]
-        public void Email_Deve_Ser_Um_Email_Valido()
+        public void Check_Email_Is_Valid()
         {
             var forgotPasswordDto = new ForgotPasswordDTO { Email = "teste@teste.com" };
 
@@ -24,7 +24,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsFalse(forgotPasswordDto.Invalid);
         }
         [TestMethod]
-        public void Email_Deve_Ser_Um_testeArrobaTestePontoCom()
+        public void Check_Email()
         {
             var forgotPasswordDto = new ForgotPasswordDTO { Email = "teste@teste.com" };
 

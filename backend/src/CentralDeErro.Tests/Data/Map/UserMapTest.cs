@@ -20,18 +20,18 @@ namespace CentralDeErro.Tests.Data.Map
             Table = "AspNetUsers";
         }
         [TestMethod]
-        public void Deve_ter_tabela()
+        public void Should_Have_Table()
         {
-            VerificarTabela();
+            Check_Table();
         }
       
         [DataTestMethod]
         [DataRow("FullName", false, typeof(string), 60)]
         [DataRow("Email", false, typeof(string), 60)]
         [DataRow("CreatedAt", false, typeof(DateTime), null)]
-        public void Deve_ter_Campo(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
+        public void Should_Have_Field(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
         {
-            VerificarCampo(fieldName, isNullable, fieldType, fieldSize);
+            Check_Column(fieldName, isNullable, fieldType, fieldSize);
         }
     }
 }

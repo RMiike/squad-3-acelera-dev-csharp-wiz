@@ -12,13 +12,12 @@ namespace CentralDeErro.Tests.Entities.DTOs
         #endregion
 
         [TestMethod]
-        public void Email_deve_ser_Valido()
+        public void Check_Email_Is_Invalid()
         {
             var loginCreateDTO = new LoginCreateDTO
             {
                 Email = "email",
                 Password = _password
-
             };
 
             loginCreateDTO.Validate();
@@ -26,7 +25,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(loginCreateDTO.Invalid);
         }
         [TestMethod]
-        public void Email_valido_deve_Passar()
+        public void Check_Email_Is_Valid()
         {
             var loginCreateDTO = new LoginCreateDTO
             {
@@ -39,7 +38,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(loginCreateDTO.Valid);
         }
         [TestMethod]
-        public void Password_valido_deve_Passar()
+        public void Check_Password_Is_Valid()
         {
             var loginCreateDTO = new LoginCreateDTO
             {
@@ -52,7 +51,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(loginCreateDTO.Valid);
         }
         [TestMethod]
-        public void Email_deve_ter_pelo_menos_8_chars()
+        public void Check_Password_Greater_Than_7_Chars()
         {
             var loginCreateDTO = new LoginCreateDTO
             {
@@ -65,7 +64,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(loginCreateDTO.Invalid);
         }
         [TestMethod]
-        public void Email_deve_ser_menor_ou_igual_a_100()
+        public void Check_Password_Smaller_or_Equals_100_Chars()
         {
             var loginCreateDTO = new LoginCreateDTO
             {

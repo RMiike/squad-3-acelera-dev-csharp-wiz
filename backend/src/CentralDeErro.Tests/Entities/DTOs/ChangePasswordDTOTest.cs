@@ -9,8 +9,8 @@ namespace CentralDeErro.Tests.Entities.DTOs
 
         #region props
         private readonly string _oldPassword = "Old Password";
-        private readonly string _newPassword = "New Password";
-        private readonly string _confirmPassword = "New Password";
+        private readonly string _newPassword = "NewPassword";
+        private readonly string _confirmPassword = "NewPassword";
         #endregion
 
         [TestMethod]

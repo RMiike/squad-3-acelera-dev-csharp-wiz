@@ -21,30 +21,30 @@ namespace CentralDeErro.Tests.Data.Map
             Table = "Source";
         }
         [TestMethod]
-        public void Deve_ter_tabela()
+        public void Should_Have_Table()
         {
-            VerificarTabela();
+            Check_Table();
         }
         [TestMethod]
-        public void Deve_ter_Chave_Primaria()
+        public void Should_Have_Primary_Key()
         {
-            VerificarChavePrimaria("Id");
+            Check_Primary_Key("Id");
         }
         [DataTestMethod]
         [DataRow("Id", false, typeof(int), null)]
         [DataRow("Address", false, typeof(string), 60)]
         [DataRow("Environment", false, typeof(_Environment), 50)]
         [DataRow("Deleted", false, typeof(bool), null)]
-        public void Deve_ter_Campo(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
+        public void Should_Have_Field(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
         {
-            VerificarCampo(fieldName, isNullable, fieldType, fieldSize);
+            Check_Column(fieldName, isNullable, fieldType, fieldSize);
         }
 
         [DataTestMethod]
         [DataRow("Error")]
-        public void Should_Has_Children_Navigation(string childrenTable)
+        public void Should_Have_Children_Navigation(string childrenTable)
         {
-            VerificaAcessoFilha(childrenTable);
+            Check_Child_Access(childrenTable);
         }
     }
 }

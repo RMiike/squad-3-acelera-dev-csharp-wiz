@@ -19,7 +19,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
 
 
         [TestMethod]
-        public void Registro_Valido_Deve_Passar()
+        public void Check_Register_Is_Valid()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {
@@ -34,7 +34,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(_registerCreateDTO.Valid);
         }
         [TestMethod]
-        public void Nome_Completo_Deve_ter_Pelo_menos_3_chars()
+        public void Check_FullName_Greater_Than_2_Chars()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {
@@ -49,7 +49,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
 
         }
         [TestMethod]
-        public void Nome_Completo_Deve_ter_ate_100_chars()
+        public void Check_FullName_Smaller_Than_Or_Equals_100()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {
@@ -65,7 +65,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
 
         }
         [TestMethod]
-        public void Email_deve_ser_valido()
+        public void Check_Email_Is_Valid()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {
@@ -80,7 +80,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(_registerCreateDTO.Invalid);
         }
         [TestMethod]
-        public void Password_Deve_ter_Pelo_menos_8_chars()
+        public void Check_Password_Greater_Than_7_Chars()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {
@@ -95,7 +95,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(_registerCreateDTO.Invalid);
         }
         [TestMethod]
-        public void Password_Deve_ter_ate_100_chars()
+        public void Check_Password_Smaller_Than_101_Chars()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {
@@ -110,7 +110,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(_registerCreateDTO.Invalid);
         }
         [TestMethod]
-        public void Confirm_Password_Deve_ter_Pelo_menos_8_chars()
+        public void Check_ConfirmPassowrd_Greater_Than_7_Chars()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {
@@ -125,7 +125,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(_registerCreateDTO.Invalid);
         }
         [TestMethod]
-        public void Confirm_Password_Deve_ter_ate_100_chars()
+        public void Check_ConfirmPassword_Smaller_Than_Or_Equals_100_Chars()
         {
             RegisterCreateDTO _registerCreateDTO = new RegisterCreateDTO
             {

@@ -18,14 +18,14 @@ namespace CentralDeErro.Tests.Entities.DTOs
 
 
         [TestMethod]
-        public void Endereco_deve_ser_Address()
+        public void Check_Address_Equals_Address()
         {
             _sourceCreateDTO.Validate();
 
             Assert.AreEqual("Address", _sourceCreateDTO.Address);
         }
         [TestMethod]
-        public void Endereco_deve_ter_no_minimo_6_chars()
+        public void Check_Address_Bigger_Than_6_Chars()
         {
             var sourceCreateDTO = new SourceCreateDTO
             {
@@ -38,7 +38,7 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(sourceCreateDTO.Invalid);
         }
         [TestMethod]
-        public void Endereco_deve_ter_no_maximos_1024_chars()
+        public void Check_Address_Smaller_Than_Or_Equals_1024_Chars()
         {
             var sourceCreateDTO = new SourceCreateDTO
             {
@@ -51,13 +51,13 @@ namespace CentralDeErro.Tests.Entities.DTOs
             Assert.IsTrue(sourceCreateDTO.Invalid);
         }
         [TestMethod]
-        public void O_Environment_Deve_Ser_Development()
+        public void Check_Environment_Equals_Development()
         {
             Assert.AreEqual("Development", _sourceCreateDTO.Environment.ToString());
         }
 
         [TestMethod]
-        public void O_Environment_Deve_Ser_Valido_Entre_0_E_Max()
+        public void Check_Valid_Environment_Between_0_and_Max()
         {
             var max = (_Environment.GetNames(typeof(_Environment)).Length);
 
