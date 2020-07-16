@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?branch=entityLogErro)](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz)
 
+[![codecov](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/master/graph/badge.svg)](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz)
+
 # squad-3-acelera-dev-csharp-wiz
 
 <h1 align="center">Projeto final - Acelera Dev</h1>
