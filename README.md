@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?branch=entityLogErro)](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz)
 
-[![codecov](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/master/graph/badge.svg)](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz)
+[![codecov](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/entityLogErro/graph/badge.svg)](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz)
 
 # squad-3-acelera-dev-csharp-wiz
 
