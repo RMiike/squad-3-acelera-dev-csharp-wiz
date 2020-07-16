@@ -10,4 +10,4 @@ script:
     - dotnet test ./Back-End /p:CollectCoverage=true /p:ExcludeByFile=\"**/Migrations/*.cs,**/Startup.cs,**/Program.cs,**/MapperConfig.cs,**/Role.cs,**/UserRole.cs\"  /p:CoverletOutputFormat=opencover   
 
 after_script:
-        - bash <(curl -s https://codecov.io/bash)
+        - bash <(curl -s https://codecov.io/bash) -t c78433f4-9093-434c-89dd-2f12ce5548cc
