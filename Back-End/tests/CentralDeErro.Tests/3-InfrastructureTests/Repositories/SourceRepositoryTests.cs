@@ -1,5 +1,6 @@
 ﻿using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
+using CentralDeErro.Infrastructure.Repository;
 using CentralDeErro.Tests._3_InfrastructureTests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -162,7 +163,7 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
 
                 var result = service.Delete(id);
 
-                var resultNotFail = new ResultDTO(true, "Successfuly deleted.", result.Data);
+                var resultNotFail = new ResultDTO(true, "Successfuly deleted", result.Data);
 
                 Assert.AreEqual(new { resultNotFail.Success, resultNotFail.Message },
                              new { result.Success, result.Message });

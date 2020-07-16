@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -37,9 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="1-PresentationTests\" />
     <Folder Include="3-InfrastructureTests\Services\" />
-    <Folder Include="3-InfrastructureTests\Repositories\" />
   </ItemGroup>
 
 </Project>
