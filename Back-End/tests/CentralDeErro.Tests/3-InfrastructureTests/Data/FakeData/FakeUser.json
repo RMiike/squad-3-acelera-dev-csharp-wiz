@@ -1,0 +1,33 @@
+[
+  {
+    "fullName": "Ana Maria",
+    "email": "Ana@Ana.com",
+    "password": "aopskd1231in$%R¨T*U(I",
+    "confirmPassword": "aopskd1231in$%R¨T*U(I"
+  },
+  {
+    "fullName": "Maria Joaquina",
+    "email": "Maria@Maria.com",
+    "password": "o,6by35t345v42",
+    "confirmPassword": "o,6by35t345v42"
+  },
+  {
+    "fullName": "Joaquin Alencar",
+    "email": "Joaquin@Joaquin.com",
+    "password": "a12124@$%tg44I",
+    "confirmPassword": "a12124@$%tg44I"
+  },
+  {
+    "fullName": "Alen Cardoso",
+    "email": "Alen@Alen.com",
+    "password": "ao12324ruyhg1I",
+    "confirmPassword": "ao12324ruyhg1I"
+  },
+  {
+    "fullName": "Cardoso de Almeida",
+    "email": "Cardoso@Cardoso.com",
+    "password": "asd123123as-09(I",
+    "confirmPassword": "asd123123as-09(I"
+  }
+
+]
