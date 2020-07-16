@@ -11,13 +11,13 @@ using System.Linq.Expressions;
 
 namespace CentralDeErro.Infrastructure.Repository
 {
-    public class ErroRepository
+    public class ErrorRepository
         : IErrorRepository
     {
         private readonly CentralDeErrorContext _context;
         private readonly IMapper _mapper;
 
-        public ErroRepository(
+        public ErrorRepository(
             CentralDeErrorContext context,
             IMapper mapper
             )

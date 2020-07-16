@@ -105,7 +105,7 @@ namespace CentralDeErro
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountManagerService, AccountManagerService>();
-            services.AddScoped<IErrorRepository, ErroRepository>();
+            services.AddScoped<IErrorRepository, ErrorRepository>();
             services.AddScoped<ISourceRepository, SourceRepository>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IMailService, MailService>();
