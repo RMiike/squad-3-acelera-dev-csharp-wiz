@@ -4,6 +4,7 @@ using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Moq;
@@ -244,7 +245,50 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
             return service;
         }
 
+        public Mock<FakeUserManager> FakeUserManager()
+        {
+            var service = new Mock<FakeUserManager>();
 
+            service.Setup(x => x.GetUserAsync(It.IsAny<ClaimsPrincipal>()))
+                .ReturnsAsync((ClaimsPrincipal claimsPrincipal) =>
+                {
+                    var result = Get<RegisterCreateDTO>().Where( x=> x.Email == claimsPrincipal.Claims.FirstOrDefault().Value).FirstOrDefault();
+                   
+                    if(result==null)
+                        return null;
+
+                    var user = User.Create(result.FullName, result.Email, result.Email);
+                    return user;
+
+                });
+    
+            service.Setup(x => x.ChangePasswordAsync(It.IsAny<User>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync((User user, string oldPassword, string newPassword) =>
+                {
+                    var dataUser = Get<RegisterCreateDTO>().Where(x => x.Email == user.Email).FirstOrDefault();
+
+                    if (dataUser == null)
+                        return IdentityResult.Failed(new IdentityError());
+
+                    if (oldPassword != dataUser.Password)
+                        return IdentityResult.Failed(new IdentityError());
+
+                    return IdentityResult.Success;
+                });
+
+
+            return service;
+
+        }
+
+        public Mock<FakeSignInManager> FakeSigninManager()
+        {
+            var service = new Mock<FakeSignInManager>();
+
+
+
+            return service;
+        }
         public void FillWithAllErrors()
         {
             FillWithAllSource();
