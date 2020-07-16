@@ -11,13 +11,15 @@ namespace CentralDeErro.Infrastructure.Data.Maps
         {
 
             builder.Property(x => x.FullName)
-             .HasColumnName("FullName")
+           .HasColumnName("FullName")
+           .HasColumnType("varchar(60)")
              .HasMaxLength(60)
-             .IsRequired();
+           .IsRequired();
 
             builder.Property(x => x.Email)
              .HasColumnName("Email")
              .HasMaxLength(60)
+             .HasColumnType("varchar(60)")
              .IsRequired();
 
             builder.Property(x => x.CreatedAt)

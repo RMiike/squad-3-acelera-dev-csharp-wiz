@@ -1,6 +1,6 @@
-﻿using CentralDeErro.Api.Controllers.v1;
-using CentralDeErro.Core.Entities.DTOs;
+﻿using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Tests._3_InfrastructureTests.Data;
+using CentralDeErro.WebAPI.Controllers.v1;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;

@@ -20,13 +20,15 @@ namespace CentralDeErro.Infrastructure.Data.Maps
 
             builder.Property(x => x.Address)
             .HasColumnName("Address")
-            .HasMaxLength(60)
+             .HasMaxLength(60)
+            .HasColumnType("varchar(60)")
             .IsRequired();
 
             builder.Property(x => x.Environment)
             .HasConversion(x => x.ToString(), x => Enum.Parse<Environment>(x))
             .HasColumnName("Environment")
-            .HasMaxLength(50)
+             .HasMaxLength(50)
+            .HasColumnType("varchar(50)")
             .IsRequired();
 
             builder.Property(x => x.Deleted)
@@ -34,13 +36,14 @@ namespace CentralDeErro.Infrastructure.Data.Maps
           .IsRequired();
 
             builder.HasData(
-                 Source.Create(1, "Front-End", Core.Enums.Environment.Development),
-                 Source.Create(2, "Front-End", Core.Enums.Environment.Homologation),
-                 Source.Create(3, "Front-End", Core.Enums.Environment.Production),
-                 Source.Create(4, "Back-End", Core.Enums.Environment.Development),
-                 Source.Create(5, "Back-End", Core.Enums.Environment.Homologation),
-                 Source.Create(6, "Back-End", Core.Enums.Environment.Production)
+                 Source.Create(1, "Front-End", Environment.Development),
+                 Source.Create(2, "Front-End", Environment.Homologation),
+                 Source.Create(3, "Front-End", Environment.Production),
+                 Source.Create(4, "Back-End", Environment.Development),
+                 Source.Create(5, "Back-End", Environment.Homologation),
+                 Source.Create(6, "Back-End", Environment.Production)
                   );
+
         }
     }
 }

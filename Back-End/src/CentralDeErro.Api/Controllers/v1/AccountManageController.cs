@@ -1,9 +1,9 @@
-﻿using CentralDeErro.Core.Contracts.Services;
+﻿using System.Threading.Tasks;
+using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
-namespace CentralDeErro.Api.Controllers.v1
+namespace CentralDeErro.WebAPI.Controllers.v1
 {
     [Route("v1")]
     [ApiController]
@@ -16,7 +16,7 @@ namespace CentralDeErro.Api.Controllers.v1
         {
             changePasswordDTO.Validate();
             if (changePasswordDTO.Invalid)
-                return Ok(new ResultDTO(false, "An error ocurred.", changePasswordDTO.Notifications));
+                return BadRequest(new ResultDTO(false, "An error ocurred.", changePasswordDTO.Notifications));
 
             var result = await _accountManagerService.ChangePassword(changePasswordDTO, User);
 

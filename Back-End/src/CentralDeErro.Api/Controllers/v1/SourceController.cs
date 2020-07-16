@@ -1,34 +1,27 @@
-﻿using CentralDeErro.Core.Contracts.Repositories;
+﻿using System.Collections.Generic;
+using CentralDeErro.Core.Contracts.Repositories;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
-using CentralDeErro.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
-namespace CentralDeErro.Api.Controllers.v1
+namespace CentralDeErro.WebAPI.Controllers.v1
 {
     [Route("v1")]
     [ApiController]
     public class SourceController : ControllerBase
     {
-        #region get
-        [HttpGet("testsource")]
-        public IActionResult Get()
-        {
-            var mockError = Source.Create(1, "192.002.123", Environment.Development);
-            return Ok(mockError);
-        }
 
+        #region get
 
         [HttpGet("allsources")]
-        public ActionResult<IEnumerable<Error>> GetAll([FromServices] ISourceRepository _sourceRepository)
+        public ActionResult<IEnumerable<Source>> GetAll([FromServices] ISourceRepository _sourceRepository)
         {
             return Ok(_sourceRepository.Get());
         }
 
 
         [HttpGet("source/{id}", Name = "GetSourceById")]
-        public ActionResult<Error> GetSourceById([FromServices] ISourceRepository _sourceRepository, int id)
+        public ActionResult<Source> GetSourceById([FromServices] ISourceRepository _sourceRepository, int id)
         {
             var source = _sourceRepository.Get(id);
             if (source != null)
@@ -42,14 +35,14 @@ namespace CentralDeErro.Api.Controllers.v1
         #region post
 
         [HttpPost("addsource")]
-        public ActionResult<Error> Register(
+        public ActionResult<Source> Register(
            [FromServices] ISourceRepository _sourceRepository,
                 SourceCreateDTO sourceCreateDTO)
         {
             sourceCreateDTO.Validate();
             if (sourceCreateDTO.Invalid)
             {
-                return Ok(new ResultDTO(false, "An error ocurred.", sourceCreateDTO.Notifications));
+                return BadRequest(new ResultDTO(false, "An error ocurred.", sourceCreateDTO.Notifications));
             }
 
             var result = _sourceRepository.Create(sourceCreateDTO);
@@ -71,7 +64,7 @@ namespace CentralDeErro.Api.Controllers.v1
             var result = _sourceRepository.Delete(id);
 
             if (result.Success == false)
-                NotFound(result);
+                return NotFound(result);
 
             return Ok(result);
         }

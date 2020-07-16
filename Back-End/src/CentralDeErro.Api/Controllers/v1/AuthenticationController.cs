@@ -1,13 +1,13 @@
-﻿using CentralDeErro.Core.Contracts.Services;
+﻿using System;
+using System.Threading.Tasks;
+using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Threading.Tasks;
 
-namespace CentralDeErro.Api.Controllers.v1
+namespace CentralDeErro.WebAPI.Controllers.v1
 {
     [Route("v1")]
     [ApiController]
@@ -15,14 +15,7 @@ namespace CentralDeErro.Api.Controllers.v1
     public class AuthenticationController : ControllerBase
     {
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok(new RegisterCreateDTO());
-        }
-
         #region Register
-        // POST: v1/register
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(
@@ -51,7 +44,6 @@ namespace CentralDeErro.Api.Controllers.v1
         #endregion
 
         #region ConfirmEmail
-        //Get: v1/confirmemail?userEmail=&token
         [HttpGet("confirmemail")]
         public async Task<IActionResult> ConfirmEmail(
               [FromServices] IAuthenticationService _service,
@@ -62,7 +54,7 @@ namespace CentralDeErro.Api.Controllers.v1
         {
             if (string.IsNullOrWhiteSpace(userEmail) || string.IsNullOrWhiteSpace(token))
             {
-                return NotFound(new { message = "Wrong email or invalid token" });
+                return BadRequest(new ResultDTO(false, "Wrong email or invalid token", null));
             }
 
             var result = await _service.ConfirmEmail(userEmail, token);
@@ -76,7 +68,6 @@ namespace CentralDeErro.Api.Controllers.v1
         #endregion
 
         #region Sign In
-        // POST: v1/signin
         [HttpPost("signin")]
         public async Task<IActionResult> SignIn(
             [FromServices] IAuthenticationService _services,
@@ -104,7 +95,6 @@ namespace CentralDeErro.Api.Controllers.v1
         #endregion
 
         #region ForgotPassword
-        // POST: v1/forgotpassword
         [HttpPost("forgotpassword")]
         public async Task<IActionResult> ForgotPassword(
          [FromServices] IAuthenticationService _services,
@@ -112,7 +102,7 @@ namespace CentralDeErro.Api.Controllers.v1
         {
             forgotPasswordDTO.Validate();
             if (forgotPasswordDTO.Invalid)
-                return NotFound(new ResultDTO(false, "Wrong email, please verify and try again.", forgotPasswordDTO.Notifications));
+                return BadRequest(new ResultDTO(false, "Wrong email, please verify and try again.", forgotPasswordDTO.Notifications));
 
             var result = await _services.ForgotPassword(forgotPasswordDTO);
 
@@ -127,6 +117,7 @@ namespace CentralDeErro.Api.Controllers.v1
         #endregion
 
         #region deletar usuario
+
         #endregion
 
         #region ExternalLogin

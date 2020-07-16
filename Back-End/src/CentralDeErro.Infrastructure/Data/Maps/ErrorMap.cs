@@ -19,17 +19,20 @@ namespace CentralDeErro.Infrastructure.Data.Maps
 
             builder.Property(x => x.Token)
             .HasColumnName("Token")
-            .HasMaxLength(450)
+             .HasMaxLength(450)
+            .HasColumnType("varchar(450)")
             .IsRequired();
 
             builder.Property(x => x.Title)
             .HasColumnName("Title")
-            .HasMaxLength(60)
+             .HasMaxLength(60)
+             .HasColumnType("varchar(60)")
             .IsRequired();
 
             builder.Property(x => x.Details)
             .HasColumnName("Details")
-            .HasMaxLength(1024)
+             .HasMaxLength(1024)
+             .HasColumnType("varchar(1024)")
             .IsRequired();
 
             builder.Property(x => x.CreatedAt)
@@ -43,7 +46,8 @@ namespace CentralDeErro.Infrastructure.Data.Maps
             builder.Property(x => x.Level)
             .HasConversion(x => x.ToString(), x => Enum.Parse<Level>(x))
             .HasColumnName("Level")
-            .HasMaxLength(50)
+             .HasMaxLength(50)
+            .HasColumnType("varchar(50)")
             .IsRequired();
 
 

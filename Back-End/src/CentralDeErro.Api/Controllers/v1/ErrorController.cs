@@ -1,36 +1,22 @@
-﻿using CentralDeErro.Core.Contracts.Repositories;
+﻿using System.Collections.Generic;
+using CentralDeErro.Core.Contracts.Repositories;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
-using CentralDeErro.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 
-namespace CentralDeErro.Api.Controllers.v1
+namespace CentralDeErro.WebAPI.Controllers.v1
 {
     [Route("v1")]
     [ApiController]
     public class ErrorController : ControllerBase
     {
         #region Get
-        //get: v1/testlog
-        [HttpGet("testlog")]
-        public IActionResult Get()
-        {
-            var mockError = Error.Create(1, "token", "titulo", "detalhe", Level.Debug, 1);
-            return Ok(mockError);
-        }
-
-
-        //get: v1/alllogs
-
         [HttpGet("alllogs")]
         public ActionResult<IEnumerable<Error>> GetAll([FromServices] IErrorRepository _errorRepository)
         {
             return Ok(_errorRepository.Get());
         }
 
-        // GET: v1/log/5
         [HttpGet("log/{id}", Name = "GetErrorById")]
         public ActionResult<Error> GetErrorById([FromServices] IErrorRepository _errorRepository, int id)
         {
@@ -54,7 +40,7 @@ namespace CentralDeErro.Api.Controllers.v1
         {
             logErroDTO.Validate();
             if (logErroDTO.Invalid)
-                return Ok(new ResultDTO(false, "Fail.", logErroDTO.Notifications));
+                return BadRequest(new ResultDTO(false, "An error ocurred.", logErroDTO.Notifications));
 
             var result = _errorRepository.Create(logErroDTO, Authorization);
 
@@ -75,7 +61,7 @@ namespace CentralDeErro.Api.Controllers.v1
             var logerrobyid = _errorrepository.Archive(id);
 
             if (logerrobyid.Success == false)
-                NotFound(logerrobyid);
+                return BadRequest(logerrobyid);
 
 
             return Ok(logerrobyid);
@@ -88,7 +74,7 @@ namespace CentralDeErro.Api.Controllers.v1
             var logerrobyid = _errorrepository.Unarchive(id);
 
             if (logerrobyid.Success == false)
-                NotFound(logerrobyid);
+                return BadRequest(logerrobyid);
 
 
             return Ok(logerrobyid);
@@ -102,7 +88,7 @@ namespace CentralDeErro.Api.Controllers.v1
             var logerrobyid = _errorrepository.Delete(id);
 
             if (logerrobyid.Success == false)
-                NotFound(logerrobyid);
+                return BadRequest(logerrobyid);
 
 
             return Ok(logerrobyid);
