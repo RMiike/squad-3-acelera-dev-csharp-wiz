@@ -68,7 +68,7 @@ namespace CentralDeErro.Api.Controllers.v1
         #region Put
 
         [HttpPut("archive/{id}")]
-        public ActionResult MarkAsArchived(
+        public ActionResult Archive(
             [FromServicesAttribute] IErrorRepository _errorrepository,
             [FromRoute] int id)
         {
@@ -81,7 +81,7 @@ namespace CentralDeErro.Api.Controllers.v1
             return Ok(logerrobyid);
         }
         [HttpPut("unarchive/{id}")]
-        public ActionResult MarkAsUnrchive(
+        public ActionResult Unarchive(
           [FromServicesAttribute] IErrorRepository _errorrepository,
           [FromRoute] int id)
         {
@@ -95,7 +95,7 @@ namespace CentralDeErro.Api.Controllers.v1
         }
 
         [HttpPut("deleteerror/{id}")]
-        public ActionResult MarkAsDelete(
+        public ActionResult Delete(
           [FromServicesAttribute] IErrorRepository _errorrepository,
           [FromRoute] int id)
         {
