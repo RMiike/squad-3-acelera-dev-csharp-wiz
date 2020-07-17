@@ -113,11 +113,10 @@ namespace CentralDeErro.Infrastructure.Services
             if (!result.Succeeded)
                 return new ResultDTO(false, "Please, confirm your email, verify your password, verify your user name and try again.", result);
 
-            var appUser = await _userManager.Users
-                       .FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
 
-            var token = _tokenService.GenerateJwtToken(appUser).Result;
-            var userToReturn = _mapper.Map<LoginReadDTO>(appUser);
+
+            var token = _tokenService.GenerateJwtToken(user).Result;
+            var userToReturn = _mapper.Map<LoginReadDTO>(user);
             userToReturn.AddToken(token);
 
             return new ResultDTO(true, "User authenticated.", userToReturn);

@@ -362,19 +362,19 @@
       "CentralDeErro.Core.Entities.User": {
         "System.String CentralDeErro.Core.Entities.User::get_FullName()": {
           "Lines": {
-            "19": 17
+            "19": 21
           },
           "Branches": []
         },
         "System.String CentralDeErro.Core.Entities.User::get_Email()": {
           "Lines": {
-            "20": 54
+            "20": 76
           },
           "Branches": []
         },
         "System.DateTime CentralDeErro.Core.Entities.User::get_CreatedAt()": {
           "Lines": {
-            "21": 17
+            "21": 21
           },
           "Branches": []
         },
@@ -386,14 +386,14 @@
         },
         "CentralDeErro.Core.Entities.User CentralDeErro.Core.Entities.User::Create(System.String,System.String,System.String)": {
           "Lines": {
-            "25": 16,
-            "26": 16,
-            "27": 16,
-            "28": 16,
+            "25": 20,
+            "26": 20,
+            "27": 20,
+            "28": 20,
             "29": 2,
-            "31": 14,
-            "32": 14,
-            "33": 14
+            "31": 18,
+            "32": 18,
+            "33": 18
           },
           "Branches": [
             {
@@ -402,7 +402,7 @@
               "EndOffset": 9,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 15
+              "Hits": 19
             },
             {
               "Line": 26,
@@ -410,7 +410,7 @@
               "EndOffset": 17,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 14
+              "Hits": 18
             },
             {
               "Line": 26,
@@ -442,20 +442,20 @@
               "EndOffset": 36,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 14
+              "Hits": 18
             }
           ]
         },
         "System.Void CentralDeErro.Core.Entities.User::.ctor(System.String,System.String,System.DateTime,System.String)": {
           "Lines": {
-            "10": 14,
-            "11": 14,
-            "12": 14,
-            "13": 14,
-            "14": 14,
-            "15": 14,
-            "16": 14,
-            "17": 14
+            "10": 18,
+            "11": 18,
+            "12": 18,
+            "13": 18,
+            "14": 18,
+            "15": 18,
+            "16": 18,
+            "17": 18
           },
           "Branches": []
         }
@@ -662,7 +662,7 @@
       "CentralDeErro.Core.Entities.DTOs.ForgotPasswordDTO": {
         "System.String CentralDeErro.Core.Entities.DTOs.ForgotPasswordDTO::get_Email()": {
           "Lines": {
-            "8": 49
+            "8": 57
           },
           "Branches": []
         },
@@ -683,13 +683,13 @@
       "CentralDeErro.Core.Entities.DTOs.LoginCreateDTO": {
         "System.String CentralDeErro.Core.Entities.DTOs.LoginCreateDTO::get_Email()": {
           "Lines": {
-            "8": 114
+            "8": 120
           },
           "Branches": []
         },
         "System.String CentralDeErro.Core.Entities.DTOs.LoginCreateDTO::get_Password()": {
           "Lines": {
-            "9": 81
+            "9": 86
           },
           "Branches": []
         },
@@ -724,11 +724,11 @@
         },
         "System.Void CentralDeErro.Core.Entities.DTOs.LoginReadDTO::AddToken(System.String)": {
           "Lines": {
-            "12": 1,
-            "13": 1,
+            "12": 2,
+            "13": 2,
             "14": 0,
-            "16": 1,
-            "17": 1
+            "16": 2,
+            "17": 2
           },
           "Branches": [
             {
@@ -745,7 +745,7 @@
               "EndOffset": 22,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 1
+              "Hits": 2
             }
           ]
         }
@@ -755,25 +755,25 @@
       "CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO": {
         "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_FullName()": {
           "Lines": {
-            "8": 223
+            "8": 281
           },
           "Branches": []
         },
         "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_Email()": {
           "Lines": {
-            "9": 337
+            "9": 447
           },
           "Branches": []
         },
         "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_Password()": {
           "Lines": {
-            "10": 247
+            "10": 303
           },
           "Branches": []
         },
         "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_ConfirmPassword()": {
           "Lines": {
-            "11": 249
+            "11": 303
           },
           "Branches": []
         },
@@ -801,30 +801,30 @@
       "CentralDeErro.Core.Entities.DTOs.ResultDTO": {
         "System.Boolean CentralDeErro.Core.Entities.DTOs.ResultDTO::get_Success()": {
           "Lines": {
-            "12": 212
+            "12": 227
           },
           "Branches": []
         },
         "System.String CentralDeErro.Core.Entities.DTOs.ResultDTO::get_Message()": {
           "Lines": {
-            "13": 196
+            "13": 209
           },
           "Branches": []
         },
         "System.Object CentralDeErro.Core.Entities.DTOs.ResultDTO::get_Data()": {
           "Lines": {
-            "14": 181
+            "14": 194
           },
           "Branches": []
         },
         "System.Void CentralDeErro.Core.Entities.DTOs.ResultDTO::.ctor(System.Boolean,System.String,System.Object)": {
           "Lines": {
-            "5": 99,
-            "6": 99,
-            "7": 99,
-            "8": 99,
-            "9": 99,
-            "10": 99
+            "5": 106,
+            "6": 106,
+            "7": 106,
+            "8": 106,
+            "9": 106,
+            "10": 106
           },
           "Branches": []
         }
@@ -989,40 +989,40 @@
       "CentralDeErro.Infrastructure.Services.AuthenticationService": {
         "System.String CentralDeErro.Infrastructure.Services.AuthenticationService::EncodeToken(System.String)": {
           "Lines": {
+            "175": 1,
             "176": 1,
             "177": 1,
-            "178": 1,
-            "179": 1
+            "178": 1
           },
           "Branches": []
         },
         "System.String CentralDeErro.Infrastructure.Services.AuthenticationService::DecodeToken(System.String)": {
           "Lines": {
+            "180": 2,
             "181": 2,
-            "182": 2,
-            "184": 2,
-            "185": 2
+            "183": 2,
+            "184": 2
           },
           "Branches": []
         },
         "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService::.ctor(Microsoft.AspNetCore.Identity.UserManager`1<CentralDeErro.Core.Entities.User>,Microsoft.AspNetCore.Identity.SignInManager`1<CentralDeErro.Core.Entities.User>,AutoMapper.IMapper,CentralDeErro.Core.Contracts.Services.ITokenService,Microsoft.Extensions.Configuration.IConfiguration,CentralDeErro.Core.Contracts.Services.IMailService)": {
           "Lines": {
-            "26": 6,
-            "27": 6,
-            "28": 6,
-            "29": 6,
-            "30": 6,
-            "31": 6,
-            "32": 6,
-            "33": 6,
-            "34": 6,
-            "35": 6,
-            "36": 6,
-            "37": 6,
-            "38": 6,
-            "39": 6,
-            "40": 6,
-            "41": 6
+            "26": 12,
+            "27": 12,
+            "28": 12,
+            "29": 12,
+            "30": 12,
+            "31": 12,
+            "32": 12,
+            "33": 12,
+            "34": 12,
+            "35": 12,
+            "36": 12,
+            "37": 12,
+            "38": 12,
+            "39": 12,
+            "40": 12,
+            "41": 12
           },
           "Branches": []
         }
@@ -1104,7 +1104,7 @@
         },
         "System.String CentralDeErro.Infrastructure.Services.AuthenticationService/<>c::<ResetPassword>b__12_0(Microsoft.AspNetCore.Identity.IdentityError)": {
           "Lines": {
-            "168": 0
+            "167": 0
           },
           "Branches": []
         }
@@ -1161,54 +1161,52 @@
       "CentralDeErro.Infrastructure.Services.AuthenticationService/<Login>d__10": {
         "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<Login>d__10::MoveNext()": {
           "Lines": {
-            "104": 0,
-            "105": 0,
-            "107": 0,
-            "108": 0,
-            "110": 0,
-            "111": 0,
-            "113": 0,
-            "114": 0,
-            "116": 0,
-            "117": 0,
-            "119": 0,
-            "120": 0,
-            "121": 0,
-            "123": 0,
-            "124": 0
+            "104": 3,
+            "105": 3,
+            "107": 3,
+            "108": 1,
+            "110": 2,
+            "111": 2,
+            "113": 2,
+            "114": 1,
+            "118": 1,
+            "119": 1,
+            "120": 1,
+            "122": 1,
+            "123": 3
           },
           "Branches": [
             {
               "Line": 107,
-              "Offset": 215,
-              "EndOffset": 217,
+              "Offset": 180,
+              "EndOffset": 182,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 107,
-              "Offset": 215,
-              "EndOffset": 245,
+              "Offset": 180,
+              "EndOffset": 205,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 113,
-              "Offset": 419,
-              "EndOffset": 421,
+              "Offset": 374,
+              "EndOffset": 376,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 113,
-              "Offset": 419,
-              "EndOffset": 444,
+              "Offset": 374,
+              "EndOffset": 399,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -1216,54 +1214,54 @@
       "CentralDeErro.Infrastructure.Services.AuthenticationService/<ForgotPassword>d__11": {
         "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<ForgotPassword>d__11::MoveNext()": {
           "Lines": {
-            "130": 0,
-            "131": 0,
-            "133": 0,
-            "134": 0,
-            "136": 0,
-            "138": 0,
-            "140": 0,
-            "141": 0,
-            "144": 0,
-            "145": 0,
-            "146": 0,
-            "147": 0,
-            "148": 0,
-            "150": 0,
-            "152": 0
+            "129": 3,
+            "130": 3,
+            "132": 3,
+            "133": 1,
+            "135": 2,
+            "137": 2,
+            "139": 2,
+            "140": 1,
+            "143": 1,
+            "144": 1,
+            "145": 1,
+            "146": 1,
+            "147": 1,
+            "149": 1,
+            "151": 3
           },
           "Branches": [
             {
-              "Line": 133,
+              "Line": 132,
               "Offset": 203,
               "EndOffset": 205,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
-              "Line": 133,
+              "Line": 132,
               "Offset": 203,
               "EndOffset": 228,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 2
             },
             {
-              "Line": 140,
+              "Line": 139,
               "Offset": 535,
               "EndOffset": 537,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
-              "Line": 140,
+              "Line": 139,
               "Offset": 535,
               "EndOffset": 549,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -1271,27 +1269,27 @@
       "CentralDeErro.Infrastructure.Services.AuthenticationService/<ResetPassword>d__12": {
         "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<ResetPassword>d__12::MoveNext()": {
           "Lines": {
-            "157": 0,
+            "156": 2,
+            "157": 2,
             "158": 0,
-            "159": 0,
-            "162": 0,
-            "164": 0,
-            "165": 0,
-            "167": 0,
-            "170": 0,
-            "171": 0
+            "161": 2,
+            "163": 2,
+            "164": 2,
+            "166": 2,
+            "169": 1,
+            "170": 2
           },
           "Branches": [
             {
-              "Line": 158,
+              "Line": 157,
               "Offset": 24,
               "EndOffset": 26,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 2
             },
             {
-              "Line": 158,
+              "Line": 157,
               "Offset": 24,
               "EndOffset": 39,
               "Path": 1,
@@ -1299,7 +1297,7 @@
               "Hits": 0
             },
             {
-              "Line": 158,
+              "Line": 157,
               "Offset": 42,
               "EndOffset": 44,
               "Path": 0,
@@ -1307,28 +1305,28 @@
               "Hits": 0
             },
             {
-              "Line": 158,
+              "Line": 157,
               "Offset": 42,
               "EndOffset": 62,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 2
             },
             {
-              "Line": 167,
+              "Line": 166,
               "Offset": 257,
               "EndOffset": 259,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 1
             },
             {
-              "Line": 167,
+              "Line": 166,
               "Offset": 257,
               "EndOffset": 320,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -1338,10 +1336,10 @@
       "CentralDeErro.Infrastructure.Services.MailService": {
         "System.Void CentralDeErro.Infrastructure.Services.MailService::.ctor(Microsoft.Extensions.Configuration.IConfiguration)": {
           "Lines": {
-            "14": 107,
-            "15": 107,
-            "16": 107,
-            "17": 107
+            "14": 113,
+            "15": 113,
+            "16": 113,
+            "17": 113
           },
           "Branches": []
         }
@@ -1349,19 +1347,19 @@
       "CentralDeErro.Infrastructure.Services.MailService/<SendEmailAsync>d__2": {
         "System.Void CentralDeErro.Infrastructure.Services.MailService/<SendEmailAsync>d__2::MoveNext()": {
           "Lines": {
-            "19": 1,
-            "21": 1,
-            "22": 1,
-            "23": 1,
-            "24": 1,
-            "25": 1,
-            "26": 1,
-            "27": 1,
-            "28": 1,
+            "19": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2,
+            "26": 2,
+            "27": 2,
+            "28": 2,
             "29": 0,
             "30": 0,
             "31": 0,
-            "33": 1
+            "33": 2
           },
           "Branches": []
         }
@@ -1371,14 +1369,14 @@
       "CentralDeErro.Infrastructure.Services.TokenService": {
         "System.Void CentralDeErro.Infrastructure.Services.TokenService::.ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Identity.UserManager`1<CentralDeErro.Core.Entities.User>)": {
           "Lines": {
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "24": 0,
-            "25": 0,
-            "26": 0,
-            "27": 0
+            "20": 113,
+            "21": 113,
+            "22": 113,
+            "23": 113,
+            "24": 113,
+            "25": 113,
+            "26": 113,
+            "27": 113
           },
           "Branches": []
         }
@@ -1386,30 +1384,30 @@
       "CentralDeErro.Infrastructure.Services.TokenService/<GenerateJwtToken>d__3": {
         "System.Void CentralDeErro.Infrastructure.Services.TokenService/<GenerateJwtToken>d__3::MoveNext()": {
           "Lines": {
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "34": 0,
-            "36": 0,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "36": 1,
             "38": 0,
             "39": 0,
             "40": 0,
             "41": 0,
-            "43": 0,
-            "44": 0,
-            "46": 0,
-            "48": 0,
-            "49": 0,
-            "50": 0,
-            "51": 0,
-            "52": 0,
-            "53": 0,
-            "55": 0,
-            "57": 0,
-            "59": 0,
-            "60": 0
+            "43": 1,
+            "44": 1,
+            "46": 1,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "55": 1,
+            "57": 1,
+            "59": 1,
+            "60": 1
           },
           "Branches": [
             {
@@ -1426,7 +1424,7 @@
               "EndOffset": 313,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Annotations;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using CentralDeErro.Core.Contracts.Repositories;
 using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities;
@@ -6,6 +8,7 @@ using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
 using CentralDeErro.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Moq;
@@ -39,8 +42,9 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
             AddData();
             _mapper = ConfigureMap().CreateMapper();
             _configuration = CreateConfigs();
+
             _mailService = new MailService(_configuration);
-            //_tokenService = new TokenService(_configuration);
+            _tokenService = new TokenService(_configuration,FakeUserManager().Object);
         }
 
        
@@ -325,6 +329,28 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
 
                 });
 
+            service.Setup(x => x.GetRolesAsync(It.IsAny<User>()))
+                 .ReturnsAsync((User user) =>
+                 {
+                     var result = Get<RegisterCreateDTO>().Where(x => x.Email == user.Email).FirstOrDefault(); 
+                     return new List<string>();
+                 });
+
+            service.Setup(x => x.GeneratePasswordResetTokenAsync(It.IsAny<User>()))
+                .ReturnsAsync(() =>
+                {
+
+                    return "token";
+                });
+
+            service.Setup(x => x.ResetPasswordAsync(It.IsAny<User>(),It.IsAny<string>(), It.IsAny<string>()))
+               .ReturnsAsync((User user, string token, string newPassword) =>
+               {
+                   if (user.Email == "Falha@Falha.com")
+                       return IdentityResult.Failed(new IdentityError());
+
+                   return IdentityResult.Success;
+               });
 
             return service;
 
@@ -334,7 +360,15 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
         {
             var service = new Mock<FakeSignInManager>();
 
+            service.Setup(x => x.CheckPasswordSignInAsync(It.IsAny<User>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync((User user, string password, bool lockotOnFail) =>
+                {
+                    var result = Get<RegisterCreateDTO>().Where(x => x.Email == user.Email).FirstOrDefault();
+                    if (result.Password != password)
+                        return SignInResult.Failed;
 
+                    return SignInResult.Success;
+                });
 
             return service;
         }
@@ -396,13 +430,7 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
         }
         private static IConfigurationRoot CreateConfigs()
         {
-            var myConfig = new Dictionary<string, string>
-            {
-                {"AppUrl","AppUrl"},
-                {"MailServiceKey","MailServiceKey" },
-                {"MailServiceFrom","MailServiceFrom" }
-            };
-            var config = new ConfigurationBuilder().AddInMemoryCollection(myConfig).Build();
+              var config = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json", optional: true).Build();
             return config;
         }
     }
