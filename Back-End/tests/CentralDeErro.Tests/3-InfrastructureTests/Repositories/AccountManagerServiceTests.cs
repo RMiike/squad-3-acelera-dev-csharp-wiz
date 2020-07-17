@@ -4,6 +4,7 @@ using CentralDeErro.Tests._3_InfrastructureTests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
 {
@@ -19,16 +20,7 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
             string userEmail
             )
         {
-            var fakeContext = new FakeContext("AccountManagerServiceTests");
-            var fakeService = fakeContext.FakeUserManager().Object;
-            var controller = new AccountManagerService(fakeService);
-
-            var changePasswordDTO = new ChangePasswordDTO { OldPassword = oldPassword, NewPassword = newPassword, ConfirmPassword = confirmPassword };
-
-            var userExistis = fakeContext.Get<RegisterCreateDTO>().Where(x => x.Email == userEmail).FirstOrDefault();
-
-            var identity = new[] { new Claim("Name", userEmail) };
-            var result = controller.ChangePassword(changePasswordDTO, new ClaimsPrincipal(new ClaimsIdentity(identity)));
+            Task<ResultDTO> result = CreateControllerAndMakeChangePassword(oldPassword, newPassword, confirmPassword, userEmail);
 
             Assert.AreEqual("Password was changed successfully.", result.Result.Message);
             Assert.IsNull(result.Result.Data);
@@ -44,16 +36,7 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
            string userEmail
            )
         {
-            var fakeContext = new FakeContext("AccountManagerServiceTests");
-            var fakeService = fakeContext.FakeUserManager().Object;
-            var controller = new AccountManagerService(fakeService);
-
-            var changePasswordDTO = new ChangePasswordDTO { OldPassword = oldPassword, NewPassword = newPassword, ConfirmPassword = confirmPassword };
-
-            var userExistis = fakeContext.Get<RegisterCreateDTO>().Where(x => x.Email == userEmail).FirstOrDefault();
-
-            var identity = new[] { new Claim("Name", userEmail) };
-            var result = controller.ChangePassword(changePasswordDTO, new ClaimsPrincipal(new ClaimsIdentity(identity)));
+            Task<ResultDTO> result = CreateControllerAndMakeChangePassword(oldPassword, newPassword, confirmPassword, userEmail);
 
             Assert.AreEqual("User  data not found!", result.Result.Message);
             Assert.IsNull(result.Result.Data);
@@ -68,6 +51,15 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
             string userEmail
             )
         {
+            Task<ResultDTO> result = CreateControllerAndMakeChangePassword(oldPassword, newPassword, confirmPassword, userEmail);
+
+            Assert.AreEqual("An error ocurred.", result.Result.Message);
+            Assert.IsNotNull(result.Result.Data);
+            Assert.IsFalse(result.Result.Success);
+        }
+
+        private static Task<ResultDTO> CreateControllerAndMakeChangePassword(string oldPassword, string newPassword, string confirmPassword, string userEmail)
+        {
             var fakeContext = new FakeContext("AccountManagerServiceTests");
             var fakeService = fakeContext.FakeUserManager().Object;
             var controller = new AccountManagerService(fakeService);
@@ -78,10 +70,7 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
 
             var identity = new[] { new Claim("Name", userEmail) };
             var result = controller.ChangePassword(changePasswordDTO, new ClaimsPrincipal(new ClaimsIdentity(identity)));
-
-            Assert.AreEqual("An error ocurred.", result.Result.Message);
-            Assert.IsNotNull(result.Result.Data);
-            Assert.IsFalse(result.Result.Success);
+            return result;
         }
     }
 }

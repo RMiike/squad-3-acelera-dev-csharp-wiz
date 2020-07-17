@@ -4,6 +4,7 @@ using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
+using CentralDeErro.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,8 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
         public readonly IMapper _mapper;
         public readonly IConfiguration _configuration;
         public readonly ITokenService _tokenService;
+        public readonly IMailService _mailService;
+
         private Dictionary<Type, string> DataFileNames { get; } =
             new Dictionary<Type, string>();
         private string FileName<T>() { return DataFileNames[typeof(T)]; }
@@ -35,8 +38,12 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
 
             AddData();
             _mapper = ConfigureMap().CreateMapper();
+            _configuration = CreateConfigs();
+            _mailService = new MailService(_configuration);
             //_tokenService = new TokenService(_configuration);
         }
+
+       
 
         public List<T> Get<T>()
         {
@@ -276,6 +283,48 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
                     return IdentityResult.Success;
                 });
 
+            service.Setup(x => x.FindByEmailAsync(It.IsAny<string>()))
+                .ReturnsAsync((string email) =>
+                {
+                    var result = Get<RegisterCreateDTO>().Where(x => x.Email == email).FirstOrDefault();
+
+                    if (result == null)
+                        return null;
+
+                    var user = User.Create(result.FullName, result.Email, result.Email);
+                    return user;
+                });
+
+            service.Setup(x => x.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
+                .ReturnsAsync((User user, string password) =>
+                {
+                    var result = Get<RegisterCreateDTO>().Where(x => x.Email == user.Email).FirstOrDefault();
+
+                    if (password == "!@#$%¨&**(**&")
+                        return IdentityResult.Failed(new IdentityError());
+
+                    return IdentityResult.Success;
+                });
+
+            service.Setup(x => x.GenerateEmailConfirmationTokenAsync(It.IsAny<User>()))
+                .ReturnsAsync(() =>
+                {
+                    return "token";
+                });
+
+            service.Setup(x => x.ConfirmEmailAsync(It.IsAny<User>(), It.IsAny<string>()))
+                .ReturnsAsync((User user, string token) =>
+                {
+                    var result = Get<RegisterCreateDTO>().Where(x => x.Email == user.Email).FirstOrDefault();
+
+                    result.Validate();
+                    if (result.Invalid)
+                        return IdentityResult.Failed(new IdentityError());
+
+                    return IdentityResult.Success;
+
+                });
+
 
             return service;
 
@@ -345,6 +394,16 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
             DataFileNames.Add(typeof(LoginReadDTO), $"../../../3-InfrastructureTests/Data/FakeData{Path.DirectorySeparatorChar}FakeUser.json");
             DataFileNames.Add(typeof(ForgotPasswordDTO), $"../../../3-InfrastructureTests/Data/FakeData{Path.DirectorySeparatorChar}FakeForgotPasswor.json");
         }
-
+        private static IConfigurationRoot CreateConfigs()
+        {
+            var myConfig = new Dictionary<string, string>
+            {
+                {"AppUrl","AppUrl"},
+                {"MailServiceKey","MailServiceKey" },
+                {"MailServiceFrom","MailServiceFrom" }
+            };
+            var config = new ConfigurationBuilder().AddInMemoryCollection(myConfig).Build();
+            return config;
+        }
     }
 }

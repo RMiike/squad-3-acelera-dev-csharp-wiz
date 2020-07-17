@@ -28,6 +28,12 @@
     "email": "Cardoso@Cardoso.com",
     "password": "asd123123as-09(I",
     "confirmPassword": "asd123123as-09(I"
+  },
+  {
+    "fullName": "Falha de servico",
+    "email": "Falha@Falha.com",
+    "password": "Falha",
+    "confirmPassword": "Falha"
   }
 
 ]

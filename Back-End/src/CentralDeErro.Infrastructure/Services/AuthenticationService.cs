@@ -180,6 +180,7 @@ namespace CentralDeErro.Infrastructure.Services
         private static string DecodeToken(string token)
         {
             var encodedToken = WebEncoders.Base64UrlDecode(token);
+
             return Encoding.UTF8.GetString(encodedToken);
         }
         #endregion
