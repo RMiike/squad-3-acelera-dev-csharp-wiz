@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CentralDeErro.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    [Migration("20200626201534_v3")]
-    partial class v3
+    [Migration("20200718180817_inial")]
+    partial class inial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,37 +25,48 @@ namespace CentralDeErro.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Archived")
+                        .HasColumnName("Archived")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnName("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Delete")
+                    b.Property<bool>("Deleted")
+                        .HasColumnName("Deleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Details")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1024)")
+                        .HasColumnName("Details")
+                        .HasColumnType("varchar(1024)")
                         .HasMaxLength(1024);
 
-                    b.Property<int>("Level")
-                        .HasColumnType("int");
+                    b.Property<string>("Level")
+                        .IsRequired()
+                        .HasColumnName("Level")
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<int>("SourceId")
+                        .HasColumnName("SourceId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnName("Title")
+                        .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
                     b.Property<string>("Token")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("Token")
+                        .HasColumnType("varchar(450)")
                         .HasMaxLength(450);
 
                     b.HasKey("Id");
@@ -69,10 +80,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                         {
                             Id = 1,
                             Archived = false,
-                            CreatedAt = new DateTime(2020, 6, 26, 17, 15, 33, 439, DateTimeKind.Local).AddTicks(9761),
+                            CreatedAt = new DateTime(2020, 7, 18, 18, 8, 16, 675, DateTimeKind.Utc).AddTicks(5530),
                             Deleted = false,
                             Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
-                            Level = 2,
+                            Level = "Debug",
                             SourceId = 1,
                             Title = "Description Project File Suppression State Line",
                             Token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ"
@@ -110,16 +121,25 @@ namespace CentralDeErro.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnName("Address")
+                        .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
-                    b.Property<int>("Environment")
-                        .HasColumnType("int");
+                    b.Property<bool>("Deleted")
+                        .HasColumnName("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Environment")
+                        .IsRequired()
+                        .HasColumnName("Environment")
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
@@ -130,13 +150,43 @@ namespace CentralDeErro.Infrastructure.Migrations
                         {
                             Id = 1,
                             Address = "Front-End",
-                            Environment = 2
+                            Deleted = false,
+                            Environment = "Development"
                         },
                         new
                         {
                             Id = 2,
+                            Address = "Front-End",
+                            Deleted = false,
+                            Environment = "Homologation"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Front-End",
+                            Deleted = false,
+                            Environment = "Production"
+                        },
+                        new
+                        {
+                            Id = 4,
                             Address = "Back-End",
-                            Environment = 0
+                            Deleted = false,
+                            Environment = "Development"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Back-End",
+                            Deleted = false,
+                            Environment = "Homologation"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "Back-End",
+                            Deleted = false,
+                            Environment = "Production"
                         });
                 });
 
@@ -153,19 +203,22 @@ namespace CentralDeErro.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnName("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnName("Email")
+                        .HasColumnType("varchar(60)")
+                        .HasMaxLength(60);
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnName("FullName")
+                        .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
                     b.Property<bool>("LockoutEnabled")
@@ -216,10 +269,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "11807a60-1035-4819-92ab-2cf060b2cf98",
+                            Id = "6114e388-946b-44de-9170-131ff0df2b3d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e85ac8f3-2cc9-4b88-8efe-ca5ccb06df5f",
-                            CreatedAt = new DateTime(2020, 6, 26, 17, 15, 33, 444, DateTimeKind.Local).AddTicks(5301),
+                            ConcurrencyStamp = "8a5df103-67a3-40da-b764-6610c8368286",
+                            CreatedAt = new DateTime(2020, 7, 18, 18, 8, 16, 682, DateTimeKind.Utc).AddTicks(3123),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Renato Miike",

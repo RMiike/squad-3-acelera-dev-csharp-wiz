@@ -42,13 +42,13 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("Details")
                         .IsRequired()
                         .HasColumnName("Details")
-                        .HasColumnType("nvarchar(1024)")
+                        .HasColumnType("varchar(1024)")
                         .HasMaxLength(1024);
 
                     b.Property<string>("Level")
                         .IsRequired()
                         .HasColumnName("Level")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<int>("SourceId")
@@ -58,13 +58,13 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnName("Title")
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
                     b.Property<string>("Token")
                         .IsRequired()
                         .HasColumnName("Token")
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("varchar(450)")
                         .HasMaxLength(450);
 
                     b.HasKey("Id");
@@ -78,7 +78,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                         {
                             Id = 1,
                             Archived = false,
-                            CreatedAt = new DateTime(2020, 7, 9, 0, 15, 38, 442, DateTimeKind.Utc).AddTicks(2172),
+                            CreatedAt = new DateTime(2020, 7, 18, 18, 8, 16, 675, DateTimeKind.Utc).AddTicks(5530),
                             Deleted = false,
                             Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
                             Level = "Debug",
@@ -126,7 +126,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnName("Address")
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
                     b.Property<bool>("Deleted")
@@ -136,7 +136,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("Environment")
                         .IsRequired()
                         .HasColumnName("Environment")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50)")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -207,7 +207,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnName("Email")
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
                     b.Property<bool>("EmailConfirmed")
@@ -216,7 +216,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnName("FullName")
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
                     b.Property<bool>("LockoutEnabled")
@@ -267,10 +267,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e9843b9e-ac02-48cc-aaf3-a77e8459c6d4",
+                            Id = "6114e388-946b-44de-9170-131ff0df2b3d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a264f427-b9c6-477b-ae7e-c74fea5186c6",
-                            CreatedAt = new DateTime(2020, 7, 9, 0, 15, 38, 449, DateTimeKind.Utc).AddTicks(1749),
+                            ConcurrencyStamp = "8a5df103-67a3-40da-b764-6610c8368286",
+                            CreatedAt = new DateTime(2020, 7, 18, 18, 8, 16, 682, DateTimeKind.Utc).AddTicks(3123),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Renato Miike",

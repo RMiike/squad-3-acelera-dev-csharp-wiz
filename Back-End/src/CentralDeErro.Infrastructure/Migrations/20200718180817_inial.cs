@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CentralDeErro.Infrastructure.Migrations
 {
-    public partial class initial : Migration
+    public partial class inial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,8 +39,8 @@ namespace CentralDeErro.Infrastructure.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    FullName = table.Column<string>(maxLength: 60, nullable: false),
-                    Email = table.Column<string>(maxLength: 256, nullable: false),
+                    FullName = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
+                    Email = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -54,8 +54,9 @@ namespace CentralDeErro.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Address = table.Column<string>(maxLength: 60, nullable: false),
-                    Environment = table.Column<int>(nullable: false)
+                    Address = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
+                    Environment = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -174,13 +175,12 @@ namespace CentralDeErro.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Token = table.Column<string>(maxLength: 450, nullable: false),
-                    Title = table.Column<string>(maxLength: 60, nullable: false),
-                    Details = table.Column<string>(maxLength: 1024, nullable: false),
+                    Token = table.Column<string>(type: "varchar(450)", maxLength: 450, nullable: false),
+                    Title = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
+                    Details = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    Event = table.Column<int>(nullable: false),
                     SourceId = table.Column<int>(nullable: false),
-                    Level = table.Column<int>(nullable: false),
+                    Level = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Archived = table.Column<bool>(nullable: false),
                     Deleted = table.Column<bool>(nullable: false)
                 },
@@ -198,22 +198,25 @@ namespace CentralDeErro.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "26b12401-5c7d-47ec-ad7d-417f5c9a3130", 0, "adb30490-39c2-4044-90d7-81fff966e4ff", new DateTime(2020, 6, 26, 15, 59, 11, 678, DateTimeKind.Local).AddTicks(5785), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+                values: new object[] { "6114e388-946b-44de-9170-131ff0df2b3d", 0, "8a5df103-67a3-40da-b764-6610c8368286", new DateTime(2020, 7, 18, 18, 8, 16, 682, DateTimeKind.Utc).AddTicks(3123), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Source",
-                columns: new[] { "Id", "Address", "Environment" },
-                values: new object[] { 2, "Back-End", 0 });
-
-            migrationBuilder.InsertData(
-                table: "Source",
-                columns: new[] { "Id", "Address", "Environment" },
-                values: new object[] { 1, "Front-End", 2 });
+                columns: new[] { "Id", "Address", "Deleted", "Environment" },
+                values: new object[,]
+                {
+                    { 1, "Front-End", false, "Development" },
+                    { 2, "Front-End", false, "Homologation" },
+                    { 3, "Front-End", false, "Production" },
+                    { 4, "Back-End", false, "Development" },
+                    { 5, "Back-End", false, "Homologation" },
+                    { 6, "Back-End", false, "Production" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Error",
-                columns: new[] { "Id", "Archived", "CreatedAt", "Deleted", "Details", "Event", "Level", "SourceId", "Title", "Token" },
-                values: new object[] { 1, false, new DateTime(2020, 6, 26, 15, 59, 11, 672, DateTimeKind.Local).AddTicks(9313), false, "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15", 1, 2, 1, "Description Project File Suppression State Line", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ" });
+                columns: new[] { "Id", "Archived", "CreatedAt", "Deleted", "Details", "Level", "SourceId", "Title", "Token" },
+                values: new object[] { 1, false, new DateTime(2020, 7, 18, 18, 8, 16, 675, DateTimeKind.Utc).AddTicks(5530), false, "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15", "Debug", 1, "Description Project File Suppression State Line", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

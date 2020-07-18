@@ -16,7 +16,11 @@ namespace CentralDeErro.WebAPI.Controllers.v1
     {
 
         #region Register
-
+        [HttpGet]
+        public IActionResult get()
+        {
+            return Ok();
+        }
         [HttpPost("register")]
         public async Task<IActionResult> Register(
             [FromServices] IAuthenticationService _service,
@@ -113,14 +117,5 @@ namespace CentralDeErro.WebAPI.Controllers.v1
         }
         #endregion
 
-        #region LoginWith2fa
-        #endregion
-
-        #region deletar usuario
-
-        #endregion
-
-        #region ExternalLogin
-        #endregion
-    }
+       }
 }

@@ -29,8 +29,4 @@
     <ProjectReference Include="..\..\src\CentralDeErro.Infrastructure\CentralDeErro.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="3-InfrastructureTests\Services\" />
-  </ItemGroup>
-
 </Project>

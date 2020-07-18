@@ -898,6 +898,27 @@
           "Branches": []
         }
       }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\TwoFactorDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.TwoFactorDTO": {
+        "System.String CentralDeErro.Core.Entities.DTOs.TwoFactorDTO::get_Email()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.TwoFactorDTO::Validate()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
     }
   },
   "CentralDeErro.Infrastructure.dll": {
@@ -2062,27 +2083,37 @@
       }
     },
     "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Api\\Controllers\\v1\\AuthenticationController.cs": {
-      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<Register>d__0": {
-        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<Register>d__0::MoveNext()": {
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult CentralDeErro.WebAPI.Controllers.v1.AuthenticationController::get()": {
           "Lines": {
-            "24": 9,
-            "25": 9,
-            "26": 9,
-            "27": 5,
-            "30": 4,
-            "31": 4,
-            "33": 4,
-            "34": 1,
-            "36": 3,
-            "38": 0,
-            "39": 0,
-            "40": 0,
-            "41": 0,
-            "43": 9
+            "21": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<Register>d__1": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<Register>d__1::MoveNext()": {
+          "Lines": {
+            "28": 9,
+            "29": 9,
+            "30": 9,
+            "31": 5,
+            "34": 4,
+            "35": 4,
+            "37": 4,
+            "38": 1,
+            "40": 3,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "47": 9
           },
           "Branches": [
             {
-              "Line": 26,
+              "Line": 30,
               "Offset": 40,
               "EndOffset": 42,
               "Path": 0,
@@ -2090,7 +2121,7 @@
               "Hits": 5
             },
             {
-              "Line": 26,
+              "Line": 30,
               "Offset": 40,
               "EndOffset": 81,
               "Path": 1,
@@ -2098,7 +2129,7 @@
               "Hits": 4
             },
             {
-              "Line": 33,
+              "Line": 37,
               "Offset": 237,
               "EndOffset": 239,
               "Path": 0,
@@ -2106,7 +2137,7 @@
               "Hits": 1
             },
             {
-              "Line": 33,
+              "Line": 37,
               "Offset": 237,
               "EndOffset": 259,
               "Path": 1,
@@ -2116,22 +2147,22 @@
           ]
         }
       },
-      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ConfirmEmail>d__1": {
-        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ConfirmEmail>d__1::MoveNext()": {
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ConfirmEmail>d__2": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ConfirmEmail>d__2::MoveNext()": {
           "Lines": {
-            "54": 5,
-            "55": 5,
-            "56": 2,
-            "57": 2,
-            "60": 3,
-            "62": 3,
-            "63": 1,
-            "65": 2,
-            "66": 5
+            "58": 5,
+            "59": 5,
+            "60": 2,
+            "61": 2,
+            "64": 3,
+            "66": 3,
+            "67": 1,
+            "69": 2,
+            "70": 5
           },
           "Branches": [
             {
-              "Line": 55,
+              "Line": 59,
               "Offset": 29,
               "EndOffset": 31,
               "Path": 0,
@@ -2139,7 +2170,7 @@
               "Hits": 4
             },
             {
-              "Line": 55,
+              "Line": 59,
               "Offset": 29,
               "EndOffset": 44,
               "Path": 1,
@@ -2147,7 +2178,7 @@
               "Hits": 1
             },
             {
-              "Line": 55,
+              "Line": 59,
               "Offset": 47,
               "EndOffset": 49,
               "Path": 0,
@@ -2155,7 +2186,7 @@
               "Hits": 2
             },
             {
-              "Line": 55,
+              "Line": 59,
               "Offset": 47,
               "EndOffset": 79,
               "Path": 1,
@@ -2163,7 +2194,7 @@
               "Hits": 3
             },
             {
-              "Line": 62,
+              "Line": 66,
               "Offset": 232,
               "EndOffset": 234,
               "Path": 0,
@@ -2171,7 +2202,7 @@
               "Hits": 1
             },
             {
-              "Line": 62,
+              "Line": 66,
               "Offset": 232,
               "EndOffset": 254,
               "Path": 1,
@@ -2181,27 +2212,27 @@
           ]
         }
       },
-      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<SignIn>d__2": {
-        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<SignIn>d__2::MoveNext()": {
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<SignIn>d__3": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<SignIn>d__3::MoveNext()": {
           "Lines": {
-            "75": 5,
-            "76": 5,
-            "77": 5,
-            "78": 2,
-            "81": 3,
-            "82": 3,
-            "84": 3,
-            "85": 2,
-            "87": 1,
-            "89": 0,
-            "90": 0,
-            "91": 0,
-            "92": 0,
-            "94": 5
+            "79": 5,
+            "80": 5,
+            "81": 5,
+            "82": 2,
+            "85": 3,
+            "86": 3,
+            "88": 3,
+            "89": 2,
+            "91": 1,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "98": 5
           },
           "Branches": [
             {
-              "Line": 77,
+              "Line": 81,
               "Offset": 40,
               "EndOffset": 42,
               "Path": 0,
@@ -2209,7 +2240,7 @@
               "Hits": 2
             },
             {
-              "Line": 77,
+              "Line": 81,
               "Offset": 40,
               "EndOffset": 81,
               "Path": 1,
@@ -2217,7 +2248,7 @@
               "Hits": 3
             },
             {
-              "Line": 84,
+              "Line": 88,
               "Offset": 240,
               "EndOffset": 242,
               "Path": 0,
@@ -2225,7 +2256,7 @@
               "Hits": 2
             },
             {
-              "Line": 84,
+              "Line": 88,
               "Offset": 240,
               "EndOffset": 262,
               "Path": 1,
@@ -2235,22 +2266,22 @@
           ]
         }
       },
-      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ForgotPassword>d__3": {
-        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ForgotPassword>d__3::MoveNext()": {
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ForgotPassword>d__4": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ForgotPassword>d__4::MoveNext()": {
           "Lines": {
-            "102": 3,
-            "103": 3,
-            "104": 3,
-            "105": 1,
-            "107": 2,
-            "109": 2,
-            "110": 1,
-            "112": 1,
-            "113": 3
+            "106": 3,
+            "107": 3,
+            "108": 3,
+            "109": 1,
+            "111": 2,
+            "113": 2,
+            "114": 1,
+            "116": 1,
+            "117": 3
           },
           "Branches": [
             {
-              "Line": 104,
+              "Line": 108,
               "Offset": 43,
               "EndOffset": 45,
               "Path": 0,
@@ -2258,7 +2289,7 @@
               "Hits": 1
             },
             {
-              "Line": 104,
+              "Line": 108,
               "Offset": 43,
               "EndOffset": 84,
               "Path": 1,
@@ -2266,7 +2297,7 @@
               "Hits": 2
             },
             {
-              "Line": 109,
+              "Line": 113,
               "Offset": 234,
               "EndOffset": 236,
               "Path": 0,
@@ -2274,7 +2305,7 @@
               "Hits": 1
             },
             {
-              "Line": 109,
+              "Line": 113,
               "Offset": 234,
               "EndOffset": 256,
               "Path": 1,

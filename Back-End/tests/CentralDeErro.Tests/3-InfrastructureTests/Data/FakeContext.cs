@@ -430,7 +430,7 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
         }
         private static IConfigurationRoot CreateConfigs()
         {
-              var config = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json", optional: true).Build();
+              var config = new ConfigurationBuilder().AddJsonFile("appsettings.test.json", optional: true).Build();
             return config;
         }
     }
