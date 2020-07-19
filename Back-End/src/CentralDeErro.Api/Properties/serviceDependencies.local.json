@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/jarwiz/databases/jarwiz.database.windows.net",
+      "type": "mssql.azure",
+      "connectionId": "AuthString",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}
