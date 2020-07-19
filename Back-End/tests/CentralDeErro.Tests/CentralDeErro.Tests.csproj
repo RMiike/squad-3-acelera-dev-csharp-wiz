@@ -30,6 +30,7 @@
     <ProjectReference Include="..\..\src\CentralDeErro.Api\CentralDeErro.WebAPI.csproj" />
     <ProjectReference Include="..\..\src\CentralDeErro.Core\CentralDeErro.Core.csproj" />
     <ProjectReference Include="..\..\src\CentralDeErro.Infrastructure\CentralDeErro.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\CentralDeErro.WebAPI\CentralDeErro.WebAPI.csproj" />
   </ItemGroup>
 
 </Project>
