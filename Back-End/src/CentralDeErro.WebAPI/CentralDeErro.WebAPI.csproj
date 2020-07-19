@@ -2,13 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-<<<<<<< HEAD
     <UserSecretsId>17819554-0829-4b0b-9a6a-e32b092bf05a</UserSecretsId>
-=======
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
     <UserSecretsId>ab7bd837-8661-4ea2-95e5-0061c0296826</UserSecretsId>
->>>>>>> b1bb2a0d8fe4222590e7369593b52eaf1dd90657
   </PropertyGroup>
 
   <ItemGroup>
