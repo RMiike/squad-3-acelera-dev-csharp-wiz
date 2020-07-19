@@ -11,13 +11,13 @@ namespace CentralDeErro.WebAPI.Controllers.v1
     public class ErrorController : ControllerBase
     {
         #region Get
-        [HttpGet("alllogs")]
+        [HttpGet("errors")]
         public ActionResult<IEnumerable<Error>> GetAll([FromServices] IErrorRepository _errorRepository)
         {
             return Ok(_errorRepository.Get());
         }
 
-        [HttpGet("log/{id}", Name = "GetErrorById")]
+        [HttpGet("error/{id}", Name = "GetErrorById")]
         public ActionResult<Error> GetErrorById([FromServices] IErrorRepository _errorRepository, int id)
         {
             var log = _errorRepository.Get(id);
@@ -32,7 +32,7 @@ namespace CentralDeErro.WebAPI.Controllers.v1
 
         #region post
 
-        [HttpPost("adderror")]
+        [HttpPost("error")]
         public ActionResult<Error> Register(
             [FromServices] IErrorRepository _errorRepository,
                 ErrorCreateDTO logErroDTO,
@@ -53,7 +53,8 @@ namespace CentralDeErro.WebAPI.Controllers.v1
 
         #region Put
 
-        [HttpPut("archive/{id}")]
+        [HttpPut]
+        [Route("error/archive/{id}")]
         public ActionResult Archive(
             [FromServicesAttribute] IErrorRepository _errorrepository,
             [FromRoute] int id)
@@ -66,7 +67,8 @@ namespace CentralDeErro.WebAPI.Controllers.v1
 
             return Ok(logerrobyid);
         }
-        [HttpPut("unarchive/{id}")]
+        [HttpPut]
+        [Route("error/unarchive/{id}")]
         public ActionResult Unarchive(
           [FromServicesAttribute] IErrorRepository _errorrepository,
           [FromRoute] int id)
@@ -80,7 +82,7 @@ namespace CentralDeErro.WebAPI.Controllers.v1
             return Ok(logerrobyid);
         }
 
-        [HttpPut("deleteerror/{id}")]
+        [HttpDelete("error/{id}")]
         public ActionResult Delete(
           [FromServicesAttribute] IErrorRepository _errorrepository,
           [FromRoute] int id)

@@ -46,8 +46,12 @@ namespace CentralDeErro.Infrastructure.Repository
             if (sourceCreateDTO == null)
                 throw new ArgumentNullException();
 
-            if (_context.Sources.Where(x => x.Address == sourceCreateDTO.Address && x.Environment == sourceCreateDTO.Environment).Any())
-                return new ResultDTO(false, "Source already existis.", null);
+            if (_context
+                .Sources
+                .Where(x => x.Address == sourceCreateDTO.Address &&
+            x.Environment == sourceCreateDTO.Environment &&
+            x.Deleted == false).Any())
+                                return new ResultDTO(false, "Source already existis.", null);
 
             var sourceData = _mapper.Map<Source>(sourceCreateDTO);
 

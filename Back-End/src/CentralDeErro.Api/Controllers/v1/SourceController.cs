@@ -13,7 +13,7 @@ namespace CentralDeErro.WebAPI.Controllers.v1
 
         #region get
 
-        [HttpGet("allsources")]
+        [HttpGet("sources")]
         public ActionResult<IEnumerable<Source>> GetAll([FromServices] ISourceRepository _sourceRepository)
         {
             return Ok(_sourceRepository.Get());
@@ -34,7 +34,7 @@ namespace CentralDeErro.WebAPI.Controllers.v1
 
         #region post
 
-        [HttpPost("addsource")]
+        [HttpPost("source")]
         public ActionResult<Source> Register(
            [FromServices] ISourceRepository _sourceRepository,
                 SourceCreateDTO sourceCreateDTO)
@@ -55,7 +55,7 @@ namespace CentralDeErro.WebAPI.Controllers.v1
         #endregion
 
         #region delete
-        [HttpDelete("deletesource/{id}")]
+        [HttpDelete("source/{id}")]
         public ActionResult Delete(
           [FromServicesAttribute] ISourceRepository _sourceRepository,
           [FromRoute] int id)
