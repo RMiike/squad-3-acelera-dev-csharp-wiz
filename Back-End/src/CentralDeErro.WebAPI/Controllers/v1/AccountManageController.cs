@@ -37,6 +37,5 @@ namespace CentralDeErro.WebAPI.Controllers.v1
 
             return Ok(result);
         }
-
     }
 }

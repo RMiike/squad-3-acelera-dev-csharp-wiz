@@ -46,9 +46,9 @@ namespace CentralDeErro.Infrastructure.Services
             if (user == null)
                 return new ResultDTO(false, $"User {_userManager.GetUserId(userClaims)} data not found!", null);
 
-            return new ResultDTO(true, $"Data actual user.", new { user.Id, user.FullName, user.CreatedAt });
+
+            return new ResultDTO(true, $"Data actual user.", new { user.Id, user.FullName, user.CreatedAt});
         }
 
-   
     }
 }

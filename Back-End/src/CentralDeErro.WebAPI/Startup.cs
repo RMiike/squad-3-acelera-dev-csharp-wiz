@@ -115,7 +115,11 @@ namespace CentralDeErro
 
             services.AddSwaggerGen(c =>
            {
-               c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            c.SwaggerDoc(name: "v1", new OpenApiInfo
+                { 
+                    Title = "Jarwiz", Version = "V1", 
+                });
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                {
                    In = ParameterLocation.Header,
                    Description = "Entre com o token JWT",
@@ -158,7 +162,7 @@ namespace CentralDeErro
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EziLog - V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Jarwiz - V1");
             });
             app.UseEndpoints(endpoints =>
             {
