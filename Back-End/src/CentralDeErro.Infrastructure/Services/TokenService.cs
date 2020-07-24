@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +59,16 @@ namespace CentralDeErro.Infrastructure.Services
             var token = tokenHandler.CreateToken(tokenDescription);
 
             return tokenHandler.WriteToken(token);
+        },
+
+       public string GetClaimsOnToken(string token)
+        {
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
+            var email = jwtToken.Claims.First(claim => claim.Type == "email").Value;
+
+            return email;
         }
     }
 }
