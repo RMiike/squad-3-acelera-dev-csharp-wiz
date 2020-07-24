@@ -59,7 +59,7 @@ namespace CentralDeErro.Infrastructure.Services
             var token = tokenHandler.CreateToken(tokenDescription);
 
             return tokenHandler.WriteToken(token);
-        },
+        }
 
        public string GetClaimsOnToken(string token)
         {
