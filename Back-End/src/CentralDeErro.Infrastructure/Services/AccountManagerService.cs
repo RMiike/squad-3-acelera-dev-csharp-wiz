@@ -37,5 +37,13 @@ namespace CentralDeErro.Infrastructure.Services
             }
             return new ResultDTO(true, "Password was changed successfully.", null);
         }
+        public async Task<ResultDTO> GetByEmail(ClaimsPrincipal userClaims)
+        {
+            var user = await _userManager.GetUserAsync(userClaims);
+            if (user == null)
+                return new ResultDTO(false, $"User {_userManager.GetUserId(userClaims)} data not found!", null);
+
+            return new ResultDTO(true, $"Data actual user.", new { user.Id, user.FullName, user.CreatedAt });
+        }
     }
 }

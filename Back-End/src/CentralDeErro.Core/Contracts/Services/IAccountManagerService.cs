@@ -7,5 +7,6 @@ namespace CentralDeErro.Core.Contracts.Services
     public interface IAccountManagerService
     {
         Task<ResultDTO> ChangePassword(ChangePasswordDTO changePasswordDTO, ClaimsPrincipal user);
+        Task<ResultDTO> GetByEmail(ClaimsPrincipal userClaims);
     }
 }
