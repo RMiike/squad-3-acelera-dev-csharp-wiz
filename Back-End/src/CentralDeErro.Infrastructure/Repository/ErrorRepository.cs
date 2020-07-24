@@ -3,9 +3,11 @@ using CentralDeErro.Core.Contracts.Repositories;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -124,7 +126,15 @@ namespace CentralDeErro.Infrastructure.Repository
                             ))
                             .AsNoTracking();
         }
+        private  string GetByToken(string token)
+        {
 
+            var handler = new JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
+            var email = jwtToken.Claims.First(claim => claim.Type == "email").Value;
+
+            return email;
+        }
         private bool SaveChanges()
             => (_context.SaveChanges() >= 0);
     }

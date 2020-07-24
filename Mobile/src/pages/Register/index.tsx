@@ -1,5 +1,6 @@
 import React, {useRef, useCallback} from 'react';
-import {TextInput, ScrollView, Platform, Alert} from 'react-native';
+import {TextInput, ScrollView, Platform, Alert, StyleSheet} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import {Form} from '@unform/mobile';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -7,7 +8,6 @@ import getValidationErrors from '../../utils/validationError';
 import {FormHandles} from '@unform/core';
 import * as Yup from 'yup';
 import {
-  Background,
   Textarea,
   Text,
   FormArea,
@@ -73,7 +73,6 @@ const Register: React.FC = () => {
           formRef.current?.setErrors(errors);
           return;
         }
-
         Alert.alert(
           'User already exists',
           'Please, confirm your e-mail and sign in.',
@@ -87,7 +86,13 @@ const Register: React.FC = () => {
     <ScrollView
       contentContainerStyle={{flex: 1}}
       keyboardShouldPersistTaps="handled">
-      <Background>
+      <LinearGradient
+        colors={[
+          '#28023Dfe',
+          'rgba(51, 21, 72, 0.854068)',
+          'rgba(79, 69, 100, 0.9)',
+        ]}
+        style={styles.linearGradient}>
         <Textarea>
           <Icon
             onPress={() => {
@@ -161,9 +166,15 @@ const Register: React.FC = () => {
             <FinalAreaTouchableText>Sign In</FinalAreaTouchableText>
           </FinalAreaTouchable>
         </FinalArea>
-      </Background>
+      </LinearGradient>
     </ScrollView>
   );
 };
 
 export default Register;
+var styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    padding: '5%',
+  },
+});

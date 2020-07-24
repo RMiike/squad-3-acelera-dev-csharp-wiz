@@ -25,5 +25,18 @@ namespace CentralDeErro.WebAPI.Controllers.v1
 
             return Ok(result);
         }
+
+        [HttpGet("user")]
+        public async Task<IActionResult> Get(
+            [FromServices] IAccountManagerService _accountManagerService)
+        {
+            var result = await _accountManagerService.GetByEmail(User);
+
+            if (result.Success == false)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
     }
 }

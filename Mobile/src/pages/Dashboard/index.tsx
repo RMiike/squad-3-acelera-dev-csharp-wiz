@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import {useAuth} from '../../contexts/auth';
 
 const Dashboard: React.FC = () => {
-  const {signed, signOut} = useAuth();
+  const {signOut} = useAuth();
 
   function handleSignOut() {
     signOut();
-    console.log(signed);
   }
 
   return (

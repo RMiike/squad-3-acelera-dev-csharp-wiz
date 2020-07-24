@@ -1,11 +1,9 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import {StatusBar, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
-
 import Logo from '../../assets/Logo.png';
 import {
-  Background,
   Container,
   ButtonArea,
   LogoHome,
@@ -19,7 +17,13 @@ import {
 const Home: React.FC = () => {
   const route = useNavigation();
   return (
-    <Background>
+    <LinearGradient
+      colors={[
+        '#28023D',
+        'rgba(51, 21, 72, 0.854068)',
+        'rgba(79, 69, 100, 0.5)',
+      ]}
+      style={styles.linearGradient}>
       <StatusBar backgroundColor="transparent" barStyle="light-content" />
       <Container>
         <LogoHome source={Logo} />
@@ -39,8 +43,14 @@ const Home: React.FC = () => {
           </RegisterButton>
         </ButtonArea>
       </Container>
-    </Background>
+    </LinearGradient>
   );
 };
 
 export default Home;
+
+var styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
+});

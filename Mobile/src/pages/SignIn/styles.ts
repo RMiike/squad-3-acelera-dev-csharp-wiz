@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import {Platform} from 'react-native';
 
-export const Background = styled.View`
-  flex: 1;
-  background-color: #28023d;
-  padding: 5%;
-`;
-
 export const Text = styled.Text`
   font-family: 'Montserrat';
   font-size: 25px;
@@ -33,6 +27,17 @@ export const FormArea = styled.View`
   border-radius: 15px;
   width: 100%;
 `;
+
+export const ForgotPasswordButton = styled.TouchableOpacity``;
+
+export const ForgotPasswordText = styled.Text`
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 300;
+  color: #28023dee;
+`;
+
 export const Space = styled.View`
   width: 100%;
   margin-top: 70px;

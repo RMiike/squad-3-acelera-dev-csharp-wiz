@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import {Platform} from 'react-native';
 
-export const Background = styled.View`
-  flex: 1;
-  padding: 5%;
-  background-color: #28023d;
-`;
-
 export const Text = styled.Text`
   font-family: 'Montserrat';
   font-size: 25px;

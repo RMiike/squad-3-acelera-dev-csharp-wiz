@@ -68,7 +68,7 @@ namespace CentralDeErro.Infrastructure.Data.Maps
             #region add data
             var title = "Description Project File Suppression State Line";
             var detail = @"Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\source\repos\EziLog\src\EziLog.Infrastructure\Data\Maps\ErrorMap.cs Active  15";
-            var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ";
+            var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI1YjlmYTNhYi0zMjBiLTRjNzUtOTMyMi0zOGYzM2FlM2VmZGMiLCJlbWFpbCI6InJtaWlrZS45MEBnbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6IlJlbmF0byBBbHZlcyIsIm5iZiI6MTU5NTU0NjEzMCwiZXhwIjoxNTk1NjMyNTMwLCJpYXQiOjE1OTU1NDYxMzB9.K5RhT2V3OGpwD0Tif6L5gb6BwqwD__edIxHb6a1PqZgW8EK9fJlux621L0-bWdTxaJqI5yuJ92SS39hEK2Yt4w";
             var errorData = Error.Create(1, token, title, detail, Level.Debug, 1);
             #endregion
 

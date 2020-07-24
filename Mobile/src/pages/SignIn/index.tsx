@@ -1,18 +1,20 @@
 import React, {useRef, useCallback} from 'react';
-import {TextInput, ScrollView, Platform, Alert} from 'react-native';
+import {TextInput, ScrollView, Platform, Alert, StyleSheet} from 'react-native';
 import {Form} from '@unform/mobile';
+import LinearGradient from 'react-native-linear-gradient';
 import {FormHandles} from '@unform/core';
 import getValidationErrors from '../../utils/validationError';
 import {useAuth} from '../../contexts/auth';
 import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
 import {
-  Background,
   Textarea,
   Text,
   FormArea,
+  ForgotPasswordButton,
   Space,
   FinalArea,
+  ForgotPasswordText,
   FinalText,
   FinalAreaTouchable,
   FinalAreaTouchableText,
@@ -48,6 +50,8 @@ const SignIn: React.FC = () => {
         });
 
         await yupSchema.validate({email, password}, {abortEarly: false});
+        console.log(email);
+        console.log(password);
 
         await signIn({email, password});
       } catch (e) {
@@ -71,7 +75,13 @@ const SignIn: React.FC = () => {
     <ScrollView
       contentContainerStyle={{flex: 1}}
       keyboardShouldPersistTaps="handled">
-      <Background>
+      <LinearGradient
+        colors={[
+          '#28023Dfe',
+          'rgba(51, 21, 72, 0.854068)',
+          'rgba(79, 69, 100, 0.9)',
+        ]}
+        style={styles.linearGradient}>
         <Textarea>
           <Icon
             onPress={() => {
@@ -115,6 +125,12 @@ const SignIn: React.FC = () => {
             }}>
             Enter
           </Button>
+          <ForgotPasswordButton
+            onPress={() => {
+              route.navigate('ForgotPassword');
+            }}>
+            <ForgotPasswordText>Forgot Password?</ForgotPasswordText>
+          </ForgotPasswordButton>
         </FormArea>
         <Space />
         <FinalArea>
@@ -126,9 +142,16 @@ const SignIn: React.FC = () => {
             <FinalAreaTouchableText>Register</FinalAreaTouchableText>
           </FinalAreaTouchable>
         </FinalArea>
-      </Background>
+      </LinearGradient>
     </ScrollView>
   );
 };
 
 export default SignIn;
+
+var styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    padding: '5%',
+  },
+});

@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import {Platform} from 'react-native';
 
-export const Background = styled.View`
-  flex: 1;
-  background-color: #28023d;
-`;
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   padding: 0 30px ${Platform.OS === 'android' ? 60 : 40}px;
