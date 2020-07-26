@@ -6,6 +6,5 @@ namespace CentralDeErro.Core.Contracts.Services
     public interface ITokenService
     {
         Task<string> GenerateJwtToken(User user);
-        string GetClaimsOnToken(string token);
     }
 }

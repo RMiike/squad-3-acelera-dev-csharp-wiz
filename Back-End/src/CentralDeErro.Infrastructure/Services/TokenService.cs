@@ -61,14 +61,5 @@ namespace CentralDeErro.Infrastructure.Services
             return tokenHandler.WriteToken(token);
         }
 
-       public string GetClaimsOnToken(string token)
-        {
-
-            var handler = new JwtSecurityTokenHandler();
-            var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
-            var email = jwtToken.Claims.First(claim => claim.Type == "email").Value;
-
-            return email;
-        }
     }
 }
