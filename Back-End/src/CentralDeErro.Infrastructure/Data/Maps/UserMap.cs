@@ -10,6 +10,11 @@ namespace CentralDeErro.Infrastructure.Data.Maps
         public void Configure(EntityTypeBuilder<User> builder)
         {
 
+            builder.Property(x => x.Id)
+                .HasColumnType("varchar(450)")
+             .HasMaxLength(450)
+           .IsRequired();
+
             builder.Property(x => x.FullName)
            .HasColumnName("FullName")
            .HasColumnType("varchar(60)")

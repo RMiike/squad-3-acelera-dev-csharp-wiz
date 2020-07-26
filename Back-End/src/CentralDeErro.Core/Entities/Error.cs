@@ -6,10 +6,10 @@ namespace CentralDeErro.Core.Entities
     public class Error
     {
         protected Error() { }
-        private Error(int id, string token, string title, string details, Level level, DateTime createdAt, int sourceId, bool archived, bool deleted)
+        private Error(int id, string userId, string title, string details, Level level, DateTime createdAt, int sourceId, bool archived, bool deleted)
         {
             Id = id;
-            Token = token;
+            UserId = userId;
             Title = title;
             Details = details;
             CreatedAt = createdAt;
@@ -19,20 +19,21 @@ namespace CentralDeErro.Core.Entities
             Deleted = deleted;
         }
         public int Id { get; }
-        public string Token { get; }
         public string Title { get; }
         public string Details { get; }
         public DateTime CreatedAt { get; }
         public int SourceId { get; }
         public Source Source { get; }
+        public string UserId { get; }
+        public User User { get; }
         public Level Level { get; }
         public bool Archived { get; private set; }
         public bool Deleted { get; private set; }
 
-        public static Error Create(int id, string token, string title, string details, Level level, int sourceId)
+        public static Error Create(int id, string userId, string title, string details, Level level, int sourceId)
         {
-            if (String.IsNullOrEmpty(token)
-                || String.IsNullOrEmpty(title)
+            if ( String.IsNullOrEmpty(title)
+                || String.IsNullOrEmpty(userId)
                 || String.IsNullOrEmpty(details))
             {
                 throw new ArgumentNullException();
@@ -41,7 +42,7 @@ namespace CentralDeErro.Core.Entities
             var archived = false;
             var deleted = false;
 
-            return new Error(id, token, title, details, level, createdAt, sourceId, archived, deleted);
+            return new Error(id, userId, title, details, level, createdAt, sourceId, archived, deleted);
         }
 
         public void Archive()

@@ -70,17 +70,10 @@ namespace CentralDeErro.Tests._1_PresentationTests.Controllers.v1
                 Assert.AreEqual(expected[i].Id, actual[i].Id);
             }
         }
-        //public int Id { get; }
-        //public string Title { get; set; }
-        //public string Details { get; set; }
-        //public int SourceId { get; set; }
-        //public Level Level { get; set; }
-        //public string Token { get; private set; }
-
         [DataTestMethod]
-        [DataRow("Title", "Details", 1, Level.Debug, "Token")]
-        [DataRow("Titles", "Detailss", 2, Level.Error, "Token")]
-        public void Deve_EstaR_Ok_ao_realizar_post(string title, string details, int sourceId, Level level, string token)
+        [DataRow("Title", "Details", 1, Level.Debug)]
+        [DataRow("Titles", "Detailss", 2, Level.Error)]
+        public void Deve_EstaR_Ok_ao_realizar_post(string title, string details, int sourceId, Level level)
         {
 
             IErrorRepository fakeService;
@@ -89,7 +82,7 @@ namespace CentralDeErro.Tests._1_PresentationTests.Controllers.v1
 
             var newError = new ErrorCreateDTO { Title = title, Details = details, SourceId = sourceId, Level = level };
 
-            var result = controller.Register(fakeService, newError, token);
+            var result = controller.Register(fakeService, newError);
 
             Assert.IsInstanceOfType(result.Result, typeof(CreatedAtRouteResult));
 
@@ -110,7 +103,7 @@ namespace CentralDeErro.Tests._1_PresentationTests.Controllers.v1
 
             var newError = new ErrorCreateDTO { Title = title, Details = details, SourceId = sourceId, Level = level };
 
-            var result = controller.Register(fakeService, newError, token);
+            var result = controller.Register(fakeService, newError);
 
             Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
 
@@ -131,7 +124,7 @@ namespace CentralDeErro.Tests._1_PresentationTests.Controllers.v1
 
             var newError = new ErrorCreateDTO { Title = title, Details = details, SourceId = sourceId, Level = level };
 
-            var result = controller.Register(fakeService, newError, token);
+            var result = controller.Register(fakeService, newError);
 
             Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
 

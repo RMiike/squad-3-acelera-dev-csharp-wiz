@@ -20,12 +20,12 @@ namespace CentralDeErro.Tests._2_CoreTests.Entities
         }
 
         [DataTestMethod]
-        [DataRow(1, "Token", "Title", "Details", Level.Debug, 1)]
-        public void NewError_Token_Should_Be_Token(int id, string token, string title, string details, Level level, int sourceId)
+        [DataRow(1, "UserId", "Title", "Details", Level.Debug, 1)]
+        public void NewError_Token_Should_Be_Token(int id, string userId, string title, string details, Level level, int sourceId)
         {
-            var _newError = Error.Create(id, token, title, details, level, sourceId);
+            var _newError = Error.Create(id, userId, title, details, level, sourceId);
 
-            Assert.AreEqual("Token", _newError.Token);
+            Assert.AreEqual("UserId", _newError.UserId);
         }
 
         [DataTestMethod]

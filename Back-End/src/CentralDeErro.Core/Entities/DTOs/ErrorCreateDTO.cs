@@ -12,14 +12,14 @@ namespace CentralDeErro.Core.Entities.DTOs
         public string Details { get; set; }
         public int SourceId { get; set; }
         public Level Level { get;  set; }
-        public string Token { get; private set; }
+        public string UserId { get; private set; }
 
-        public void AddToken(string token)
+        public void AddUserId(string userId)
         {
-            if (String.IsNullOrEmpty(token))
-                throw new ArgumentNullException("Insert a valid token");
+            if (String.IsNullOrEmpty(userId))
+                throw new ArgumentNullException("Insert a valid user id");
 
-            Token = token;
+            UserId = userId;
         }
 
         public void Validate()

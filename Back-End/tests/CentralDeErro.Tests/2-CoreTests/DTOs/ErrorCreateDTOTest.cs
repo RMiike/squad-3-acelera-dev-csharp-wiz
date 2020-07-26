@@ -10,8 +10,8 @@ namespace CentralDeErro.Tests._2_CoreTests.DTOs
     {
 
         [DataTestMethod]
-        [DataRow("Title", "Details", 1, Level.Error, "Token")]
-        public void Novo_Erro_Deve_Ser_Valido(string title, string details, int sourceId, Level level, string token)
+        [DataRow("Title", "Details", 1, Level.Error, "userId")]
+        public void Novo_Erro_Deve_Ser_Valido(string title, string details, int sourceId, Level level, string userId)
         {
             ErrorCreateDTO errorCreateDTO = new ErrorCreateDTO
             {
@@ -27,12 +27,12 @@ namespace CentralDeErro.Tests._2_CoreTests.DTOs
 
             Assert.IsTrue(errorCreateDTO.Valid);
 
-            errorCreateDTO.AddToken(token);
+            errorCreateDTO.AddUserId(userId);
             errorCreateDTO.Validate();
 
             Assert.IsTrue(errorCreateDTO.Valid);
 
-            Assert.AreEqual(token, errorCreateDTO.Token);
+            Assert.AreEqual(userId, errorCreateDTO.UserId);
         }
         [DataTestMethod]
         [DataRow("Title", "Details", 1, Level.Error)]
@@ -65,12 +65,12 @@ namespace CentralDeErro.Tests._2_CoreTests.DTOs
             };
 
 
-            errorCreateDTO.AddToken(token);
+            errorCreateDTO.AddUserId(token);
         }
 
         [DataTestMethod]
-        [DataRow("Title", "Details", 1, Level.Error, "Token")]
-        public void Check_Token_Equals_Token(string title, string details, int sourceId, Level level, string token)
+        [DataRow("Title", "Details", 1, Level.Error, "UserId")]
+        public void Check_Token_Equals_Token(string title, string details, int sourceId, Level level, string userId)
         {
 
             ErrorCreateDTO errorCreateDTO = new ErrorCreateDTO
@@ -81,9 +81,9 @@ namespace CentralDeErro.Tests._2_CoreTests.DTOs
                 Level = level
             };
 
-            errorCreateDTO.AddToken(token);
+            errorCreateDTO.AddUserId(userId);
 
-            Assert.AreEqual("Token", errorCreateDTO.Token);
+            Assert.AreEqual("UserId", errorCreateDTO.UserId);
         }
 
         [DataTestMethod]

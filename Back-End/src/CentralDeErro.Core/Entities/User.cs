@@ -20,6 +20,7 @@ namespace CentralDeErro.Core.Entities
         public override string Email { get; set; }
         public DateTime CreatedAt { get; private set; }
         public IEnumerable<UserRole> UserRoles { get; private set; }
+        public IEnumerable<Error> Errors { get; private set; }
 
         public static User Create(string fullName, string email, string userName)
         {

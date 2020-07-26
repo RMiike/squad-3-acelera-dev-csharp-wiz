@@ -6,6 +6,7 @@ using CentralDeErro.Tests._3_InfrastructureTests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
+using System.Security.Claims;
 
 namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
 {
@@ -31,13 +32,14 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
                 for (var i = 0; i < actual.ToList().Count(); i++)
                 {
                     Assert.IsNotNull(actual[i].Id);
-                    Assert.IsNotNull(actual[i].Token);
+                    Assert.IsNotNull(actual[i].UserId);
+                    Assert.IsNotNull(actual[i].FullName);
                     Assert.IsNotNull(actual[i].Title);
                     Assert.IsNotNull(actual[i].Details);
                     Assert.IsNotNull(actual[i].CreatedAt);
                     Assert.IsNotNull(actual[i].Level);
                     Assert.IsNotNull(actual[i].Environment);
-                    Assert.IsNotNull(actual[i].Adress);
+                    Assert.IsNotNull(actual[i].Address);
                     Assert.IsNotNull(actual[i].Archived);
                     Assert.AreEqual(actual[i].Id, (1 + i));
                 }
@@ -79,10 +81,10 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
         }
 
         [DataTestMethod]
-        [DataRow("Title", "Details", 22, Level.Debug, "Token")]
-        [DataRow("Title", "Details", 55, Level.Debug, "Token")]
-        [DataRow("Title", "Details", 80, Level.Debug, "Token")]
-        public void Deve_Falhar_Ao_Postar_Error_Com_Source_Invalido(string title, string details, int sourceId, Level level, string token)
+        [DataRow("Title", "Details", 22, Level.Debug )]
+        [DataRow("Title", "Details", 55, Level.Debug )]
+        [DataRow("Title", "Details", 80, Level.Debug )]
+        public void Deve_Falhar_Ao_Postar_Error_Com_Source_Invalido(string title, string details, int sourceId, Level level)
         {
             FakeContext fakeContext = CreateAndFillContextWithError();
             using (var context = new CentralDeErrorContext(fakeContext.FakeOptions))
@@ -91,8 +93,10 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
                 var service = CreateService(fakeContext, context);
 
                 Assert.IsNotNull(newSource);
+                var user = context.Users.FirstOrDefault();
 
-                var result = service.Create(newSource, token);
+                var identity = new[] { new Claim("Name", user.Id) };
+                var result = service.Create(newSource, new ClaimsPrincipal(new ClaimsIdentity(identity)));
 
                 Assert.AreEqual(false, result.Success);
                 Assert.AreEqual("Invalid Source Id.", result.Message);
@@ -102,10 +106,10 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
 
 
         [DataTestMethod]
-        [DataRow("Title", "Details", 1, Level.Debug, "Token")]
-        [DataRow("Title", "Details", 2, Level.Debug, "Token")]
-        [DataRow("Title", "Details", 3, Level.Debug, "Token")]
-        public void Deve_Realizar_Post(string title, string details, int sourceId, Level level, string token)
+        [DataRow("Title", "Details", 1, Level.Debug)]
+        [DataRow("Title", "Details", 2, Level.Debug)]
+        [DataRow("Title", "Details", 3, Level.Debug)]
+        public void Deve_Realizar_Post(string title, string details, int sourceId, Level level)
         {
             FakeContext fakeContext = CreateAndFillContextWithError();
             using (var context = new CentralDeErrorContext(fakeContext.FakeOptions))
@@ -118,7 +122,11 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
 
                 Assert.IsNull(service.Get().Where(x => x.Id == newError.Id).FirstOrDefault());
 
-                var savedError = service.Create(newError, token);
+                var user = context.Users.FirstOrDefault();
+
+                var identity = new[] { new Claim("id", user.Id) };
+
+                var savedError = service.Create(newError, new ClaimsPrincipal(new ClaimsIdentity(identity)));
 
                 if (savedError.Success == false)
                 {

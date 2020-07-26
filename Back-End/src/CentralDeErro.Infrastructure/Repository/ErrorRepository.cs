@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 
 namespace CentralDeErro.Infrastructure.Repository
 {
@@ -38,7 +39,7 @@ namespace CentralDeErro.Infrastructure.Repository
             => HandleSearch(e => e.Deleted == false && e.Id == id)
                 .FirstOrDefault();
 
-        public ResultDTO Create(ErrorCreateDTO logErroDTO, string token)
+        public ResultDTO Create(ErrorCreateDTO logErroDTO, ClaimsPrincipal user)
         {
             if (logErroDTO == null)
                 throw new ArgumentNullException();
@@ -46,7 +47,9 @@ namespace CentralDeErro.Infrastructure.Repository
             if (!_context.Sources.Where(x => x.Deleted == false).Any(x => x.Id == logErroDTO.SourceId))
                 return new ResultDTO(false, "Invalid Source Id.", null);
 
-            logErroDTO.AddToken(token);
+            var userId = user.Claims.FirstOrDefault().Value;    
+
+            logErroDTO.AddUserId(userId);
 
             var logErro = _mapper.Map<Error>(logErroDTO);
 
@@ -115,7 +118,8 @@ namespace CentralDeErro.Infrastructure.Repository
                             .Where(condition)
                             .Select(e => new ErrorReadDTO(
                             e.Id,
-                            e.Token,
+                            e.UserId,
+                            e.User.FullName,
                             e.Title,
                             e.Details,
                             e.CreatedAt,

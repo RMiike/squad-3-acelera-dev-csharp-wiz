@@ -1,5 +1,6 @@
 ﻿using CentralDeErro.Core.Entities.DTOs;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace CentralDeErro.Core.Contracts.Repositories
 {
@@ -7,7 +8,7 @@ namespace CentralDeErro.Core.Contracts.Repositories
     {
         IEnumerable<ErrorReadDTO> Get();
         ErrorReadDTO Get(int id);
-        ResultDTO Create(ErrorCreateDTO logErroDTO, string user);
+        ResultDTO Create(ErrorCreateDTO logErroDTO, ClaimsPrincipal user);
         ResultDTO Archive(int id);
         ResultDTO Unarchive(int id);
         ResultDTO Delete(int id);

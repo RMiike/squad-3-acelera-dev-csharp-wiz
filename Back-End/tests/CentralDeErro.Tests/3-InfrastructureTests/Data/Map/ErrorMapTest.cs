@@ -34,7 +34,7 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data.Map
 
         [DataTestMethod]
         [DataRow("Id", false, typeof(int), null)]
-        [DataRow("Token", false, typeof(string), 450)]
+        [DataRow("UserId", false, typeof(string), 450)]
         [DataRow("Title", false, typeof(string), 60)]
         [DataRow("Details", false, typeof(string), 1024)]
         [DataRow("CreatedAt", false, typeof(DateTime), null)]

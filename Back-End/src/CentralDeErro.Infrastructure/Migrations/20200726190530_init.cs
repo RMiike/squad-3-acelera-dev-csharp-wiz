@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CentralDeErro.Infrastructure.Migrations
 {
-    public partial class inial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,7 @@ namespace CentralDeErro.Infrastructure.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(type: "varchar(450)", maxLength: 450, nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -175,11 +175,11 @@ namespace CentralDeErro.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Token = table.Column<string>(type: "varchar(450)", maxLength: 450, nullable: false),
                     Title = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
                     Details = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     SourceId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(type: "varchar(450)", maxLength: 450, nullable: false),
                     Level = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Archived = table.Column<bool>(nullable: false),
                     Deleted = table.Column<bool>(nullable: false)
@@ -193,12 +193,18 @@ namespace CentralDeErro.Infrastructure.Migrations
                         principalTable: "Source",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Error_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "6114e388-946b-44de-9170-131ff0df2b3d", 0, "8a5df103-67a3-40da-b764-6610c8368286", new DateTime(2020, 7, 18, 18, 8, 16, 682, DateTimeKind.Utc).AddTicks(3123), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
+                values: new object[] { "a6ee40e2-e9a7-46b9-b7d7-3015f1fce448", 0, "a634684f-2843-49b3-8c71-3ceb6a99e122", new DateTime(2020, 7, 26, 19, 5, 30, 33, DateTimeKind.Utc).AddTicks(9494), "rmiike@gmail.com", false, "Renato Miike", false, null, null, null, null, null, false, null, false, "rmiike@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Source",
@@ -212,11 +218,6 @@ namespace CentralDeErro.Infrastructure.Migrations
                     { 5, "Back-End", false, "Homologation" },
                     { 6, "Back-End", false, "Production" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Error",
-                columns: new[] { "Id", "Archived", "CreatedAt", "Deleted", "Details", "Level", "SourceId", "Title", "Token" },
-                values: new object[] { 1, false, new DateTime(2020, 7, 18, 18, 8, 16, 675, DateTimeKind.Utc).AddTicks(5530), false, "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15", "Debug", 1, "Description Project File Suppression State Line", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -261,6 +262,11 @@ namespace CentralDeErro.Infrastructure.Migrations
                 name: "IX_Error_SourceId",
                 table: "Error",
                 column: "SourceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Error_UserId",
+                table: "Error",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -287,10 +293,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Source");
 
             migrationBuilder.DropTable(
-                name: "Source");
+                name: "AspNetUsers");
         }
     }
 }

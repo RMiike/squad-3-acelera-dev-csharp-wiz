@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CentralDeErro.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDeErrorContext))]
-    [Migration("20200718180817_inial")]
-    partial class inial
+    [Migration("20200726190530_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -63,9 +63,9 @@ namespace CentralDeErro.Infrastructure.Migrations
                         .HasColumnType("varchar(60)")
                         .HasMaxLength(60);
 
-                    b.Property<string>("Token")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnName("Token")
+                        .HasColumnName("UserId")
                         .HasColumnType("varchar(450)")
                         .HasMaxLength(450);
 
@@ -73,21 +73,9 @@ namespace CentralDeErro.Infrastructure.Migrations
 
                     b.HasIndex("SourceId");
 
-                    b.ToTable("Error");
+                    b.HasIndex("UserId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Archived = false,
-                            CreatedAt = new DateTime(2020, 7, 18, 18, 8, 16, 675, DateTimeKind.Utc).AddTicks(5530),
-                            Deleted = false,
-                            Details = "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'	EziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
-                            Level = "Debug",
-                            SourceId = 1,
-                            Title = "Description Project File Suppression State Line",
-                            Token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYzgyMTI2NDhhIiwidW5pcXVlX25hbWUiOiJtaWlrZTIyMjMiLCJuYmYiOjE1OTE5MDE1OTMsImV4cCI6MTU5MTk4Nzk5MywiaWF0IjoxNTkxOTAxNTkzfQ.Tn-dAuEsod3HM1nQuqoFQ8HppCvls3cKW8ps_8sIbMp2OxGjwivzqsen_nvA4hu49Wt_fjWGBXkCS5IHulJJAQ"
-                        });
+                    b.ToTable("Error");
                 });
 
             modelBuilder.Entity("CentralDeErro.Core.Entities.Role", b =>
@@ -193,7 +181,8 @@ namespace CentralDeErro.Infrastructure.Migrations
             modelBuilder.Entity("CentralDeErro.Core.Entities.User", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(450)")
+                        .HasMaxLength(450);
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -269,10 +258,10 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6114e388-946b-44de-9170-131ff0df2b3d",
+                            Id = "a6ee40e2-e9a7-46b9-b7d7-3015f1fce448",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8a5df103-67a3-40da-b764-6610c8368286",
-                            CreatedAt = new DateTime(2020, 7, 18, 18, 8, 16, 682, DateTimeKind.Utc).AddTicks(3123),
+                            ConcurrencyStamp = "a634684f-2843-49b3-8c71-3ceb6a99e122",
+                            CreatedAt = new DateTime(2020, 7, 26, 19, 5, 30, 33, DateTimeKind.Utc).AddTicks(9494),
                             Email = "rmiike@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Renato Miike",
@@ -286,7 +275,7 @@ namespace CentralDeErro.Infrastructure.Migrations
             modelBuilder.Entity("CentralDeErro.Core.Entities.UserRole", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(450)");
 
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
@@ -337,7 +326,7 @@ namespace CentralDeErro.Infrastructure.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(450)");
 
                     b.HasKey("Id");
 
@@ -359,7 +348,7 @@ namespace CentralDeErro.Infrastructure.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -371,7 +360,7 @@ namespace CentralDeErro.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(450)");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -392,6 +381,12 @@ namespace CentralDeErro.Infrastructure.Migrations
                     b.HasOne("CentralDeErro.Core.Entities.Source", "Source")
                         .WithMany("Errors")
                         .HasForeignKey("SourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CentralDeErro.Core.Entities.User", "User")
+                        .WithMany("Errors")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

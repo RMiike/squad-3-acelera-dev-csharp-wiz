@@ -35,14 +35,13 @@ namespace CentralDeErro.WebAPI.Controllers.v1
         [HttpPost("error")]
         public ActionResult<Error> Register(
             [FromServices] IErrorRepository _errorRepository,
-                ErrorCreateDTO logErroDTO,
-                [FromHeader] string Authorization)
+                ErrorCreateDTO logErroDTO   )
         {
             logErroDTO.Validate();
             if (logErroDTO.Invalid)
                 return BadRequest(new ResultDTO(false, "An error ocurred.", logErroDTO.Notifications));
 
-            var result = _errorRepository.Create(logErroDTO, Authorization);
+            var result = _errorRepository.Create(logErroDTO, User);
 
             if (result.Success == true)
                 return CreatedAtRoute(nameof(GetErrorById), new { Id = logErroDTO.Title }, result);

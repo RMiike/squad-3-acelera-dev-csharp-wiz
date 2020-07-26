@@ -100,15 +100,16 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
             service.Setup(x => x.Get())
                 .Returns(() => Get<ErrorReadDTO>().ToList());
 
-            service.Setup(x => x.Create(It.IsAny<ErrorCreateDTO>(), It.IsAny<string>()))
-                .Returns((ErrorCreateDTO e, string token) =>
+            service.Setup(x => x.Create(It.IsAny<ErrorCreateDTO>(), It.IsAny<ClaimsPrincipal>()))
+                .Returns((ErrorCreateDTO e, ClaimsPrincipal claimsPrincipal) =>
                 {
-                    e.AddToken(token);
-
+         
                     if (Get<SourceReadDTO>().Where(x => x.Id == e.SourceId).FirstOrDefault() == null)
                         return new ResultDTO(false, "Invalid Source Id.", null);
 
-                    var newError = Error.Create(22, e.Token, e.Title, e.Details, e.Level, e.SourceId);
+                    var result = Get<RegisterCreateDTO>().FirstOrDefault();
+                    var user = User.Create(result.FullName, result.Email, result.Email);
+                    var newError = Error.Create(22, user.Id, e.Title, e.Details, e.Level, e.SourceId);
                     return new ResultDTO(true, "Succesfully registred the error.", newError);
                 });
 
@@ -375,14 +376,16 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
         public void FillWithAllErrors()
         {
             FillWithAllSource();
+            FillWithAllUsers();
             using (var context = new CentralDeErrorContext(FakeOptions))
             {
                 if (context.Errors.Count() == 0)
                 {
                     foreach (var item in Get<ErrorCreateDTO>())
                     {
-                        item.AddToken(Guid.NewGuid().ToString());
-                        var error = Error.Create(item.Id, item.Token, item.Title, item.Details, item.Level, item.SourceId);
+                        var user = context.Users.FirstOrDefault();
+                        item.AddUserId(user.Id);
+                        var error = Error.Create(item.Id, item.UserId, item.Title, item.Details, item.Level, item.SourceId);
                         context.Add(error);
                         context.SaveChanges();
                     }
@@ -405,12 +408,27 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Data
             }
         }
 
+        public void FillWithAllUsers()
+        {
+            using (var context = new CentralDeErrorContext(FakeOptions))
+            {
+                if (context.Users.Count() == 0)
+                {
+                    foreach (var item in Get<RegisterCreateDTO>())
+                    {
+                        var user = User.Create(item.FullName, item.Email, item.Email);
+                        context.Add(user);
+                        context.SaveChanges();
+                    }
+                }
+            }
+        }
         private static MapperConfiguration ConfigureMap()
         {
             return new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<User, LoginReadDTO>();
-                cfg.CreateMap<Error, ErrorCreateDTO>().ReverseMap().ConvertUsing(s => Error.Create(s.Id, s.Token, s.Title, s.Details, s.Level, s.SourceId));
+                cfg.CreateMap<Error, ErrorCreateDTO>().ReverseMap().ConvertUsing(s => Error.Create(s.Id, s.UserId, s.Title, s.Details, s.Level, s.SourceId));
                 cfg.CreateMap<Source, SourceCreateDTO>().ReverseMap().ConvertUsing(s => Source.Create(s.Id, s.Address, s.Environment));
             });
         }
