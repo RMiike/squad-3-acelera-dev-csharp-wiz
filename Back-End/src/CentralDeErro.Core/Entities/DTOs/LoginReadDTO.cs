@@ -4,6 +4,10 @@ namespace CentralDeErro.Core.Entities.DTOs
 {
     public class LoginReadDTO
     {
+        public string Id { get; set; }
+
+        public string FullName { get; set; }
+
         public string Email { get; private set; }
 
         //TODO Remover token e método
