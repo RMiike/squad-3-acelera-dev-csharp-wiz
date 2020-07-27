@@ -1,18 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import Filter from '../../components/Filter';
-import FilterResults from '../../components/FilterResults';
+import Menu from '../../../components/Menu';
+import {StatusBar, StyleSheet} from 'react-native';
 import {Container, Title, TitleView} from './styles';
-import api from '../../services/api';
+import DashboardContent from '../../../components/DashboardContent';
+import api from '../../../services/api';
 
 const Dashboard: React.FC = () => {
   const [errors, setErrors] = useState([]);
-  const [selectedIndex, setselectedIndex] = useState(0);
-
-  function updateIndex(selectedIndex) {
-    setselectedIndex(selectedIndex);
-  }
 
   useEffect(() => {
     async function handleFilterError() {
@@ -20,7 +15,8 @@ const Dashboard: React.FC = () => {
       setErrors(resp.data);
     }
     handleFilterError();
-  }, []);
+  }, [errors]);
+
   return (
     <LinearGradient
       colors={[
@@ -31,11 +27,11 @@ const Dashboard: React.FC = () => {
       style={styles.linearGradient}>
       <StatusBar backgroundColor="transparent" barStyle="light-content" />
       <Container>
+        <Menu />
         <TitleView>
-          <Title>JarWiz Search</Title>
+          <Title>JarWiz </Title>
         </TitleView>
-        <Filter updateIndex={updateIndex} selectedIndex={selectedIndex} />
-        <FilterResults errors={errors} selectedIndex={selectedIndex} />
+        <DashboardContent errors={errors} />
       </Container>
     </LinearGradient>
   );

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {Platform} from 'react-native';
-import {getBottomSpace} from 'react-native-iphone-x-helper';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 export const Textarea = styled.KeyboardAvoidingView`
@@ -35,20 +34,6 @@ export const Title = styled.Text`
   font-family: 'Montserrat';
   font-weight: bold;
   margin: 24px 0;
-`;
-export const TextIcon = styled.Text`
-  font-size: 14px;
-  color: #ffffff22;
-  font-family: 'Montserrat';
-  margin-right: 4px;
-`;
-export const BackButton = styled.TouchableOpacity`
-  margin-top: 44px;
-  right: 20px;
-  top: 0;
-  flex-direction: row;
-  position: absolute;
-  padding: 16px 0 ${16 + getBottomSpace()}px;
 `;
 
 export const ProfileDataContainer = styled.View`

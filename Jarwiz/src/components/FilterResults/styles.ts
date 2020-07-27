@@ -13,37 +13,9 @@ export const ButtonArea = styled.View`
   width: 100%;
 `;
 
-export const Filter = styled.View`
-  position: absolute;
-  top: 90px;
-  width: 100%;
-  margin: 20px;
-  border: 0.5px;
-  border-radius: 15px;
-  background-color: #e7e9e9;
-  border-color: rgba(231, 233, 233, 1);
-  height: 60px;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: row;
-`;
-
-export const FilterBtn = styled.TouchableOpacity`
-  align-items: center;
-  justify-content: center;
-  background-color: #f29657;
-  width: 99px;
-  height: 38px;
-  border-radius: 15px;
-`;
-
-export const FilterText = styled.Text`
-  font-size: 12px;
-  font-family: Montserrat;
-  color: #fff;
-`;
-
 export const ResultsText = styled.Text`
+  flex: 1;
+  margin-left: 40px;
   font-size: 15px;
   font-weight: bold;
   font-family: Montserrat;
@@ -56,10 +28,11 @@ export const ResultsBtnText = styled.Text`
   color: #fff;
 `;
 export const ResultsBtn = styled.TouchableOpacity`
+  flex: 1;
+  margin-right: 40px;
   align-items: center;
   justify-content: center;
   background-color: #6e478688;
-  width: 99px;
   height: 38px;
   border-radius: 15px;
 `;
@@ -68,8 +41,8 @@ export const Results = styled.View`
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
-  width: 90%;
-  margin: 10px;
+  width: 100%;
+  margin-top: 15px;
   border: 0.5px;
   border-radius: 15px;
   background-color: #e7e9e9;

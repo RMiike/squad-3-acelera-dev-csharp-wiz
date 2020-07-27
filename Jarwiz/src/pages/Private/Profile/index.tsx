@@ -7,22 +7,21 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import getValidationErrors from '../../utils/validationError';
-import api from '../../services/api';
+import getValidationErrors from '../../../utils/validationError';
+import api from '../../../services/api';
 import LinearGradient from 'react-native-linear-gradient';
-import {useAuth} from '../../contexts/auth';
-import PicProfile from '../../assets/Profile.png';
+import {useAuth} from '../../../contexts/auth';
+import PicProfile from '../../../assets/Profile.png';
 import {FormHandles} from '@unform/core';
 import {Form} from '@unform/mobile';
-import Button from '../../components/Form/Button';
-import Input from '../../components/Form/Input';
+import Button from '../../../components/Form/Button';
+import Menu from '../../../components/Menu';
+import Input from '../../../components/Form/Input';
 import {
   EveProfile,
-  BackButton,
   Title,
   ProfileDataContainer,
   Icon,
-  TextIcon,
   UserData,
   Textarea,
   FormArea,
@@ -40,7 +39,7 @@ const Profile: React.FC = () => {
   const oldInputRef = useRef<TextInput>(null);
   const newInputRef = useRef<TextInput>(null);
   const confirmInputRef = useRef<TextInput>(null);
-  const {user, signOut} = useAuth();
+  const {user} = useAuth();
 
   const handleChangePassword = useCallback(async (data: ChangePassFormData) => {
     try {
@@ -94,21 +93,19 @@ const Profile: React.FC = () => {
           'rgba(79, 69, 100, 0.9)',
         ]}
         style={styles.linearGradient}>
-        <BackButton onPress={signOut}>
-          <TextIcon>Sign Out</TextIcon>
-          <Icon name="log-out" size={14} color="#f56c0099" />
-        </BackButton>
+        <Menu />
+
         <EveProfile source={PicProfile} />
         <Textarea>
           <Title>My profile</Title>
         </Textarea>
         <ProfileDataContainer>
           <Icon name="user" size={20} color="#F29657" />
-          <UserData>{user.fullName}</UserData>
+          <UserData>{user?.fullName}</UserData>
         </ProfileDataContainer>
         <ProfileDataContainer>
           <Icon name="mail" size={20} color="#F29657" />
-          <UserData>{user.email}</UserData>
+          <UserData>{user?.email}</UserData>
         </ProfileDataContainer>
         <FormArea
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}

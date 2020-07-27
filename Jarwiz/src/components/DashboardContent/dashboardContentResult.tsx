@@ -1,0 +1,58 @@
+import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {
+  Content,
+  MainContent,
+  ErrorTitle,
+  DataContent,
+  DataView,
+  DataViewContent,
+  DataViewTitle,
+  DescriptionView,
+  Description,
+  AreaButton,
+  Details,
+  DetailButton,
+} from './styles';
+
+const DashboardContentResult: React.FC = ({data}) => {
+  const navigation = useNavigation();
+
+  function navigateToDetails() {
+    navigation.navigate('Details', {data});
+  }
+  return (
+    <Content>
+      <MainContent>
+        <ErrorTitle>{data.title}</ErrorTitle>
+        <DataContent>
+          <DataView>
+            <DataViewTitle>Level:</DataViewTitle>
+            <DataViewContent>{data.level}</DataViewContent>
+          </DataView>
+          <DataView>
+            <DataViewTitle>Address:</DataViewTitle>
+            <DataViewContent>{data.address}</DataViewContent>
+          </DataView>
+          <DataView>
+            <DataViewTitle>Environment:</DataViewTitle>
+            <DataViewContent>{data.environment}</DataViewContent>
+          </DataView>
+        </DataContent>
+        <DescriptionView>
+          <Description>{data.details}</Description>
+        </DescriptionView>
+      </MainContent>
+      <AreaButton>
+        <DetailButton
+          onPress={() => {
+            navigateToDetails(data);
+          }}>
+          <Details>Details</Details>
+        </DetailButton>
+      </AreaButton>
+    </Content>
+  );
+};
+
+export default DashboardContentResult;

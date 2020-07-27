@@ -3,7 +3,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 export const FilterView = styled.View`
   position: absolute;
-  top: 90px;
+  top: 105px;
   width: 100%;
   margin: 20px;
   border: 0.5px;

@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Home from '../pages/Home';
-import SignIn from '../pages/SignIn';
-import Register from '../pages/Register';
-import ForgotPassword from '../pages/ForgotPassword';
+import Home from '../pages/Authentication/Home';
+import SignIn from '../pages/Authentication/SignIn';
+import Register from '../pages/Authentication/Register';
 
 import {createStackNavigator} from '@react-navigation/stack';
 

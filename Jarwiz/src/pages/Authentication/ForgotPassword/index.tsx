@@ -13,7 +13,7 @@ import {
   AreaInput,
   ButtonText,
 } from './styles';
-import api from '../../services/api';
+import api from '../../../services/api';
 import * as Yup from 'yup';
 
 const ForgotPassword: React.FC = (props) => {

@@ -56,11 +56,9 @@ export const AuthProvider: React.FC = ({children}) => {
       password,
     });
 
-    api.defaults.headers.Authorization = `Bearer ${response.data.data.token}`;
+    const {token, fullName, id} = response.data.data;
 
-    const dataUser = await api.get('user');
-
-    const {fullName, id} = dataUser.data.data;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     await AsyncStorage.setItem(
       '@JarWiz:Email',

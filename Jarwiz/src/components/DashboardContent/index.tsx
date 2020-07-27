@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, FlatList} from 'react-native';
-import ResultsView from './results';
-const FilterResults: React.FC = ({errors, selectedIndex}) => {
+import {FlatList, View} from 'react-native';
+import DashboardContentResult from './dashboardContentResult';
+
+const DashboardContent: React.FC = ({errors}) => {
   return (
     <View>
       <FlatList
@@ -10,11 +11,11 @@ const FilterResults: React.FC = ({errors, selectedIndex}) => {
         showsVerticalScrollIndicator={false}
         onEndReachedThreshold={0.2}
         renderItem={({item}) => {
-          return <ResultsView data={item} selectedIndex={selectedIndex} />;
+          return <DashboardContentResult data={item} />;
         }}
       />
     </View>
   );
 };
 
-export default FilterResults;
+export default DashboardContent;

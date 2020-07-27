@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Form} from '@unform/mobile';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
-import getValidationErrors from '../../utils/validationError';
+import getValidationErrors from '../../../utils/validationError';
 import {FormHandles} from '@unform/core';
 import * as Yup from 'yup';
 import {
@@ -17,9 +17,9 @@ import {
   FinalAreaTouchable,
   FinalAreaTouchableText,
 } from './styles';
-import Button from '../../components/Form/Button';
-import Input from '../../components/Form/Input';
-import api from '../../services/api';
+import Button from '../../../components/Form/Button';
+import Input from '../../../components/Form/Input';
+import api from '../../../services/api';
 
 interface SignUpFormData {
   fullName: string;

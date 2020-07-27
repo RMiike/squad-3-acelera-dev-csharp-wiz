@@ -2,7 +2,7 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {StatusBar, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../../assets/Logo.png';
 import {
   Container,
   ButtonArea,

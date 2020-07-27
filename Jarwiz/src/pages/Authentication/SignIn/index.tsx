@@ -4,8 +4,8 @@ import {Form} from '@unform/mobile';
 import LinearGradient from 'react-native-linear-gradient';
 import {FormHandles} from '@unform/core';
 import ForgotPassword from '../ForgotPassword';
-import getValidationErrors from '../../utils/validationError';
-import {useAuth} from '../../contexts/auth';
+import getValidationErrors from '../../../utils/validationError';
+import {useAuth} from '../../../contexts/auth';
 import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
 import {
@@ -20,8 +20,8 @@ import {
   FinalAreaTouchable,
   FinalAreaTouchableText,
 } from './styles';
-import Button from '../../components/Form/Button';
-import Input from '../../components/Form/Input';
+import Button from '../../../components/Form/Button';
+import Input from '../../../components/Form/Input';
 import {useNavigation} from '@react-navigation/native';
 
 interface SignInFormData {
