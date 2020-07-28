@@ -1,8 +1,11 @@
 import React from 'react';
 import {View, FlatList} from 'react-native';
+import ActivityIndicatorComponent from '../ActivityIndicator';
 import ResultsView from './results';
-const FilterResults: React.FC = ({errors, selectedIndex}) => {
-  return (
+const FilterResults: React.FC = ({errors, selectedIndex, loading}) => {
+  return loading ? (
+    <ActivityIndicatorComponent />
+  ) : (
     <View>
       <FlatList
         data={errors}

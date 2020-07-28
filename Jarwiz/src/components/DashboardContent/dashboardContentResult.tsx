@@ -46,7 +46,7 @@ const DashboardContentResult: React.FC = ({data}) => {
       <AreaButton>
         <DetailButton
           onPress={() => {
-            navigateToDetails(data);
+            navigateToDetails();
           }}>
           <Details>Details</Details>
         </DetailButton>

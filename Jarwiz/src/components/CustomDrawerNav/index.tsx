@@ -1,10 +1,12 @@
 import React from 'react';
-import {StatusBar, View, StyleSheet} from 'react-native';
+import {StatusBar, View, StyleSheet, Text} from 'react-native';
 import {
   CustomDrawerContentScrollView,
   Container,
   DrawerContent,
   CustomDrawerContainer,
+  Footer,
+  TextFooter,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import SignoutBtn from './logoutBtn';
@@ -26,7 +28,7 @@ const CustomDrawerNav: React.FC = (props) => {
             icon={({size}) => <Icon name="home" color="#fff" size={size} />}
             label="Home"
             onPress={() => {
-              navigation.navigate('Search');
+              navigation.navigate('Dashboard');
             }}
           />
         </CustomDrawerContainer>
@@ -36,7 +38,7 @@ const CustomDrawerNav: React.FC = (props) => {
             icon={({size}) => <Icon name="list" color="#fff" size={size} />}
             label="Filters"
             onPress={() => {
-              navigation.navigate('Dashboard');
+              navigation.navigate('Search');
             }}
           />
         </CustomDrawerContainer>
@@ -52,6 +54,10 @@ const CustomDrawerNav: React.FC = (props) => {
         </CustomDrawerContainer>
         <SignoutBtn />
       </CustomDrawerContentScrollView>
+      <Footer>
+        <TextFooter>© 2020 Jarwiz.</TextFooter>
+        <TextFooter> All rights reserved.</TextFooter>
+      </Footer>
     </Container>
   );
 };

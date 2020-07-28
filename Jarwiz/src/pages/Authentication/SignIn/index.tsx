@@ -1,6 +1,7 @@
 import React, {useRef, useCallback, useState} from 'react';
 import {TextInput, ScrollView, Platform, Alert, StyleSheet} from 'react-native';
 import {Form} from '@unform/mobile';
+import ActivityIndicatorComponent from '../../../components/ActivityIndicator';
 import LinearGradient from 'react-native-linear-gradient';
 import {FormHandles} from '@unform/core';
 import ForgotPassword from '../ForgotPassword';
@@ -36,10 +37,13 @@ const SignIn: React.FC = () => {
   const {signIn} = useAuth();
   const route = useNavigation();
   const [isVisible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSignIn = useCallback(
     async ({email, password}: SignInFormData) => {
       try {
+        setLoading(true);
+
         formRef.current?.setErrors({});
 
         const yupSchema = Yup.object().shape({
@@ -53,7 +57,10 @@ const SignIn: React.FC = () => {
 
         await yupSchema.validate({email, password}, {abortEarly: false});
         await signIn({email, password});
+        setLoading(false);
       } catch (e) {
+        setLoading(false);
+
         if (e instanceof Yup.ValidationError) {
           const errors = getValidationErrors(e);
           formRef.current?.setErrors(errors);
@@ -97,42 +104,46 @@ const SignIn: React.FC = () => {
           />
           <Text>Sign In</Text>
         </Textarea>
-        <FormArea
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          enabled>
-          <Form ref={formRef} onSubmit={handleSignIn}>
-            <Input
-              ref={emailInputRef}
-              keyboardType="email-address"
-              autoCorrect={false}
-              autoCapitalize="none"
-              name="email"
-              icon="mail"
-              placeholder="E-mail"
-              returnKeyType="next"
-              onSubmitEditing={() => emailInputRef.current?.focus()}
-            />
-            <Input
-              ref={passwordInputRef}
-              secureTextEntry
-              name="password"
-              icon="lock"
-              placeholder="Password"
-              textContentType="newPassword"
-              returnKeyType="send"
-              onSubmitEditing={() => passwordInputRef.current?.focus()}
-            />
-          </Form>
-          <Button
-            onPress={() => {
-              formRef.current?.submitForm();
-            }}>
-            Enter
-          </Button>
-          <ForgotPasswordButton onPress={handleViewForgotPass}>
-            <ForgotPasswordText>Forgot Password?</ForgotPasswordText>
-          </ForgotPasswordButton>
-        </FormArea>
+        {loading ? (
+          <ActivityIndicatorComponent />
+        ) : (
+          <FormArea
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            enabled>
+            <Form ref={formRef} onSubmit={handleSignIn}>
+              <Input
+                ref={emailInputRef}
+                keyboardType="email-address"
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="email"
+                icon="mail"
+                placeholder="E-mail"
+                returnKeyType="next"
+                onSubmitEditing={() => emailInputRef.current?.focus()}
+              />
+              <Input
+                ref={passwordInputRef}
+                secureTextEntry
+                name="password"
+                icon="lock"
+                placeholder="Password"
+                textContentType="newPassword"
+                returnKeyType="send"
+                onSubmitEditing={() => passwordInputRef.current?.focus()}
+              />
+            </Form>
+            <Button
+              onPress={() => {
+                formRef.current?.submitForm();
+              }}>
+              Enter
+            </Button>
+            <ForgotPasswordButton onPress={handleViewForgotPass}>
+              <ForgotPasswordText>Forgot Password?</ForgotPasswordText>
+            </ForgotPasswordButton>
+          </FormArea>
+        )}
         <Space />
         <FinalArea>
           <FinalText>Not a user?</FinalText>

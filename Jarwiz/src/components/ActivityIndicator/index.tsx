@@ -1,10 +1,9 @@
 import React from 'react';
-import {Container, Indicator} from './styles';
-
+import {Container, Activity} from './styles';
 const ActivityIndicatorComponent: React.FC = () => {
   return (
     <Container>
-      <Indicator />
+      <Activity />
     </Container>
   );
 };

@@ -1,21 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Menu from '../../../components/Menu';
 import {StatusBar, StyleSheet} from 'react-native';
 import {Container, Title, TitleView} from './styles';
 import DashboardContent from '../../../components/DashboardContent';
-import api from '../../../services/api';
+import {useError} from '../../../contexts/error';
 
 const Dashboard: React.FC = () => {
-  const [errors, setErrors] = useState([]);
-
-  useEffect(() => {
-    async function handleFilterError() {
-      const resp = await api.get('errors');
-      setErrors(resp.data);
-    }
-    handleFilterError();
-  }, [errors]);
+  const {loading, errors} = useError();
 
   return (
     <LinearGradient
@@ -31,7 +23,7 @@ const Dashboard: React.FC = () => {
         <TitleView>
           <Title>JarWiz </Title>
         </TitleView>
-        <DashboardContent errors={errors} />
+        <DashboardContent errors={errors} loading={loading} />
       </Container>
     </LinearGradient>
   );

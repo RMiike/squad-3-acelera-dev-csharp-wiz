@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {StyleSheet, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import api from '../../../services/api';
+import {useError} from '../../../contexts/error';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   Content,
@@ -27,21 +28,21 @@ import {
 const Details: React.FC = () => {
   const navigate = useNavigation();
   const route = useRoute();
-  const [error, setError] = useState();
-  useEffect(() => {
-    async function handleGetById() {
-      setError(route.params.data);
-    }
-    handleGetById();
-  }, [route]);
+  const error = route.params.data;
 
-  async function handleUpdate() {
+  const {handleUpdate, handleDelete} = useError();
+
+  async function handleUpdateData() {
+    const {id, archived} = error;
+    const resp = await handleUpdate({id, archived});
+    if (resp !== undefined) {
+      await navigate.goBack();
+    }
+  }
+  async function handleDeleteData() {
     const {id} = error;
-    if (error?.archived) {
-      await api.put(`error/unarchive/${id}`);
-      navigate.goBack();
-    } else {
-      await api.put(`error/archive/${id}`);
+    const resp = await handleDelete({id});
+    if (resp !== undefined) {
       navigate.goBack();
     }
   }
@@ -85,11 +86,14 @@ const Details: React.FC = () => {
         <AreaButton>
           <UpdateButton
             onPress={() => {
-              handleUpdate();
+              handleUpdateData();
             }}>
             <UpdateText>{error?.archived ? 'Unarchive' : 'Archive'}</UpdateText>
           </UpdateButton>
-          <DetailButton>
+          <DetailButton
+            onPress={() => {
+              handleDeleteData();
+            }}>
             <BtnDetails>Delete</BtnDetails>
           </DetailButton>
         </AreaButton>

@@ -1,6 +1,7 @@
-import React, {useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useState} from 'react';
 import {TextInput, ScrollView, Platform, Alert, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import ActivityIndicatorComponent from '../../../components/ActivityIndicator';
 import {Form} from '@unform/mobile';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -33,11 +34,15 @@ const Register: React.FC = () => {
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
   const confirmPasswordInputRef = useRef<TextInput>(null);
+  const [loading, setLoading] = useState(false);
+
   const route = useNavigation();
 
   const register = useCallback(
     async ({fullName, email, password, confirmPassword}: SignUpFormData) => {
       try {
+        setLoading(true);
+
         formRef.current?.setErrors({});
 
         const yupSchema = Yup.object().shape({
@@ -66,8 +71,12 @@ const Register: React.FC = () => {
           confirmPassword,
         });
         Alert.alert(resp.data.message);
+        setLoading(false);
+
         route.navigate('SignIn');
       } catch (e) {
+        setLoading(false);
+
         if (e instanceof Yup.ValidationError) {
           const errors = getValidationErrors(e);
           formRef.current?.setErrors(errors);
@@ -105,57 +114,61 @@ const Register: React.FC = () => {
 
           <Text>Register</Text>
         </Textarea>
-        <FormArea
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          enabled>
-          <Form ref={formRef} onSubmit={register}>
-            <Input
-              autoCapitalize="words"
-              name="fullName"
-              icon="user"
-              placeholder="Full Name"
-              returnKeyType="next"
-              onSubmitEditing={() => emailInputRef.current?.focus()}
-            />
-            <Input
-              ref={emailInputRef}
-              keyboardType="email-address"
-              autoCorrect={false}
-              autoCapitalize="none"
-              name="email"
-              icon="mail"
-              placeholder="E-mail"
-              returnKeyType="next"
-              onSubmitEditing={() => passwordInputRef.current?.focus()}
-            />
-            <Input
-              ref={passwordInputRef}
-              secureTextEntry
-              name="password"
-              icon="lock"
-              placeholder="Password"
-              textContentType="newPassword"
-              returnKeyType="next"
-              onSubmitEditing={() => formRef.current?.submitForm()}
-            />
-            <Input
-              ref={confirmPasswordInputRef}
-              secureTextEntry
-              name="confirmPassword"
-              icon="lock"
-              placeholder="Confirm Password"
-              textContentType="newPassword"
-              returnKeyType="send"
-              onSubmitEditing={() => formRef.current?.submitForm()}
-            />
-          </Form>
-          <Button
-            onPress={() => {
-              formRef.current?.submitForm();
-            }}>
-            Enter
-          </Button>
-        </FormArea>
+        {loading ? (
+          <ActivityIndicatorComponent />
+        ) : (
+          <FormArea
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            enabled>
+            <Form ref={formRef} onSubmit={register}>
+              <Input
+                autoCapitalize="words"
+                name="fullName"
+                icon="user"
+                placeholder="Full Name"
+                returnKeyType="next"
+                onSubmitEditing={() => emailInputRef.current?.focus()}
+              />
+              <Input
+                ref={emailInputRef}
+                keyboardType="email-address"
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="email"
+                icon="mail"
+                placeholder="E-mail"
+                returnKeyType="next"
+                onSubmitEditing={() => passwordInputRef.current?.focus()}
+              />
+              <Input
+                ref={passwordInputRef}
+                secureTextEntry
+                name="password"
+                icon="lock"
+                placeholder="Password"
+                textContentType="newPassword"
+                returnKeyType="next"
+                onSubmitEditing={() => formRef.current?.submitForm()}
+              />
+              <Input
+                ref={confirmPasswordInputRef}
+                secureTextEntry
+                name="confirmPassword"
+                icon="lock"
+                placeholder="Confirm Password"
+                textContentType="newPassword"
+                returnKeyType="send"
+                onSubmitEditing={() => formRef.current?.submitForm()}
+              />
+            </Form>
+            <Button
+              onPress={() => {
+                formRef.current?.submitForm();
+              }}>
+              Enter
+            </Button>
+          </FormArea>
+        )}
         <Space />
         <FinalArea>
           <FinalText>Already a member?</FinalText>

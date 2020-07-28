@@ -86,3 +86,15 @@ export const DrawerContent = styled.View`
 export const CustomDrawerContainer = styled(Drawer.Section)`
   background-color: rgba(33, 33, 51, 0.2);
 `;
+
+export const Footer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  background-color: #212133;
+`;
+
+export const TextFooter = styled.Text`
+  color: #fff;
+`;

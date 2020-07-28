@@ -1,27 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {StatusBar, StyleSheet} from 'react-native';
 import Filter from '../../../components/Filter';
 import Menu from '../../../components/Menu';
 import FilterResults from '../../../components/FilterResults';
 import {Container, Title, TitleView} from './styles';
-import api from '../../../services/api';
+import {useError} from '../../../contexts/error';
 
 const Search: React.FC = () => {
-  const [errors, setErrors] = useState([]);
   const [selectedIndex, setselectedIndex] = useState(0);
+  const {loading, errors} = useError();
 
   function updateIndex(selectedIndex) {
     setselectedIndex(selectedIndex);
   }
-
-  useEffect(() => {
-    async function handleFilterError() {
-      const resp = await api.get('errors');
-      setErrors(resp.data);
-    }
-    handleFilterError();
-  }, [errors]);
 
   return (
     <LinearGradient
@@ -38,7 +30,11 @@ const Search: React.FC = () => {
           <Title>JarWiz</Title>
         </TitleView>
         <Filter updateIndex={updateIndex} selectedIndex={selectedIndex} />
-        <FilterResults errors={errors} selectedIndex={selectedIndex} />
+        <FilterResults
+          errors={errors}
+          selectedIndex={selectedIndex}
+          loading={loading}
+        />
       </Container>
     </LinearGradient>
   );
