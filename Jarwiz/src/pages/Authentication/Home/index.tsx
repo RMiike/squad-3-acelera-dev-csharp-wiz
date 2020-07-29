@@ -1,6 +1,5 @@
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import {StatusBar, StyleSheet} from 'react-native';
+import {StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Logo from '../../../assets/Logo.png';
 import {
@@ -11,19 +10,14 @@ import {
   RegisterButtonText,
   SignInButton,
   SignInButtonText,
+  BackgroundLinear,
   Space,
 } from './styles';
 
 const Home: React.FC = () => {
   const route = useNavigation();
   return (
-    <LinearGradient
-      colors={[
-        '#28023D',
-        'rgba(51, 21, 72, 0.854068)',
-        'rgba(79, 69, 100, 0.5)',
-      ]}
-      style={styles.linearGradient}>
+    <BackgroundLinear>
       <StatusBar backgroundColor="transparent" barStyle="light-content" />
       <Container>
         <LogoHome source={Logo} />
@@ -43,14 +37,8 @@ const Home: React.FC = () => {
           </RegisterButton>
         </ButtonArea>
       </Container>
-    </LinearGradient>
+    </BackgroundLinear>
   );
 };
 
 export default Home;
-
-var styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-  },
-});

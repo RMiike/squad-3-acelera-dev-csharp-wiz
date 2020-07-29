@@ -1,8 +1,7 @@
 import React, {useRef, useCallback, useState} from 'react';
-import {TextInput, ScrollView, Platform, Alert, StyleSheet} from 'react-native';
+import {TextInput, ScrollView, Platform, Alert} from 'react-native';
 import {Form} from '@unform/mobile';
 import ActivityIndicatorComponent from '../../../components/ActivityIndicator';
-import LinearGradient from 'react-native-linear-gradient';
 import {FormHandles} from '@unform/core';
 import ForgotPassword from '../ForgotPassword';
 import getValidationErrors from '../../../utils/validationError';
@@ -19,6 +18,7 @@ import {
   ForgotPasswordText,
   FinalText,
   FinalAreaTouchable,
+  BackgroundLinear,
   FinalAreaTouchableText,
 } from './styles';
 import Button from '../../../components/Form/Button';
@@ -82,13 +82,7 @@ const SignIn: React.FC = () => {
     <ScrollView
       contentContainerStyle={{flex: 1}}
       keyboardShouldPersistTaps="handled">
-      <LinearGradient
-        colors={[
-          '#28023Dfe',
-          'rgba(51, 21, 72, 0.854068)',
-          'rgba(79, 69, 100, 0.9)',
-        ]}
-        style={styles.linearGradient}>
+      <BackgroundLinear>
         <ForgotPassword
           isVisible={isVisible}
           handleViewForgotPass={handleViewForgotPass}
@@ -104,46 +98,48 @@ const SignIn: React.FC = () => {
           />
           <Text>Sign In</Text>
         </Textarea>
-        {loading ? (
-          <ActivityIndicatorComponent />
-        ) : (
-          <FormArea
-            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-            enabled>
-            <Form ref={formRef} onSubmit={handleSignIn}>
-              <Input
-                ref={emailInputRef}
-                keyboardType="email-address"
-                autoCorrect={false}
-                autoCapitalize="none"
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => emailInputRef.current?.focus()}
-              />
-              <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Password"
-                textContentType="newPassword"
-                returnKeyType="send"
-                onSubmitEditing={() => passwordInputRef.current?.focus()}
-              />
-            </Form>
+
+        <FormArea
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          enabled>
+          <Form ref={formRef} onSubmit={handleSignIn}>
+            <Input
+              ref={emailInputRef}
+              keyboardType="email-address"
+              autoCorrect={false}
+              autoCapitalize="none"
+              name="email"
+              icon="mail"
+              placeholder="E-mail"
+              returnKeyType="next"
+              onSubmitEditing={() => emailInputRef.current?.focus()}
+            />
+            <Input
+              ref={passwordInputRef}
+              secureTextEntry
+              name="password"
+              icon="lock"
+              placeholder="Password"
+              textContentType="newPassword"
+              returnKeyType="send"
+              onSubmitEditing={() => passwordInputRef.current?.focus()}
+            />
+          </Form>
+          {loading ? (
+            <ActivityIndicatorComponent />
+          ) : (
             <Button
               onPress={() => {
                 formRef.current?.submitForm();
               }}>
               Enter
             </Button>
-            <ForgotPasswordButton onPress={handleViewForgotPass}>
-              <ForgotPasswordText>Forgot Password?</ForgotPasswordText>
-            </ForgotPasswordButton>
-          </FormArea>
-        )}
+          )}
+
+          <ForgotPasswordButton onPress={handleViewForgotPass}>
+            <ForgotPasswordText>Forgot Password?</ForgotPasswordText>
+          </ForgotPasswordButton>
+        </FormArea>
         <Space />
         <FinalArea>
           <FinalText>Not a user?</FinalText>
@@ -154,16 +150,9 @@ const SignIn: React.FC = () => {
             <FinalAreaTouchableText>Register</FinalAreaTouchableText>
           </FinalAreaTouchable>
         </FinalArea>
-      </LinearGradient>
+      </BackgroundLinear>
     </ScrollView>
   );
 };
 
 export default SignIn;
-
-var styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    padding: '5%',
-  },
-});

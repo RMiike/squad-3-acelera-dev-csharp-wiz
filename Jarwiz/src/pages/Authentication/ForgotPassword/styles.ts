@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 import {Platform} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
+
+export const BackgroundLinear = styled(LinearGradient).attrs({
+  colors: ['#28023Daa', 'rgba(51, 21, 72, 0.44)', 'rgba(79, 69, 100, 0.5)'],
+})`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  border-radius: 15px;
+`;
 
 export const Text = styled.Text`
   font-family: 'Montserrat';

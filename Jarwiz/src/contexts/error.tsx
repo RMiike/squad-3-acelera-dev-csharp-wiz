@@ -40,9 +40,6 @@ const ErrorContext = createContext<ErrorContextData>({} as ErrorContextData);
 export const ErrorProvider: React.FC = ({children}) => {
   const [errors, setErrors] = useState<Errors>({} as Errors);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    handleFilterError();
-  }, []);
 
   async function handleFilterError() {
     setLoading(true);
@@ -50,6 +47,11 @@ export const ErrorProvider: React.FC = ({children}) => {
     setErrors(resp.data);
     setLoading(false);
   }
+
+  useEffect(() => {
+    handleFilterError();
+  }, []);
+
   const handleUpdate = useCallback(async ({id, archived}: UpdateData) => {
     try {
       setLoading(true);

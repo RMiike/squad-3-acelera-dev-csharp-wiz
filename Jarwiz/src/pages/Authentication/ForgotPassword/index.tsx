@@ -1,8 +1,8 @@
 import React, {useState, useCallback} from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import {StyleSheet, Modal, Platform, Alert} from 'react-native';
+import {Modal, Platform, Alert} from 'react-native';
 import {
   Textarea,
+  BackgroundLinear,
   Text,
   FormArea,
   Icon,
@@ -41,13 +41,12 @@ const ForgotPassword: React.FC = (props) => {
   }, []);
   return (
     <Modal transparent={true} visible={isVisible}>
-      <LinearGradient
+      <BackgroundLinear
         colors={[
           '#28023Daa',
           'rgba(51, 21, 72, 0.44)',
           'rgba(79, 69, 100, 0.5)',
-        ]}
-        style={styles.linearGradient}>
+        ]}>
         <FormArea
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           enabled>
@@ -76,18 +75,9 @@ const ForgotPassword: React.FC = (props) => {
             </ButtonArea>
           </Form>
         </FormArea>
-      </LinearGradient>
+      </BackgroundLinear>
     </Modal>
   );
 };
 
 export default ForgotPassword;
-var styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 60,
-    borderRadius: 15,
-  },
-});

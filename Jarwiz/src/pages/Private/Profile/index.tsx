@@ -1,15 +1,7 @@
 import React, {useRef, useCallback} from 'react';
-import {
-  StyleSheet,
-  StatusBar,
-  ScrollView,
-  Platform,
-  TextInput,
-  Alert,
-} from 'react-native';
+import {StatusBar, ScrollView, Platform, TextInput, Alert} from 'react-native';
 import getValidationErrors from '../../../utils/validationError';
 import api from '../../../services/api';
-import LinearGradient from 'react-native-linear-gradient';
 import {useAuth} from '../../../contexts/auth';
 import PicProfile from '../../../assets/Profile.png';
 import {FormHandles} from '@unform/core';
@@ -25,6 +17,7 @@ import {
   UserData,
   Textarea,
   FormArea,
+  BackgroundLinear,
 } from './styles';
 import * as Yup from 'yup';
 
@@ -86,15 +79,8 @@ const Profile: React.FC = () => {
       contentContainerStyle={{flex: 1}}
       keyboardShouldPersistTaps="handled">
       <StatusBar backgroundColor="transparent" barStyle="light-content" />
-      <LinearGradient
-        colors={[
-          '#28023Dfe',
-          'rgba(51, 21, 72, 0.854068)',
-          'rgba(79, 69, 100, 0.9)',
-        ]}
-        style={styles.linearGradient}>
+      <BackgroundLinear>
         <Menu />
-
         <EveProfile source={PicProfile} />
         <Textarea>
           <Title>My profile</Title>
@@ -149,18 +135,9 @@ const Profile: React.FC = () => {
             Change Password
           </Button>
         </FormArea>
-      </LinearGradient>
+      </BackgroundLinear>
     </ScrollView>
   );
 };
 
 export default Profile;
-
-var styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '5%',
-  },
-});

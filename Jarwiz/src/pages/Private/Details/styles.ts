@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
 
+export const BackgroundLinear = styled(LinearGradient).attrs({
+  colors: ['#28023D', 'rgba(51, 21, 72, 0.854068)', 'rgba(79, 69, 100, 0.5)'],
+})`
+  flex: 1;
+`;
 export const Content = styled.View`
   flex: 1;
   width: 100%;
@@ -73,7 +79,10 @@ export const AreaButton = styled.View`
 
 export const DetailButton = styled.TouchableOpacity`
   align-items: center;
+  border-width: 0.2px;
   justify-content: center;
+  border-radius: 15px;
+  background-color: #ff000077;
   height: 30px;
   width: 141px;
 `;
@@ -94,7 +103,7 @@ export const BtnDetails = styled.Text`
   margin: 0 19px;
   font-weight: 300;
   font-family: 'Montserrat';
-  color: #ff0000;
+  color: #fff;
 `;
 export const UpdateText = styled.Text`
   font-size: 12px;

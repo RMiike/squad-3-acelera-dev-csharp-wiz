@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 import {Platform} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
 
+export const BackgroundLinear = styled(LinearGradient).attrs({
+  colors: ['#28023D', 'rgba(51, 21, 72, 0.854068)', 'rgba(79, 69, 100, 0.5)'],
+})`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+`;
 export const Textarea = styled.KeyboardAvoidingView`
   justify-content: center;
   flex-direction: row;

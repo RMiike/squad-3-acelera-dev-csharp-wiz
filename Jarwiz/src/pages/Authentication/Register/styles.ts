@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 import {Platform} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+export const BackgroundLinear = styled(LinearGradient).attrs({
+  colors: ['#28023Dfe', 'rgba(51, 21, 72, 0.854068)', 'rgba(79, 69, 100, 0.9)'],
+})`
+  flex: 1;
+  padding: 5%;
+`;
 
 export const Text = styled.Text`
   font-family: 'Montserrat';

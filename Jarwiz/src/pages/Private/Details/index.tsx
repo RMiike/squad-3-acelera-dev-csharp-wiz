@@ -1,6 +1,4 @@
 import React from 'react';
-import {StyleSheetProperties} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {useError} from '../../../contexts/error';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {
@@ -22,6 +20,7 @@ import {
   Icon,
   UpdateText,
   UpdateButton,
+  BackgroundLinear,
 } from './styles';
 
 const Details: React.FC = () => {
@@ -46,13 +45,7 @@ const Details: React.FC = () => {
     }
   }
   return (
-    <LinearGradient
-      colors={[
-        '#28023D',
-        'rgba(51, 21, 72, 0.854068)',
-        'rgba(79, 69, 100, 0.5)',
-      ]}
-      style={styles.linearGradient}>
+    <BackgroundLinear>
       <Content>
         <MainContent>
           <Icon
@@ -100,16 +93,16 @@ const Details: React.FC = () => {
       <UserDataView>
         <UserDataName>Coletado por: {error?.fullName} </UserDataName>
         <UserDataId>Token: {error?.userId}</UserDataId>
-        <UserDataId>Criado: {error?.createdAt}</UserDataId>
+        <UserDataId>
+          Criado:{' '}
+          {error?.createdAt
+            .replace(/T/g, ' ')
+            .substring(0, 19)
+            .replace(/-/g, '/')}
+        </UserDataId>
       </UserDataView>
-    </LinearGradient>
+    </BackgroundLinear>
   );
 };
 
 export default Details;
-
-var styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-  },
-});
