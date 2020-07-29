@@ -1,7 +1,6 @@
 import React from 'react';
-import {StyleSheet, Alert} from 'react-native';
+import {StyleSheetProperties} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import api from '../../../services/api';
 import {useError} from '../../../contexts/error';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {

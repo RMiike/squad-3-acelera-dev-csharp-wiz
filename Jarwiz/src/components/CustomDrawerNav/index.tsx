@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, View, StyleSheet, Text} from 'react-native';
+import {StatusBar} from 'react-native';
 import {
   CustomDrawerContentScrollView,
   Container,
@@ -7,10 +7,10 @@ import {
   CustomDrawerContainer,
   Footer,
   TextFooter,
+  CustomDrawerItems,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import SignoutBtn from './logoutBtn';
-import {DrawerItem} from '@react-navigation/drawer';
 import DataUser from './dataUser';
 
 const CustomDrawerNav: React.FC = (props) => {
@@ -23,8 +23,7 @@ const CustomDrawerNav: React.FC = (props) => {
           <DataUser />
         </DrawerContent>
         <CustomDrawerContainer>
-          <DrawerItem
-            labelStyle={{color: '#fff'}}
+          <CustomDrawerItems
             icon={({size}) => <Icon name="home" color="#fff" size={size} />}
             label="Home"
             onPress={() => {
@@ -33,8 +32,7 @@ const CustomDrawerNav: React.FC = (props) => {
           />
         </CustomDrawerContainer>
         <CustomDrawerContainer>
-          <DrawerItem
-            labelStyle={{color: '#fff'}}
+          <CustomDrawerItems
             icon={({size}) => <Icon name="list" color="#fff" size={size} />}
             label="Filters"
             onPress={() => {
@@ -43,8 +41,7 @@ const CustomDrawerNav: React.FC = (props) => {
           />
         </CustomDrawerContainer>
         <CustomDrawerContainer>
-          <DrawerItem
-            labelStyle={{color: '#fff'}}
+          <CustomDrawerItems
             icon={({size}) => <Icon name="user" color="#fff" size={size} />}
             label="Profile"
             onPress={() => {
@@ -63,24 +60,3 @@ const CustomDrawerNav: React.FC = (props) => {
 };
 
 export default CustomDrawerNav;
-
-const styles = StyleSheet.create({
-  section: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 15,
-  },
-  paragraph: {
-    fontWeight: 'bold',
-    marginRight: 3,
-  },
-  drawerSection: {
-    marginTop: 15,
-  },
-  preference: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-  },
-});

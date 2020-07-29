@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {Platform} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 

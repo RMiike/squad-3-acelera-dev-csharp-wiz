@@ -40,7 +40,6 @@ const ErrorContext = createContext<ErrorContextData>({} as ErrorContextData);
 export const ErrorProvider: React.FC = ({children}) => {
   const [errors, setErrors] = useState<Errors>({} as Errors);
   const [loading, setLoading] = useState(true);
-  console.log(errors);
   useEffect(() => {
     handleFilterError();
   }, []);

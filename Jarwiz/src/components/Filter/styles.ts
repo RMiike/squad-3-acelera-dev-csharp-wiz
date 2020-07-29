@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import {ButtonGroup} from 'react-native-elements';
 
 export const FilterView = styled.View`
   position: absolute;
@@ -15,3 +15,23 @@ export const FilterView = styled.View`
   justify-content: space-evenly;
   flex-direction: row;
 `;
+
+export const ButtonsGroups = styled(ButtonGroup).attrs({
+  containerStyle: {
+    width: '100%',
+    backgroundColor: 'transparent',
+    paddingRight: 8,
+    paddingLeft: 8,
+  },
+  selectedButtonStyle: {
+    backgroundColor: '#f29657',
+    borderRadius: 15,
+  },
+  selectedTextStyle: {
+    fontSize: 12,
+    fontFamily: 'Montserrat',
+  },
+  innerBorderStyle: {
+    width: 0,
+  },
+})``;

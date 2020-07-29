@@ -28,7 +28,7 @@ const ForgotPassword: React.FC = (props) => {
           .email('Invalid email'),
       });
       await yupSchema.validate({email}, {abortEarly: false});
-      const resp = await api.post('forgotpassword', {email});
+      await api.post('forgotpassword', {email});
 
       Alert.alert(
         'Successfuly reseted.',

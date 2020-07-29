@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {Drawer, Caption, Avatar, Title} from 'react-native-paper';
+import {DrawerItem} from '@react-navigation/drawer';
 
 export const Container = styled.View`
   flex: 1;
 `;
+
+export const CustomDrawerItems = styled(DrawerItem).attrs({
+  labelStyle: {color: '#fff'},
+})``;
 
 export const CustomDrawerContentScrollView = styled(DrawerContentScrollView)`
   background-color: #212133;
