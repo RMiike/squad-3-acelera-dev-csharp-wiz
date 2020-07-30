@@ -1,7 +1,7 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Logo from '../../../assets/Logo.png';
+import Logo from '../../../assets/Logodois.png';
 import {
   Container,
   ButtonArea,

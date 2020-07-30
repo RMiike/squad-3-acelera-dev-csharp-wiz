@@ -28,10 +28,8 @@ export const Space = styled.View`
 `;
 
 export const LogoHome = styled.Image`
-  border-width: 1px;
-  padding: 30px;
-  border-radius: 20px;
-  border-color: #18a0fb;
+  height: 108px;
+  width: 300px;
 `;
 
 export const SignInButton = styled.TouchableOpacity`

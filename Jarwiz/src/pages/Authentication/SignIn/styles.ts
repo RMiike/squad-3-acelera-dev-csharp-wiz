@@ -36,7 +36,9 @@ export const FormArea = styled.View`
   width: 100%;
 `;
 
-export const ForgotPasswordButton = styled.TouchableOpacity``;
+export const ForgotPasswordButton = styled.TouchableOpacity.attrs({
+  activeOpacity: '1',
+})``;
 
 export const ForgotPasswordText = styled.Text`
   text-align: center;

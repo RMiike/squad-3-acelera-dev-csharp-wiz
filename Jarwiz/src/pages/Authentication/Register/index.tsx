@@ -161,7 +161,7 @@ const Register: React.FC = () => {
           <FinalText>Already a member?</FinalText>
           <FinalAreaTouchable
             onPress={() => {
-              handleSignUp;
+              route.navigate('SignIn');
             }}>
             <FinalAreaTouchableText>Sign In</FinalAreaTouchableText>
           </FinalAreaTouchable>
