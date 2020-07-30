@@ -28,17 +28,17 @@
   <img src="https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/entityLogErro/graph/badge.svg" />
 </a>
 
-[![Build Status](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?token=STDqEwu9vK79zqSDPbVb&branch=master)](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz)
+<img src="https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?token=STDqEwu9vK79zqSDPbVb&branch=master" />
 
-[![GitHub license](https://img.shields.io/github/license/RMiike/squad-3-acelera-dev-csharp-wiz)](https://github.com/RMiike/squad-3-acelera-dev-csharp-wiz/blob/master/LICENSE)
+<img src="https://img.shields.io/github/license/RMiike/squad-3-acelera-dev-csharp-wiz" />
 
 </p>
 
 
 
 <p align="center">
-  <a href="#jarwiz-technologies">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#information_source-how-to-use">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#jarwiz-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
 
