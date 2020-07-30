@@ -43,7 +43,6 @@ const ForgotPassword: React.FC = () => {
         Alert.alert('Successfuly reseted.', message);
         route.navigate('SignIn');
       } catch (e) {
-        console.log(e);
         setLoading(false);
         if (e instanceof Yup.ValidationError) {
           const errors = getValidationErrors(e);
