@@ -1,6 +1,7 @@
-import React, {useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useState} from 'react';
 import {StatusBar, ScrollView, Platform, TextInput, Alert} from 'react-native';
 import getValidationErrors from '../../../utils/validationError';
+import ActivityIndicatorComponent from '../../../components/ActivityIndicator';
 import api from '../../../services/api';
 import {useAuth} from '../../../contexts/auth';
 import PicProfile from '../../../assets/Profile.png';
@@ -32,10 +33,12 @@ const Profile: React.FC = () => {
   const oldInputRef = useRef<TextInput>(null);
   const newInputRef = useRef<TextInput>(null);
   const confirmInputRef = useRef<TextInput>(null);
+  const [loading, setLoading] = useState(false);
   const {user} = useAuth();
 
   const handleChangePassword = useCallback(async (data: ChangePassFormData) => {
     try {
+      setLoading(true);
       formRef.current?.setErrors({});
 
       const yupSchema = Yup.object().shape({
@@ -59,9 +62,10 @@ const Profile: React.FC = () => {
         newPassword,
         confirmPassword,
       });
-
+      setLoading(false);
       Alert.alert(resp.data.message);
     } catch (e) {
+      setLoading(false);
       if (e instanceof Yup.ValidationError) {
         const errors = getValidationErrors(e);
         formRef.current?.setErrors(errors);
@@ -93,48 +97,52 @@ const Profile: React.FC = () => {
           <Icon name="mail" size={20} color="#F29657" />
           <UserData>{user?.email}</UserData>
         </ProfileDataContainer>
-        <FormArea
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          enabled>
-          <Form ref={formRef} onSubmit={handleChangePassword}>
-            <Input
-              ref={oldInputRef}
-              secureTextEntry
-              name="oldPassword"
-              icon="lock"
-              placeholder="Old Password"
-              textContentType="password"
-              returnKeyType="next"
-              onSubmitEditing={() => oldInputRef.current?.focus()}
-            />
-            <Input
-              ref={newInputRef}
-              secureTextEntry
-              name="newPassword"
-              icon="lock"
-              placeholder="New Password"
-              textContentType="newPassword"
-              returnKeyType="next"
-              onSubmitEditing={() => newInputRef.current?.focus()}
-            />
-            <Input
-              ref={confirmInputRef}
-              secureTextEntry
-              name="confirmPassword"
-              icon="lock"
-              placeholder="Confirm Password"
-              textContentType="newPassword"
-              returnKeyType="send"
-              onSubmitEditing={() => confirmInputRef.current?.focus()}
-            />
-          </Form>
-          <Button
-            onPress={() => {
-              formRef.current?.submitForm();
-            }}>
-            Change Password
-          </Button>
-        </FormArea>
+        {loading ? (
+          <ActivityIndicatorComponent />
+        ) : (
+          <FormArea
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            enabled>
+            <Form ref={formRef} onSubmit={handleChangePassword}>
+              <Input
+                ref={oldInputRef}
+                secureTextEntry
+                name="oldPassword"
+                icon="lock"
+                placeholder="Old Password"
+                textContentType="password"
+                returnKeyType="next"
+                onSubmitEditing={() => oldInputRef.current?.focus()}
+              />
+              <Input
+                ref={newInputRef}
+                secureTextEntry
+                name="newPassword"
+                icon="lock"
+                placeholder="New Password"
+                textContentType="newPassword"
+                returnKeyType="next"
+                onSubmitEditing={() => newInputRef.current?.focus()}
+              />
+              <Input
+                ref={confirmInputRef}
+                secureTextEntry
+                name="confirmPassword"
+                icon="lock"
+                placeholder="Confirm Password"
+                textContentType="newPassword"
+                returnKeyType="send"
+                onSubmitEditing={() => confirmInputRef.current?.focus()}
+              />
+            </Form>
+            <Button
+              onPress={() => {
+                formRef.current?.submitForm();
+              }}>
+              Change Password
+            </Button>
+          </FormArea>
+        )}
       </BackgroundLinear>
     </ScrollView>
   );

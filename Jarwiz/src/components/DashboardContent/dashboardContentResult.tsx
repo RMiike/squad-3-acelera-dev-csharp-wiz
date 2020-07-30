@@ -12,6 +12,7 @@ import {
   Description,
   AreaButton,
   Details,
+  ErrorId,
   DetailButton,
 } from './styles';
 
@@ -24,6 +25,7 @@ const DashboardContentResult: React.FC = ({data}) => {
   return (
     <Content>
       <MainContent>
+        <ErrorId>{data.id}</ErrorId>
         <ErrorTitle>{data.title}</ErrorTitle>
         <DataContent>
           <DataView>

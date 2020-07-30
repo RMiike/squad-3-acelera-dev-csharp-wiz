@@ -17,13 +17,27 @@ interface SignInCredentials {
   email: string;
   password: string;
 }
+interface SignUpFormData {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+interface ForgotPasswordData {
+  email: string;
+}
+
 interface AuthContextData {
   signed: boolean;
   user: User | null;
   signIn(credential: SignInCredentials): Promise<void>;
+  signUp(credential: SignUpFormData): Promise<{}>;
+  forgotPassword(credential: ForgotPasswordData): Promise<{}>;
   signOut(): Promise<void>;
   loading: boolean;
 }
+
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({children}) => {
@@ -76,9 +90,35 @@ export const AuthProvider: React.FC = ({children}) => {
     });
   }
 
+  const signUp = useCallback(
+    async ({email, fullName, password, confirmPassword}) => {
+      const response = await api.post('register', {
+        fullName,
+        email,
+        password,
+        confirmPassword,
+      });
+      return response;
+    },
+    [],
+  );
+
+  const forgotPassword = useCallback(async ({email}) => {
+    const resp = await api.post('forgotpassword', {email});
+    return resp.data;
+  }, []);
+
   return (
     <AuthContext.Provider
-      value={{signed: !!user, user, signIn, signOut, loading}}>
+      value={{
+        signed: !!user,
+        user,
+        signIn,
+        signOut,
+        loading,
+        signUp,
+        forgotPassword,
+      }}>
       {children}
     </AuthContext.Provider>
   );

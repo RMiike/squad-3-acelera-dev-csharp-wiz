@@ -4,7 +4,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const BackgroundLinear = styled(LinearGradient).attrs({
-  colors: ['#28023Daa', 'rgba(51, 21, 72, 0.44)', 'rgba(79, 69, 100, 0.5)'],
+  colors: ['#28023Dfe', 'rgba(51, 21, 72, 0.854068)', 'rgba(79, 69, 100, 0.9)'],
 })`
   flex: 1;
   align-items: center;
@@ -32,12 +32,13 @@ export const Textarea = styled.KeyboardAvoidingView`
 export const FormArea = styled.View`
   align-items: center;
   justify-content: center;
-  background: rgba(79, 69, 100, 0.9);
+  background: #ffffff22;
   padding: 10%;
   border-radius: 15px;
   height: 300px;
   width: 100%;
 `;
+
 export const Icon = styled(FeatherIcon)`
   margin-right: 16px;
   position: absolute;
@@ -58,28 +59,4 @@ export const AreaInput = styled.View`
   margin-bottom: 26px;
   border-width: 2px;
   border-color: #f29657;
-`;
-
-export const Form = styled.View``;
-
-export const Input = styled.TextInput`
-  flex: 1;
-  color: #4f4564;
-  font-size: 18px;
-  font-family: 'Montserrat';
-`;
-
-export const ButtonArea = styled.TouchableOpacity`
-  height: 46px;
-  background: #f29657;
-  border-radius: 15px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 24px;
-`;
-
-export const ButtonText = styled.Text`
-  font-family: 'Montserrat';
-  color: #ffffff;
-  font-size: 20px;
 `;

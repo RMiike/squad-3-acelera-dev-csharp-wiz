@@ -20,11 +20,20 @@ export const MainContent = styled.View`
 `;
 
 export const ErrorTitle = styled.Text`
-  margin-top: 18px;
   font-size: 20px;
+  margin-top: 18px;
   font-weight: bold;
   font-family: Montserrat;
   color: #663e7c;
+`;
+
+export const ErrorId = styled.Text`
+  margin-top: 18px;
+  position: absolute;
+  right: 60px;
+  font-size: 15px;
+  font-family: Montserrat;
+  color: #f29657ff;
 `;
 
 export const DataContent = styled.View`

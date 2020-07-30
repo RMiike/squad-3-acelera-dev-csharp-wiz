@@ -1,11 +1,10 @@
 import React, {useRef, useCallback, useState} from 'react';
 import {TextInput, ScrollView, Platform, Alert} from 'react-native';
-import {Form} from '@unform/mobile';
 import ActivityIndicatorComponent from '../../../components/ActivityIndicator';
-import {FormHandles} from '@unform/core';
-import ForgotPassword from '../ForgotPassword';
 import getValidationErrors from '../../../utils/validationError';
 import {useAuth} from '../../../contexts/auth';
+import {FormHandles} from '@unform/core';
+import {Form} from '@unform/mobile';
 import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
 import {
@@ -36,7 +35,6 @@ const SignIn: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const {signIn} = useAuth();
   const route = useNavigation();
-  const [isVisible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = useCallback(
@@ -72,21 +70,14 @@ const SignIn: React.FC = () => {
         );
       }
     },
-    [],
+    [signIn],
   );
 
-  function handleViewForgotPass() {
-    setVisible(!isVisible);
-  }
   return (
     <ScrollView
       contentContainerStyle={{flex: 1}}
       keyboardShouldPersistTaps="handled">
       <BackgroundLinear>
-        <ForgotPassword
-          isVisible={isVisible}
-          handleViewForgotPass={handleViewForgotPass}
-        />
         <Textarea>
           <Icon
             onPress={() => {
@@ -136,7 +127,10 @@ const SignIn: React.FC = () => {
             </Button>
           )}
 
-          <ForgotPasswordButton onPress={handleViewForgotPass}>
+          <ForgotPasswordButton
+            onPress={() => {
+              route.navigate('ForgotPassword');
+            }}>
             <ForgotPasswordText>Forgot Password?</ForgotPasswordText>
           </ForgotPasswordButton>
         </FormArea>

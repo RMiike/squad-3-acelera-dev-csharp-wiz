@@ -5,6 +5,7 @@ import {Form} from '@unform/mobile';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 import getValidationErrors from '../../../utils/validationError';
+import {useAuth} from '../../../contexts/auth';
 import {FormHandles} from '@unform/core';
 import * as Yup from 'yup';
 import {
@@ -20,7 +21,6 @@ import {
 } from './styles';
 import Button from '../../../components/Form/Button';
 import Input from '../../../components/Form/Input';
-import api from '../../../services/api';
 
 interface SignUpFormData {
   fullName: string;
@@ -30,6 +30,8 @@ interface SignUpFormData {
 }
 
 const Register: React.FC = () => {
+  const {signUp} = useAuth();
+
   const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
@@ -38,13 +40,11 @@ const Register: React.FC = () => {
 
   const route = useNavigation();
 
-  const register = useCallback(
+  const handleSignUp = useCallback(
     async ({fullName, email, password, confirmPassword}: SignUpFormData) => {
       try {
         setLoading(true);
-
         formRef.current?.setErrors({});
-
         const yupSchema = Yup.object().shape({
           fullName: Yup.string().required('Required full name field'),
           email: Yup.string()
@@ -58,21 +58,13 @@ const Register: React.FC = () => {
             'Passwords must match',
           ),
         });
-
         await yupSchema.validate(
           {fullName, email, password, confirmPassword},
           {abortEarly: false},
         );
-
-        const resp = await api.post('register', {
-          fullName,
-          email,
-          password,
-          confirmPassword,
-        });
+        const resp = await signUp({fullName, email, password, confirmPassword});
         Alert.alert(resp.data.message);
         setLoading(false);
-
         route.navigate('SignIn');
       } catch (e) {
         setLoading(false);
@@ -88,7 +80,7 @@ const Register: React.FC = () => {
         );
       }
     },
-    [route],
+    [signUp, route],
   );
 
   return (
@@ -112,7 +104,7 @@ const Register: React.FC = () => {
         <FormArea
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           enabled>
-          <Form ref={formRef} onSubmit={register}>
+          <Form ref={formRef} onSubmit={handleSignUp}>
             <Input
               autoCapitalize="words"
               name="fullName"
@@ -169,7 +161,7 @@ const Register: React.FC = () => {
           <FinalText>Already a member?</FinalText>
           <FinalAreaTouchable
             onPress={() => {
-              route.navigate('SignIn');
+              handleSignUp;
             }}>
             <FinalAreaTouchableText>Sign In</FinalAreaTouchableText>
           </FinalAreaTouchable>

@@ -20,6 +20,7 @@ import {
   Icon,
   UpdateText,
   UpdateButton,
+  ErrorId,
   BackgroundLinear,
 } from './styles';
 
@@ -56,6 +57,7 @@ const Details: React.FC = () => {
               navigate.goBack();
             }}
           />
+          <ErrorId>Id. {error?.id}</ErrorId>
           <ErrorTitle>{error?.title}</ErrorTitle>
           <DataContent>
             <DataView>

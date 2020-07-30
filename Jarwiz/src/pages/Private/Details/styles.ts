@@ -36,6 +36,15 @@ export const DataView = styled.View`
   flex-direction: row;
 `;
 
+export const ErrorId = styled.Text`
+  margin-top: 58px;
+  position: absolute;
+  right: 60px;
+  font-size: 15px;
+  font-family: Montserrat;
+  color: #f29657ff;
+`;
+
 export const DataViewTitle = styled.Text`
   width: 50%;
   margin-left: 60px;
