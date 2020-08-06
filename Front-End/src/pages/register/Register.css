@@ -1,0 +1,23 @@
+h1 {
+   text-align: center;
+   color: #000;
+
+}
+
+.Register-Btn{
+    text-align:center;
+    margin: 20px;
+    margin-left: 42%;
+    color: #FFF;
+    background-color: #000;
+}
+
+.Login-Field{
+    margin: 5px;
+    margin-left: 30%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    /* border-color: #000; */
+    background-color: #FFF;
+}
