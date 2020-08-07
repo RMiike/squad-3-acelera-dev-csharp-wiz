@@ -1,5 +1,5 @@
 <h1 align="center" >
-    <img alt="Jarwiz" src="https://res.cloudinary.com/dlnkrfnq4/image/upload/v1596133547/codenation/Sem_t%C3%ADtulo_suaglx.png" />     <br>
+    <img alt="Jarwiz" src="https://res.cloudinary.com/dlnkrfnq4/image/upload/v1596133726/codenation/Sem_t%C3%ADtulo_dwemeh.png" />     <br>
  <img alt="Codenation" src="https://res.cloudinary.com/dlnkrfnq4/image/upload/v1596134185/codenation/9bd98ba_g5vklx.png" /><br>
  <img alt="Wiz" src="https://res.cloudinary.com/dlnkrfnq4/image/upload/v1596130189/codenation/logo_wiz_2x-3_erh4hh.png" />
     <br>
@@ -37,7 +37,7 @@
 
 
 <p align="center">
-  <a href="#jarwiz-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
