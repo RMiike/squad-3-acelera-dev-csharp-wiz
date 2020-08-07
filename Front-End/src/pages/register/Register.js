@@ -1,11 +1,13 @@
 import React from 'react'
 
-import { ErrorMessage, Formik, Form, Field } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 import { history } from '../../history'
 
 import './Register.css'
+
+import { TextField } from '@material-ui/core'
 
 const Register = () => {
     const handleSubmit = values => {
@@ -34,29 +36,24 @@ const Register = () => {
                     
                     <div className="Login-Group">
                         <Field
+                            component={TextField}
+                            variant="outlined"
                             placeholder="e-mail"
                             name="email"
                             className="Login-Field"
-                        />
-                        <ErrorMessage
-                            component="span"
-                            name="email"
-                            className="Login-Error"
+                            margin="normal"
                         />
                     </div>
                     <div className="Login-Group">
                         <Field
+                            component={TextField}
+                            variant="outlined"
                             placeholder="password"
                             name="password"
                             className="Login-Field"
-                        />
-                        <ErrorMessage
-                            component="span"
-                            name="password"
-                            className="Login-Error"
+                            margin="normal"
                         />
                     </div>
-                    
                     <button className="Register-Btn" type="submit">Cadastrar</button>
                 </Form>
             </Formik>
