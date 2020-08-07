@@ -43,20 +43,16 @@
   <a href="#memo-license">License</a>
 </p>
 
+<p align="center">
+  <img alt="Demo" src="https://res.cloudinary.com/dlnkrfnq4/video/upload/v1596136369/codenation/WhatsApp_Video_2020-07-30_at_14.17.06_t10qz0.gif">
+</p>
 
 
 ## :purple_heart: Squad
 
-    
 | <a href="https://github.com/jeffersonfragoso" target="_blank"><img title="Jefferson Fragoso" src="https://avatars3.githubusercontent.com/u/29529082?s=460&u=4e6f8839dda7ea93e3c7438a1158898f2f33e23d&v=4" alt="Jefferson Fragoso"  width="50" height="50" > <p style="align-self: center">Jefferson Fragoso</p></a> | <a href="https://github.com/jpmartins201" target="_blank"><img title="João Pedro" src="https://avatars2.githubusercontent.com/u/30712408?s=460&u=0539583a7ec0d12ed080c4ab9b897e39532f88f5&v=4" alt="João Pedro" width="50" height="50"> <p style="align-self: center">João Pedro</p> | <a href="https://github.com/RMiike" target="_blank"><img title="Renato Miike" src="https://avatars1.githubusercontent.com/u/56553271?s=460&u=54114c7538f8b18a971fac2473f10491da54e9fd&v=4" loading="lazy" alt="Renato Miike" width="50" height="50"> <p style="align-self: center">Renato Miike</p></a> | <a href="https://github.com/samuelmachado1" target="_blank"><img title="Samuel Estrella" src="https://avatars3.githubusercontent.com/u/29052892?s=460&u=10a85013f4c66e221f91a669ebd4fc612c4a679b&v=4" alt="Samuel Estrella" width="50" height="50"> <p style="align-self: center">Samuel Estrella</p></a>
 | ----- | ----- | ---- | -----
 
-
-
-
-<p align="center">
-  <img alt="Demo" src="https://res.cloudinary.com/dlnkrfnq4/video/upload/v1596136369/codenation/WhatsApp_Video_2020-07-30_at_14.17.06_t10qz0.gif">
-</p>
 
 
 ## :computer: Tecnologias
