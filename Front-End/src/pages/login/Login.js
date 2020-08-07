@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { ErrorMessage, Formik, Form, Field } from 'formik'
+import { Formik, Form, Field } from 'formik'
+import { TextField } from 'formik-material-ui';
 import * as yup from 'yup'
 import axios from 'axios'
 import { history } from '../../history'
@@ -25,46 +26,50 @@ const Login = () => {
         password: yup.string().min(8).required()
     })
     return (
-        <>
+        <div>
             <h1>Login</h1>
             <Formik
                 initialValues={{}}
                 onSubmit={handleSubmit}
-                validationSchema={validations}
-            >
+                validationSchema={validations}>
                 <Form className="Login">
-                    
                     <div className="Login-Group">
                         <Field
+                            component={TextField}
+                            variant="outlined"
                             placeholder="e-mail"
                             name="email"
                             className="Login-Field"
+                            margin="normal"
                         />
-                        <ErrorMessage
+                        {/* <ErrorMessage
                             component="span"
                             name="email"
                             className="Login-Error"
-                        />
+                        /> */}
                     </div>
                     <div className="Login-Group">
                         <Field
+                            component={TextField}
+                            variant="outlined"
                             placeholder="password"
                             name="password"
                             className="Login-Field"
+                            margin="normal"
                         />
-                        <ErrorMessage
+                        {/* <ErrorMessage
                             component="span"
                             name="password"
                             className="Login-Error"
-                        />
+                        /> */}
                     </div>
-                    
-                    <button className="Login-Btn" type="submit">Login</button>
+                    <div>
+                        <button className="Login-Btn" type="submit">Login</button>
+                    </div>
                     
                 </Form>
             </Formik>
-                
-        </>
+        </div>
     )
 }
 
