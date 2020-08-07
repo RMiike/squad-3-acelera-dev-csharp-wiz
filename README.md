@@ -1,48 +1,137 @@
-[![Build Status](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?branch=entityLogErro)](https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz)
+<h1 align="center" >
+    <img alt="Jarwiz" src="https://res.cloudinary.com/dlnkrfnq4/image/upload/v1596133726/codenation/Sem_t%C3%ADtulo_dwemeh.png" />     <br>
+ <img alt="Codenation" src="https://res.cloudinary.com/dlnkrfnq4/image/upload/v1596134185/codenation/9bd98ba_g5vklx.png" /><br>
+ <img alt="Wiz" src="https://res.cloudinary.com/dlnkrfnq4/image/upload/v1596130189/codenation/logo_wiz_2x-3_erh4hh.png" />
+    <br>
+    Acelera Dev C-Sharp
+    <br>
+    JarWiz
+</h1>
 
-[![codecov](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/entityLogErro/graph/badge.svg)](https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz)
+<h4 align="center">
+  Projeto final - Acelera Dev
+</h4>
 
-# squad-3-acelera-dev-csharp-wiz
+<p align="center">
+ 
+ <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/RMiike/squad-3-acelera-dev-csharp-wiz">
 
-<h1 align="center">Projeto final - Acelera Dev</h1>
+ <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/RMiike/squad-3-acelera-dev-csharp-wiz">
+ 
+ <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/RMiike/squad-3-acelera-dev-csharp-wiz">
+ 
+ <a href="https://www.codacy.com/manual/RMiike/squad-3-acelera-dev-csharp-wiz?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=RMiike/squad-3-acelera-dev-csharp-wiz&amp;utm_campaign=Badge_Grade">
+ <img src="https://app.codacy.com/project/badge/Grade/f178c2dc4dfa41eea60ab6a35ddb01f9"/>
+ <a/>
+ 
+ <a href="https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz">
+  <img src="https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/entityLogErro/graph/badge.svg" />
+</a>
 
+<img src="https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?token=STDqEwu9vK79zqSDPbVb&branch=master" />
 
-<h2 align="center">Central de Erros</h2>
+<img src="https://img.shields.io/github/license/RMiike/squad-3-acelera-dev-csharp-wiz" />
 
-:question: Objetivo
-
-<p>Em projetos modernos é cada vez mais comum o uso de arquiteturas baseadas em serviços ou microsserviços. </br>
-Nestes ambientes complexos, erros podem surgir em diferentes camadas da aplicação (backend, frontend, mobile, desktop) e mesmo em serviços distintos. </br> Desta forma, é muito importante que os desenvolvedores possam centralizar todos os registros de erros em um local, de onde podem monitorar e tomar decisões mais acertadas. </br> Neste projeto vamos implementar um sistema para centralizar registros de erros de aplicações.
 </p>
-
-A arquitetura do projeto é formada por:
-
-
-### :computer: Backend - API
- criar endpoints para serem usados pelo frontend da aplicação
-criar um endpoint que será usado para gravar os logs de erro em um banco de dados relacional
-a API deve ser segura, permitindo acesso apenas com um token de autenticação válido
-
-###  :computer:  Frontend
-deve implementar as funcionalidades apresentadas nos wireframes
-deve ser acessada adequadamente tanto por navegadores desktop quanto mobile
-deve consumir a API do produto
-desenvolvida na forma de uma Single Page Application
-Observações
-Se a aceleração tiver ênfase no backend (Java, Python, C#, Go, PHP, etc) a equipe deve obrigatoriamente implementar a API. A implementação do frontend não é necessária
-Se a aceleração tiver ênfase em frontend (React, Vue, Angular, etc) a equipe deve obrigatoriamente implementar o frontend da aplicação e o backend pode ser substituido por uma aplicação mock. A implementação da API não é necessária, caso o time deseje podem ser utilizados mocks.
-Wireframes
-Os wireframes a seguir servem para ilustrar as funcionalidades básicas que a aplicação deverá ter, porém o time terá total liberdade para definir os detalhes de implementação e estratégia a ser utilizada no desenvolvimento.
 
 
 
 <p align="center">
-    <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/1-cadastro.png" />
-  <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/2-login.png" />
-   <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/3-dashboard.png" />
- <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/4-ambientes.png" />
- <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/5-order.png" />
- <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/6-filtro.png" />
- <img alt="img" src="https://codenation-challenges.s3-us-west-1.amazonaws.com/central-erros/7-detalhes.png" />
+  <a href="#computer-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>
 </p>
 
+
+<p align="center">
+  <img alt="Demo" src="https://res.cloudinary.com/dlnkrfnq4/video/upload/v1596136369/codenation/WhatsApp_Video_2020-07-30_at_14.17.06_t10qz0.gif">
+</p>
+
+
+## :computer: Tecnologias
+
+Este projeto foi desenvolvido no [Acelera Dev](https://www.codenation.dev/) em parceria com a Codenation e a Wiz-Soluções com as seguintes tecnologias:
+
+-  [Asp net core](https://dotnet.microsoft.com/learn/aspnet/what-is-aspnet-core)
+-  [coverlet.msbuild](https://www.nuget.org/packages/coverlet.msbuild)
+-  [Microsoft.AspNetCore.Hosting](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting/)
+-  [Microsoft.AspNetCore.Identity.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.EntityFrameworkCore)
+-  [Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost/)
+-  [Microsoft.EntityFrameworkCore.InMemory](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory/)
+-  [Microsoft.Extensions.Identity.Core](https://www.nuget.org/packages/Microsoft.Extensions.Identity.Core/)
+-  [Microsoft.NET.Test.Sdk](https://www.nuget.org/packages/Microsoft.NET.Test.SDK)
+-  [Moq](https://www.nuget.org/packages/Moq/)
+-  [MSTest.TestAdapter](https://www.nuget.org/packages/MSTest.TestAdapter/)
+-  [MSTest.TestFramework](https://www.nuget.org/packages/MSTest.TestFramework/)
+-  [coverlet.collector](https://www.nuget.org/packages/coverlet.collector/)
+-  [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/)
+-  [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)
+-  [Microsoft.IdentityModel.Tokens](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/)
+-  [SendGrid](https://www.nuget.org/packages/Sendgrid/)
+-  [System.IdentityModel.Tokens.Jwt](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/)
+-  [AutoMapper](https://www.nuget.org/packages/automapper/)
+-  [Flunt](https://github.com/andrebaltieri/flunt)
+-  [Microsoft.AspNetCore.JsonPatch](https://docs.microsoft.com/pt-br/aspnet/core/web-api/jsonpatch?view=aspnetcore-3.1)
+-  [Microsoft.AspNetCore.Authentication.JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer)
+-  [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)
+-  [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/)
+-  [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://www.nuget.org/packages/Microsoft.VisualStudio.Azure.Containers.Tools.Targets/)
+-  [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/)
+-  [Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/)
+-  [Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/)
+-  [Visual Studio Community 2019][vsc]>
+
+-  [React Native](https://reactnative.dev/)
+-  [Async Storage](https://github.com/react-native-community/async-storage#readme)
+-  [Async Navigation](https://reactnavigation.org/docs/getting-started/)
+-  [Axios](https://github.com/axios/axios)
+-  [styled-components](https://www.styled-components.com/)
+-  [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+-  [react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient)
+-  [Yup](https://github.com/jquense/yup)
+-  [Unform](https://unform.dev/guides/basic-form)
+-  [react-native-paper](https://callstack.github.io/react-native-paper/)
+-  [react-native-button-toggle-group](https://github.com/oceanbit-dev/react-native-button-toggle-group)
+-  [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
+
+
+## :information_source: Como usar
+
+Para rodar essa aplicação, você precisará do [Git](https://git-scm.com), [Node.js v10.16][nodejs] ou maior, [Yarn v1.13][yarn] ou maior,  instalado no seu computador. 
+Na linha de comando:
+
+```bash
+# Clone
+$ git clone https://github.com/RMiike/squad-3-acelera-dev-csharp-wiz/
+
+# Back-end - Vá ao repositório
+$ cd squad-3-acelera-dev-csharp-wiz/Back-End
+
+
+
+# Mobile - Vá até o repositório
+$ cd squad-3-acelera-dev-csharp-wiz/Jarwiz
+
+# Instale as dependências
+$ yarn install
+
+# Troque a url
+$ Jarwiz/src/services/api.tsx - coloque a url gerada no backend
+
+# Run (Android)
+$ yarn react-native run-android
+# Run (Visual Studio)
+
+
+```
+
+## :memo: License
+This project is under the MIT license. See the [LICENSE](https://github.com/RMiike/squad-3-acelera-dev-csharp-wiz/blob/master/LICENSE) for more information.
+---
+
+[nodejs]: https://nodejs.org/
+[yarn]: https://yarnpkg.com/
+[vc]: https://code.visualstudio.com
+[vsc]: https://visualstudio.microsoft.com/pt-br/vs/community
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
