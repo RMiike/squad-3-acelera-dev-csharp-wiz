@@ -99,14 +99,22 @@ namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories
         }
 
         [DataTestMethod]
-        [DataRow("Cardoso@Cardoso.com", "asd123123as-09(I")]
-        public void Deve_Realizar_Login(string email, string password)
+        [DataRow("Cardoso@Cardoso.com", "asd123123as-09(I", "Cardoso de Almeida")]
+        public void Deve_Realizar_Login(string email, string password, string fullName)
         {
             Task<ResultDTO> result = CreateControlerAndUseService(email:email, password:password);
+            var loginReadDTO = result.Result.Data as LoginReadDTO;
+
+            Assert.AreEqual(email, loginReadDTO.Email);
+            Assert.AreEqual(fullName, loginReadDTO.FullName);
+            Assert.IsNotNull(loginReadDTO.Token);
+            Assert.IsNotNull(loginReadDTO.Id);
 
             Assert.IsTrue(result.Result.Success);
             Assert.IsInstanceOfType(result.Result, typeof(ResultDTO));
+            Assert.IsInstanceOfType(result.Result.Data, typeof(LoginReadDTO)); 
             Assert.AreEqual("User authenticated.", result.Result.Message);
+
         }
 
       

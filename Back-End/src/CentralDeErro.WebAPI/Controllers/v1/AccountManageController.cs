@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CentralDeErro.WebAPI.Controllers.v1
 {
+               
     [Route("v1")]
     [ApiController]
     public class AccountManageController : ControllerBase

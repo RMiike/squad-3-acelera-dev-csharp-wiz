@@ -1,5 +1,6 @@
 ﻿using CentralDeErro.Core.Entities.DTOs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace CentralDeErro.Tests._2_CoreTests.DTOs
 {
@@ -103,6 +104,27 @@ namespace CentralDeErro.Tests._2_CoreTests.DTOs
             loginCreateDTO.Validate();
 
             Assert.IsTrue(loginCreateDTO.Invalid);
+        }
+
+        [DataTestMethod]
+        [DataRow("token")]
+        public void Deve_Adicionar_Token(string token)
+        {
+            var loginReadDTO = new LoginReadDTO();
+
+            loginReadDTO.AddToken(token);
+
+            Assert.IsNotNull(loginReadDTO.Token);
+        }
+
+        [DataTestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Deve_falhar_se_nao_houver_token()
+        {
+            var loginReadDTO = new LoginReadDTO();
+
+            loginReadDTO.AddToken(null);
+
         }
     }
 }

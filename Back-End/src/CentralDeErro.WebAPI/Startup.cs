@@ -22,6 +22,8 @@ using Newtonsoft.Json.Serialization;
 using Services.Mapper;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace CentralDeErro
@@ -115,10 +117,14 @@ namespace CentralDeErro
 
             services.AddSwaggerGen(c =>
            {
+
             c.SwaggerDoc(name: "v1", new OpenApiInfo
                 { 
                     Title = "Jarwiz", Version = "V1", 
                 });
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+               c.IncludeXmlComments(xmlPath);
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                {
                    In = ParameterLocation.Header,
