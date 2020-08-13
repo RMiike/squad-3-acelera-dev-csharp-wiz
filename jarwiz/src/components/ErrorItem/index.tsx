@@ -21,14 +21,8 @@ interface ErrorsProps {
 }
 
 const ErrorItem: React.FC<ErrorsProps> = ({ errors }) => {
-  const [times, setTimes] = useState(0);
-  const [deleteString, setDeleteString] = useState('Deletar');
-  const [widthDeleteButton, setWidthDeleteButton] = useState('20%');
   const { handleUpdate, handleDelete } = useError();
   async function handleUpdateData() {
-    setTimes(0);
-    setDeleteString('Deletar')
-    setWidthDeleteButton('20%')
     const { id, archived } = errors;
     const resp = await handleUpdate({ id, archived });
     if (resp !== undefined) {
@@ -37,22 +31,9 @@ const ErrorItem: React.FC<ErrorsProps> = ({ errors }) => {
   }
   async function handleDeleteData() {
 
-    if (times === 0) {
-      setTimes(times + 1);
-      setDeleteString('Você tem certeza?')
-      setWidthDeleteButton('30%')
-    }
-    if (times === 1) {
-      setTimes(times + 1);
-      setDeleteString('Mais um para deletar')
-      setWidthDeleteButton('40%')
-    }
-    if (times === 2) {
-
-      const { id } = errors;
-      const resp = await handleDelete({ id });
-      if (resp !== undefined) {
-      }
+    const { id } = errors;
+    const resp = await handleDelete({ id });
+    if (resp !== undefined) {
     }
   }
   return (
@@ -90,8 +71,8 @@ const ErrorItem: React.FC<ErrorsProps> = ({ errors }) => {
         </Button >
 
         <Button onClick={handleDeleteData}
-          style={{ background: '#ff0000aa', width: `${widthDeleteButton}` }} >
-          {deleteString}
+          style={{ background: '#ff0000aa', }} >
+          Deletar
         </Button >
       </div>
     </ItemBox>);
