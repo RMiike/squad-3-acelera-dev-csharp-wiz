@@ -4,14 +4,13 @@ using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CentralDeErro.Infrastructure.Services
+namespace CentralDeErro.ApplicationServices.Services
 {
     public class AuthenticationService
         : IAuthenticationService
@@ -49,7 +48,7 @@ namespace CentralDeErro.Infrastructure.Services
             if (user != null)
                 return new ResultDTO(false, "User already exist!", null);
 
-            user = User.Create(registerDTO.FullName, registerDTO.Email,  registerDTO.Email);
+            user = User.Create(registerDTO.FullName, registerDTO.Email, registerDTO.Email);
 
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
 

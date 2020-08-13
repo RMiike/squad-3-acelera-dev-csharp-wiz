@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration.Annotations;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using CentralDeErro.ApplicationServices.Services;
 using CentralDeErro.Core.Contracts.Repositories;
 using CentralDeErro.Core.Contracts.Services;
 using CentralDeErro.Core.Entities;
 using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Infrastructure.Context;
-using CentralDeErro.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Moq;

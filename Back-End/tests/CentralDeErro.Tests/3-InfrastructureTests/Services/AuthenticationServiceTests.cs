@@ -1,10 +1,7 @@
-﻿using CentralDeErro.Core.Entities.DTOs;
-using CentralDeErro.Infrastructure.Services;
+﻿using CentralDeErro.ApplicationServices.Services;
+using CentralDeErro.Core.Entities.DTOs;
 using CentralDeErro.Tests._3_InfrastructureTests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CentralDeErro.Tests._3_InfrastructureTests.Repositories

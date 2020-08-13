@@ -5,7 +5,7 @@ using SendGrid.Helpers.Mail;
 using System;
 using System.Threading.Tasks;
 
-namespace CentralDeErro.Infrastructure.Services
+namespace CentralDeErro.ApplicationServices.Services
 {
     public class MailService : IMailService
     {
