@@ -1,0 +1,51 @@
+:root {
+  --color-background: #212133;
+  --color-background-secondary: #F0F0F7;
+  --color-text: #F0F0F7;
+  --color-title: #32264D;
+  --color-button: #04D361;
+  --color-button-secondary: #DCDCE5;
+
+  font-size: 40%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+}
+
+body {
+  background: var(--color-background);
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+input,
+button,
+textarea {
+  font: 500 1.6rem Montserrat;
+  color: var(--color-text)
+}
+
+.container {
+  width: 90vw;
+  max-width: 700px;
+}
+
+@media(min-width: 700px){
+  :root{
+    font-size: 62.5% ;
+  }
+}
