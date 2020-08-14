@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CentralDeErro.ApplicationServices\CentralDeErro.ApplicationServices.csproj" />
+    <ProjectReference Include="..\CentralDeErro.ApplicationServices\CentralDeErro.ApplicationServices.csproj" />
     <ProjectReference Include="..\CentralDeErro.Core\CentralDeErro.Core.csproj" />
     <ProjectReference Include="..\CentralDeErro.Infrastructure\CentralDeErro.Infrastructure.csproj" />
   </ItemGroup>

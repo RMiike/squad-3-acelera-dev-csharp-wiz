@@ -55,13 +55,13 @@ namespace CentralDeErro.ApplicationServices.Services
             if (!result.Succeeded)
                 return new ResultDTO(false, result.ToString(), null);
 
-            await CreateAndSendEmailConfirm(registerDTO, user).ConfigureAwait(false);
+            await CreateAndSendEmailConfirm(registerDTO.Email, user).ConfigureAwait(false);
 
             return new ResultDTO(true, "User account created sucessfully, please confirm your email.", null);
         }
 
         #region CreateAndSendEmailConfirm
-        private async Task CreateAndSendEmailConfirm(RegisterCreateDTO registerDTO, User user)
+        private async Task CreateAndSendEmailConfirm(string registerDTOEmail, User user)
         {
             var confirmEmailToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
@@ -70,7 +70,7 @@ namespace CentralDeErro.ApplicationServices.Services
             string url = $"{_configuration["AppUrl"]}/v1/confirmemail?userEmail={user.Email}&token={validToken}";
             //TODO
             await _mailService.SendEmailAsync(
-                registerDTO.Email,
+                registerDTOEmail,
                 "Confirm your email.",
                 "<h1>Welcome to JarvisLogApi. </h1>" +
                 $"<p>Please, confirm your email by <a href='{url}'> Clicking here.</a> </p>");
@@ -108,7 +108,12 @@ namespace CentralDeErro.ApplicationServices.Services
 
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, loginDTO.Password, false);
+            if (result.IsNotAllowed == true)
+            {
+                await CreateAndSendEmailConfirm(loginDTO.Email, user).ConfigureAwait(false);
+                return new ResultDTO(true, "A new email has been send to your email, please, confirm and try again.", result);
 
+            }
             if (!result.Succeeded)
                 return new ResultDTO(false, "Please, confirm your email, verify your password, verify your user name and try again.", result);
 

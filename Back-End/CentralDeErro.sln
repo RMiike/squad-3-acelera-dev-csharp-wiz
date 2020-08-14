@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Test", "5-Test", "{3D5379
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-ApplicationServices", "4-ApplicationServices", "{12F7B1B9-FE3F-4BF5-84A2-A1507E146D64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralDeErro.ApplicationServices", "CentralDeErro.ApplicationServices\CentralDeErro.ApplicationServices.csproj", "{BB4EBCC6-794E-4F08-8F3A-7B3B17300B85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralDeErro.ApplicationServices", "src\CentralDeErro.ApplicationServices\CentralDeErro.ApplicationServices.csproj", "{BB4EBCC6-794E-4F08-8F3A-7B3B17300B85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

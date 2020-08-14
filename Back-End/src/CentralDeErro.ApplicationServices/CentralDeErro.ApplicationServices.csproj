@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\CentralDeErro.Core\CentralDeErro.Core.csproj" />
+    <ProjectReference Include="..\CentralDeErro.Core\CentralDeErro.Core.csproj" />
   </ItemGroup>
 
 </Project>
