@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Description Project File Suppression State Line",
+    "details": "Error CS7036  There is no argument given that corresponds to the required formal parameter 'id' of 'Error.Error(int, string, string, string, DateTime, int, int, int, int)'\tEziLog.Infrastructure D:\\source\\repos\\EziLog\\src\\EziLog.Infrastructure\\Data\\Maps\\ErrorMap.cs Active  15",
+    "sourceId": 1,
+    "level": 1
+  },
+  {
+    "id": 2,
+    "title": "Error IDE1007",
+    "details": "The name 'asas' does not exists in the current context.",
+    "sourceId": 2,
+    "level": 2
+  },
+  {
+    "id": 3,
+    "title": "Error CS0246",
+    "details": "The The type or namespace name 'DbContextOptions<>' could not be found(are you missing a using directive or an assembly reference?",
+    "sourceId": 1,
+    "level": 2
+  },
+  {
+    "id": 3,
+    "title": "Error CS0246",
+    "details": "The The type or namespace name 'DbContextOptions<>' could not be found(are you missing a using directive or an assembly reference?",
+    "sourceId": 1,
+    "level": 2
+  },
+  {
+    "id": 4,
+    "title": "Error CS0246",
+    "details": "The The type or namespace name 'DbContextOptions<>' could not be found(are you missing a using directive or an assembly reference?",
+    "sourceId": 2,
+    "level": 1
+  },
+  {
+    "id": 5,
+    "title": "Error CS0246",
+    "details": "The The type or namespace name 'DbContextOptions<>' could not be found(are you missing a using directive or an assembly reference?",
+    "sourceId": 4,
+    "level": 0
+  }
+]

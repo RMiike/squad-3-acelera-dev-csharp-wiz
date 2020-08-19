@@ -1,9 +1,7 @@
 apply plugin: "com.android.application"
 
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
-
 import com.android.build.OutputFile
-
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -79,7 +77,6 @@ import com.android.build.OutputFile
  * ]
  */
 
-
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]
@@ -132,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mobile"
+        applicationId "com.jarwiz"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -219,5 +216,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-
-
