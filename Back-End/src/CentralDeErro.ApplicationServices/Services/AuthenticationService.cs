@@ -67,7 +67,7 @@ namespace CentralDeErro.ApplicationServices.Services
 
             string validToken = EncodeToken(confirmEmailToken);
 
-            string url = $"{_configuration["AppUrl"]}/v1/confirmemail?userEmail={user.Email}&token={validToken}";
+            string url = $"{_configuration["AppUrl"]}/successConfirmEmail/{user.Email}/{validToken}";
             //TODO
             await _mailService.SendEmailAsync(
                 registerDTOEmail,
