@@ -1,0 +1,119 @@
+<svg margin='0 auto'  width='100%' fill='none' height='100%' 
+filter="url(#neon)"
+viewBox="0 0 200 200"  xmlns="http://www.w3.org/2000/svg" >
+<defs>
+<filter id="neon">
+<feFlood flood-color="#3bb4c4" flood-opacity="0.5" in="SourceGraphic" />
+<feComposite operator="in" in2="SourceGraphic" />
+<feGaussianBlur stdDeviation="15" />
+<feComponentTransfer result="glow1">
+<feFuncA type="linear" slope="4" intercept="0" />
+</feComponentTransfer>
+<feMerge>
+<feMergeNode in="glow1" />
+<feMergeNode in="SourceGraphic" />
+</feMerge>
+</filter>
+</defs>
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="96" stroke-width="1px"
+stroke-dasharray='603.185789489'/>
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="96" stroke-width="5px"
+stroke-dasharray='24.1274315796 180.955736847 72.3822947387'>
+<animateTransform attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="760 100 100"
+to="0 100 100"
+dur="6s"
+repeatCount="indefinite"
+additive="sum"
+/>
+</circle>            
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="88"
+stroke-width="1px"
+stroke-dasharray='110.584061406 110.584061406 110.584061406 110.584061406'>
+<animateTransform attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="0 100 100"
+to="320 100 100"
+dur="2.2s"
+repeatCount="indefinite"
+additive="sum"
+/>
+</circle>                
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="78"
+stroke-width="0.5px"
+stroke-dasharray='98.017690792 490.08845396'>
+<animateTransform attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="720 100 100"
+to="0 100 100"
+dur="1.2s"
+repeatCount="indefinite"/>
+</circle>
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="70"
+stroke-width="5px"
+stroke-dasharray='2'>
+<animateTransform attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="760 100 100"
+to="0 100 100"
+dur="15s"
+repeatCount="indefinite"
+additive="sum"
+/>
+</circle>
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="55"
+stroke-width="1px"/>
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="55"
+stroke-width="5px"
+stroke-dasharray='6.9115038379 34.5575191895 34.5575191895'>
+<animateTransform attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="760 100 100"
+to="0 100 100"
+dur="0.5s"
+repeatCount="indefinite"
+additive="sum"
+/>
+</circle>
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="40"
+stroke-width="1px" />
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="40"
+stroke-width="5px"
+stroke-dasharray='25 10'>
+<animateTransform attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="760 100 100"
+to="0 100 100"
+dur="0.5s"
+repeatCount="indefinite"
+additive="sum"
+/>
+</circle>
+<circle  cx="100" fill='none' cy="100" stroke='#3bb4c4' r="25"
+stroke-width="1px" />
+<circle cx="100" fill='none' cy="100" stroke='#3bb4c4' r="25"
+stroke-width="5px"
+stroke-dasharray='1 1 2 3'>
+<animateTransform attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="760 100 100"
+to="0 100 100"
+dur="0.5s"
+repeatCount="indefinite"
+additive="sum"
+/>
+</circle>
+<circle  cx="100" fill='#3bb4c4' cy="100" stroke='#3bb4c4' r="15"
+stroke-width="1px" />
+</svg>
+
+
+

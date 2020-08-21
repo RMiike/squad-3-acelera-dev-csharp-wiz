@@ -1,0 +1,2609 @@
+{
+  "CentralDeErro.Core.dll": {
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\Error.cs": {
+      "CentralDeErro.Core.Entities.Error": {
+        "System.Int32 CentralDeErro.Core.Entities.Error::get_Id()": {
+          "Lines": {
+            "21": 11
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.Error::get_Token()": {
+          "Lines": {
+            "22": 3
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.Error::get_Title()": {
+          "Lines": {
+            "23": 3
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.Error::get_Details()": {
+          "Lines": {
+            "24": 3
+          },
+          "Branches": []
+        },
+        "System.DateTime CentralDeErro.Core.Entities.Error::get_CreatedAt()": {
+          "Lines": {
+            "25": 3
+          },
+          "Branches": []
+        },
+        "System.Int32 CentralDeErro.Core.Entities.Error::get_SourceId()": {
+          "Lines": {
+            "26": 3
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.Source CentralDeErro.Core.Entities.Error::get_Source()": {
+          "Lines": {
+            "27": 2
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Enums.Level CentralDeErro.Core.Entities.Error::get_Level()": {
+          "Lines": {
+            "28": 3
+          },
+          "Branches": []
+        },
+        "System.Boolean CentralDeErro.Core.Entities.Error::get_Archived()": {
+          "Lines": {
+            "29": 58
+          },
+          "Branches": []
+        },
+        "System.Boolean CentralDeErro.Core.Entities.Error::get_Deleted()": {
+          "Lines": {
+            "30": 40
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.Error CentralDeErro.Core.Entities.Error::Create(System.Int32,System.String,System.String,System.String,CentralDeErro.Core.Enums.Level,System.Int32)": {
+          "Lines": {
+            "33": 32,
+            "34": 32,
+            "35": 32,
+            "36": 32,
+            "37": 3,
+            "38": 3,
+            "40": 29,
+            "41": 29,
+            "42": 29,
+            "44": 29,
+            "45": 29
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 31
+            },
+            {
+              "Line": 34,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 30
+            },
+            {
+              "Line": 34,
+              "Offset": 7,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 34,
+              "Offset": 15,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 34,
+              "Offset": 28,
+              "EndOffset": 30,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 3
+            },
+            {
+              "Line": 34,
+              "Offset": 28,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 29
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.Error::Archive()": {
+          "Lines": {
+            "48": 8,
+            "49": 8,
+            "50": 1,
+            "51": 7,
+            "52": 1,
+            "54": 6,
+            "55": 6
+          },
+          "Branches": [
+            {
+              "Line": 49,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 49,
+              "Offset": 12,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 7
+            },
+            {
+              "Line": 51,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 51,
+              "Offset": 33,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 6
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.Error::Unarchive()": {
+          "Lines": {
+            "57": 3,
+            "59": 3,
+            "60": 1,
+            "62": 2,
+            "63": 2
+          },
+          "Branches": [
+            {
+              "Line": 59,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 59,
+              "Offset": 12,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.Error::Delete()": {
+          "Lines": {
+            "65": 4,
+            "66": 4,
+            "67": 1,
+            "69": 3,
+            "70": 3
+          },
+          "Branches": [
+            {
+              "Line": 66,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 66,
+              "Offset": 9,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.Error::.ctor()": {
+          "Lines": {
+            "8": 15
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.Error::.ctor(System.Int32,System.String,System.String,System.String,CentralDeErro.Core.Enums.Level,System.DateTime,System.Int32,System.Boolean,System.Boolean)": {
+          "Lines": {
+            "9": 29,
+            "10": 29,
+            "11": 29,
+            "12": 29,
+            "13": 29,
+            "14": 29,
+            "15": 29,
+            "16": 29,
+            "17": 29,
+            "18": 29,
+            "19": 29,
+            "20": 29
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\Source.cs": {
+      "CentralDeErro.Core.Entities.Source": {
+        "System.Int32 CentralDeErro.Core.Entities.Source::get_Id()": {
+          "Lines": {
+            "18": 13
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.Source::get_Address()": {
+          "Lines": {
+            "19": 13
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Enums.Environment CentralDeErro.Core.Entities.Source::get_Environment()": {
+          "Lines": {
+            "20": 13
+          },
+          "Branches": []
+        },
+        "System.Boolean CentralDeErro.Core.Entities.Source::get_Deleted()": {
+          "Lines": {
+            "21": 55
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<CentralDeErro.Core.Entities.Error> CentralDeErro.Core.Entities.Source::get_Errors()": {
+          "Lines": {
+            "22": 12
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.Source CentralDeErro.Core.Entities.Source::Create(System.Int32,System.String,CentralDeErro.Core.Enums.Environment)": {
+          "Lines": {
+            "25": 33,
+            "26": 33,
+            "27": 1,
+            "29": 32,
+            "30": 32,
+            "31": 32
+          },
+          "Branches": [
+            {
+              "Line": 26,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 26,
+              "Offset": 9,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 32
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.Source::Delete()": {
+          "Lines": {
+            "33": 5,
+            "34": 5,
+            "35": 1,
+            "37": 4,
+            "38": 4
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 34,
+              "Offset": 9,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.Source::.ctor()": {
+          "Lines": {
+            "9": 6
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.Source::.ctor(System.Int32,System.String,CentralDeErro.Core.Enums.Environment,System.Boolean)": {
+          "Lines": {
+            "10": 32,
+            "11": 32,
+            "12": 32,
+            "13": 32,
+            "14": 32,
+            "15": 32,
+            "16": 32
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\User.cs": {
+      "CentralDeErro.Core.Entities.User": {
+        "System.String CentralDeErro.Core.Entities.User::get_FullName()": {
+          "Lines": {
+            "19": 21
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.User::get_Email()": {
+          "Lines": {
+            "20": 76
+          },
+          "Branches": []
+        },
+        "System.DateTime CentralDeErro.Core.Entities.User::get_CreatedAt()": {
+          "Lines": {
+            "21": 21
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<CentralDeErro.Core.Entities.UserRole> CentralDeErro.Core.Entities.User::get_UserRoles()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.User CentralDeErro.Core.Entities.User::Create(System.String,System.String,System.String)": {
+          "Lines": {
+            "25": 20,
+            "26": 20,
+            "27": 20,
+            "28": 20,
+            "29": 2,
+            "31": 18,
+            "32": 18,
+            "33": 18
+          },
+          "Branches": [
+            {
+              "Line": 26,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 19
+            },
+            {
+              "Line": 26,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 18
+            },
+            {
+              "Line": 26,
+              "Offset": 7,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 26,
+              "Offset": 15,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 26,
+              "Offset": 28,
+              "EndOffset": 30,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 26,
+              "Offset": 28,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 18
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.User::.ctor(System.String,System.String,System.DateTime,System.String)": {
+          "Lines": {
+            "10": 18,
+            "11": 18,
+            "12": 18,
+            "13": 18,
+            "14": 18,
+            "15": 18,
+            "16": 18,
+            "17": 18
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\ChangePasswordDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.ChangePasswordDTO": {
+        "System.String CentralDeErro.Core.Entities.DTOs.ChangePasswordDTO::get_OldPassword()": {
+          "Lines": {
+            "8": 54
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ChangePasswordDTO::get_NewPassword()": {
+          "Lines": {
+            "9": 76
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ChangePasswordDTO::get_ConfirmPassword()": {
+          "Lines": {
+            "10": 69
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.ChangePasswordDTO::Validate()": {
+          "Lines": {
+            "13": 16,
+            "14": 16,
+            "15": 16,
+            "16": 16,
+            "17": 16,
+            "18": 16,
+            "19": 16,
+            "20": 16,
+            "21": 16,
+            "22": 16,
+            "23": 16,
+            "24": 16
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\ErrorCreateDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO": {
+        "System.Int32 CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::get_Id()": {
+          "Lines": {
+            "10": 30
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::get_Title()": {
+          "Lines": {
+            "11": 80
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::get_Details()": {
+          "Lines": {
+            "12": 78
+          },
+          "Branches": []
+        },
+        "System.Int32 CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::get_SourceId()": {
+          "Lines": {
+            "13": 82
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Enums.Level CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::get_Level()": {
+          "Lines": {
+            "14": 61
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::get_Token()": {
+          "Lines": {
+            "15": 28
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::AddToken(System.String)": {
+          "Lines": {
+            "18": 17,
+            "19": 17,
+            "20": 2,
+            "22": 15,
+            "23": 15
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 19,
+              "Offset": 9,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 15
+            }
+          ]
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO::Validate()": {
+          "Lines": {
+            "26": 17,
+            "27": 17,
+            "28": 17,
+            "29": 17,
+            "30": 17,
+            "31": 17,
+            "32": 17,
+            "33": 17,
+            "34": 17,
+            "35": 17,
+            "36": 17
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\ErrorReadDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.ErrorReadDTO": {
+        "System.Int32 CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Id()": {
+          "Lines": {
+            "19": 270
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Token()": {
+          "Lines": {
+            "20": 156
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Title()": {
+          "Lines": {
+            "21": 156
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Details()": {
+          "Lines": {
+            "22": 156
+          },
+          "Branches": []
+        },
+        "System.DateTime CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_CreatedAt()": {
+          "Lines": {
+            "23": 156
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Level()": {
+          "Lines": {
+            "24": 156
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Environment()": {
+          "Lines": {
+            "25": 156
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Adress()": {
+          "Lines": {
+            "26": 156
+          },
+          "Branches": []
+        },
+        "System.Boolean CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::get_Archived()": {
+          "Lines": {
+            "27": 156
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.ErrorReadDTO::.ctor(System.Int32,System.String,System.String,System.String,System.DateTime,System.String,System.String,System.String,System.Boolean)": {
+          "Lines": {
+            "7": 150,
+            "8": 150,
+            "9": 150,
+            "10": 150,
+            "11": 150,
+            "12": 150,
+            "13": 150,
+            "14": 150,
+            "15": 150,
+            "16": 150,
+            "17": 150,
+            "18": 150
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\ForgotPasswordDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.ForgotPasswordDTO": {
+        "System.String CentralDeErro.Core.Entities.DTOs.ForgotPasswordDTO::get_Email()": {
+          "Lines": {
+            "8": 57
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.ForgotPasswordDTO::Validate()": {
+          "Lines": {
+            "10": 8,
+            "11": 8,
+            "12": 8,
+            "13": 8,
+            "14": 8,
+            "15": 8
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\LoginCreateDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.LoginCreateDTO": {
+        "System.String CentralDeErro.Core.Entities.DTOs.LoginCreateDTO::get_Email()": {
+          "Lines": {
+            "8": 120
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.LoginCreateDTO::get_Password()": {
+          "Lines": {
+            "9": 86
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.LoginCreateDTO::Validate()": {
+          "Lines": {
+            "12": 14,
+            "13": 14,
+            "14": 14,
+            "15": 14,
+            "16": 14,
+            "17": 14,
+            "18": 14,
+            "19": 14
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\LoginReadDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.LoginReadDTO": {
+        "System.String CentralDeErro.Core.Entities.DTOs.LoginReadDTO::get_Email()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.LoginReadDTO::get_Token()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.LoginReadDTO::AddToken(System.String)": {
+          "Lines": {
+            "12": 2,
+            "13": 2,
+            "14": 0,
+            "16": 2,
+            "17": 2
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 9,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\RegisterCreateDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO": {
+        "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_FullName()": {
+          "Lines": {
+            "8": 281
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_Email()": {
+          "Lines": {
+            "9": 447
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_Password()": {
+          "Lines": {
+            "10": 303
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::get_ConfirmPassword()": {
+          "Lines": {
+            "11": 303
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.RegisterCreateDTO::Validate()": {
+          "Lines": {
+            "13": 26,
+            "14": 26,
+            "15": 26,
+            "16": 26,
+            "17": 26,
+            "18": 26,
+            "19": 26,
+            "20": 26,
+            "21": 26,
+            "22": 26,
+            "23": 26,
+            "24": 26,
+            "26": 26
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\ResultDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.ResultDTO": {
+        "System.Boolean CentralDeErro.Core.Entities.DTOs.ResultDTO::get_Success()": {
+          "Lines": {
+            "12": 227
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.ResultDTO::get_Message()": {
+          "Lines": {
+            "13": 209
+          },
+          "Branches": []
+        },
+        "System.Object CentralDeErro.Core.Entities.DTOs.ResultDTO::get_Data()": {
+          "Lines": {
+            "14": 194
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.ResultDTO::.ctor(System.Boolean,System.String,System.Object)": {
+          "Lines": {
+            "5": 106,
+            "6": 106,
+            "7": 106,
+            "8": 106,
+            "9": 106,
+            "10": 106
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\SourceCreateDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.SourceCreateDTO": {
+        "System.Int32 CentralDeErro.Core.Entities.DTOs.SourceCreateDTO::get_Id()": {
+          "Lines": {
+            "9": 15
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.SourceCreateDTO::get_Address()": {
+          "Lines": {
+            "10": 69
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Enums.Environment CentralDeErro.Core.Entities.DTOs.SourceCreateDTO::get_Environment()": {
+          "Lines": {
+            "11": 71
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.SourceCreateDTO::Validate()": {
+          "Lines": {
+            "14": 8,
+            "15": 8,
+            "16": 8,
+            "17": 8,
+            "18": 8,
+            "19": 8,
+            "20": 8,
+            "21": 8,
+            "22": 8
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\SourceReadDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.SourceReadDTO": {
+        "System.Int32 CentralDeErro.Core.Entities.DTOs.SourceReadDTO::get_Id()": {
+          "Lines": {
+            "12": 228
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.SourceReadDTO::get_Address()": {
+          "Lines": {
+            "13": 144
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Core.Entities.DTOs.SourceReadDTO::get_Environment()": {
+          "Lines": {
+            "14": 153
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.SourceReadDTO::.ctor(System.Int32,System.String,System.String)": {
+          "Lines": {
+            "5": 134,
+            "6": 134,
+            "7": 134,
+            "8": 134,
+            "9": 134,
+            "10": 134
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Core\\Entities\\DTOs\\TwoFactorDTO.cs": {
+      "CentralDeErro.Core.Entities.DTOs.TwoFactorDTO": {
+        "System.String CentralDeErro.Core.Entities.DTOs.TwoFactorDTO::get_Email()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Core.Entities.DTOs.TwoFactorDTO::Validate()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "CentralDeErro.Infrastructure.dll": {
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Services\\AccountManagerService.cs": {
+      "CentralDeErro.Infrastructure.Services.AccountManagerService": {
+        "System.Void CentralDeErro.Infrastructure.Services.AccountManagerService::.ctor(Microsoft.AspNetCore.Identity.UserManager`1<CentralDeErro.Core.Entities.User>)": {
+          "Lines": {
+            "15": 3,
+            "16": 3,
+            "17": 3,
+            "18": 3
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AccountManagerService/<ChangePassword>d__2": {
+        "System.Void CentralDeErro.Infrastructure.Services.AccountManagerService/<ChangePassword>d__2::MoveNext()": {
+          "Lines": {
+            "22": 3,
+            "23": 3,
+            "24": 3,
+            "25": 1,
+            "27": 2,
+            "29": 2,
+            "30": 1,
+            "31": 1,
+            "32": 5,
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "36": 1,
+            "38": 1,
+            "39": 3
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 175,
+              "EndOffset": 177,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 175,
+              "EndOffset": 227,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 29,
+              "Offset": 406,
+              "EndOffset": 411,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 32,
+              "Offset": 503,
+              "EndOffset": 448,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 32,
+              "Offset": 503,
+              "EndOffset": 505,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 29,
+              "Offset": 406,
+              "EndOffset": 559,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Services\\AuthenticationService.cs": {
+      "CentralDeErro.Infrastructure.Services.AuthenticationService": {
+        "System.String CentralDeErro.Infrastructure.Services.AuthenticationService::EncodeToken(System.String)": {
+          "Lines": {
+            "175": 1,
+            "176": 1,
+            "177": 1,
+            "178": 1
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Infrastructure.Services.AuthenticationService::DecodeToken(System.String)": {
+          "Lines": {
+            "180": 2,
+            "181": 2,
+            "183": 2,
+            "184": 2
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService::.ctor(Microsoft.AspNetCore.Identity.UserManager`1<CentralDeErro.Core.Entities.User>,Microsoft.AspNetCore.Identity.SignInManager`1<CentralDeErro.Core.Entities.User>,AutoMapper.IMapper,CentralDeErro.Core.Contracts.Services.ITokenService,Microsoft.Extensions.Configuration.IConfiguration,CentralDeErro.Core.Contracts.Services.IMailService)": {
+          "Lines": {
+            "26": 12,
+            "27": 12,
+            "28": 12,
+            "29": 12,
+            "30": 12,
+            "31": 12,
+            "32": 12,
+            "33": 12,
+            "34": 12,
+            "35": 12,
+            "36": 12,
+            "37": 12,
+            "38": 12,
+            "39": 12,
+            "40": 12,
+            "41": 12
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AuthenticationService/<Register>d__7": {
+        "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<Register>d__7::MoveNext()": {
+          "Lines": {
+            "46": 3,
+            "47": 3,
+            "49": 3,
+            "50": 1,
+            "52": 2,
+            "54": 2,
+            "56": 2,
+            "57": 1,
+            "59": 1,
+            "61": 1,
+            "62": 3
+          },
+          "Branches": [
+            {
+              "Line": 49,
+              "Offset": 194,
+              "EndOffset": 196,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 49,
+              "Offset": 194,
+              "EndOffset": 214,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 56,
+              "Offset": 426,
+              "EndOffset": 428,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 56,
+              "Offset": 426,
+              "EndOffset": 452,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AuthenticationService/<CreateAndSendEmailConfirm>d__8": {
+        "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<CreateAndSendEmailConfirm>d__8::MoveNext()": {
+          "Lines": {
+            "66": 1,
+            "67": 1,
+            "69": 1,
+            "71": 1,
+            "73": 1,
+            "74": 1,
+            "75": 1,
+            "76": 1,
+            "77": 1,
+            "78": 1
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AuthenticationService/<>c": {
+        "System.String CentralDeErro.Infrastructure.Services.AuthenticationService/<>c::<ConfirmEmail>b__9_0(Microsoft.AspNetCore.Identity.IdentityError)": {
+          "Lines": {
+            "94": 0
+          },
+          "Branches": []
+        },
+        "System.String CentralDeErro.Infrastructure.Services.AuthenticationService/<>c::<ResetPassword>b__12_0(Microsoft.AspNetCore.Identity.IdentityError)": {
+          "Lines": {
+            "167": 0
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AuthenticationService/<ConfirmEmail>d__9": {
+        "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<ConfirmEmail>d__9::MoveNext()": {
+          "Lines": {
+            "83": 3,
+            "84": 3,
+            "86": 3,
+            "87": 1,
+            "89": 2,
+            "91": 2,
+            "93": 2,
+            "96": 1,
+            "97": 3
+          },
+          "Branches": [
+            {
+              "Line": 86,
+              "Offset": 175,
+              "EndOffset": 177,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 86,
+              "Offset": 175,
+              "EndOffset": 200,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 93,
+              "Offset": 380,
+              "EndOffset": 382,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 93,
+              "Offset": 380,
+              "EndOffset": 443,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AuthenticationService/<Login>d__10": {
+        "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<Login>d__10::MoveNext()": {
+          "Lines": {
+            "104": 3,
+            "105": 3,
+            "107": 3,
+            "108": 1,
+            "110": 2,
+            "111": 2,
+            "113": 2,
+            "114": 1,
+            "118": 1,
+            "119": 1,
+            "120": 1,
+            "122": 1,
+            "123": 3
+          },
+          "Branches": [
+            {
+              "Line": 107,
+              "Offset": 180,
+              "EndOffset": 182,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 107,
+              "Offset": 180,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 113,
+              "Offset": 374,
+              "EndOffset": 376,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 113,
+              "Offset": 374,
+              "EndOffset": 399,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AuthenticationService/<ForgotPassword>d__11": {
+        "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<ForgotPassword>d__11::MoveNext()": {
+          "Lines": {
+            "129": 3,
+            "130": 3,
+            "132": 3,
+            "133": 1,
+            "135": 2,
+            "137": 2,
+            "139": 2,
+            "140": 1,
+            "143": 1,
+            "144": 1,
+            "145": 1,
+            "146": 1,
+            "147": 1,
+            "149": 1,
+            "151": 3
+          },
+          "Branches": [
+            {
+              "Line": 132,
+              "Offset": 203,
+              "EndOffset": 205,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 132,
+              "Offset": 203,
+              "EndOffset": 228,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 139,
+              "Offset": 535,
+              "EndOffset": 537,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 139,
+              "Offset": 535,
+              "EndOffset": 549,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.AuthenticationService/<ResetPassword>d__12": {
+        "System.Void CentralDeErro.Infrastructure.Services.AuthenticationService/<ResetPassword>d__12::MoveNext()": {
+          "Lines": {
+            "156": 2,
+            "157": 2,
+            "158": 0,
+            "161": 2,
+            "163": 2,
+            "164": 2,
+            "166": 2,
+            "169": 1,
+            "170": 2
+          },
+          "Branches": [
+            {
+              "Line": 157,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 157,
+              "Offset": 24,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 157,
+              "Offset": 42,
+              "EndOffset": 44,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 157,
+              "Offset": 42,
+              "EndOffset": 62,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 166,
+              "Offset": 257,
+              "EndOffset": 259,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 166,
+              "Offset": 257,
+              "EndOffset": 320,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Services\\MailService.cs": {
+      "CentralDeErro.Infrastructure.Services.MailService": {
+        "System.Void CentralDeErro.Infrastructure.Services.MailService::.ctor(Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "14": 113,
+            "15": 113,
+            "16": 113,
+            "17": 113
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.MailService/<SendEmailAsync>d__2": {
+        "System.Void CentralDeErro.Infrastructure.Services.MailService/<SendEmailAsync>d__2::MoveNext()": {
+          "Lines": {
+            "19": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2,
+            "26": 2,
+            "27": 2,
+            "28": 2,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Services\\TokenService.cs": {
+      "CentralDeErro.Infrastructure.Services.TokenService": {
+        "System.Void CentralDeErro.Infrastructure.Services.TokenService::.ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Identity.UserManager`1<CentralDeErro.Core.Entities.User>)": {
+          "Lines": {
+            "20": 113,
+            "21": 113,
+            "22": 113,
+            "23": 113,
+            "24": 113,
+            "25": 113,
+            "26": 113,
+            "27": 113
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.Infrastructure.Services.TokenService/<GenerateJwtToken>d__3": {
+        "System.Void CentralDeErro.Infrastructure.Services.TokenService/<GenerateJwtToken>d__3::MoveNext()": {
+          "Lines": {
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "36": 1,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "43": 1,
+            "44": 1,
+            "46": 1,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "55": 1,
+            "57": 1,
+            "59": 1,
+            "60": 1
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 311,
+              "EndOffset": 246,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 311,
+              "EndOffset": 313,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Repository\\ErrorRepository.cs": {
+      "CentralDeErro.Infrastructure.Repository.ErrorRepository": {
+        "System.Collections.Generic.IEnumerable`1<CentralDeErro.Core.Entities.DTOs.ErrorReadDTO> CentralDeErro.Infrastructure.Repository.ErrorRepository::Get()": {
+          "Lines": {
+            "32": 4,
+            "33": 4
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.DTOs.ErrorReadDTO CentralDeErro.Infrastructure.Repository.ErrorRepository::Get(System.Int32)": {
+          "Lines": {
+            "36": 3,
+            "37": 3
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.DTOs.ResultDTO CentralDeErro.Infrastructure.Repository.ErrorRepository::Create(CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO,System.String)": {
+          "Lines": {
+            "40": 7,
+            "41": 7,
+            "42": 1,
+            "44": 6,
+            "45": 3,
+            "47": 3,
+            "49": 3,
+            "51": 3,
+            "53": 3,
+            "54": 3,
+            "56": 0,
+            "57": 6
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 41,
+              "Offset": 25,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            },
+            {
+              "Line": 44,
+              "Offset": 261,
+              "EndOffset": 263,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 44,
+              "Offset": 261,
+              "EndOffset": 279,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 53,
+              "Offset": 333,
+              "EndOffset": 335,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 3
+            },
+            {
+              "Line": 53,
+              "Offset": 333,
+              "EndOffset": 351,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "CentralDeErro.Core.Entities.DTOs.ResultDTO CentralDeErro.Infrastructure.Repository.ErrorRepository::Archive(System.Int32)": {
+          "Lines": {
+            "60": 6,
+            "61": 6,
+            "63": 6,
+            "64": 2,
+            "66": 4,
+            "67": 1,
+            "69": 3,
+            "70": 3,
+            "71": 3,
+            "72": 6
+          },
+          "Branches": [
+            {
+              "Line": 63,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 63,
+              "Offset": 15,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 66,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 66,
+              "Offset": 51,
+              "EndOffset": 79,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            }
+          ]
+        },
+        "CentralDeErro.Core.Entities.DTOs.ResultDTO CentralDeErro.Infrastructure.Repository.ErrorRepository::Unarchive(System.Int32)": {
+          "Lines": {
+            "75": 4,
+            "76": 4,
+            "78": 4,
+            "79": 2,
+            "81": 2,
+            "82": 1,
+            "84": 1,
+            "85": 1,
+            "86": 1,
+            "87": 4
+          },
+          "Branches": [
+            {
+              "Line": 78,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 78,
+              "Offset": 15,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 81,
+              "Offset": 54,
+              "EndOffset": 56,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 81,
+              "Offset": 54,
+              "EndOffset": 82,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "CentralDeErro.Core.Entities.DTOs.ResultDTO CentralDeErro.Infrastructure.Repository.ErrorRepository::Delete(System.Int32)": {
+          "Lines": {
+            "91": 3,
+            "92": 3,
+            "94": 3,
+            "95": 2,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "100": 3
+          },
+          "Branches": [
+            {
+              "Line": 94,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 94,
+              "Offset": 15,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "CentralDeErro.Core.Entities.Error CentralDeErro.Infrastructure.Repository.ErrorRepository::FindById(System.Int32)": {
+          "Lines": {
+            "103": 13,
+            "104": 13,
+            "105": 13,
+            "106": 13,
+            "107": 13
+          },
+          "Branches": []
+        },
+        "System.Linq.IQueryable`1<CentralDeErro.Core.Entities.DTOs.ErrorReadDTO> CentralDeErro.Infrastructure.Repository.ErrorRepository::HandleSearch(System.Linq.Expressions.Expression`1<System.Func`2<CentralDeErro.Core.Entities.Error,System.Boolean>>)": {
+          "Lines": {
+            "110": 7,
+            "111": 7,
+            "112": 7,
+            "113": 7,
+            "114": 7,
+            "115": 7,
+            "116": 7,
+            "117": 7,
+            "118": 7,
+            "119": 7,
+            "120": 7,
+            "121": 7,
+            "122": 7,
+            "123": 7,
+            "124": 7,
+            "125": 7,
+            "126": 7
+          },
+          "Branches": []
+        },
+        "System.Boolean CentralDeErro.Infrastructure.Repository.ErrorRepository::SaveChanges()": {
+          "Lines": {
+            "129": 8
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Infrastructure.Repository.ErrorRepository::.ctor(CentralDeErro.Infrastructure.Context.CentralDeErrorContext,AutoMapper.IMapper)": {
+          "Lines": {
+            "20": 22,
+            "21": 22,
+            "22": 22,
+            "23": 22,
+            "24": 22,
+            "25": 22,
+            "26": 22,
+            "27": 22
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Repository\\SourceRepository.cs": {
+      "CentralDeErro.Infrastructure.Repository.SourceRepository": {
+        "System.Collections.Generic.IEnumerable`1<CentralDeErro.Core.Entities.DTOs.SourceReadDTO> CentralDeErro.Infrastructure.Repository.SourceRepository::Get()": {
+          "Lines": {
+            "27": 3,
+            "28": 3,
+            "29": 3,
+            "30": 3,
+            "31": 3,
+            "32": 3
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.DTOs.SourceReadDTO CentralDeErro.Infrastructure.Repository.SourceRepository::Get(System.Int32)": {
+          "Lines": {
+            "35": 6,
+            "36": 6,
+            "37": 6,
+            "38": 6,
+            "39": 6,
+            "40": 6
+          },
+          "Branches": []
+        },
+        "CentralDeErro.Core.Entities.DTOs.ResultDTO CentralDeErro.Infrastructure.Repository.SourceRepository::Create(CentralDeErro.Core.Entities.DTOs.SourceCreateDTO)": {
+          "Lines": {
+            "45": 5,
+            "46": 5,
+            "47": 1,
+            "49": 4,
+            "50": 2,
+            "52": 2,
+            "54": 2,
+            "56": 2,
+            "57": 2,
+            "59": 0,
+            "60": 4
+          },
+          "Branches": [
+            {
+              "Line": 46,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 46,
+              "Offset": 25,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 49,
+              "Offset": 285,
+              "EndOffset": 287,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 49,
+              "Offset": 285,
+              "EndOffset": 303,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 56,
+              "Offset": 344,
+              "EndOffset": 346,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 56,
+              "Offset": 344,
+              "EndOffset": 362,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "CentralDeErro.Core.Entities.DTOs.ResultDTO CentralDeErro.Infrastructure.Repository.SourceRepository::Delete(System.Int32)": {
+          "Lines": {
+            "63": 4,
+            "64": 4,
+            "65": 4,
+            "66": 4,
+            "67": 4,
+            "68": 4,
+            "70": 4,
+            "71": 2,
+            "73": 2,
+            "74": 2,
+            "76": 2,
+            "77": 4
+          },
+          "Branches": [
+            {
+              "Line": 70,
+              "Offset": 229,
+              "EndOffset": 231,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 70,
+              "Offset": 229,
+              "EndOffset": 263,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Boolean CentralDeErro.Infrastructure.Repository.SourceRepository::SaveChanges()": {
+          "Lines": {
+            "79": 4
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Infrastructure.Repository.SourceRepository::.ctor(CentralDeErro.Infrastructure.Context.CentralDeErrorContext,AutoMapper.IMapper)": {
+          "Lines": {
+            "18": 16,
+            "19": 16,
+            "20": 16,
+            "21": 16,
+            "22": 16,
+            "23": 16,
+            "24": 16,
+            "25": 16
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Data\\Maps\\ErrorMap.cs": {
+      "CentralDeErro.Infrastructure.Data.Maps.ErrorMap": {
+        "System.Void CentralDeErro.Infrastructure.Data.Maps.ErrorMap::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<CentralDeErro.Core.Entities.Error>)": {
+          "Lines": {
+            "11": 2,
+            "12": 2,
+            "14": 2,
+            "16": 2,
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "26": 2,
+            "27": 2,
+            "28": 2,
+            "29": 2,
+            "30": 2,
+            "32": 2,
+            "33": 2,
+            "34": 2,
+            "35": 2,
+            "36": 2,
+            "38": 2,
+            "39": 2,
+            "40": 2,
+            "42": 2,
+            "43": 2,
+            "44": 2,
+            "46": 2,
+            "47": 2,
+            "48": 2,
+            "49": 2,
+            "50": 2,
+            "51": 2,
+            "54": 2,
+            "55": 2,
+            "56": 2,
+            "59": 2,
+            "60": 2,
+            "61": 2,
+            "64": 2,
+            "65": 2,
+            "66": 2,
+            "69": 2,
+            "70": 2,
+            "71": 2,
+            "72": 2,
+            "75": 2,
+            "76": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Data\\Maps\\SourceMap.cs": {
+      "CentralDeErro.Infrastructure.Data.Maps.SourceMap": {
+        "System.Void CentralDeErro.Infrastructure.Data.Maps.SourceMap::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<CentralDeErro.Core.Entities.Source>)": {
+          "Lines": {
+            "13": 2,
+            "14": 2,
+            "16": 2,
+            "17": 2,
+            "18": 2,
+            "19": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2,
+            "27": 2,
+            "28": 2,
+            "29": 2,
+            "30": 2,
+            "31": 2,
+            "32": 2,
+            "34": 2,
+            "35": 2,
+            "36": 2,
+            "38": 2,
+            "39": 2,
+            "40": 2,
+            "41": 2,
+            "42": 2,
+            "43": 2,
+            "44": 2,
+            "45": 2,
+            "47": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Data\\Maps\\UserMap.cs": {
+      "CentralDeErro.Infrastructure.Data.Maps.UserMap": {
+        "System.Void CentralDeErro.Infrastructure.Data.Maps.UserMap::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<CentralDeErro.Core.Entities.User>)": {
+          "Lines": {
+            "11": 2,
+            "13": 2,
+            "14": 2,
+            "15": 2,
+            "16": 2,
+            "17": 2,
+            "19": 2,
+            "20": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "25": 2,
+            "26": 2,
+            "27": 2,
+            "29": 2,
+            "30": 2,
+            "31": 2,
+            "32": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Data\\Maps\\UserRoleMap.cs": {
+      "CentralDeErro.Infrastructure.Data.Maps.UserRoleMap": {
+        "System.Void CentralDeErro.Infrastructure.Data.Maps.UserRoleMap::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<CentralDeErro.Core.Entities.UserRole>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "13": 2,
+            "14": 2,
+            "15": 2,
+            "16": 2,
+            "17": 2,
+            "18": 2,
+            "19": 2,
+            "20": 2,
+            "21": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Infrastructure\\Data\\CentralDeErrorContext.cs": {
+      "CentralDeErro.Infrastructure.Context.CentralDeErrorContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<CentralDeErro.Core.Entities.Error> CentralDeErro.Infrastructure.Context.CentralDeErrorContext::get_Errors()": {
+          "Lines": {
+            "17": 163
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<CentralDeErro.Core.Entities.Source> CentralDeErro.Infrastructure.Context.CentralDeErrorContext::get_Sources()": {
+          "Lines": {
+            "18": 180
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Infrastructure.Context.CentralDeErrorContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "20": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2
+          },
+          "Branches": []
+        },
+        "System.Void CentralDeErro.Infrastructure.Context.CentralDeErrorContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<CentralDeErro.Infrastructure.Context.CentralDeErrorContext>)": {
+          "Lines": {
+            "15": 360
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "CentralDeErro.WebAPI.dll": {
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Api\\Controllers\\v1\\AccountManageController.cs": {
+      "CentralDeErro.WebAPI.Controllers.v1.AccountManageController/<ChangePassword>d__0": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AccountManageController/<ChangePassword>d__0::MoveNext()": {
+          "Lines": {
+            "16": 6,
+            "17": 6,
+            "18": 6,
+            "19": 3,
+            "21": 3,
+            "23": 3,
+            "24": 2,
+            "26": 1,
+            "27": 6
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 18,
+              "Offset": 43,
+              "EndOffset": 84,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 23,
+              "Offset": 245,
+              "EndOffset": 247,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 23,
+              "Offset": 245,
+              "EndOffset": 267,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Api\\Controllers\\v1\\AuthenticationController.cs": {
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult CentralDeErro.WebAPI.Controllers.v1.AuthenticationController::get()": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": []
+        }
+      },
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<Register>d__1": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<Register>d__1::MoveNext()": {
+          "Lines": {
+            "28": 9,
+            "29": 9,
+            "30": 9,
+            "31": 5,
+            "34": 4,
+            "35": 4,
+            "37": 4,
+            "38": 1,
+            "40": 3,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "47": 9
+          },
+          "Branches": [
+            {
+              "Line": 30,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            },
+            {
+              "Line": 30,
+              "Offset": 40,
+              "EndOffset": 81,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 37,
+              "Offset": 237,
+              "EndOffset": 239,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 37,
+              "Offset": 237,
+              "EndOffset": 259,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            }
+          ]
+        }
+      },
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ConfirmEmail>d__2": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ConfirmEmail>d__2::MoveNext()": {
+          "Lines": {
+            "58": 5,
+            "59": 5,
+            "60": 2,
+            "61": 2,
+            "64": 3,
+            "66": 3,
+            "67": 1,
+            "69": 2,
+            "70": 5
+          },
+          "Branches": [
+            {
+              "Line": 59,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            },
+            {
+              "Line": 59,
+              "Offset": 29,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 59,
+              "Offset": 47,
+              "EndOffset": 49,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 59,
+              "Offset": 47,
+              "EndOffset": 79,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 66,
+              "Offset": 232,
+              "EndOffset": 234,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 66,
+              "Offset": 232,
+              "EndOffset": 254,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<SignIn>d__3": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<SignIn>d__3::MoveNext()": {
+          "Lines": {
+            "79": 5,
+            "80": 5,
+            "81": 5,
+            "82": 2,
+            "85": 3,
+            "86": 3,
+            "88": 3,
+            "89": 2,
+            "91": 1,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "98": 5
+          },
+          "Branches": [
+            {
+              "Line": 81,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 81,
+              "Offset": 40,
+              "EndOffset": 81,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 88,
+              "Offset": 240,
+              "EndOffset": 242,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 88,
+              "Offset": 240,
+              "EndOffset": 262,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ForgotPassword>d__4": {
+        "System.Void CentralDeErro.WebAPI.Controllers.v1.AuthenticationController/<ForgotPassword>d__4::MoveNext()": {
+          "Lines": {
+            "106": 3,
+            "107": 3,
+            "108": 3,
+            "109": 1,
+            "111": 2,
+            "113": 2,
+            "114": 1,
+            "116": 1,
+            "117": 3
+          },
+          "Branches": [
+            {
+              "Line": 108,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 108,
+              "Offset": 43,
+              "EndOffset": 84,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 113,
+              "Offset": 234,
+              "EndOffset": 236,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 113,
+              "Offset": 234,
+              "EndOffset": 256,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Api\\Controllers\\v1\\ErrorController.cs": {
+      "CentralDeErro.WebAPI.Controllers.v1.ErrorController": {
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<System.Collections.Generic.IEnumerable`1<CentralDeErro.Core.Entities.Error>> CentralDeErro.WebAPI.Controllers.v1.ErrorController::GetAll(CentralDeErro.Core.Contracts.Repositories.IErrorRepository)": {
+          "Lines": {
+            "16": 1,
+            "17": 1,
+            "18": 1
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<CentralDeErro.Core.Entities.Error> CentralDeErro.WebAPI.Controllers.v1.ErrorController::GetErrorById(CentralDeErro.Core.Contracts.Repositories.IErrorRepository,System.Int32)": {
+          "Lines": {
+            "22": 5,
+            "23": 5,
+            "24": 5,
+            "25": 3,
+            "26": 3,
+            "28": 2,
+            "29": 5
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 24,
+              "Offset": 15,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<CentralDeErro.Core.Entities.Error> CentralDeErro.WebAPI.Controllers.v1.ErrorController::Register(CentralDeErro.Core.Contracts.Repositories.IErrorRepository,CentralDeErro.Core.Entities.DTOs.ErrorCreateDTO,System.String)": {
+          "Lines": {
+            "40": 6,
+            "41": 6,
+            "42": 6,
+            "43": 2,
+            "45": 4,
+            "47": 4,
+            "48": 2,
+            "50": 2,
+            "51": 6
+          },
+          "Branches": [
+            {
+              "Line": 42,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 42,
+              "Offset": 16,
+              "EndOffset": 49,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 47,
+              "Offset": 66,
+              "EndOffset": 68,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 47,
+              "Offset": 66,
+              "EndOffset": 99,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult CentralDeErro.WebAPI.Controllers.v1.ErrorController::Archive(CentralDeErro.Core.Contracts.Repositories.IErrorRepository,System.Int32)": {
+          "Lines": {
+            "60": 3,
+            "61": 3,
+            "63": 3,
+            "64": 2,
+            "67": 1,
+            "68": 3
+          },
+          "Branches": [
+            {
+              "Line": 63,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 63,
+              "Offset": 20,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult CentralDeErro.WebAPI.Controllers.v1.ErrorController::Unarchive(CentralDeErro.Core.Contracts.Repositories.IErrorRepository,System.Int32)": {
+          "Lines": {
+            "73": 3,
+            "74": 3,
+            "76": 3,
+            "77": 2,
+            "80": 1,
+            "81": 3
+          },
+          "Branches": [
+            {
+              "Line": 76,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 76,
+              "Offset": 20,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult CentralDeErro.WebAPI.Controllers.v1.ErrorController::Delete(CentralDeErro.Core.Contracts.Repositories.IErrorRepository,System.Int32)": {
+          "Lines": {
+            "87": 2,
+            "88": 2,
+            "90": 2,
+            "91": 1,
+            "94": 1,
+            "95": 2
+          },
+          "Branches": [
+            {
+              "Line": 90,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 90,
+              "Offset": 20,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\miike\\source\\repos\\squad-3-acelera-dev-csharp-wiz\\Back-End\\src\\CentralDeErro.Api\\Controllers\\v1\\SourceController.cs": {
+      "CentralDeErro.WebAPI.Controllers.v1.SourceController": {
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<System.Collections.Generic.IEnumerable`1<CentralDeErro.Core.Entities.Source>> CentralDeErro.WebAPI.Controllers.v1.SourceController::GetAll(CentralDeErro.Core.Contracts.Repositories.ISourceRepository)": {
+          "Lines": {
+            "18": 1,
+            "19": 1,
+            "20": 1
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<CentralDeErro.Core.Entities.Source> CentralDeErro.WebAPI.Controllers.v1.SourceController::GetSourceById(CentralDeErro.Core.Contracts.Repositories.ISourceRepository,System.Int32)": {
+          "Lines": {
+            "25": 5,
+            "26": 5,
+            "27": 5,
+            "28": 3,
+            "29": 3,
+            "31": 2,
+            "32": 5
+          },
+          "Branches": [
+            {
+              "Line": 27,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 27,
+              "Offset": 15,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<CentralDeErro.Core.Entities.Source> CentralDeErro.WebAPI.Controllers.v1.SourceController::Register(CentralDeErro.Core.Contracts.Repositories.ISourceRepository,CentralDeErro.Core.Entities.DTOs.SourceCreateDTO)": {
+          "Lines": {
+            "41": 4,
+            "42": 4,
+            "43": 4,
+            "44": 2,
+            "45": 2,
+            "48": 2,
+            "50": 2,
+            "51": 1,
+            "53": 1,
+            "54": 4
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 43,
+              "Offset": 16,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 50,
+              "Offset": 66,
+              "EndOffset": 68,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 50,
+              "Offset": 66,
+              "EndOffset": 99,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult CentralDeErro.WebAPI.Controllers.v1.SourceController::Delete(CentralDeErro.Core.Contracts.Repositories.ISourceRepository,System.Int32)": {
+          "Lines": {
+            "62": 2,
+            "64": 2,
+            "66": 2,
+            "67": 1,
+            "69": 1,
+            "70": 2
+          },
+          "Branches": [
+            {
+              "Line": 66,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 66,
+              "Offset": 20,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    }
+  }
+}

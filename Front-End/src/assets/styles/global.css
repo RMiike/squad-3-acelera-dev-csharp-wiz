@@ -1,0 +1,71 @@
+:root {
+  --color-background: #212133;
+  --color-background-secondary: #F0F0F7;
+  --color-text: #F0F0F7;
+  --color-text-secondary: #881eff;
+  --color-title: #32264D;
+  --color-button: #04D361;
+  --color-button-secondary: #DCDCE5;
+  --color-input-background: #E6E6F0;
+  --color-input-text: #9C98A6;
+
+
+  font-size: 40%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+}
+
+body {
+  background: var(--color-background-secondary);
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+input,
+button,
+textarea {
+  font: 500 1.6rem Montserrat;
+  color: var(--color-text)
+}
+
+.container {
+  width: 90vw;
+  max-width: 700px;
+}
+
+@media(min-width: 700px){
+  :root{
+    font-size: 62.5% ;
+  }
+}
+
+.alert {
+  width: 50%;
+  position: absolute;
+  width: 45%;
+  height: 54px;
+  right: 0;
+  top:0;
+}
+.alert div {
+  display:flex;
+ 
+  flex-direction: row;
+  align-items: center;
+  font: 400 1.0rem Montserrat;
+}
