@@ -5,7 +5,6 @@ import PageHeader from '../../../components/PageHeader'
 import { Container, FormPageHeader } from './styles';
 import ErrorItem, { Errors } from '../../../components/ErrorItem';
 import { useError } from '../../../context/error';
-
 const Dashboard: React.FC = () => {
   const [filteredErrors, setFilteredErrors] = useState<Errors[]>([]);
   const [environment, setEnvironment] = useState('All')

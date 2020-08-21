@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ItemBox, HeaderBox, Title, MidBox, MidBoxItem, Description, Id } from './styles';
 import Button from '../Form/Button';
 import { useError } from '../../context/error';
+import ConfirmButton from '../Form/ConfirmButton'
 
 export interface Errors {
   address: string;
@@ -21,7 +22,9 @@ interface ErrorsProps {
 }
 
 const ErrorItem: React.FC<ErrorsProps> = ({ errors }) => {
-  const { handleUpdate, handleDelete } = useError();
+  const [isVisible, setIsVisible] = useState(false);
+  const { handleUpdate } = useError();
+
   async function handleUpdateData() {
     const { id, archived } = errors;
     const resp = await handleUpdate({ id, archived });
@@ -29,26 +32,28 @@ const ErrorItem: React.FC<ErrorsProps> = ({ errors }) => {
 
     }
   }
-  async function handleDeleteData() {
 
-    const { id } = errors;
-    const resp = await handleDelete({ id });
-    if (resp !== undefined) {
-    }
+  async function handleConfirmDeleteData() {
+    setIsVisible(!isVisible);
   }
   return (
     <ItemBox>
+      {isVisible &&
+        <ConfirmButton
+          id={errors.id}
+          handleConfirmDeleteData={handleConfirmDeleteData}
+        />}
       <HeaderBox>
         <Id>Id.{errors.id}</Id>
         <Title>{errors.title} at {errors.createdAt
           .replace(/T/g, ' ')
           .substring(0, 19)
           .replace(/-/g, '/')}</Title>
-        <div className='colectedBy'>
-          <p>Coletado por: {errors.fullName}<br />
-          Token:<strong> {errors.userId}</strong></p>
-        </div>
       </HeaderBox>
+      <div className='colectedBy'>
+        <p>Coletado por: {errors.fullName}<br />
+          Token:<strong> {errors.userId}</strong></p>
+      </div>
       <MidBox>
         <MidBoxItem>
           <p>Level: </p><strong>{errors.level} </strong>
@@ -70,7 +75,7 @@ const ErrorItem: React.FC<ErrorsProps> = ({ errors }) => {
           }
         </Button >
 
-        <Button onClick={handleDeleteData}
+        <Button onClick={handleConfirmDeleteData}
           style={{ background: '#ff0000aa', }} >
           Deletar
         </Button >
