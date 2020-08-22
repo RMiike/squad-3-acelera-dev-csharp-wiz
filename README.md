@@ -42,7 +42,7 @@
 </p>
 
 <p align="center">
-  <img alt="Demo" src="https://drive.google.com/file/d/1duv5X4ntbxi2NijooCJSEKIFVYP0w8Qu/view?usp=sharing">
+  <img alt="Demo" src="https://res.cloudinary.com/stefanini-it-solutions/image/upload/v1598056010/2020-08-21_21-08-11_n0dthx.gif">
 </p>
 
 
