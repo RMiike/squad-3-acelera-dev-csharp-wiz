@@ -14,8 +14,6 @@
 
 <p align="center">
  
- <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/RMiike/squad-3-acelera-dev-csharp-wiz">
-
  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/RMiike/squad-3-acelera-dev-csharp-wiz">
  
  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/RMiike/squad-3-acelera-dev-csharp-wiz">
@@ -24,11 +22,11 @@
  <img src="https://app.codacy.com/project/badge/Grade/f178c2dc4dfa41eea60ab6a35ddb01f9"/>
  <a/>
  
- <a href="https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz">
-  <img src="https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/entityLogErro/graph/badge.svg" />
+<a href="https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz">
+  <img src="https://codecov.io/gh/RMiike/squad-3-acelera-dev-csharp-wiz/branch/master/graph/badge.svg" />
 </a>
 
-<img src="https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?token=STDqEwu9vK79zqSDPbVb&branch=master" />
+<img src="https://travis-ci.com/RMiike/squad-3-acelera-dev-csharp-wiz.svg?branch=master" />
 
 <img src="https://img.shields.io/github/license/RMiike/squad-3-acelera-dev-csharp-wiz" />
 
